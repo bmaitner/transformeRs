@@ -1,0 +1,362 @@
+#' Generation 1 Transformers palettes
+#'
+#' A named list of colour palettes, one per character, covering Optimus Prime,
+#' Megatron, and every member and combined form of the core Generation 1
+#' combiner teams. Each element is a character vector of four to six hex
+#' colours holding the plastic, chrome and paint colours of the original toy,
+#' ordered so that the first few colours are the most distinct from one
+#' another (body plastic first, then secondary plastic, then accents). Use
+#' [tf_palette()] to pull colours from a palette, [tf_team_palette()] to take
+#' one colour from each member of a combiner team, and [tf_characters] for
+#' background on each character.
+#'
+#' @details
+#' Hex values are approximations of the original 1984-1988 Hasbro releases,
+#' curated by eye from product photography on the Transformers Wiki
+#' (<https://tfwiki.net/>) and the toys' published colour descriptions.
+#' Chrome and die-cast parts do not reduce to a single flat colour; those
+#' entries reflect how the part photographs.
+#'
+#' @format A named list of character vectors of hex colours.
+#' @seealso [tf_palette()], [tf_palette_names()], [tf_teams()],
+#'   [tf_characters], [tf_show_palettes()]
+#' @examples
+#' length(tf_palettes)
+#' tf_palettes$optimus_prime
+#' tf_palettes$devastator
+#' @export
+tf_palettes <- stats::setNames(
+  lapply(.registry, `[[`, "colours"),
+  vapply(.registry, `[[`, character(1), "palette")
+)
+
+#' Generation 1 Transformers character metadata
+#'
+#' Background information for every palette in [tf_palettes]: the character,
+#' its faction, the combiner team and combined form it belongs to, its role in
+#' that team, its alternate mode, the year of the original toy, a description
+#' of the toy's colours, and links to the character's page and toy photograph
+#' on the Transformers Wiki.
+#'
+#' @format A data frame with one row per palette and the columns:
+#' \describe{
+#'   \item{palette}{Palette name, as used by [tf_palette()].}
+#'   \item{character}{Character name as printed on the toy's packaging.}
+#'   \item{faction}{`"Autobot"` or `"Decepticon"`. See [tf_factions()].}
+#'   \item{team}{Combiner team, e.g. `"Aerialbots"`, or `NA` for characters
+#'     that are not part of a team. See [tf_teams()].}
+#'   \item{combiner}{Palette name of the team's combined form, e.g.
+#'     `"superion"`, or `NA`.}
+#'   \item{role}{One of `"leader"`, `"combiner torso"`, `"combiner limb"` or
+#'     `"combined form"`.}
+#'   \item{alt_mode}{The toy's alternate mode.}
+#'   \item{year}{Year of the original Hasbro release.}
+#'   \item{n_colours}{Number of colours in the palette.}
+#'   \item{description}{Description of the plastic, chrome and paint colours.}
+#'   \item{source}{URL of the character's page on the Transformers Wiki.}
+#'   \item{image}{Direct URL of the toy photograph the palette was checked
+#'     against, hosted by the Transformers Wiki, or `NA` where none has been
+#'     identified yet.}
+#' }
+#' @source Transformers Wiki, <https://tfwiki.net/>.
+#' @examples
+#' head(tf_characters)
+#' table(tf_characters$team, tf_characters$faction)
+#' subset(tf_characters, team == "Constructicons", c(palette, role, alt_mode))
+#' @export
+tf_characters <- local({
+  col <- function(field, type) vapply(.registry, `[[`, type, field)
+  out <- data.frame(
+    palette = col("palette", character(1)),
+    character = col("character", character(1)),
+    faction = col("faction", character(1)),
+    team = col("team", character(1)),
+    combiner = col("combiner", character(1)),
+    role = col("role", character(1)),
+    alt_mode = col("alt_mode", character(1)),
+    year = col("year", integer(1)),
+    n_colours = vapply(.registry, function(x) length(x$colours), integer(1)),
+    description = col("description", character(1)),
+    source = col("source", character(1)),
+    image = col("image", character(1)),
+    stringsAsFactors = FALSE
+  )
+  rownames(out) <- NULL
+  out
+})
+
+#' List the factions and combiner teams in transformeRs
+#'
+#' @param faction Optional faction to restrict `tf_teams()` to; see
+#'   [tf_factions()].
+#'
+#' @return `tf_factions()` returns a character vector of faction names.
+#'   `tf_teams()` returns a character vector of combiner team names, in
+#'   package order (Autobot teams first). Both can be passed to the matching
+#'   argument of [tf_palette_names()], [tf_show_palettes()] and
+#'   [tf_find_palettes()].
+#' @examples
+#' tf_factions()
+#' tf_teams()
+#' tf_teams(faction = "Decepticon")
+#' @export
+tf_factions <- function() {
+  unique(tf_characters$faction)
+}
+
+#' @rdname tf_factions
+#' @export
+tf_teams <- function(faction = NULL) {
+  keep <- !is.na(tf_characters$team)
+  if (!is.null(faction)) {
+    keep <- keep & tf_characters$faction == match_label(faction, tf_characters$faction, "faction")
+  }
+  unique(tf_characters$team[keep])
+}
+
+#' List the available palettes
+#'
+#' @param faction Optional faction (see [tf_factions()]) to restrict the list
+#'   to. Matched case-insensitively and by unique prefix, so `"auto"` works.
+#' @param team Optional combiner team (see [tf_teams()]) to restrict the list
+#'   to, matched the same way.
+#' @param role Optional role to restrict the list to: one of `"leader"`,
+#'   `"combiner torso"`, `"combiner limb"` or `"combined form"`, matched the
+#'   same way.
+#'
+#' @return A character vector of palette names accepted by [tf_palette()]
+#'   and the `scale_*_tf()` functions.
+#' @examples
+#' tf_palette_names()
+#' tf_palette_names(faction = "Decepticon")
+#' tf_palette_names(team = "Aerialbots")
+#' tf_palette_names(role = "combined form")
+#' @export
+tf_palette_names <- function(faction = NULL, team = NULL, role = NULL) {
+  keep <- rep(TRUE, nrow(tf_characters))
+  if (!is.null(faction)) {
+    keep <- keep & tf_characters$faction == match_label(faction, tf_characters$faction, "faction")
+  }
+  if (!is.null(team)) {
+    keep <- keep & !is.na(tf_characters$team) &
+      tf_characters$team == match_label(team, tf_characters$team, "team")
+  }
+  if (!is.null(role)) {
+    keep <- keep & tf_characters$role == match_label(role, tf_characters$role, "role")
+  }
+  tf_characters$palette[keep]
+}
+
+match_label <- function(x, choices, what) {
+  if (!is.character(x) || length(x) != 1L) {
+    stop("`", what, "` must be a single string.", call. = FALSE)
+  }
+  u <- unique(choices[!is.na(choices)])
+  norm <- function(s) gsub("[^a-z0-9]", "", tolower(s))
+  hit <- u[norm(u) == norm(x)]
+  if (length(hit) == 0L) hit <- u[startsWith(norm(u), norm(x))]
+  if (length(hit) == 0L) hit <- u[grepl(norm(x), norm(u), fixed = TRUE)]
+  if (length(hit) != 1L) {
+    stop(
+      "Unknown or ambiguous ", what, " '", x, "'. Choose one of: ",
+      paste(u, collapse = ", "), ".",
+      call. = FALSE
+    )
+  }
+  hit
+}
+
+palette_key <- function(name) {
+  if (!is.character(name) || length(name) != 1L) {
+    stop("`name` must be a single string.", call. = FALSE)
+  }
+  key <- tolower(name)
+  key <- gsub("[ -]+", "_", key)
+  if (!key %in% names(tf_palettes)) {
+    stop(
+      "Unknown Transformers palette '", name, "'. See tf_palette_names().",
+      call. = FALSE
+    )
+  }
+  key
+}
+
+#' Get colours from a character's palette
+#'
+#' Returns `n` colours from the named character's palette, either the first
+#' `n` curated colours (`type = "discrete"`) or `n` colours interpolated
+#' across the whole palette (`type = "continuous"`).
+#'
+#' @param name Palette name. Case-insensitive, and spaces or hyphens may
+#'   stand in for underscores, so `"Optimus Prime"` and `"Hun-Gurrr"` work.
+#'   See [tf_palette_names()].
+#' @param n Number of colours wanted. Defaults to every colour in the palette.
+#' @param type Either `"discrete"` (default) to return the curated colours as
+#'   they are, or `"continuous"` to interpolate `n` colours across the palette
+#'   with [grDevices::colorRampPalette()].
+#' @param strict Logical. For discrete palettes, error when `n` exceeds the
+#'   number of curated colours (default). If `FALSE`, interpolate to `n`
+#'   colours instead.
+#' @param sort Logical. If `TRUE`, order the colours from darkest to lightest
+#'   (by CIE lightness) before selecting or interpolating. Useful when a
+#'   palette is used as a sequential gradient; see [tf_find_palettes()].
+#'
+#' @return A character vector of hex colours with class `"tf_palette"`, which
+#'   has a print method that draws the swatches.
+#' @examples
+#' tf_palette("optimus_prime")
+#' tf_palette("Megatron", 3)
+#' tf_palette("devastator", 12, type = "continuous")
+#' tf_palette("hot_spot", 12, type = "continuous", sort = TRUE)
+#'
+#' # base graphics
+#' barplot(1:5, col = tf_palette("predaking"))
+#' @export
+tf_palette <- function(name, n = NULL, type = c("discrete", "continuous"),
+                       strict = TRUE, sort = FALSE) {
+  type <- match.arg(type)
+  key <- palette_key(name)
+  pal <- tf_palettes[[key]]
+  subset_palette(pal, key, n, type, strict, sort)
+}
+
+subset_palette <- function(pal, key, n, type, strict, sort) {
+  if (isTRUE(sort)) {
+    L <- srgb_to_lab(hex_to_srgb(pal))[, "L"]
+    pal <- pal[order(L)]
+  }
+
+  if (is.null(n)) n <- length(pal)
+  n <- as.integer(n)
+  if (length(n) != 1L || is.na(n) || n < 1L) {
+    stop("`n` must be a single positive integer.", call. = FALSE)
+  }
+
+  out <- switch(
+    type,
+    continuous = grDevices::colorRampPalette(pal)(n),
+    discrete = {
+      if (n > length(pal)) {
+        if (strict) {
+          stop(
+            "Palette '", key, "' only has ", length(pal), " colours; ",
+            n, " were requested. Use type = \"continuous\" or ",
+            "strict = FALSE to interpolate.",
+            call. = FALSE
+          )
+        }
+        grDevices::colorRampPalette(pal)(n)
+      } else {
+        pal[seq_len(n)]
+      }
+    }
+  )
+  structure(out, class = "tf_palette", name = key)
+}
+
+#' One colour per member of a combiner team
+#'
+#' Builds a categorical palette for a combiner team by taking one colour from
+#' each member, in the team's order: torso first, then limbs. Each colour is
+#' named after the member it came from, so the palette doubles as a legend.
+#'
+#' @details
+#' By default the body colour of each member is used, which is faithful but
+#' collapses for teams cast from shared plastics: every Constructicon is the
+#' same green, three Protectobots are white, and so on. With
+#' `distinct = TRUE` each member instead contributes the colour from its
+#' palette that is furthest (in CIE Lab) from the colours already chosen for
+#' the members before it, so the palette stays legible while every colour is
+#' still one the member actually wears. The Stunticons, Combaticons and
+#' Terrorcons are distinct either way; for the others `distinct = TRUE` is
+#' the useful setting. Check the result with [tf_palette_stats()] on the
+#' returned colours if legibility matters.
+#'
+#' @param team Combiner team name; see [tf_teams()]. Matched
+#'   case-insensitively and by unique prefix.
+#' @param which Which colour to take from each member's palette when
+#'   `distinct = FALSE`. `1` (the default) is the body plastic; `2` the
+#'   secondary plastic, and so on. Members with fewer colours than `which`
+#'   fall back to their last colour.
+#' @param distinct Logical. Choose each member's colour to be as different as
+#'   possible from those already chosen? See Details.
+#' @param combined Logical. Include the team's combined form as the last
+#'   colour?
+#'
+#' @return A named character vector of hex colours with class `"tf_palette"`.
+#' @examples
+#' tf_team_palette("Stunticons")
+#' tf_team_palette("Aerialbots")
+#' tf_team_palette("Aerialbots", distinct = TRUE)
+#' tf_team_palette("Predacons", which = 2)
+#'
+#' library(ggplot2)
+#' ggplot(mpg, aes(displ, hwy, colour = drv)) +
+#'   geom_point() +
+#'   scale_colour_manual(values = unname(tf_team_palette("Stunticons")))
+#' @export
+tf_team_palette <- function(team, which = 1L, distinct = FALSE,
+                            combined = FALSE) {
+  team <- match_label(team, tf_characters$team, "team")
+  rows <- tf_characters[!is.na(tf_characters$team) & tf_characters$team == team, ]
+  if (!combined) rows <- rows[rows$role != "combined form", ]
+  which <- as.integer(which)
+  if (length(which) != 1L || is.na(which) || which < 1L) {
+    stop("`which` must be a single positive integer.", call. = FALSE)
+  }
+  if (isTRUE(distinct)) {
+    chosen <- character(0)
+    for (p in rows$palette) {
+      pal <- tf_palettes[[p]]
+      if (length(chosen) == 0L) {
+        pick <- pal[1L]
+      } else {
+        lab_pal <- srgb_to_lab(hex_to_srgb(pal))
+        lab_chosen <- srgb_to_lab(hex_to_srgb(chosen))
+        d <- apply(lab_pal, 1, function(row) {
+          min(sqrt(colSums((t(lab_chosen) - row)^2)))
+        })
+        pick <- pal[which.max(d)]
+      }
+      chosen <- c(chosen, pick)
+    }
+    cols <- stats::setNames(chosen, rows$palette)
+  } else {
+    cols <- vapply(rows$palette, function(p) {
+      pal <- tf_palettes[[p]]
+      pal[min(which, length(pal))]
+    }, character(1))
+  }
+  structure(cols, class = "tf_palette", name = tolower(team))
+}
+
+#' @export
+print.tf_palette <- function(x, ...) {
+  cols <- as.character(x)
+  n <- length(cols)
+  key <- attr(x, "name")
+  meta <- tf_characters[tf_characters$palette == key, ]
+  if (nrow(meta) == 1L) {
+    cat("Transformers palette '", key, "' (", n, " colours)\n", sep = "")
+    team <- if (is.na(meta$team)) "" else paste0(" / ", meta$team)
+    cat(meta$faction, team, ": ", meta$character, "\n", sep = "")
+  } else {
+    cat("Transformers team palette '", key, "' (", n, " colours)\n", sep = "")
+  }
+  if (!is.null(names(x))) {
+    cat(paste0(names(x), " = ", cols), sep = "\n")
+  } else {
+    cat(cols, sep = " ")
+    cat("\n")
+  }
+
+  old <- graphics::par(mar = c(0.5, 0.5, 2, 0.5))
+  on.exit(graphics::par(old), add = TRUE)
+  graphics::plot(
+    0, 0, type = "n", xlim = c(0, n), ylim = c(0, 1),
+    axes = FALSE, xlab = "", ylab = "",
+    main = key, font.main = 1
+  )
+  graphics::rect(seq_len(n) - 1, 0, seq_len(n), 1, col = cols, border = NA)
+  invisible(x)
+}
