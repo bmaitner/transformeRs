@@ -1,0 +1,11 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# R CMD check artefacts
+*.Rcheck/
+*.tar.gz
+Rplots.pdf
+docs/
+.claude/
