@@ -1,0 +1,122 @@
+# Transformers colour and fill scales for ggplot2
+
+Colour and fill scales that use a character's palette. The `_d` variants
+are for discrete data, the `_c` variants for continuous data, and
+`scale_colour_tf()` / `scale_fill_tf()` choose between the two with the
+`discrete` argument. `scale_color_*` spellings are aliases.
+
+## Usage
+
+``` r
+scale_colour_tf_d(palette = "optimus_prime", reverse = FALSE, ...)
+
+scale_fill_tf_d(palette = "optimus_prime", reverse = FALSE, ...)
+
+scale_colour_tf_c(
+  palette = "optimus_prime",
+  reverse = FALSE,
+  sort = FALSE,
+  ...
+)
+
+scale_fill_tf_c(palette = "optimus_prime", reverse = FALSE, sort = FALSE, ...)
+
+scale_colour_tf(
+  palette = "optimus_prime",
+  discrete = TRUE,
+  reverse = FALSE,
+  sort = FALSE,
+  ...
+)
+
+scale_fill_tf(
+  palette = "optimus_prime",
+  discrete = TRUE,
+  reverse = FALSE,
+  sort = FALSE,
+  ...
+)
+
+scale_color_tf_d(palette = "optimus_prime", reverse = FALSE, ...)
+
+scale_color_tf_c(palette = "optimus_prime", reverse = FALSE, sort = FALSE, ...)
+
+scale_color_tf(
+  palette = "optimus_prime",
+  discrete = TRUE,
+  reverse = FALSE,
+  sort = FALSE,
+  ...
+)
+```
+
+## Arguments
+
+- palette:
+
+  Name of a character's palette. See
+  [`tf_palette_names()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_names.md).
+
+- reverse:
+
+  Logical. Reverse the order of colours in the palette?
+
+- ...:
+
+  Additional arguments passed on to
+  [`ggplot2::discrete_scale()`](https://ggplot2.tidyverse.org/reference/discrete_scale.html)
+  (discrete) or
+  [`ggplot2::scale_colour_gradientn()`](https://ggplot2.tidyverse.org/reference/scale_gradient.html)
+  /
+  [`ggplot2::scale_fill_gradientn()`](https://ggplot2.tidyverse.org/reference/scale_gradient.html)
+  (continuous).
+
+- sort:
+
+  Logical, continuous scales only. Order the palette from darkest to
+  lightest before building the gradient, so the scale reads as
+  low-to-high. See
+  [`tf_find_palettes()`](https://bmaitner.github.io/transformeRs/reference/tf_find_palettes.md)
+  for palettes that suit this.
+
+- discrete:
+
+  Logical. If `TRUE` (default) build a discrete scale, otherwise a
+  continuous gradient scale.
+
+## Value
+
+A ggplot2 scale object.
+
+## Details
+
+Discrete scales draw the first `n` colours of the palette, where `n` is
+the number of levels in the data. If the data has more levels than the
+palette has colours, the palette is interpolated with
+[`grDevices::colorRampPalette()`](https://rdrr.io/r/grDevices/colorRamp.html)
+so that every level still receives a distinct colour; expect the result
+to be less legible than the curated colours. For a palette with one
+colour per member of a combiner team, pass
+[`tf_team_palette()`](https://bmaitner.github.io/transformeRs/reference/tf_team_palette.md)
+to
+[`ggplot2::scale_colour_manual()`](https://ggplot2.tidyverse.org/reference/scale_manual.html).
+
+## Examples
+
+``` r
+library(ggplot2)
+
+ggplot(mpg, aes(displ, hwy, colour = drv)) +
+  geom_point(size = 3) +
+  scale_colour_tf("optimus_prime")
+
+
+ggplot(diamonds, aes(cut, fill = clarity)) +
+  geom_bar() +
+  scale_fill_tf_d("bruticus")
+
+
+ggplot(faithfuld, aes(waiting, eruptions, fill = density)) +
+  geom_tile() +
+  scale_fill_tf_c("hot_spot", sort = TRUE)
+```
