@@ -1,0 +1,34 @@
+Package: transformeRs
+Title: Color Palettes Inspired by Generation 1 Transformers
+Version: 0.1.0
+Authors@R: 
+    person("Brian", "Maitner", , "bmaitner@gmail.com", role = c("aut", "cre"))
+Description: Color palettes based on the original 1984-1988 Generation 1
+    Transformers toys: Optimus Prime, Megatron, and every member and combined
+    form of the core combiner teams (Aerialbots, Protectobots, Technobots,
+    Constructicons, Stunticons, Combaticons, Terrorcons, Predacons and
+    Seacons). Includes ggplot2 colour and fill scales for discrete and
+    continuous data, team palettes that take one colour from each member of a
+    combiner team, metadata linking each palette to its character, faction,
+    team and reference page, and helpers to shortlist palettes that suit
+    categorical, colour-blind-safe, sequential or diverging use. Hex values
+    are approximations of the toys' plastic and paint colours; transformeRs
+    is a fan project and is not affiliated with or endorsed by Hasbro or
+    Takara Tomy.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends: 
+    R (>= 3.5)
+Imports:
+    ggplot2,
+    grDevices,
+    graphics,
+    stats
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Config/Needs/website: jsonlite, knitr, rmarkdown
+URL: https://bmaitner.github.io/transformeRs/, https://github.com/bmaitner/transformeRs
+BugReports: https://github.com/bmaitner/transformeRs/issues
