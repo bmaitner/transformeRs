@@ -1,0 +1,52 @@
+url: https://bmaitner.github.io/transformeRs/
+
+template:
+  bootstrap: 5
+  bslib:
+    primary: "#C8262E"
+
+home:
+  title: transformeRs - Generation 1 Transformers palettes for R
+  links:
+    - text: Browse the palettes
+      href: articles/browse.html
+    - text: Request a character
+      href: https://github.com/bmaitner/transformeRs/issues/new?template=new-character.yml
+    - text: Suggest a palette change
+      href: https://github.com/bmaitner/transformeRs/issues/new/choose
+
+navbar:
+  structure:
+    left: [browse, reference, news]
+    right: [search, github]
+  components:
+    browse:
+      text: Browse palettes
+      href: articles/browse.html
+
+articles:
+  - title: Palette browser
+    navbar: ~
+    contents:
+      - articles/browse
+
+reference:
+  - title: Palettes
+    contents:
+      - tf_palettes
+      - tf_characters
+      - tf_palette
+      - tf_team_palette
+      - tf_palette_names
+      - tf_factions
+      - tf_show_palettes
+  - title: Choosing a palette for a plot
+    contents:
+      - tf_find_palettes
+      - tf_palette_stats
+  - title: ggplot2 scales
+    contents:
+      - scale_tf
+  - title: Package
+    contents:
+      - transformeRs-package
