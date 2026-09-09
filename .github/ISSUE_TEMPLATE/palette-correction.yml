@@ -1,0 +1,63 @@
+name: Suggest a palette change
+description: Propose adding, changing, removing or reordering colours in an existing transformeRs palette, or fixing its metadata.
+title: "[palette] palette change"
+labels: [palette]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping make the palettes more accurate. Every palette is an approximation read off toy photographs, so a figure in hand beats our eyeballing every time.
+  - type: input
+    id: palette
+    attributes:
+      label: Palette
+      description: The transformeRs palette name, e.g. `drag_strip`. See the [palette browser](https://bmaitner.github.io/transformeRs/articles/browse.html).
+      placeholder: drag_strip
+    validations:
+      required: true
+  - type: input
+    id: current_colours
+    attributes:
+      label: Current colours
+      description: The hex codes the palette has now (prefilled when you come from the browser).
+      placeholder: "#F2C21E #4B3A8A #262626 #B5B8BD #C8262E"
+  - type: dropdown
+    id: change
+    attributes:
+      label: What kind of change?
+      multiple: true
+      options:
+        - Change a colour that is wrong
+        - Add a colour that is missing
+        - Remove a colour that is not on the toy
+        - Reorder the colours
+        - Fix the description, alternate mode, year or other metadata
+        - Replace or add the reference photo
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed colours
+      description: The hex codes you think the palette should have, in order. Approximate is fine; say which is body plastic, which is secondary plastic, and which are chrome, die-cast or paint.
+      placeholder: |
+        #F2C21E  yellow car body
+        #4B3A8A  dark blue-purple legs and arms
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: A photo of the original toy, ideally on a plain background under neutral light. Drag an image into this box to upload it, or paste links. A catalogue scan, box art or the Transformers Wiki toy section also helps.
+    validations:
+      required: true
+  - type: input
+    id: reference
+    attributes:
+      label: Reference page
+      description: Link to the character's page on the Transformers Wiki, if you have one.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else

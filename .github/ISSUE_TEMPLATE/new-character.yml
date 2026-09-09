@@ -1,0 +1,54 @@
+name: Request a character
+description: Ask for a Transformer (or a whole team) that transformeRs does not cover yet.
+title: "[new] "
+labels: [palette, new]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Check [WISHLIST.md](https://github.com/bmaitner/transformeRs/blob/main/WISHLIST.md) first: if the character is already queued there, a thumbs-up on this form is still useful for prioritising. Requests for a whole team (a combiner team, the Seekers, the Dinobots) are welcome; list the members.
+  - type: input
+    id: character
+    attributes:
+      label: Character or team
+      placeholder: Starscream; the Dinobots; Monstructor and the Pretender Monsters
+    validations:
+      required: true
+  - type: dropdown
+    id: faction
+    attributes:
+      label: Faction
+      options:
+        - Autobot
+        - Decepticon
+        - Other / not sure
+    validations:
+      required: true
+  - type: input
+    id: team
+    attributes:
+      label: Combiner team or subgroup
+      description: If the character belongs to a team, which one, and which role (torso, limb, combined form)?
+      placeholder: Terrorcons, combiner limb
+  - type: input
+    id: reference
+    attributes:
+      label: Reference page
+      description: Link to the character's page on the Transformers Wiki (https://tfwiki.net/), ideally the toy section for the original release.
+    validations:
+      required: true
+  - type: textarea
+    id: colours
+    attributes:
+      label: Colours
+      description: The toy's plastic, chrome and paint colours, as hex codes if you can, or as a description ("red cab, blue legs, silver chest, yellow stickers").
+  - type: textarea
+    id: photo
+    attributes:
+      label: Photo
+      description: Drag an image in or paste a link to a clear photo of the original toy in robot mode. Plain background and neutral light are ideal.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else
+      description: Release year, alternate mode, why it matters, anything that helps.
