@@ -4,15 +4,21 @@
 \alias{tf_team_palette}
 \title{One colour per member of a combiner team}
 \usage{
-tf_team_palette(team, which = 1L, distinct = FALSE, combined = FALSE)
+tf_team_palette(
+  team,
+  which = 1L,
+  distinct = FALSE,
+  combined = FALSE,
+  medium = "toy"
+)
 }
 \arguments{
 \item{team}{Combiner team name; see \code{\link[=tf_teams]{tf_teams()}}. Matched
 case-insensitively and by unique prefix.}
 
 \item{which}{Which colour to take from each member's palette when
-\code{distinct = FALSE}. \code{1} (the default) is the body plastic; \code{2} the
-secondary plastic, and so on. Members with fewer colours than \code{which}
+\code{distinct = FALSE}. \code{1} (the default) is the body colour; \code{2} the
+secondary colour, and so on. Members with fewer colours than \code{which}
 fall back to their last colour.}
 
 \item{distinct}{Logical. Choose each member's colour to be as different as
@@ -20,6 +26,10 @@ possible from those already chosen? See Details.}
 
 \item{combined}{Logical. Include the team's combined form as the last
 colour?}
+
+\item{medium}{Which version of the team to use: \code{"toy"} (default),
+\code{"cartoon"} or \code{"comic"}. Errors if any member lacks a palette in that
+medium.}
 }
 \value{
 A named character vector of hex colours with class \code{"tf_palette"}.
@@ -46,6 +56,7 @@ tf_team_palette("Stunticons")
 tf_team_palette("Aerialbots")
 tf_team_palette("Aerialbots", distinct = TRUE)
 tf_team_palette("Predacons", which = 2)
+tf_team_palette("Combaticons", medium = "cartoon")
 
 library(ggplot2)
 ggplot(mpg, aes(displ, hwy, colour = drv)) +

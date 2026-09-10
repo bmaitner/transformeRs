@@ -7,9 +7,11 @@ knitr::opts_chunk$set(echo = FALSE)
 library(transformeRs)
 ```
 
-Every character in transformeRs, with its colours, where it came from, and a
-photo of the original toy. Filter by faction, combiner team, role or what kind
-of plot the palette suits, click a swatch to copy its hex code, and use
+Every palette in transformeRs, with its colours, where it came from, and the
+toy photo, episode still or comic panel it was checked against. Most
+characters have a toy palette and a cartoon palette; a few have a comic one
+too. Filter by medium, faction, combiner team, role or what kind of plot the
+palette suits, click a swatch to copy its hex code, and use
 **Suggest a change** on any card to open a prefilled GitHub issue where you can
 propose different colours or attach a better photograph. Missing someone?
 [Request a character](https://github.com/bmaitner/transformeRs/issues/new?template=new-character.yml).
@@ -31,6 +33,7 @@ payload <- list(
   version = as.character(utils::packageVersion("transformeRs")),
   repo = "https://github.com/bmaitner/transformeRs",
   teams = tf_teams(),
+  media = tf_media(),
   palettes = cw
 )
 json <- jsonlite::toJSON(payload, auto_unbox = TRUE, na = "null", dataframe = "rows")
@@ -54,6 +57,10 @@ cat('<script id="tf-data" type="application/json">', json, '</script>', sep = "\
 .tb-card h4 { margin: 0; font-size: 1rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; }
 .tb-meta { font-size: .8rem; color: #555; }
 .tb-meta b { color: #222; }
+.tb-medium { display: inline-block; font-size: .68rem; padding: .05rem .45rem; border-radius: 999px; margin-left: .35rem; vertical-align: middle; color: #fff; background: #666; }
+.tb-medium.toy { background: #555; }
+.tb-medium.cartoon { background: #1575CC; }
+.tb-medium.comic { background: #B8860B; }
 .tb-strip { display: flex; height: 56px; border-radius: 5px; overflow: hidden; }
 .tb-strip button { flex: 1; border: 0; padding: 0; cursor: pointer; position: relative; font: inherit; }
 .tb-strip button span { position: absolute; left: 0; right: 0; bottom: 3px; font-size: .62rem; font-family: ui-monospace, Menlo, monospace; text-align: center; opacity: 0; transition: opacity .15s; padding: 1px 0; }
@@ -80,6 +87,7 @@ cat('<script id="tf-data" type="application/json">', json, '</script>', sep = "\
 
 <div class="tb-controls">
   <div><label for="tb-q">Search</label><input id="tb-q" type="text" placeholder="name, alt mode, description"></div>
+  <div><label for="tb-medium">Medium</label><select id="tb-medium"><option value="">All media</option></select></div>
   <div><label for="tb-faction">Faction</label><select id="tb-faction"><option value="">Both factions</option></select></div>
   <div><label for="tb-team">Team</label><select id="tb-team"><option value="">All teams</option></select></div>
   <div><label for="tb-role">Role</label><select id="tb-role"><option value="">Any role</option><option value="leader">leader</option><option value="combiner torso">combiner torso</option><option value="combiner limb">combiner limb</option><option value="combined form">combined form</option></select></div>
@@ -107,6 +115,7 @@ cat('<script id="tf-data" type="application/json">', json, '</script>', sep = "\
   var count = document.getElementById("tb-count");
   var toast = document.getElementById("tb-toast");
   var q = document.getElementById("tb-q");
+  var selMedium = document.getElementById("tb-medium");
   var selFaction = document.getElementById("tb-faction");
   var selTeam = document.getElementById("tb-team");
   var selRole = document.getElementById("tb-role");
@@ -124,6 +133,7 @@ cat('<script id="tf-data" type="application/json">', json, '</script>', sep = "\
   function fill(sel, values) {
     values.forEach(function (v) { var o = document.createElement("option"); o.value = v; o.textContent = v; sel.appendChild(o); });
   }
+  fill(selMedium, data.media);
   fill(selFaction, uniq(pals.map(function (p) { return p.faction; })));
   function refreshTeams() {
     var current = selTeam.value;
@@ -142,6 +152,7 @@ cat('<script id="tf-data" type="application/json">', json, '</script>', sep = "\
       title: "[" + p.palette + "] palette change",
       labels: "palette",
       palette: p.palette,
+      medium: p.medium,
       current_colours: p.colours.join(" "),
       reference: p.source
     });
@@ -157,14 +168,15 @@ cat('<script id="tf-data" type="application/json">', json, '</script>', sep = "\
       return '<span class="tb-badge' + (p[u] ? " on" : "") + '">' + u + "</span>";
     }).join("");
     var where = [p.faction, p.team, p.role].filter(function (x) { return x != null && x !== ""; }).join(" &middot; ");
+    var refWord = p.medium === "toy" ? "Toy photo" : p.medium === "cartoon" ? "Episode still" : "Comic panel";
     var photo = p.image
-      ? '<div class="tb-photo"><a href="' + esc(p.image) + '" target="_blank" rel="noopener noreferrer"><img loading="lazy" referrerpolicy="no-referrer" src="' + esc(p.image) + '" alt="Toy photo: ' + esc(p.character) + '"></a></div>'
-      : '<div class="tb-photo"><span class="tb-nophoto">No toy photo linked yet. Know a good one? Use Suggest a change.</span></div>';
+      ? '<div class="tb-photo"><a href="' + esc(p.image) + '" target="_blank" rel="noopener noreferrer"><img loading="lazy" referrerpolicy="no-referrer" src="' + esc(p.image) + '" alt="' + refWord + ': ' + esc(p.character) + '"></a></div>'
+      : '<div class="tb-photo"><span class="tb-nophoto">No reference image linked yet. Know a good one? Use Suggest a change.</span></div>';
     var photoLink = p.image
-      ? '<a href="' + esc(p.image) + '" target="_blank" rel="noopener noreferrer">Toy photo</a>'
+      ? '<a href="' + esc(p.image) + '" target="_blank" rel="noopener noreferrer">' + refWord + '</a>'
       : "";
     return '<div class="tb-card ' + esc(p.faction.toLowerCase()) + (showPhotos.checked ? " show-photo" : "") + '" data-palette="' + esc(p.palette) + '">' +
-      "<h4>" + esc(p.palette) + "</h4>" +
+      "<h4>" + esc(p.palette) + '<span class="tb-medium ' + esc(p.medium) + '">' + esc(p.medium) + "</span></h4>" +
       '<div class="tb-meta"><b>' + esc(p.character) + "</b> &middot; " + where + "</div>" +
       '<div class="tb-meta">' + esc(p.alt_mode) + " &middot; " + esc(p.year) + "</div>" +
       '<div class="tb-strip">' + strip + "</div>" +
@@ -172,7 +184,7 @@ cat('<script id="tf-data" type="application/json">', json, '</script>', sep = "\
       '<p class="tb-desc">' + esc(p.description) + "</p>" +
       '<div class="tb-badges">' + badges + "</div>" +
       '<div class="tb-stats">min &Delta;E ' + p.min_de + " (deutan " + p.min_de_deutan + ", protan " + p.min_de_protan + ", tritan " + p.min_de_tritan + ") &middot; lightness range " + p.lum_range + " &middot; hue spread " + p.hue_spread + "&deg;</div>" +
-      '<div class="tb-code"><code>tf_palette("' + esc(p.palette) + '")</code></div>' +
+      '<div class="tb-code"><code>tf_palette("' + esc(p.base) + '"' + (p.medium === "toy" ? "" : ', medium = "' + esc(p.medium) + '"') + ')</code></div>' +
       photo +
       '<div class="tb-links">' +
         '<a href="' + esc(p.source) + '" target="_blank" rel="noopener noreferrer">TFWiki: ' + esc(p.character) + "</a>" +
@@ -186,13 +198,14 @@ cat('<script id="tf-data" type="application/json">', json, '</script>', sep = "\
     var terms = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
     var wantUses = uses.filter(function (u) { return u.checked; }).map(function (u) { return u.value; });
     var out = pals.filter(function (p) {
+      if (selMedium.value && p.medium !== selMedium.value) return false;
       if (selFaction.value && p.faction !== selFaction.value) return false;
       if (selTeam.value && p.team !== selTeam.value) return false;
       if (selRole.value && p.role !== selRole.value) return false;
       if (selN.value && p.colours.length !== +selN.value) return false;
       for (var i = 0; i < wantUses.length; i++) if (!p[wantUses[i]]) return false;
       if (terms.length) {
-        var hay = [p.palette, p.character, p.faction, p.team, p.role, p.alt_mode, p.description].join(" ").toLowerCase();
+        var hay = [p.palette, p.character, p.medium, p.faction, p.team, p.role, p.alt_mode, p.description].join(" ").toLowerCase();
         for (var j = 0; j < terms.length; j++) if (hay.indexOf(terms[j]) < 0) return false;
       }
       return true;
@@ -215,15 +228,16 @@ cat('<script id="tf-data" type="application/json">', json, '</script>', sep = "\
     var t = e.target.closest("[data-hex]");
     if (t) { e.preventDefault(); copy(t.getAttribute("data-hex")); }
   });
-  [q, selTeam, selRole, selN, selSort].forEach(function (el) { el.addEventListener("input", render); el.addEventListener("change", render); });
+  [q, selMedium, selTeam, selRole, selN, selSort].forEach(function (el) { el.addEventListener("input", render); el.addEventListener("change", render); });
   selFaction.addEventListener("change", function () { refreshTeams(); render(); });
   uses.forEach(function (u) { u.addEventListener("change", render); });
   showPhotos.addEventListener("change", function () {
     Array.prototype.forEach.call(grid.querySelectorAll(".tb-card"), function (c) { c.classList.toggle("show-photo", showPhotos.checked); });
   });
 
-  // Deep links: ?faction=Decepticon&team=Constructicons&role=combined%20form&use=colorblind&q=truck
+  // Deep links: ?medium=cartoon&faction=Decepticon&team=Constructicons&role=combined%20form&use=colorblind&q=truck
   var qs = new URLSearchParams(location.search);
+  if (qs.get("medium")) selMedium.value = qs.get("medium");
   if (qs.get("faction")) selFaction.value = qs.get("faction");
   refreshTeams();
   if (qs.get("team")) selTeam.value = qs.get("team");
@@ -240,9 +254,15 @@ Every palette here is an approximation read off toy photographs, so
 corrections are welcome. Each card links to a prefilled GitHub issue form:
 
 - **Suggest a change** if a colour is wrong, missing, or should be removed, or
-  if the description, alternate mode, year or photo is off. Say which hex codes
-  you would add, change or drop and why; a photo of the toy under neutral
-  light is the best evidence.
+  if the description, alternate mode, year or reference image is off. Say
+  which hex codes you would add, change or drop and why. For a toy palette a
+  photo under neutral light is the best evidence; for a cartoon palette a
+  clean episode still; for a comic palette the issue and page.
+- **Ask for a cartoon or comic version** of a character that only has a toy
+  palette by using Suggest a change on the toy card and picking "Add a
+  cartoon or comic version" as the kind of change. Comic palettes are added
+  a team at a time from specific Marvel issues, so say which issue you have
+  in mind.
 - [Request a character](https://github.com/bmaitner/transformeRs/issues/new?template=new-character.yml)
   if a Transformer or team you care about is not covered yet. The
   [wishlist](https://github.com/bmaitner/transformeRs/blob/main/WISHLIST.md)

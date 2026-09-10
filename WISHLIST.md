@@ -26,9 +26,15 @@ scripts and people both read from the top.
 
 ## Conventions the entry must follow
 
-- One palette per character; combiner teams also get a palette for the
+- One toy palette per character; combiner teams also get a palette for the
   combined form, listed last within the team. Team order is torso first,
   then limbs, then the combined form (tests enforce this).
+- Every character also gets a `cartoon` palette (the animation model, read
+  from an episode still linked as the image; tests enforce this), and may
+  get a `comic` palette. A comic palette must say in its description which
+  Marvel issue its colours were sampled from, because Marvel colouring
+  changed between issues and colourists. Cartoon and comic entries are
+  `cartoon()` / `comic()` calls below the toy blocks in the registry.
 - Palette name: character name in lowercase snake_case (`hun_gurrr`,
   `blast_off`). Combined forms use their own name with no team prefix.
 - Colours: 4 to 6 hex values from the original Hasbro release, body plastic
@@ -47,6 +53,8 @@ scripts and people both read from the top.
 | Item | Palettes | Landed in |
 |---|---|---|
 | Optimus Prime, Megatron | `optimus_prime`, `megatron` | 0.1.0 |
+| Cartoon palettes for all 58 characters | `<name>_cartoon` | 0.2.0 |
+| Comic palettes for Optimus Prime, Megatron | `optimus_prime_comic`, `megatron_comic` | 0.2.0 |
 | Aerialbots + Superion | `silverbolt`, `air_raid`, `fireflight`, `skydive`, `slingshot`, `superion` | 0.1.0 |
 | Protectobots + Defensor | `hot_spot`, `streetwise`, `blades`, `groove`, `first_aid`, `defensor` | 0.1.0 |
 | Technobots + Computron | `scattershot`, `lightspeed`, `nosecone`, `strafe`, `afterburner`, `computron` | 0.1.0 |
@@ -61,6 +69,34 @@ scripts and people both read from the top.
 
 Add new lines anywhere in this section; higher priority and earlier lines go
 first when there is a choice.
+
+### Comic palettes for the teams already in the package
+
+Marvel colouring is not consistent, so each of these needs a specific issue
+to sample from; the suggestions below are the teams' first or most
+prominent US appearances. Marvel UK reprinted the US art with its own
+colouring, so say which edition was used.
+
+- [ ] **Constructicons + Devastator (comic)** (Decepticon; 1985) - priority: high
+      TFWiki: https://tfwiki.net/wiki/Devastator_(G1)#Marvel_Comics_continuity
+      Notes: Marvel US #10 "The Next Best Thing to Being There". Green and
+      purple like the toys but check the shade of green and the chest colours.
+- [ ] **Aerialbots + Superion (comic)** (Autobot; 1986) - priority: normal
+      Notes: Marvel US #21-22 "Aerialbots over America" / "Heavy Traffic".
+- [ ] **Stunticons + Menasor (comic)** (Decepticon; 1986) - priority: normal
+      Notes: Marvel US #22 "Heavy Traffic".
+- [ ] **Protectobots + Defensor (comic)** (Autobot; 1986) - priority: normal
+      Notes: Marvel US #24 "Afterdeath!".
+- [ ] **Combaticons + Bruticus (comic)** (Decepticon; 1987) - priority: normal
+      Notes: Marvel US #32 "Used Autobots" onwards (they debut in the UK first).
+- [ ] **Predacons + Predaking (comic)** (Decepticon; 1986) - priority: normal
+      Notes: Marvel US #25 "Gone But Not Forgotten!".
+- [ ] **Technobots + Computron (comic)** (Autobot; 1987) - priority: low
+      Notes: Marvel US #38 "Trial by Fire!" onwards; UK "Space Pirates".
+- [ ] **Terrorcons + Abominus (comic)** (Decepticon; 1987) - priority: low
+      Notes: mostly Marvel UK; US appearances are brief.
+- [ ] **Seacons + Piranacon (comic)** (Decepticon; 1988) - priority: low
+      Notes: Marvel US #47 "Club Con!" (as Seacons); UK gives them more page time.
 
 ### Remaining Generation 1 combiner teams
 
@@ -142,6 +178,18 @@ should be triaged into this list too.
       2026-09-08). The rest were set from the wiki's prose and memory of the
       toys; a pass through the remaining photos in the browser would be
       worthwhile.
+- [ ] **Most cartoon palettes are unchecked against their stills.** They were
+      set from knowledge of the Sunbow models, then an episode still was
+      linked for each (none for Hot Spot, Scattershot or any Seacon). Checked
+      so far: Cutthroat (corrected on 2026-09-09: the model follows the toy,
+      not the green/red of later art) and Drag Strip (matched). Open the
+      browser with `?medium=cartoon`, turn on photos, and correct what looks
+      off. Watch for episode stills with unusual lighting (night scenes,
+      energy effects).
+- [ ] **Seacon cartoon palettes have no reference image.** Their Masterforce
+      appearances are not illustrated on the English wiki pages; the
+      Japanese names (Turtler, Lobclaw, Gulf, Kraken, King Poseidon) may help
+      find stills elsewhere.
 - [ ] **Megatron regional variants.** The Hasbro chrome/red values are used.
       If a Takara variant is wanted, add it as a separate palette
       (`megatron_takara`) rather than editing this one.

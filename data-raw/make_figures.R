@@ -43,6 +43,16 @@ for (tm in teams) {
 par(old)
 dev.off()
 
+# Toy, cartoon and comic versions side by side for the leaders and combined forms
+trio <- c(lead, gestalts)
+keys <- unlist(lapply(trio, function(b) {
+  tf_characters$palette[tf_characters$base == b]
+}))
+png("man/figures/media-comparison.png", width = 2000,
+    height = 160 + 260 * ceiling(length(keys) / 3), res = 200)
+tf_show_palettes(keys, ncol = 3)
+dev.off()
+
 # Colorblind-friendly shortlist
 cb <- tf_find_palettes("colorblind")
 if (length(cb)) {
@@ -51,6 +61,30 @@ if (length(cb)) {
   tf_show_palettes(cb, ncol = 3)
   dev.off()
 }
+
+# tf_pick(): the same pool of palettes picked for three plot styles
+pool <- c("optimus_prime", "megatron", "devastator", "predaking")
+draw_pick <- function(p, title) {
+  bg <- attr(p, "background")
+  dark <- relative_luminance(bg) < 0.2
+  k <- length(p)
+  plot(0, 0, type = "n", xlim = c(0, k), ylim = c(-0.45, 1), axes = FALSE,
+       xlab = "", ylab = "", main = title, cex.main = 0.9, font.main = 1,
+       xaxs = "i", yaxs = "i")
+  # paint the plot region in the pick's background so the swatches are seen
+  # against what they were chosen for
+  rect(-1, -1, k + 1, 2, col = bg, border = NA)
+  rect(seq_len(k) - 1, 0, seq_len(k), 1, col = p, border = NA)
+  text(seq_len(k) - 0.5, -0.22, labels = as.character(p), cex = 0.55,
+       family = "mono", col = if (dark) "white" else "black")
+}
+png("man/figures/pick-examples.png", width = 2000, height = 900, res = 200)
+par(mfrow = c(2, 2), mar = c(0.2, 0.4, 1.4, 0.4))
+draw_pick(tf_pick(pool, n = 5), 'tf_pick(pool, 5)')
+draw_pick(tf_pick(pool, n = 5, style = "dark"), 'tf_pick(pool, 5, style = "dark")')
+draw_pick(tf_pick(pool, n = 5, colorblind = TRUE), 'tf_pick(pool, 5, colorblind = TRUE)')
+draw_pick(tf_pick(pool, n = 5, style = "greyscale"), 'tf_pick(pool, 5, style = "greyscale")')
+dev.off()
 
 # ggplot2 examples
 p1 <- ggplot(mpg, aes(displ, hwy, colour = drv)) +

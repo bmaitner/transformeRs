@@ -10,7 +10,7 @@ test_that("all palettes are valid hex colours", {
 })
 
 test_that("palette names are lowercase snake_case and unique", {
-  nms <- tf_palette_names()
+  nms <- tf_palette_names(medium = "all")
   expect_true(all(grepl("^[a-z][a-z0-9_]*$", nms)))
   expect_equal(anyDuplicated(nms), 0)
   expect_setequal(nms, names(tf_palettes))
@@ -20,7 +20,7 @@ test_that("metadata table matches the palette list", {
   expect_s3_class(tf_characters, "data.frame")
   expect_equal(tf_characters$palette, names(tf_palettes))
   expect_equal(anyDuplicated(tf_characters$palette), 0)
-  expect_equal(anyDuplicated(tf_characters$character), 0)
+  expect_equal(anyDuplicated(tf_characters$character[tf_characters$medium == "toy"]), 0)
   expect_true(all(nzchar(tf_characters$description)))
   expect_true(all(nzchar(tf_characters$alt_mode)))
   expect_true(all(tf_characters$faction %in% c("Autobot", "Decepticon")))
@@ -36,7 +36,8 @@ test_that("metadata table matches the palette list", {
 
 test_that("every team has one torso, one combined form and at least four limbs", {
   for (tm in tf_teams()) {
-    rows <- tf_characters[!is.na(tf_characters$team) & tf_characters$team == tm, ]
+    rows <- tf_characters[!is.na(tf_characters$team) & tf_characters$team == tm &
+                            tf_characters$medium == "toy", ]
     expect_equal(sum(rows$role == "combined form"), 1, info = tm)
     expect_gte(sum(rows$role == "combiner torso"), 1)
     expect_gte(sum(rows$role == "combiner limb"), 4)

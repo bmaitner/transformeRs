@@ -4,7 +4,7 @@
 \alias{tf_palette_names}
 \title{List the available palettes}
 \usage{
-tf_palette_names(faction = NULL, team = NULL, role = NULL)
+tf_palette_names(faction = NULL, team = NULL, role = NULL, medium = "toy")
 }
 \arguments{
 \item{faction}{Optional faction (see \code{\link[=tf_factions]{tf_factions()}}) to restrict the list
@@ -16,6 +16,10 @@ to, matched the same way.}
 \item{role}{Optional role to restrict the list to: one of \code{"leader"},
 \code{"combiner torso"}, \code{"combiner limb"} or \code{"combined form"}, matched the
 same way.}
+
+\item{medium}{Which medium's palettes to list: \code{"toy"} (default),
+\code{"cartoon"}, \code{"comic"}, or \code{"all"} for every palette regardless of
+medium. See \code{\link[=tf_media]{tf_media()}}.}
 }
 \value{
 A character vector of palette names accepted by \code{\link[=tf_palette]{tf_palette()}}
@@ -27,6 +31,6 @@ List the available palettes
 \examples{
 tf_palette_names()
 tf_palette_names(faction = "Decepticon")
-tf_palette_names(team = "Aerialbots")
-tf_palette_names(role = "combined form")
+tf_palette_names(team = "Aerialbots", medium = "cartoon")
+tf_palette_names(role = "leader", medium = "all")
 }

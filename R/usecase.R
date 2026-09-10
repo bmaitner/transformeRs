@@ -115,7 +115,8 @@ palette_stats_one <- function(cols) {
 #' consider colors with chroma of at least 20, so greys and blacks do not
 #' count as a hue.
 #'
-#' @param names Palette names to compute for. Defaults to all palettes.
+#' @param names Palette names to compute for. Defaults to every palette in
+#'   every medium.
 #'
 #' @return A data frame with one row per palette and the columns:
 #' \describe{
@@ -140,8 +141,8 @@ palette_stats_one <- function(cols) {
 #' s <- tf_palette_stats()
 #' head(s[order(-s$min_de_deutan), c("palette", "min_de", "min_de_deutan")])
 #' @export
-tf_palette_stats <- function(names = tf_palette_names()) {
-  names <- match.arg(names, tf_palette_names(), several.ok = TRUE)
+tf_palette_stats <- function(names = tf_palette_names(medium = "all")) {
+  names <- match.arg(names, tf_palette_names(medium = "all"), several.ok = TRUE)
   m <- t(vapply(tf_palettes[names], palette_stats_one, numeric(8)))
   out <- data.frame(
     palette = names,
@@ -186,7 +187,9 @@ tf_palette_stats <- function(names = tf_palette_names()) {
 #' The thresholds are deliberately simple heuristics computed by
 #' [tf_palette_stats()]; treat the result as a shortlist to look at with
 #' [tf_show_palettes()], not a guarantee.
-#' @param faction,team,role Optional filters passed to [tf_palette_names()].
+#' @param faction,team,role,medium Optional filters passed to
+#'   [tf_palette_names()]. `medium` defaults to `"toy"`; use `"all"` to
+#'   search cartoon and comic palettes too.
 #' @param min_colours Minimum number of colors the palette must have.
 #'
 #' @return A character vector of palette names, ordered so that the strongest
@@ -195,11 +198,14 @@ tf_palette_stats <- function(names = tf_palette_names()) {
 #' tf_find_palettes("colorblind")
 #' tf_find_palettes("diverging", faction = "Decepticon")
 #' tf_find_palettes("sequential")
+#' tf_find_palettes("colorblind", medium = "cartoon")
 #' @export
 tf_find_palettes <- function(use = c("categorical", "colorblind", "sequential", "diverging"),
-                                faction = NULL, team = NULL, role = NULL, min_colours = 4) {
+                                faction = NULL, team = NULL, role = NULL,
+                             medium = "toy", min_colours = 4) {
   use <- match.arg(use)
-  names <- tf_palette_names(faction = faction, team = team, role = role)
+  names <- tf_palette_names(faction = faction, team = team, role = role,
+                            medium = medium)
   s <- tf_palette_stats(names)
   s <- s[s$n_colours >= min_colours & s[[use]], ]
   score <- switch(

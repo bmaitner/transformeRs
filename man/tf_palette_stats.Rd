@@ -4,10 +4,11 @@
 \alias{tf_palette_stats}
 \title{Perceptual statistics for every Transformers palette}
 \usage{
-tf_palette_stats(names = tf_palette_names())
+tf_palette_stats(names = tf_palette_names(medium = "all"))
 }
 \arguments{
-\item{names}{Palette names to compute for. Defaults to all palettes.}
+\item{names}{Palette names to compute for. Defaults to every palette in
+every medium.}
 }
 \value{
 A data frame with one row per palette and the columns:

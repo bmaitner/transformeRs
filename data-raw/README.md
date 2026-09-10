@@ -32,11 +32,38 @@ to check them are not perfect, so expect the palettes to be rough. The
 palettes flagged in `WISHLIST.md` under "Corrections and open questions" are
 the least certain.
 
+## Cartoon and comic versions
+
+Each character's toy palette is the base entry. A `cartoon()` or `comic()`
+call lower in `R/aaa-registry.R` adds a version for another medium; it
+inherits the character, faction, team, role and alternate mode from the toy
+entry and supplies only colours, the year of the character's first
+appearance in that medium, a description, a reference image and (optionally)
+the anchor of the wiki section it links to.
+
+- Cartoon colours are the flat colours of the Sunbow animation model, read
+  from an episode still on the Transformers Wiki (the `image` column links
+  to it). Constructicons are a lime green rather than the toy's grass green,
+  Drag Strip is yellow and purple rather than orange and plum, and so on.
+  The Seacons never appeared in the Sunbow cartoon; their cartoon palettes
+  are from the Japanese Super-God Masterforce series, where they have
+  different names.
+- Comic colours come from the character's early Marvel appearances. Marvel
+  colouring varied by issue and colourist, so a comic palette should name
+  the issue it was sampled from in its description. Only the two leaders
+  have comic palettes so far; the teams are queued in `WISHLIST.md`.
+
+Reference images for cartoon palettes were found by listing the episode
+stills on each character's wiki page and converting the filename to its
+MediaWiki path (`images2/<md5[1]>/<md5[1:2]>/<filename>`). Direct requests
+to tfwiki.net need a browser user agent.
+
 ## Conventions for an entry
 
 - `palette`: lowercase snake_case of the character name (`hun_gurrr`,
   `blast_off`). Combined forms use their own name (`superion`), not a team
-  prefix.
+  prefix. Cartoon and comic versions add `_cartoon` / `_comic`; the
+  `base` column holds the toy name and `medium` the medium.
 - `character`: the name as printed on the toy's packaging.
 - `team` / `combiner` / `role`: members of a combiner team carry the team
   name, the palette name of the combined form, and a role of

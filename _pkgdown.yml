@@ -38,10 +38,11 @@ reference:
       - tf_palette
       - tf_team_palette
       - tf_palette_names
-      - tf_factions
+      - tf_media
       - tf_show_palettes
-  - title: Choosing a palette for a plot
+  - title: Choosing colours for a plot
     contents:
+      - tf_pick
       - tf_find_palettes
       - tf_palette_stats
   - title: ggplot2 scales

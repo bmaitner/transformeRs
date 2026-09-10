@@ -12,6 +12,8 @@
 #' @param sort Logical, continuous scales only. Order the palette from darkest
 #'   to lightest before building the gradient, so the scale reads as
 #'   low-to-high. See [tf_find_palettes()] for palettes that suit this.
+#' @param medium Which version of the character to use: `"toy"` (default),
+#'   `"cartoon"` or `"comic"`. See [tf_media()].
 #' @param ... Additional arguments passed on to
 #'   [ggplot2::discrete_scale()] (discrete) or
 #'   [ggplot2::scale_colour_gradientn()] / [ggplot2::scale_fill_gradientn()]
@@ -34,6 +36,10 @@
 #'   geom_point(size = 3) +
 #'   scale_colour_tf("optimus_prime")
 #'
+#' ggplot(mpg, aes(displ, hwy, colour = drv)) +
+#'   geom_point(size = 3) +
+#'   scale_colour_tf("optimus_prime", medium = "cartoon")
+#'
 #' ggplot(diamonds, aes(cut, fill = clarity)) +
 #'   geom_bar() +
 #'   scale_fill_tf_d("bruticus")
@@ -44,9 +50,10 @@
 #' @name scale_tf
 NULL
 
-tf_pal <- function(palette, reverse = FALSE) {
+tf_pal <- function(palette, reverse = FALSE, medium = "toy") {
   function(n) {
-    cols <- tf_palette(palette, n = n, type = "discrete", strict = FALSE)
+    cols <- tf_palette(palette, n = n, type = "discrete", strict = FALSE,
+                       medium = medium)
     cols <- as.character(cols)
     if (reverse) cols <- rev(cols)
     cols
@@ -55,20 +62,22 @@ tf_pal <- function(palette, reverse = FALSE) {
 
 #' @rdname scale_tf
 #' @export
-scale_colour_tf_d <- function(palette = "optimus_prime", reverse = FALSE, ...) {
+scale_colour_tf_d <- function(palette = "optimus_prime", reverse = FALSE,
+                              medium = "toy", ...) {
   ggplot2::discrete_scale(
     aesthetics = "colour",
-    palette = tf_pal(palette, reverse),
+    palette = tf_pal(palette, reverse, medium),
     ...
   )
 }
 
 #' @rdname scale_tf
 #' @export
-scale_fill_tf_d <- function(palette = "optimus_prime", reverse = FALSE, ...) {
+scale_fill_tf_d <- function(palette = "optimus_prime", reverse = FALSE,
+                            medium = "toy", ...) {
   ggplot2::discrete_scale(
     aesthetics = "fill",
-    palette = tf_pal(palette, reverse),
+    palette = tf_pal(palette, reverse, medium),
     ...
   )
 }
@@ -76,8 +85,8 @@ scale_fill_tf_d <- function(palette = "optimus_prime", reverse = FALSE, ...) {
 #' @rdname scale_tf
 #' @export
 scale_colour_tf_c <- function(palette = "optimus_prime", reverse = FALSE,
-                              sort = FALSE, ...) {
-  cols <- as.character(tf_palette(palette, sort = sort))
+                              sort = FALSE, medium = "toy", ...) {
+  cols <- as.character(tf_palette(palette, sort = sort, medium = medium))
   if (reverse) cols <- rev(cols)
   ggplot2::scale_colour_gradientn(colours = cols, ...)
 }
@@ -85,8 +94,8 @@ scale_colour_tf_c <- function(palette = "optimus_prime", reverse = FALSE,
 #' @rdname scale_tf
 #' @export
 scale_fill_tf_c <- function(palette = "optimus_prime", reverse = FALSE,
-                            sort = FALSE, ...) {
-  cols <- as.character(tf_palette(palette, sort = sort))
+                            sort = FALSE, medium = "toy", ...) {
+  cols <- as.character(tf_palette(palette, sort = sort, medium = medium))
   if (reverse) cols <- rev(cols)
   ggplot2::scale_fill_gradientn(colours = cols, ...)
 }
@@ -94,22 +103,24 @@ scale_fill_tf_c <- function(palette = "optimus_prime", reverse = FALSE,
 #' @rdname scale_tf
 #' @export
 scale_colour_tf <- function(palette = "optimus_prime", discrete = TRUE,
-                            reverse = FALSE, sort = FALSE, ...) {
+                            reverse = FALSE, sort = FALSE, medium = "toy", ...) {
   if (discrete) {
-    scale_colour_tf_d(palette = palette, reverse = reverse, ...)
+    scale_colour_tf_d(palette = palette, reverse = reverse, medium = medium, ...)
   } else {
-    scale_colour_tf_c(palette = palette, reverse = reverse, sort = sort, ...)
+    scale_colour_tf_c(palette = palette, reverse = reverse, sort = sort,
+                      medium = medium, ...)
   }
 }
 
 #' @rdname scale_tf
 #' @export
 scale_fill_tf <- function(palette = "optimus_prime", discrete = TRUE,
-                          reverse = FALSE, sort = FALSE, ...) {
+                          reverse = FALSE, sort = FALSE, medium = "toy", ...) {
   if (discrete) {
-    scale_fill_tf_d(palette = palette, reverse = reverse, ...)
+    scale_fill_tf_d(palette = palette, reverse = reverse, medium = medium, ...)
   } else {
-    scale_fill_tf_c(palette = palette, reverse = reverse, sort = sort, ...)
+    scale_fill_tf_c(palette = palette, reverse = reverse, sort = sort,
+                    medium = medium, ...)
   }
 }
 

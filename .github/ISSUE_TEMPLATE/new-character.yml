@@ -24,6 +24,16 @@ body:
         - Other / not sure
     validations:
       required: true
+  - type: dropdown
+    id: media
+    attributes:
+      label: Which versions?
+      description: transformeRs records the toy, the cartoon animation model and the Marvel comic colours separately. Toy is always added first.
+      multiple: true
+      options:
+        - toy
+        - cartoon
+        - comic
   - type: input
     id: team
     attributes:

@@ -7,23 +7,30 @@
 \format{
 A data frame with one row per palette and the columns:
 \describe{
-\item{palette}{Palette name, as used by \code{\link[=tf_palette]{tf_palette()}}.}
+\item{palette}{Palette name, as used by \code{\link[=tf_palette]{tf_palette()}}. Unique.}
+\item{base}{The character's toy palette name, shared by all of that
+character's palettes across media (e.g. \code{"optimus_prime"} for both
+\code{optimus_prime} and \code{optimus_prime_cartoon}).}
+\item{medium}{\code{"toy"}, \code{"cartoon"} or \code{"comic"}. See \code{\link[=tf_media]{tf_media()}}.}
 \item{character}{Character name as printed on the toy's packaging.}
 \item{faction}{\code{"Autobot"} or \code{"Decepticon"}. See \code{\link[=tf_factions]{tf_factions()}}.}
 \item{team}{Combiner team, e.g. \code{"Aerialbots"}, or \code{NA} for characters
 that are not part of a team. See \code{\link[=tf_teams]{tf_teams()}}.}
-\item{combiner}{Palette name of the team's combined form, e.g.
+\item{combiner}{Base palette name of the team's combined form, e.g.
 \code{"superion"}, or \code{NA}.}
 \item{role}{One of \code{"leader"}, \code{"combiner torso"}, \code{"combiner limb"} or
 \code{"combined form"}.}
-\item{alt_mode}{The toy's alternate mode.}
-\item{year}{Year of the original Hasbro release.}
+\item{alt_mode}{The character's alternate mode.}
+\item{year}{Year of the reference: the original Hasbro release for toy
+palettes, the character's first appearance for cartoon and comic
+palettes.}
 \item{n_colours}{Number of colours in the palette.}
-\item{description}{Description of the plastic, chrome and paint colours.}
-\item{source}{URL of the character's page on the Transformers Wiki.}
-\item{image}{Direct URL of the toy photograph the palette was checked
-against, hosted by the Transformers Wiki, or \code{NA} where none has been
-identified yet.}
+\item{description}{Description of the colours in that medium.}
+\item{source}{URL of the character's page on the Transformers Wiki, with
+an anchor to the relevant section for cartoon and comic palettes.}
+\item{image}{Direct URL of the reference image the palette was checked
+against (a toy photo, an episode still, or a comic panel), hosted by
+the Transformers Wiki, or \code{NA} where none has been identified yet.}
 }
 }
 \source{
@@ -34,14 +41,14 @@ tf_characters
 }
 \description{
 Background information for every palette in \link{tf_palettes}: the character,
-its faction, the combiner team and combined form it belongs to, its role in
-that team, its alternate mode, the year of the original toy, a description
-of the toy's colours, and links to the character's page and toy photograph
-on the Transformers Wiki.
+which medium the palette records (toy, cartoon or comic), its faction, the
+combiner team and combined form it belongs to, its role in that team, its
+alternate mode, the year of the reference, a description of the colours,
+and links to the reference page and image on the Transformers Wiki.
 }
 \examples{
 head(tf_characters)
-table(tf_characters$team, tf_characters$faction)
-subset(tf_characters, team == "Constructicons", c(palette, role, alt_mode))
+table(tf_characters$team, tf_characters$medium)
+subset(tf_characters, base == "megatron", c(palette, medium, description))
 }
 \keyword{datasets}

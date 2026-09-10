@@ -4,23 +4,26 @@
 # The exported objects `tf_palettes` and `tf_characters` are derived from this
 # registry in R/palettes.R. Keep entries in one place so the two never drift.
 #
-# Hex values are hand-curated approximations of the original Generation 1
-# toys' plastic, chrome and paint colours. See data-raw/README.md for the
-# conventions and WISHLIST.md for what is queued to be added or corrected.
+# Every character has a toy palette (the original Generation 1 release) and
+# may also have a cartoon palette (the Sunbow animation model) and a comic
+# palette (early Marvel appearances), keyed `<base>`, `<base>_cartoon` and
+# `<base>_comic`. Hex values are hand-curated approximations. See
+# data-raw/README.md for the conventions and WISHLIST.md for what is queued.
 #
 # Adding a character: append a `member()` or `leader()` call in the right team
 # block, keeping team members in the manufacturer's order (torso first, then
-# limbs) and the combined form last. Colours go body plastic first, then
-# secondary plastic, then paint/chrome accents, so the first few colours are
-# the most distinct. Then run devtools::document(), devtools::test() and
-# data-raw/make_figures.R.
+# limbs) and the combined form last. Colours go body colour first, then
+# secondary colour, then accents, so the first few colours are the most
+# distinct. Cartoon and comic versions are `variant()` calls further down that
+# inherit the toy entry's metadata. Then run devtools::document(),
+# devtools::test() and data-raw/make_figures.R.
 
 ch <- function(palette, colours, character, faction, team = NA_character_,
                combiner = NA_character_, role, alt_mode, year, description,
                reference, image = NA_character_) {
   list(
-    palette = palette, colours = colours, character = character,
-    faction = faction, team = as.character(team),
+    palette = palette, base = palette, medium = "toy", colours = colours,
+    character = character, faction = faction, team = as.character(team),
     combiner = as.character(combiner), role = role, alt_mode = alt_mode,
     year = as.integer(year), description = description,
     source = tfwiki(reference), image = as.character(image)
@@ -377,9 +380,255 @@ combined <- function(palette, colours, character, team, year, description,
            "Piranacon (G1)", tfimg("8/83/Piranacong1toy.jpg"))
 )
 
-.registry <- c(
+.registry_toys <- c(
   .registry_leaders,
   .registry_aerialbots, .registry_protectobots, .registry_technobots,
   .registry_constructicons, .registry_stunticons, .registry_combaticons,
   .registry_terrorcons, .registry_predacons, .registry_seacons
 )
+.toy_index <- stats::setNames(
+  .registry_toys, vapply(.registry_toys, `[[`, character(1), "palette")
+)
+
+# Cartoon and comic versions ------------------------------------------------
+#
+# A variant inherits everything from the toy entry except its colours, year
+# (first appearance in that medium), description, reference image and the
+# section anchor on the wiki page. Cartoon colours are the flat colours of the
+# Sunbow animation model as seen in the linked episode still; comic colours
+# come from the character's early Marvel appearances.
+
+.anchors <- c(
+  cartoon = "The_Transformers_cartoon",
+  comic = "Marvel_Comics_continuity"
+)
+
+variant <- function(base, medium, colours, year, description,
+                    image = NA_character_, anchor = NULL) {
+  toy <- .toy_index[[base]]
+  if (is.null(toy)) stop("No toy entry for '", base, "'.", call. = FALSE)
+  if (is.null(anchor)) anchor <- unname(.anchors[medium])
+  page <- sub("/toys$", "", toy$source)
+  out <- toy
+  out$palette <- paste0(base, "_", medium)
+  out$medium <- medium
+  out$colours <- colours
+  out$year <- as.integer(year)
+  out$description <- description
+  out$source <- paste0(page, "#", anchor)
+  out$image <- as.character(image)
+  out
+}
+cartoon <- function(base, colours, year, description, image = NA_character_,
+                    anchor = NULL) {
+  variant(base, "cartoon", colours, year, description, image, anchor)
+}
+comic <- function(base, colours, year, description, image = NA_character_) {
+  variant(base, "comic", colours, year, description, image)
+}
+
+mf <- "Super-God_Masterforce_cartoon"
+
+.registry_cartoon <- list(
+  ## Leaders (1984, season 1) ----
+  cartoon("optimus_prime", c("#D9262C", "#2244A0", "#A9AEB3", "#8FCBE8", "#4A4F55"), 1984,
+          "Animation model: red torso and arms, blue legs and helmet, silver-grey face, grille and smokestacks, light blue windows, dark grey joints.",
+          tfimg("f/f6/Mtmte2_shermandam.jpg")),
+  cartoon("megatron", c("#C4C8CC", "#6E7378", "#2B2B2B", "#C8262E", "#6B3FA0"), 1984,
+          "Animation model: light grey body, darker grey arms and lower legs, black fusion cannon and chest details, red eyes, purple insignia.",
+          tfimg("b/bc/Mtmte1_megatron_throne.jpg")),
+
+  ## Aerialbots (1985, The Key to Vector Sigma) ----
+  cartoon("silverbolt", c("#F2F2F0", "#7C8187", "#D42A2A", "#F2C21E", "#2B2B2B"), 1985,
+          "Animation model: white body, grey legs and arms, red chest and helmet, yellow chest stripe, black detailing.",
+          tfimg("d/d4/G1_Silverbolt_cartoon.jpg")),
+  cartoon("air_raid", c("#1F1F22", "#F2F2F0", "#C8262E", "#8A8D91"), 1985,
+          "Animation model: black body with white chest and face, red thighs and detailing, grey joints.",
+          tfimg("5/53/ForeverLongTime_Air_Raid_Silverbolt.jpg")),
+  cartoon("fireflight", c("#D8262C", "#F2F2F0", "#8A8D91", "#2B2B2B"), 1985,
+          "Animation model: red body with white wings and chest, grey face and joints, black detailing.",
+          tfimg("9/97/CosmicRust_Fireflight_in_trouble.jpg")),
+  cartoon("skydive", c("#6E7378", "#2A2C30", "#C8262E", "#F2F2F0", "#3A5FA8"), 1985,
+          "Animation model: grey body with black legs and wings, red chest, white face, blue details.",
+          tfimg("e/ea/Skydive_slingshot.jpg")),
+  cartoon("slingshot", c("#F2F2F0", "#D02A2A", "#2B2B2B", "#8A8D91"), 1985,
+          "Animation model: white body with red chest and thighs, black wings and detailing, grey joints.",
+          tfimg("b/ba/KeytoVectorSigmaPt2_Slingshot_Motormaster.jpg")),
+  cartoon("superion", c("#C8262E", "#F2F2F0", "#2B2B2B", "#8A8D91", "#F2C21E"), 1985,
+          "Animation model: red chest, fists and head over a white body, black and grey limbs, yellow chest details.",
+          tfimg("d/da/Superion_studioox.jpg")),
+
+  ## Protectobots (1985, season 2) ----
+  cartoon("hot_spot", c("#2A6FD6", "#D22A2A", "#F2F2F0", "#2B2B2B", "#8A8D91"), 1985,
+          "Animation model: bright blue body with red chest and hips, white face and details, black and grey joints."),
+  cartoon("streetwise", c("#F2F2F0", "#1E1E1E", "#D22A2A", "#2A5BB5", "#8A8D91"), 1985,
+          "Animation model: white body with black chest and arms, red light bar and details, blue stripes, grey joints.",
+          tfimg("3/3a/G1_RevengeofBruticus_FirstAid_Streetwise_help.jpg")),
+  cartoon("blades", c("#D22A2A", "#F2F2F0", "#2B2B2B", "#8A8D91"), 1985,
+          "Animation model: red body with white chest and face, black rotors and detailing, grey joints.",
+          tfimg("4/43/G1_RevengeofBruticus_Blades_savinghumans.jpg")),
+  cartoon("groove", c("#F2F2F0", "#2A5BB5", "#2B2B2B", "#F2C21E", "#8A8D91"), 1985,
+          "Animation model: white body with blue chest and legs, black wheels, yellow details, grey joints.",
+          tfimg("5/5d/G1_RevengeofBruticus_Groove_Streetwise_freezer.jpg")),
+  cartoon("first_aid", c("#F2F2F0", "#D22A2A", "#8A8D91", "#2B2B2B"), 1985,
+          "Animation model: white body with red chest, shoulders and stripes, grey face and joints, black detailing.",
+          tfimg("f/fa/G1_UltimateWeapon_FirstAid_Blades_repairbay.jpg")),
+  cartoon("defensor", c("#D22A2A", "#F2F2F0", "#2A6FD6", "#2B2B2B", "#8A8D91"), 1985,
+          "Animation model: red chest and fists over a blue body, white limbs, black and grey detailing.",
+          tfimg("e/ee/Bot-episode-defensor1.jpg")),
+
+  ## Technobots (1986, Grimlock's New Brain) ----
+  cartoon("scattershot", c("#D02A2A", "#F2F2F0", "#6C7075", "#2B2B2B"), 1986,
+          "Animation model: red body with white chest and wings, dark grey limbs, black detailing."),
+  cartoon("lightspeed", c("#D02A2A", "#F2F2F0", "#2F5FA8", "#8A8D91"), 1986,
+          "Animation model: red body with white chest and thighs, blue windows and details, grey joints.",
+          tfimg("1/1d/Money-is-everything-lightspeed-bothmodes.jpg")),
+  cartoon("nosecone", c("#E9B62A", "#7A4E2D", "#8A8D91", "#2B2B2B"), 1986,
+          "Animation model: yellow body with brown legs and treads, grey face and drill, black detailing.",
+          tfimg("3/3b/NoseconeMoneyIsEverything.jpg")),
+  cartoon("strafe", c("#F2F2F0", "#D02A2A", "#2F5FA8", "#8A8D91"), 1986,
+          "Animation model: white body with red chest and wings, blue details, grey joints.",
+          tfimg("c/cf/GrimlocksNewBrain_strafe_robotmode.jpg")),
+  cartoon("afterburner", c("#F07C1E", "#F2F2F0", "#55595E", "#2B2B2B"), 1986,
+          "Animation model: orange body with white chest and face, dark grey legs, black detailing.",
+          tfimg("f/f3/G1_afterburner_moneyiseverything.jpg")),
+  cartoon("computron", c("#D02A2A", "#2F5FA8", "#F2F2F0", "#E9B62A", "#2B2B2B"), 1986,
+          "Animation model: red chest over a blue torso, white and yellow limbs, black detailing.",
+          tfimg("0/06/Money-is-everything-computron.jpg")),
+
+  ## Constructicons (1984, Heavy Metal War) ----
+  cartoon("hook", c("#79B83A", "#6E3FA3", "#9A9DA1", "#2B2B2B"), 1984,
+          "Animation model: lime green body with purple chest, shoulders and thighs, grey face and crane, black detailing.",
+          tfimg("b/b0/HookG1.jpg")),
+  cartoon("long_haul", c("#79B83A", "#6E3FA3", "#9A9DA1", "#2B2B2B"), 1984,
+          "Animation model: lime green body with purple chest and forearms, grey face and wheels, black detailing.",
+          tfimg("c/c5/TFTM_LongHaulwithKickback.jpg")),
+  cartoon("scrapper", c("#79B83A", "#6E3FA3", "#9A9DA1", "#2B2B2B"), 1984,
+          "Animation model: lime green body with purple chest, arms and thighs, grey face and scoop, black detailing.",
+          tfimg("9/9a/Scrapperg1cartoon.jpg")),
+  cartoon("bonecrusher", c("#79B83A", "#6E3FA3", "#9A9DA1", "#2B2B2B"), 1984,
+          "Animation model: lime green body with purple chest and blade, grey face and treads, black detailing.",
+          tfimg("c/ce/AutobotRun_Bonecrusher_throws_Jazz.jpg")),
+  cartoon("mixmaster", c("#79B83A", "#6E3FA3", "#9A9DA1", "#2B2B2B"), 1984,
+          "Animation model: lime green body with purple chest and drum, grey face and wheels, black detailing.",
+          tfimg("d/db/HeavyMetalWar_Mixmaster_spray.JPG")),
+  cartoon("scavenger", c("#79B83A", "#6E3FA3", "#9A9DA1", "#2B2B2B"), 1984,
+          "Animation model: lime green body with purple chest and shovel arm, grey face and treads, black detailing.",
+          tfimg("e/eb/HeavyMetalWar_Scavenger.jpg")),
+  cartoon("devastator", c("#79B83A", "#6E3FA3", "#9A9DA1", "#2B2B2B", "#C8262E"), 1984,
+          "Animation model: lime green limbs and body with purple chest, fists and head, grey face, black detailing, red visor.",
+          tfimg("f/fd/TFTM_Devastator.jpg")),
+
+  ## Stunticons (1985, The Key to Vector Sigma) ----
+  cartoon("motormaster", c("#1E1E1E", "#6E7276", "#6E3FA3", "#C9CBCF", "#C8262E"), 1985,
+          "Animation model: black body with dark grey legs and trailer armour, purple chest and face plate, silver details, red eyes.",
+          tfimg("8/81/MotormasterAnimated.jpg")),
+  cartoon("dead_end", c("#7A1F2E", "#1E1E1E", "#B5B8BD", "#8C8F94"), 1985,
+          "Animation model: maroon body with black thighs and arms, silver chest details, grey face.",
+          tfimg("b/b5/Hm9_Dead_End_Smoke.jpg")),
+  cartoon("breakdown", c("#F2F2F0", "#3E6FC4", "#2B2B2B", "#B5B8BD", "#C8262E"), 1985,
+          "Animation model: white body with mid-blue chest, thighs and helmet, black detailing, silver face, red stripe.",
+          tfimg("4/46/Breakdown.jpg")),
+  cartoon("drag_strip", c("#F2C21E", "#6E3FA3", "#2B2B2B", "#B5B8BD"), 1985,
+          "Animation model: yellow body with purple head, arms and thighs, black wheels, silver chest details. Noticeably yellower and more purple than the toy.",
+          tfimg("6/68/Dragstripcartoon.jpg")),
+  cartoon("wildrider", c("#4E5257", "#1E1E1E", "#C8262E", "#B5B8BD"), 1985,
+          "Animation model: dark grey body with black arms and legs, red chest stripe and details, silver face.",
+          tfimg("c/c2/KeyVectorSigma1_Wildrider_fly.JPG")),
+  cartoon("menasor", c("#1E1E1E", "#6E3FA3", "#6E7276", "#C9CBCF", "#C8262E", "#F2C21E"), 1985,
+          "Animation model: black body with purple chest, fists and head, dark grey armour, silver details, red eyes, yellow leg from Drag Strip.",
+          tfimg("3/31/KtVS2_Introducing_Menasor.jpg")),
+
+  ## Combaticons (1985, Starscream's Brigade) ----
+  cartoon("onslaught", c("#4E6E3E", "#2E5A8A", "#2B2B2B", "#B5B8BD"), 1985,
+          "Animation model: dark green body with blue-teal chest, thighs and helmet, black detailing, silver face.",
+          tfimg("a/ad/StarscreamsBrigade_OnslaughtVortex.jpg")),
+  cartoon("brawl", c("#5B6B3A", "#4E5257", "#F2C21E", "#2B2B2B"), 1985,
+          "Animation model: olive green body with dark grey treads, arms and face, yellow chest details, black detailing. The model differs from the toy in build as well as colour.",
+          tfimg("c/c7/BOT_RepairingBrawl.jpg")),
+  cartoon("swindle", c("#D9B04A", "#5A3E8A", "#2B2B2B", "#B5B8BD"), 1985,
+          "Animation model: tan-yellow body with purple chest, thighs and helmet, black wheels, silver face.",
+          tfimg("0/00/AerialAssault_Swindle_Ali.jpg")),
+  cartoon("blast_off", c("#7A5A3A", "#6E3FA3", "#2B2B2B", "#B5B8BD"), 1985,
+          "Animation model: brown body with purple chest, thighs and helmet, black detailing, silver face.",
+          tfimg("2/25/AerialAssault_BlastOff_Aerialbots.jpg")),
+  cartoon("vortex", c("#8C97A8", "#6E3FA3", "#2E5A8A", "#2B2B2B", "#B5B8BD"), 1985,
+          "Animation model: grey-blue body with purple chest and thighs, blue-teal arms, black rotors, silver face. Grey-blue rather than the toy's grey and lilac.",
+          tfimg("4/4d/UltimateWeapon_Vortex_interrogation.jpg")),
+  cartoon("bruticus", c("#4E6E3E", "#6E3FA3", "#7A5A3A", "#D9B04A", "#8C97A8", "#2B2B2B"), 1985,
+          "Animation model: green body with purple chest, fists and head, brown, tan and grey-blue limbs, black detailing. The model was drawn inconsistently between episodes.",
+          tfimg("e/e8/Bruticus_cartoon.jpg")),
+
+  ## Terrorcons (1986, Grimlock's New Brain) ----
+  cartoon("hun_gurrr", c("#F2F2F0", "#E75480", "#6E3FA3", "#8C8F94", "#2B2B2B"), 1986,
+          "Animation model: white body with pink chest and thighs, purple details, grey face and dragon heads, black detailing.",
+          tfimg("0/08/Hungrrtoon.jpg")),
+  cartoon("blot", c("#5E4FA2", "#F07C1E", "#A88BD0", "#2B2B2B", "#8C8F94"), 1986,
+          "Animation model: blue-purple body with orange chest and details, lavender arms and legs, black detailing, grey face. Orange replaces the toy's yellow.",
+          tfimg("e/e2/Money-is-everything-terrorcons-robotmode.jpg")),
+  cartoon("cutthroat", c("#24485C", "#E9C98C", "#8A2E7A", "#6E3FA3", "#2B2B2B"), 1986,
+          "Animation model: dark teal torso with cream limbs, head and fists, magenta wings, purple insignia, black line work. Follows the toy closely.",
+          tfimg("e/e8/Cutthroattoon.jpg")),
+  cartoon("rippersnapper", c("#3A5F8F", "#F2F2F0", "#8C8F94", "#C8262E", "#2B2B2B"), 1986,
+          "Animation model: blue body with white chest and shark head, grey arms, red details, black detailing.",
+          tfimg("7/7f/Rippersnappertoon.jpg")),
+  cartoon("sinnertwin", c("#E9C23B", "#3FB8B0", "#6E3FA3", "#2B2B2B", "#8C8F94"), 1986,
+          "Animation model: yellow body with aqua chest and thighs, purple details, black detailing, grey face.",
+          tfimg("b/b5/Grimnewbrain_kup_vs_sintwin.jpg")),
+  cartoon("abominus", c("#6E3FA3", "#E75480", "#F2F2F0", "#8C8F94", "#E9C23B", "#24485C"), 1986,
+          "Animation model: purple chest, fists and head over a white and pink body, grey, yellow and dark teal limbs.",
+          tfimg("0/02/Money-is-everything-abominus.jpg")),
+
+  ## Predacons (1986, Five Faces of Darkness) ----
+  cartoon("razorclaw", c("#F2C21E", "#2B2B2B", "#C8262E", "#8C8F94"), 1986,
+          "Animation model: yellow body with black chest, arms and lion mane, red details, grey face.",
+          tfimg("e/eb/FFoD5_Razorclaw_point.jpg")),
+  cartoon("rampage", c("#F07C1E", "#2B2B2B", "#C8262E", "#8C8F94"), 1986,
+          "Animation model: orange body with black stripes, chest and thighs, red details, grey face.",
+          tfimg("7/73/MysteryofPlanetMaster-Rampage.jpg")),
+  cartoon("tantrum", c("#C8262E", "#8C8F94", "#F2C21E", "#2B2B2B"), 1986,
+          "Animation model: red body with grey chest and bull head, yellow horns and details, black detailing.",
+          tfimg("0/03/Tantrumchaos.jpg")),
+  cartoon("headstrong", c("#F2C21E", "#C8262E", "#8C8F94", "#2B2B2B"), 1986,
+          "Animation model: yellow body with red chest and thighs, grey rhino back and face, black detailing.",
+          tfimg("c/c5/Headstrong_fist.jpg")),
+  cartoon("divebomb", c("#F2C21E", "#C8262E", "#F07C1E", "#2B2B2B", "#8C8F94"), 1986,
+          "Animation model: yellow body with red chest and wings, orange details, black detailing, grey face.",
+          tfimg("4/44/Fight-or-flee-divebomb-robot.jpg")),
+  cartoon("predaking", c("#F2C21E", "#C8262E", "#F07C1E", "#2B2B2B", "#8C8F94"), 1986,
+          "Animation model: yellow and orange body with red chest and limbs, black detailing, grey face and joints.",
+          tfimg("d/da/FFOD5_Predaking.jpg")),
+
+  ## Seacons (1988, Super-God Masterforce; not in the Sunbow cartoon) ----
+  cartoon("snaptrap", c("#3FB0B8", "#2B2B2B", "#C8262E", "#B5B8BD"), 1988,
+          "Masterforce animation model (as Turtler): aqua-blue body with black chest and limbs, red details, silver face.",
+          anchor = mf),
+  cartoon("nautilator", c("#3FB0B8", "#2B2B2B", "#E75480", "#B5B8BD"), 1988,
+          "Masterforce animation model (as Lobclaw): aqua-blue body with black limbs, pink details, silver face.",
+          anchor = mf),
+  cartoon("overbite", c("#6E3FA3", "#3FB0B8", "#2B2B2B", "#B5B8BD"), 1988,
+          "Masterforce animation model: purple body with aqua-blue chest and limbs, black detailing, silver face.",
+          anchor = mf),
+  cartoon("seawing", c("#3FB0B8", "#2B2B2B", "#E75480", "#B5B8BD"), 1988,
+          "Masterforce animation model (as Kraken): aqua-blue body with black limbs, pink details, silver face.",
+          anchor = mf),
+  cartoon("skalor", c("#3FB0B8", "#2B2B2B", "#C8262E", "#6E3FA3", "#B5B8BD"), 1988,
+          "Masterforce animation model (as Gulf): aqua-blue body with black limbs, red and purple details, silver face.",
+          anchor = mf),
+  cartoon("tentakil", c("#3FB0B8", "#9A9DA1", "#2B2B2B", "#E75480"), 1988,
+          "Masterforce animation model: aqua-blue body with grey limbs, black detailing, pink details.",
+          anchor = mf),
+  cartoon("piranacon", c("#3FB0B8", "#2B2B2B", "#6E3FA3", "#E75480", "#B5B8BD", "#C8262E"), 1988,
+          "Masterforce animation model (as King Poseidon): aqua-blue body and limbs, black chest and fists, purple, pink, silver and red details.",
+          anchor = mf)
+)
+
+.registry_comic <- list(
+  comic("optimus_prime", c("#CC2229", "#22409A", "#A0A4A8", "#E6E7E8", "#2B2B2B"), 1984,
+        "Marvel US #1 onwards: red torso and arms, blue legs and helmet, grey face and grille with near-white highlights, black detailing."),
+  comic("megatron", c("#B9BDC2", "#5E6368", "#2B2B2B", "#C8262E", "#6B3FA0"), 1984,
+        "Marvel US #1 onwards: light grey body with darker grey limbs, black fusion cannon and chest, red eyes and details, purple insignia.")
+)
+
+.registry <- c(.registry_toys, .registry_cartoon, .registry_comic)
+

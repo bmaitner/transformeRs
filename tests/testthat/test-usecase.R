@@ -1,6 +1,6 @@
 test_that("palette stats cover every palette with sane values", {
   s <- tf_palette_stats()
-  expect_equal(s$palette, tf_palette_names())
+  expect_equal(s$palette, tf_palette_names(medium = "all"))
   expect_true(all(s$min_de >= 0))
   expect_true(all(s$lum_range >= 0 & s$lum_range <= 100))
   expect_true(all(s$hue_spread >= 0 & s$hue_spread <= 360))
@@ -28,6 +28,7 @@ test_that("tf_find_palettes returns matching, ordered palette names", {
     found <- tf_find_palettes(u)
     expect_type(found, "character")
     expect_true(all(found %in% tf_palette_names()), info = u)
+    expect_false(any(grepl("_(cartoon|comic)$", found)), info = u)
     if (length(found)) {
       s <- tf_palette_stats(found)
       expect_true(all(s[[u]]), info = u)

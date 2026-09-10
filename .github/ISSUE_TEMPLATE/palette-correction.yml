@@ -15,6 +15,17 @@ body:
       placeholder: drag_strip
     validations:
       required: true
+  - type: dropdown
+    id: medium
+    attributes:
+      label: Medium
+      description: Which version of the character this is about (prefilled from the browser).
+      options:
+        - toy
+        - cartoon
+        - comic
+    validations:
+      required: true
   - type: input
     id: current_colours
     attributes:
@@ -32,7 +43,8 @@ body:
         - Remove a colour that is not on the toy
         - Reorder the colours
         - Fix the description, alternate mode, year or other metadata
-        - Replace or add the reference photo
+        - Replace or add the reference image
+        - Add a cartoon or comic version of this character
     validations:
       required: true
   - type: textarea
@@ -49,7 +61,7 @@ body:
     id: evidence
     attributes:
       label: Evidence
-      description: A photo of the original toy, ideally on a plain background under neutral light. Drag an image into this box to upload it, or paste links. A catalogue scan, box art or the Transformers Wiki toy section also helps.
+      description: For a toy palette, a photo of the original toy under neutral light; for a cartoon palette, a clean episode still (say which episode); for a comic palette, the issue and page. Drag an image into this box to upload it, or paste links.
     validations:
       required: true
   - type: input

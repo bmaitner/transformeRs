@@ -10,6 +10,7 @@ tf_show_palettes(
   team = NULL,
   role = NULL,
   use = NULL,
+  medium = "toy",
   ncol = 3,
   hex = TRUE
 )
@@ -26,6 +27,9 @@ to every palette matching the other filters.}
 
 \item{use}{Optional use case to restrict to; see \code{\link[=tf_find_palettes]{tf_find_palettes()}}.}
 
+\item{medium}{Which medium's palettes to show: \code{"toy"} (default),
+\code{"cartoon"}, \code{"comic"} or \code{"all"}. Ignored when \code{names} is given.}
+
 \item{ncol}{Number of columns to arrange the swatch strips in.}
 
 \item{hex}{Logical. Print the hex code under each swatch?}
@@ -37,12 +41,14 @@ Invisibly, the character vector of palette names that were drawn.
 Draws a swatch strip for each palette on the current graphics device,
 labelled with the palette name and, by default, the hex code under each
 swatch. Useful for picking a character or for reporting a colour that looks
-wrong. With no arguments every palette is drawn, which is a lot; filter by
-\code{faction}, \code{team}, \code{role} or \code{use} to narrow it down.
+wrong. With no arguments every toy palette is drawn, which is a lot; filter
+by \code{faction}, \code{team}, \code{role} or \code{use} to narrow it down, or pass a
+character's palettes across media to compare them.
 }
 \examples{
 tf_show_palettes(team = "Aerialbots")
+tf_show_palettes(team = "Aerialbots", medium = "cartoon")
 tf_show_palettes(faction = "Decepticon", role = "combined form", ncol = 2)
 tf_show_palettes(use = "colorblind", ncol = 4)
-tf_show_palettes(c("optimus_prime", "megatron"), ncol = 1)
+tf_show_palettes(c("megatron", "megatron_cartoon", "megatron_comic"), ncol = 1)
 }

@@ -13,24 +13,42 @@
 \alias{scale_color_tf}
 \title{Transformers colour and fill scales for ggplot2}
 \usage{
-scale_colour_tf_d(palette = "optimus_prime", reverse = FALSE, ...)
+scale_colour_tf_d(
+  palette = "optimus_prime",
+  reverse = FALSE,
+  medium = "toy",
+  ...
+)
 
-scale_fill_tf_d(palette = "optimus_prime", reverse = FALSE, ...)
+scale_fill_tf_d(
+  palette = "optimus_prime",
+  reverse = FALSE,
+  medium = "toy",
+  ...
+)
 
 scale_colour_tf_c(
   palette = "optimus_prime",
   reverse = FALSE,
   sort = FALSE,
+  medium = "toy",
   ...
 )
 
-scale_fill_tf_c(palette = "optimus_prime", reverse = FALSE, sort = FALSE, ...)
+scale_fill_tf_c(
+  palette = "optimus_prime",
+  reverse = FALSE,
+  sort = FALSE,
+  medium = "toy",
+  ...
+)
 
 scale_colour_tf(
   palette = "optimus_prime",
   discrete = TRUE,
   reverse = FALSE,
   sort = FALSE,
+  medium = "toy",
   ...
 )
 
@@ -39,18 +57,31 @@ scale_fill_tf(
   discrete = TRUE,
   reverse = FALSE,
   sort = FALSE,
+  medium = "toy",
   ...
 )
 
-scale_color_tf_d(palette = "optimus_prime", reverse = FALSE, ...)
+scale_color_tf_d(
+  palette = "optimus_prime",
+  reverse = FALSE,
+  medium = "toy",
+  ...
+)
 
-scale_color_tf_c(palette = "optimus_prime", reverse = FALSE, sort = FALSE, ...)
+scale_color_tf_c(
+  palette = "optimus_prime",
+  reverse = FALSE,
+  sort = FALSE,
+  medium = "toy",
+  ...
+)
 
 scale_color_tf(
   palette = "optimus_prime",
   discrete = TRUE,
   reverse = FALSE,
   sort = FALSE,
+  medium = "toy",
   ...
 )
 }
@@ -58,6 +89,9 @@ scale_color_tf(
 \item{palette}{Name of a character's palette. See \code{\link[=tf_palette_names]{tf_palette_names()}}.}
 
 \item{reverse}{Logical. Reverse the order of colours in the palette?}
+
+\item{medium}{Which version of the character to use: \code{"toy"} (default),
+\code{"cartoon"} or \code{"comic"}. See \code{\link[=tf_media]{tf_media()}}.}
 
 \item{...}{Additional arguments passed on to
 \code{\link[ggplot2:discrete_scale]{ggplot2::discrete_scale()}} (discrete) or
@@ -95,6 +129,10 @@ library(ggplot2)
 ggplot(mpg, aes(displ, hwy, colour = drv)) +
   geom_point(size = 3) +
   scale_colour_tf("optimus_prime")
+
+ggplot(mpg, aes(displ, hwy, colour = drv)) +
+  geom_point(size = 3) +
+  scale_colour_tf("optimus_prime", medium = "cartoon")
 
 ggplot(diamonds, aes(cut, fill = clarity)) +
   geom_bar() +

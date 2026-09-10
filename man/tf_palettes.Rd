@@ -11,30 +11,36 @@ A named list of character vectors of hex colours.
 tf_palettes
 }
 \description{
-A named list of colour palettes, one per character, covering Optimus Prime,
-Megatron, and every member and combined form of the core Generation 1
-combiner teams. Each element is a character vector of four to six hex
-colours holding the plastic, chrome and paint colours of the original toy,
-ordered so that the first few colours are the most distinct from one
-another (body plastic first, then secondary plastic, then accents). Use
+A named list of colour palettes covering Optimus Prime, Megatron, and every
+member and combined form of the core Generation 1 combiner teams. Each
+character has a palette for the original toy, most also have one for the
+Sunbow cartoon, and some have one for the Marvel comic; see the \code{medium}
+column of \link{tf_characters}. Each element is a character vector of four to
+six hex colours ordered so that the first few are the most distinct from
+one another (body colour first, then secondary colour, then accents). Use
 \code{\link[=tf_palette]{tf_palette()}} to pull colours from a palette, \code{\link[=tf_team_palette]{tf_team_palette()}} to take
 one colour from each member of a combiner team, and \link{tf_characters} for
 background on each character.
 }
 \details{
-Hex values are approximations of the original 1984-1988 Hasbro releases,
+Toy palettes are named after the character (\code{optimus_prime}); cartoon and
+comic palettes carry a suffix (\code{optimus_prime_cartoon},
+\code{optimus_prime_comic}). Hex values are approximations: toy colours were
 curated by eye from product photography on the Transformers Wiki
-(\url{https://tfwiki.net/}) and the toys' published colour descriptions.
+(\url{https://tfwiki.net/}) and the toys' published colour descriptions,
+cartoon colours from the animation models as they appear in episode
+stills, and comic colours from the character's early Marvel appearances.
 Chrome and die-cast parts do not reduce to a single flat colour; those
 entries reflect how the part photographs.
 }
 \examples{
 length(tf_palettes)
 tf_palettes$optimus_prime
+tf_palettes$optimus_prime_cartoon
 tf_palettes$devastator
 }
 \seealso{
-\code{\link[=tf_palette]{tf_palette()}}, \code{\link[=tf_palette_names]{tf_palette_names()}}, \code{\link[=tf_teams]{tf_teams()}},
+\code{\link[=tf_palette]{tf_palette()}}, \code{\link[=tf_palette_names]{tf_palette_names()}}, \code{\link[=tf_media]{tf_media()}}, \code{\link[=tf_teams]{tf_teams()}},
 \link{tf_characters}, \code{\link[=tf_show_palettes]{tf_show_palettes()}}
 }
 \keyword{datasets}

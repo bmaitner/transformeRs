@@ -9,6 +9,7 @@ tf_find_palettes(
   faction = NULL,
   team = NULL,
   role = NULL,
+  medium = "toy",
   min_colours = 4
 )
 }
@@ -34,7 +35,9 @@ The thresholds are deliberately simple heuristics computed by
 \code{\link[=tf_palette_stats]{tf_palette_stats()}}; treat the result as a shortlist to look at with
 \code{\link[=tf_show_palettes]{tf_show_palettes()}}, not a guarantee.}
 
-\item{faction, team, role}{Optional filters passed to \code{\link[=tf_palette_names]{tf_palette_names()}}.}
+\item{faction, team, role, medium}{Optional filters passed to
+\code{\link[=tf_palette_names]{tf_palette_names()}}. \code{medium} defaults to \code{"toy"}; use \code{"all"} to
+search cartoon and comic palettes too.}
 
 \item{min_colours}{Minimum number of colors the palette must have.}
 }
@@ -52,4 +55,5 @@ hold up.
 tf_find_palettes("colorblind")
 tf_find_palettes("diverging", faction = "Decepticon")
 tf_find_palettes("sequential")
+tf_find_palettes("colorblind", medium = "cartoon")
 }

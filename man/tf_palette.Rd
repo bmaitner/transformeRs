@@ -9,13 +9,15 @@ tf_palette(
   n = NULL,
   type = c("discrete", "continuous"),
   strict = TRUE,
-  sort = FALSE
+  sort = FALSE,
+  medium = "toy"
 )
 }
 \arguments{
 \item{name}{Palette name. Case-insensitive, and spaces or hyphens may
 stand in for underscores, so \code{"Optimus Prime"} and \code{"Hun-Gurrr"} work.
-See \code{\link[=tf_palette_names]{tf_palette_names()}}.}
+See \code{\link[=tf_palette_names]{tf_palette_names()}}. A full name with a medium suffix
+(\code{"megatron_cartoon"}) also works and takes precedence over \code{medium}.}
 
 \item{n}{Number of colours wanted. Defaults to every colour in the palette.}
 
@@ -30,6 +32,10 @@ colours instead.}
 \item{sort}{Logical. If \code{TRUE}, order the colours from darkest to lightest
 (by CIE lightness) before selecting or interpolating. Useful when a
 palette is used as a sequential gradient; see \code{\link[=tf_find_palettes]{tf_find_palettes()}}.}
+
+\item{medium}{Which version of the character to use: \code{"toy"} (default),
+\code{"cartoon"} or \code{"comic"}. See \code{\link[=tf_media]{tf_media()}}. Errors with a pointer to
+the wishlist if the character has no palette in that medium yet.}
 }
 \value{
 A character vector of hex colours with class \code{"tf_palette"}, which
@@ -42,7 +48,8 @@ across the whole palette (\code{type = "continuous"}).
 }
 \examples{
 tf_palette("optimus_prime")
-tf_palette("Megatron", 3)
+tf_palette("optimus_prime", medium = "cartoon")
+tf_palette("Megatron", 3, medium = "comic")
 tf_palette("devastator", 12, type = "continuous")
 tf_palette("hot_spot", 12, type = "continuous", sort = TRUE)
 
