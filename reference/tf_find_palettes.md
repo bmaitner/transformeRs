@@ -14,6 +14,7 @@ tf_find_palettes(
   faction = NULL,
   team = NULL,
   role = NULL,
+  medium = "toy",
   min_colours = 4
 )
 ```
@@ -58,10 +59,12 @@ tf_find_palettes(
   [`tf_show_palettes()`](https://bmaitner.github.io/transformeRs/reference/tf_show_palettes.md),
   not a guarantee.
 
-- faction, team, role:
+- faction, team, role, medium:
 
   Optional filters passed to
   [`tf_palette_names()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_names.md).
+  `medium` defaults to `"toy"`; use `"all"` to search cartoon and comic
+  palettes too.
 
 - min_colours:
 
@@ -97,4 +100,19 @@ tf_find_palettes("sequential")
 #>  [1] "air_raid"    "blades"      "fireflight"  "scattershot" "afterburner"
 #>  [6] "first_aid"   "slingshot"   "dead_end"    "wildrider"   "nosecone"   
 #> [11] "rampage"     "brawl"      
+tf_find_palettes("colorblind", medium = "cartoon")
+#>  [1] "silverbolt_cartoon"    "blades_cartoon"        "first_aid_cartoon"    
+#>  [4] "air_raid_cartoon"      "fireflight_cartoon"    "slingshot_cartoon"    
+#>  [7] "computron_cartoon"     "nosecone_cartoon"      "scattershot_cartoon"  
+#> [10] "hot_spot_cartoon"      "defensor_cartoon"      "lightspeed_cartoon"   
+#> [13] "strafe_cartoon"        "streetwise_cartoon"    "groove_cartoon"       
+#> [16] "superion_cartoon"      "rippersnapper_cartoon" "razorclaw_cartoon"    
+#> [19] "tantrum_cartoon"       "headstrong_cartoon"    "drag_strip_cartoon"   
+#> [22] "rampage_cartoon"       "skydive_cartoon"       "wildrider_cartoon"    
+#> [25] "blast_off_cartoon"     "breakdown_cartoon"     "hook_cartoon"         
+#> [28] "long_haul_cartoon"     "scrapper_cartoon"      "bonecrusher_cartoon"  
+#> [31] "mixmaster_cartoon"     "scavenger_cartoon"     "devastator_cartoon"   
+#> [34] "afterburner_cartoon"   "motormaster_cartoon"   "menasor_cartoon"      
+#> [37] "megatron_cartoon"      "swindle_cartoon"       "optimus_prime_cartoon"
+#> [40] "divebomb_cartoon"      "predaking_cartoon"     "onslaught_cartoon"    
 ```

@@ -13,7 +13,7 @@ hold up."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">transformeRs</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,6 +54,7 @@ hold up.</p>
 <span>  faction <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  team <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  role <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  medium <span class="op">=</span> <span class="st">"toy"</span>,</span>
 <span>  min_colours <span class="op">=</span> <span class="fl">4</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -90,8 +91,10 @@ reorder the colors yourself for a continuous diverging scale.</p></dd>
 <code><a href="tf_show_palettes.html">tf_show_palettes()</a></code>, not a guarantee.</p></dd>
 
 
-<dt id="arg-faction-team-role">faction, team, role<a class="anchor" aria-label="anchor" href="#arg-faction-team-role"></a></dt>
-<dd><p>Optional filters passed to <code><a href="tf_palette_names.html">tf_palette_names()</a></code>.</p></dd>
+<dt id="arg-faction-team-role-medium">faction, team, role, medium<a class="anchor" aria-label="anchor" href="#arg-faction-team-role-medium"></a></dt>
+<dd><p>Optional filters passed to
+<code><a href="tf_palette_names.html">tf_palette_names()</a></code>. <code>medium</code> defaults to <code>"toy"</code>; use <code>"all"</code> to
+search cartoon and comic palettes too.</p></dd>
 
 
 <dt id="arg-min-colours">min_colours<a class="anchor" aria-label="anchor" href="#arg-min-colours"></a></dt>
@@ -128,6 +131,21 @@ candidates for the use case come first.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "air_raid"    "blades"      "fireflight"  "scattershot" "afterburner"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "first_aid"   "slingshot"   "dead_end"    "wildrider"   "nosecone"   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [11] "rampage"     "brawl"      </span>
+<span class="r-in"><span><span class="fu">tf_find_palettes</span><span class="op">(</span><span class="st">"colorblind"</span>, medium <span class="op">=</span> <span class="st">"cartoon"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "silverbolt_cartoon"    "blades_cartoon"        "first_aid_cartoon"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "air_raid_cartoon"      "fireflight_cartoon"    "slingshot_cartoon"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "computron_cartoon"     "nosecone_cartoon"      "scattershot_cartoon"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "hot_spot_cartoon"      "defensor_cartoon"      "lightspeed_cartoon"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "strafe_cartoon"        "streetwise_cartoon"    "groove_cartoon"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "superion_cartoon"      "rippersnapper_cartoon" "razorclaw_cartoon"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "tantrum_cartoon"       "headstrong_cartoon"    "drag_strip_cartoon"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "rampage_cartoon"       "skydive_cartoon"       "wildrider_cartoon"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "blast_off_cartoon"     "breakdown_cartoon"     "hook_cartoon"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "long_haul_cartoon"     "scrapper_cartoon"      "bonecrusher_cartoon"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "mixmaster_cartoon"     "scavenger_cartoon"     "devastator_cartoon"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "afterburner_cartoon"   "motormaster_cartoon"   "menasor_cartoon"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "megatron_cartoon"      "swindle_cartoon"       "optimus_prime_cartoon"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [40] "divebomb_cartoon"      "predaking_cartoon"     "onslaught_cartoon"    </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

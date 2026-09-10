@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="index.html">transformeRs</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +46,8 @@
 </div>
 <div class="section level2">
 <h2 id="conventions-the-entry-must-follow">Conventions the entry must follow<a class="anchor" aria-label="anchor" href="#conventions-the-entry-must-follow"></a></h2>
-<ul><li>One palette per character; combiner teams also get a palette for the combined form, listed last within the team. Team order is torso first, then limbs, then the combined form (tests enforce this).</li>
+<ul><li>One toy palette per character; combiner teams also get a palette for the combined form, listed last within the team. Team order is torso first, then limbs, then the combined form (tests enforce this).</li>
+<li>Every character also gets a <code>cartoon</code> palette (the animation model, read from an episode still linked as the image; tests enforce this), and may get a <code>comic</code> palette. A comic palette must say in its description which Marvel issue its colours were sampled from, because Marvel colouring changed between issues and colourists. Cartoon and comic entries are <code>cartoon()</code> / <code>comic()</code> calls below the toy blocks in the registry.</li>
 <li>Palette name: character name in lowercase snake_case (<code>hun_gurrr</code>, <code>blast_off</code>). Combined forms use their own name with no team prefix.</li>
 <li>Colours: 4 to 6 hex values from the original Hasbro release, body plastic first, then secondary plastic, then chrome/die-cast/paint accents, most distinct first. Members of one team share hex values for shared plastics.</li>
 <li>Metadata: character, faction, team, combiner, role (<code>leader</code>, <code>combiner torso</code>, <code>combiner limb</code>, <code>combined form</code>, or a new role if the subgroup needs one), alt_mode, year, description, TFWiki page, and a TFWiki toy photo URL where one exists (<code>NA</code> otherwise; the browser copes).</li>
@@ -62,6 +63,14 @@
 <code>optimus_prime</code>, <code>megatron</code>
 </td>
 <td>0.1.0</td>
+</tr><tr><td>Cartoon palettes for all 58 characters</td>
+<td><code>&lt;name&gt;_cartoon</code></td>
+<td>0.2.0</td>
+</tr><tr><td>Comic palettes for Optimus Prime, Megatron</td>
+<td>
+<code>optimus_prime_comic</code>, <code>megatron_comic</code>
+</td>
+<td>0.2.0</td>
 </tr><tr><td>Aerialbots + Superion</td>
 <td>
 <code>silverbolt</code>, <code>air_raid</code>, <code>fireflight</code>, <code>skydive</code>, <code>slingshot</code>, <code>superion</code>
@@ -112,6 +121,19 @@
 <h2 id="queued">Queued<a class="anchor" aria-label="anchor" href="#queued"></a></h2>
 <p>Add new lines anywhere in this section; higher priority and earlier lines go first when there is a choice.</p>
 <div class="section level3">
+<h3 id="comic-palettes-for-the-teams-already-in-the-package">Comic palettes for the teams already in the package<a class="anchor" aria-label="anchor" href="#comic-palettes-for-the-teams-already-in-the-package"></a></h3>
+<p>Marvel colouring is not consistent, so each of these needs a specific issue to sample from; the suggestions below are the teams’ first or most prominent US appearances. Marvel UK reprinted the US art with its own colouring, so say which edition was used.</p>
+<ul class="task-list"><li><label><input type="checkbox"><strong>Constructicons + Devastator (comic)</strong> (Decepticon; 1985) - priority: high TFWiki: <a href="https://tfwiki.net/wiki/Devastator_(G1)#Marvel_Comics_continuity" class="external-link uri">https://tfwiki.net/wiki/Devastator_(G1)#Marvel_Comics_continuity</a> Notes: Marvel US #10 “The Next Best Thing to Being There”. Green and purple like the toys but check the shade of green and the chest colours.</label></li>
+<li><label><input type="checkbox"><strong>Aerialbots + Superion (comic)</strong> (Autobot; 1986) - priority: normal Notes: Marvel US #21-22 “Aerialbots over America” / “Heavy Traffic”.</label></li>
+<li><label><input type="checkbox"><strong>Stunticons + Menasor (comic)</strong> (Decepticon; 1986) - priority: normal Notes: Marvel US #22 “Heavy Traffic”.</label></li>
+<li><label><input type="checkbox"><strong>Protectobots + Defensor (comic)</strong> (Autobot; 1986) - priority: normal Notes: Marvel US #24 “Afterdeath!”.</label></li>
+<li><label><input type="checkbox"><strong>Combaticons + Bruticus (comic)</strong> (Decepticon; 1987) - priority: normal Notes: Marvel US #32 “Used Autobots” onwards (they debut in the UK first).</label></li>
+<li><label><input type="checkbox"><strong>Predacons + Predaking (comic)</strong> (Decepticon; 1986) - priority: normal Notes: Marvel US #25 “Gone But Not Forgotten!”.</label></li>
+<li><label><input type="checkbox"><strong>Technobots + Computron (comic)</strong> (Autobot; 1987) - priority: low Notes: Marvel US #38 “Trial by Fire!” onwards; UK “Space Pirates”.</label></li>
+<li><label><input type="checkbox"><strong>Terrorcons + Abominus (comic)</strong> (Decepticon; 1987) - priority: low Notes: mostly Marvel UK; US appearances are brief.</label></li>
+<li><label><input type="checkbox"><strong>Seacons + Piranacon (comic)</strong> (Decepticon; 1988) - priority: low Notes: Marvel US #47 “Club Con!” (as Seacons); UK gives them more page time.</label></li>
+</ul></div>
+<div class="section level3">
 <h3 id="remaining-generation-1-combiner-teams">Remaining Generation 1 combiner teams<a class="anchor" aria-label="anchor" href="#remaining-generation-1-combiner-teams"></a></h3>
 <ul class="task-list"><li><label><input type="checkbox"><strong>Pretender Monsters + Monstructor</strong> (Decepticon; combiner team; 1989) - priority: normal TFWiki: <a href="https://tfwiki.net/wiki/Monstructor_(G1)" class="external-link uri">https://tfwiki.net/wiki/Monstructor_(G1)</a> Notes: Icepick, Bristleback, Wildfly, Slog, Birdbrain, Scowl. Six-member team with no fixed torso; use the inner robots’ colours, not the Pretender shells. Would add a <code>role</code> such as <code>combiner component</code>.</label></li>
 <li><label><input type="checkbox"><strong>Breastforce + Liokaiser</strong> (Decepticon; combiner team; Japan, 1989) - priority: normal TFWiki: <a href="https://tfwiki.net/wiki/Liokaiser" class="external-link uri">https://tfwiki.net/wiki/Liokaiser</a> Notes: Leozack, Drillhorn, Guyhawk, Hellbat, Jallguar, Killbison. Takara Victory release only, so the “original Hasbro release” rule needs a Takara exception; note that in the description.</label></li>
@@ -140,6 +162,8 @@
 <ul class="task-list"><li><label><input type="checkbox"><strong>Silverbolt, Onslaught, Brawl, Tantrum: no toy photo linked.</strong> TFWiki has no clearly named G1 toy image on their pages that could be found programmatically. Find the image (Special:ListFiles, or the <code>/toys</code> subpage in a browser) and set <code>image</code> in <code>R/aaa-registry.R</code>.</label></li>
 <li><label><input type="checkbox"><strong>Onslaught and Brawl robot-mode colours.</strong> Both were set from memory because no toy photo was found; confirm Onslaught’s blue robot parts (<code>#2F4F8F</code>) and Brawl’s olive (<code>#5B6B3A</code>) against a photo.</label></li>
 <li><label><input type="checkbox"><strong>Palettes checked against the linked photo so far:</strong> Hun-Gurrr, Blot, Cutthroat, Drag Strip, Vortex (the last three were corrected on 2026-09-08). The rest were set from the wiki’s prose and memory of the toys; a pass through the remaining photos in the browser would be worthwhile.</label></li>
+<li><label><input type="checkbox"><strong>Most cartoon palettes are unchecked against their stills.</strong> They were set from knowledge of the Sunbow models, then an episode still was linked for each (none for Hot Spot, Scattershot or any Seacon). Checked so far: Cutthroat (corrected on 2026-09-09: the model follows the toy, not the green/red of later art) and Drag Strip (matched). Open the browser with <code>?medium=cartoon</code>, turn on photos, and correct what looks off. Watch for episode stills with unusual lighting (night scenes, energy effects).</label></li>
+<li><label><input type="checkbox"><strong>Seacon cartoon palettes have no reference image.</strong> Their Masterforce appearances are not illustrated on the English wiki pages; the Japanese names (Turtler, Lobclaw, Gulf, Kraken, King Poseidon) may help find stills elsewhere.</label></li>
 <li><label><input type="checkbox"><strong>Megatron regional variants.</strong> The Hasbro chrome/red values are used. If a Takara variant is wanted, add it as a separate palette (<code>megatron_takara</code>) rather than editing this one.</label></li>
 <li><label><input type="checkbox"><strong>Team palettes for shared-plastic teams.</strong> <code><a href="reference/tf_team_palette.html">tf_team_palette()</a></code> with <code>distinct = TRUE</code> is a greedy heuristic. If a better ordering exists for a team (e.g. Constructicons: green, purple, silver, yellow, black, then a repeat), it could be curated per team in the registry.</label></li>
 </ul></div>

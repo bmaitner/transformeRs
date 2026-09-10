@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">transformeRs</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tf_palette_names</span><span class="op">(</span>faction <span class="op">=</span> <span class="cn">NULL</span>, team <span class="op">=</span> <span class="cn">NULL</span>, role <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tf_palette_names</span><span class="op">(</span>faction <span class="op">=</span> <span class="cn">NULL</span>, team <span class="op">=</span> <span class="cn">NULL</span>, role <span class="op">=</span> <span class="cn">NULL</span>, medium <span class="op">=</span> <span class="st">"toy"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -48,12 +48,12 @@
 
 
 <dl><dt id="arg-faction">faction<a class="anchor" aria-label="anchor" href="#arg-faction"></a></dt>
-<dd><p>Optional faction (see <code><a href="tf_factions.html">tf_factions()</a></code>) to restrict the list
+<dd><p>Optional faction (see <code><a href="tf_media.html">tf_factions()</a></code>) to restrict the list
 to. Matched case-insensitively and by unique prefix, so <code>"auto"</code> works.</p></dd>
 
 
 <dt id="arg-team">team<a class="anchor" aria-label="anchor" href="#arg-team"></a></dt>
-<dd><p>Optional combiner team (see <code><a href="tf_factions.html">tf_teams()</a></code>) to restrict the list
+<dd><p>Optional combiner team (see <code><a href="tf_media.html">tf_teams()</a></code>) to restrict the list
 to, matched the same way.</p></dd>
 
 
@@ -61,6 +61,12 @@ to, matched the same way.</p></dd>
 <dd><p>Optional role to restrict the list to: one of <code>"leader"</code>,
 <code>"combiner torso"</code>, <code>"combiner limb"</code> or <code>"combined form"</code>, matched the
 same way.</p></dd>
+
+
+<dt id="arg-medium">medium<a class="anchor" aria-label="anchor" href="#arg-medium"></a></dt>
+<dd><p>Which medium's palettes to list: <code>"toy"</code> (default),
+<code>"cartoon"</code>, <code>"comic"</code>, or <code>"all"</code> for every palette regardless of
+medium. See <code><a href="tf_media.html">tf_media()</a></code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -98,12 +104,12 @@ and the <code>scale_*_tf()</code> functions.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [29] "tantrum"       "headstrong"    "divebomb"      "predaking"    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [33] "snaptrap"      "nautilator"    "overbite"      "seawing"      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [37] "skalor"        "tentakil"      "piranacon"    </span>
-<span class="r-in"><span><span class="fu">tf_palette_names</span><span class="op">(</span>team <span class="op">=</span> <span class="st">"Aerialbots"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "silverbolt" "air_raid"   "fireflight" "skydive"    "slingshot" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [6] "superion"  </span>
-<span class="r-in"><span><span class="fu">tf_palette_names</span><span class="op">(</span>role <span class="op">=</span> <span class="st">"combined form"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "superion"   "defensor"   "computron"  "devastator" "menasor"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [6] "bruticus"   "abominus"   "predaking"  "piranacon" </span>
+<span class="r-in"><span><span class="fu">tf_palette_names</span><span class="op">(</span>team <span class="op">=</span> <span class="st">"Aerialbots"</span>, medium <span class="op">=</span> <span class="st">"cartoon"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "silverbolt_cartoon" "air_raid_cartoon"   "fireflight_cartoon"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "skydive_cartoon"    "slingshot_cartoon"  "superion_cartoon"  </span>
+<span class="r-in"><span><span class="fu">tf_palette_names</span><span class="op">(</span>role <span class="op">=</span> <span class="st">"leader"</span>, medium <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "optimus_prime"         "megatron"              "optimus_prime_cartoon"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "megatron_cartoon"      "optimus_prime_comic"   "megatron_comic"       </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

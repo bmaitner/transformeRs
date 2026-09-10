@@ -8,14 +8,15 @@ exposed so you can apply your own thresholds.
 ## Usage
 
 ``` r
-tf_palette_stats(names = tf_palette_names())
+tf_palette_stats(names = tf_palette_names(medium = "all"))
 ```
 
 ## Arguments
 
 - names:
 
-  Palette names to compute for. Defaults to all palettes.
+  Palette names to compute for. Defaults to every palette in every
+  medium.
 
 ## Value
 
@@ -75,11 +76,11 @@ blacks do not count as a hue.
 ``` r
 s <- tf_palette_stats()
 head(s[order(-s$min_de_deutan), c("palette", "min_de", "min_de_deutan")])
-#>          palette   min_de min_de_deutan
-#> 21          hook 59.59306      44.44229
-#> 22     long_haul 59.59306      44.44229
-#> 24   bonecrusher 59.59306      44.44229
-#> 25     mixmaster 59.59306      44.44229
-#> 49    headstrong 44.24602      44.14810
-#> 1  optimus_prime 52.83636      43.31489
+#>                palette   min_de min_de_deutan
+#> 89  drag_strip_cartoon 57.22242      50.23573
+#> 79        hook_cartoon 47.13860      47.04621
+#> 80   long_haul_cartoon 47.13860      47.04621
+#> 81    scrapper_cartoon 47.13860      47.04621
+#> 82 bonecrusher_cartoon 47.13860      47.04621
+#> 83   mixmaster_cartoon 47.13860      47.04621
 ```

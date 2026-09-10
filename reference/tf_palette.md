@@ -12,7 +12,8 @@ tf_palette(
   n = NULL,
   type = c("discrete", "continuous"),
   strict = TRUE,
-  sort = FALSE
+  sort = FALSE,
+  medium = "toy"
 )
 ```
 
@@ -23,6 +24,8 @@ tf_palette(
   Palette name. Case-insensitive, and spaces or hyphens may stand in for
   underscores, so `"Optimus Prime"` and `"Hun-Gurrr"` work. See
   [`tf_palette_names()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_names.md).
+  A full name with a medium suffix (`"megatron_cartoon"`) also works and
+  takes precedence over `medium`.
 
 - n:
 
@@ -48,6 +51,14 @@ tf_palette(
   used as a sequential gradient; see
   [`tf_find_palettes()`](https://bmaitner.github.io/transformeRs/reference/tf_find_palettes.md).
 
+- medium:
+
+  Which version of the character to use: `"toy"` (default), `"cartoon"`
+  or `"comic"`. See
+  [`tf_media()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md).
+  Errors with a pointer to the wishlist if the character has no palette
+  in that medium yet.
+
 ## Value
 
 A character vector of hex colours with class `"tf_palette"`, which has a
@@ -57,22 +68,27 @@ print method that draws the swatches.
 
 ``` r
 tf_palette("optimus_prime")
-#> Transformers palette 'optimus_prime' (5 colours)
+#> Transformers palette 'optimus_prime' (5 colours, toy)
 #> Autobot: Optimus Prime
 #> #D0202A #1F3E8F #B8BABF #F2D23C #2D2D2D
 
-tf_palette("Megatron", 3)
-#> Transformers palette 'megatron' (3 colours)
+tf_palette("optimus_prime", medium = "cartoon")
+#> Transformers palette 'optimus_prime_cartoon' (5 colours, cartoon)
+#> Autobot: Optimus Prime
+#> #D9262C #2244A0 #A9AEB3 #8FCBE8 #4A4F55
+
+tf_palette("Megatron", 3, medium = "comic")
+#> Transformers palette 'megatron_comic' (3 colours, comic)
 #> Decepticon: Megatron
-#> #C9CBCF #8C9095 #C8323A
+#> #B9BDC2 #5E6368 #2B2B2B
 
 tf_palette("devastator", 12, type = "continuous")
-#> Transformers palette 'devastator' (12 colours)
+#> Transformers palette 'devastator' (12 colours, toy)
 #> Decepticon / Constructicons: Devastator
 #> #3FA23F #507D63 #615987 #7449A5 #8E76AE #A8A2B8 #9B9DA1 #67686A #323333 #5B502B #A28933 #E9C23B
 
 tf_palette("hot_spot", 12, type = "continuous", sort = TRUE)
-#> Transformers palette 'hot_spot' (12 colours)
+#> Transformers palette 'hot_spot' (12 colours, toy)
 #> Autobot / Protectobots: Hot Spot
 #> #2A2A2A #26395A #22498B #2F51A3 #704173 #B13142 #C73E3F #B3686A #9F9296 #B2B4B6 #D2D3D3 #F2F2F0
 

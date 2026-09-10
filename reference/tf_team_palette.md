@@ -8,7 +8,13 @@ a legend.
 ## Usage
 
 ``` r
-tf_team_palette(team, which = 1L, distinct = FALSE, combined = FALSE)
+tf_team_palette(
+  team,
+  which = 1L,
+  distinct = FALSE,
+  combined = FALSE,
+  medium = "toy"
+)
 ```
 
 ## Arguments
@@ -16,14 +22,14 @@ tf_team_palette(team, which = 1L, distinct = FALSE, combined = FALSE)
 - team:
 
   Combiner team name; see
-  [`tf_teams()`](https://bmaitner.github.io/transformeRs/reference/tf_factions.md).
+  [`tf_teams()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md).
   Matched case-insensitively and by unique prefix.
 
 - which:
 
   Which colour to take from each member's palette when
-  `distinct = FALSE`. `1` (the default) is the body plastic; `2` the
-  secondary plastic, and so on. Members with fewer colours than `which`
+  `distinct = FALSE`. `1` (the default) is the body colour; `2` the
+  secondary colour, and so on. Members with fewer colours than `which`
   fall back to their last colour.
 
 - distinct:
@@ -34,6 +40,11 @@ tf_team_palette(team, which = 1L, distinct = FALSE, combined = FALSE)
 - combined:
 
   Logical. Include the team's combined form as the last colour?
+
+- medium:
+
+  Which version of the team to use: `"toy"` (default), `"cartoon"` or
+  `"comic"`. Errors if any member lacks a palette in that medium.
 
 ## Value
 
@@ -87,6 +98,14 @@ tf_team_palette("Predacons", which = 2)
 #> tantrum = #8C8F94
 #> headstrong = #C8262E
 #> divebomb = #C8262E
+
+tf_team_palette("Combaticons", medium = "cartoon")
+#> Transformers team palette 'combaticons_cartoon' (5 colours)
+#> onslaught_cartoon = #4E6E3E
+#> brawl_cartoon = #5B6B3A
+#> swindle_cartoon = #D9B04A
+#> blast_off_cartoon = #7A5A3A
+#> vortex_cartoon = #8C97A8
 
 
 library(ggplot2)

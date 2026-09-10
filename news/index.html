@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">transformeRs</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,10 +34,19 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.2.0" id="transformers-020">transformeRs 0.2.0<a class="anchor" aria-label="anchor" href="#transformers-020"></a></h2>
+<ul><li>Palettes now record a <code>medium</code>: every character has a <code>toy</code> palette (the original release), every character has a <code>cartoon</code> palette (the Sunbow animation model, or the Masterforce model for the Seacons), and Optimus Prime and Megatron have a <code>comic</code> palette (Marvel). Cartoon and comic palettes are keyed <code>&lt;name&gt;_cartoon</code> and <code>&lt;name&gt;_comic</code>, and <code>tf_characters</code> gains <code>base</code> and <code>medium</code> columns. 118 palettes in total.</li>
+<li>New <code>medium</code> argument on <code><a href="../reference/tf_palette.html">tf_palette()</a></code>, <code><a href="../reference/tf_palette_names.html">tf_palette_names()</a></code>, <code><a href="../reference/tf_team_palette.html">tf_team_palette()</a></code>, <code><a href="../reference/tf_show_palettes.html">tf_show_palettes()</a></code>, <code><a href="../reference/tf_find_palettes.html">tf_find_palettes()</a></code> and the ggplot2 scales, defaulting to <code>"toy"</code> so existing code is unchanged; <code>"all"</code> lists every medium. New <code><a href="../reference/tf_media.html">tf_media()</a></code>.</li>
+<li>Cartoon palettes link to an episode still on the Transformers Wiki as their reference image; the palette browser gains a Medium filter and badge.</li>
+<li>Corrected the toy palettes of Cutthroat, Drag Strip and Vortex against their toy photos.</li>
+<li>New <code><a href="../reference/tf_pick.html">tf_pick()</a></code> selects the <code>n</code> most distinguishable colours from one or more palettes for a light, dark or greyscale plot, optionally requiring them to stay distinct under simulated colour-vision deficiency. Colours that fail a WCAG contrast check against the background are dropped first; the subset is then chosen to maximise the smallest pairwise CIE Lab distance.</li>
+<li>Comic palettes for the combiner teams are queued in <code>WISHLIST.md</code> rather than guessed; Marvel colouring varies by issue, so each will cite the issue it was sampled from.</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="transformers-010">transformeRs 0.1.0<a class="anchor" aria-label="anchor" href="#transformers-010"></a></h2>
 <ul><li>Initial release with 58 palettes: Optimus Prime, Megatron, and every member and combined form of the nine core Generation 1 combiner teams (Aerialbots, Protectobots, Technobots, Constructicons, Stunticons, Combaticons, Terrorcons, Predacons, Seacons).</li>
 <li>
-<code><a href="../reference/tf_palette.html">tf_palette()</a></code>, <code><a href="../reference/tf_palette_names.html">tf_palette_names()</a></code>, <code><a href="../reference/tf_factions.html">tf_factions()</a></code>, <code><a href="../reference/tf_factions.html">tf_teams()</a></code>, <code><a href="../reference/tf_show_palettes.html">tf_show_palettes()</a></code>, and <code><a href="../reference/tf_team_palette.html">tf_team_palette()</a></code> for one colour per member of a combiner team (with <code>distinct = TRUE</code> for teams cast from shared plastics).</li>
+<code><a href="../reference/tf_palette.html">tf_palette()</a></code>, <code><a href="../reference/tf_palette_names.html">tf_palette_names()</a></code>, <code><a href="../reference/tf_media.html">tf_factions()</a></code>, <code><a href="../reference/tf_media.html">tf_teams()</a></code>, <code><a href="../reference/tf_show_palettes.html">tf_show_palettes()</a></code>, and <code><a href="../reference/tf_team_palette.html">tf_team_palette()</a></code> for one colour per member of a combiner team (with <code>distinct = TRUE</code> for teams cast from shared plastics).</li>
 <li>ggplot2 scales: <code><a href="../reference/scale_tf.html">scale_colour_tf()</a></code>, <code><a href="../reference/scale_tf.html">scale_fill_tf()</a></code> and their <code>_d</code> / <code>_c</code> variants, plus <code>scale_color_*</code> aliases.</li>
 <li>
 <code><a href="../reference/tf_find_palettes.html">tf_find_palettes()</a></code> and <code><a href="../reference/tf_palette_stats.html">tf_palette_stats()</a></code> to shortlist palettes that work for categorical, colorblind-safe, sequential or diverging use, judged from the colours themselves.</li>
@@ -45,7 +54,8 @@
 <code>tf_characters</code> metadata table with faction, team, role, alternate mode, year, descriptions and Transformers Wiki links and toy photos.</li>
 <li>pkgdown site at <a href="https://bmaitner.github.io/transformeRs/" class="uri">https://bmaitner.github.io/transformeRs/</a> with a filterable palette browser and prefilled GitHub issue forms for suggesting palette changes and requesting characters. <code>WISHLIST.md</code> tracks what is queued.</li>
 </ul></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">

@@ -5,7 +5,7 @@ List the available palettes
 ## Usage
 
 ``` r
-tf_palette_names(faction = NULL, team = NULL, role = NULL)
+tf_palette_names(faction = NULL, team = NULL, role = NULL, medium = "toy")
 ```
 
 ## Arguments
@@ -13,14 +13,14 @@ tf_palette_names(faction = NULL, team = NULL, role = NULL)
 - faction:
 
   Optional faction (see
-  [`tf_factions()`](https://bmaitner.github.io/transformeRs/reference/tf_factions.md))
+  [`tf_factions()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md))
   to restrict the list to. Matched case-insensitively and by unique
   prefix, so `"auto"` works.
 
 - team:
 
   Optional combiner team (see
-  [`tf_teams()`](https://bmaitner.github.io/transformeRs/reference/tf_factions.md))
+  [`tf_teams()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md))
   to restrict the list to, matched the same way.
 
 - role:
@@ -28,6 +28,12 @@ tf_palette_names(faction = NULL, team = NULL, role = NULL)
   Optional role to restrict the list to: one of `"leader"`,
   `"combiner torso"`, `"combiner limb"` or `"combined form"`, matched
   the same way.
+
+- medium:
+
+  Which medium's palettes to list: `"toy"` (default), `"cartoon"`,
+  `"comic"`, or `"all"` for every palette regardless of medium. See
+  [`tf_media()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md).
 
 ## Value
 
@@ -65,10 +71,10 @@ tf_palette_names(faction = "Decepticon")
 #> [29] "tantrum"       "headstrong"    "divebomb"      "predaking"    
 #> [33] "snaptrap"      "nautilator"    "overbite"      "seawing"      
 #> [37] "skalor"        "tentakil"      "piranacon"    
-tf_palette_names(team = "Aerialbots")
-#> [1] "silverbolt" "air_raid"   "fireflight" "skydive"    "slingshot" 
-#> [6] "superion"  
-tf_palette_names(role = "combined form")
-#> [1] "superion"   "defensor"   "computron"  "devastator" "menasor"   
-#> [6] "bruticus"   "abominus"   "predaking"  "piranacon" 
+tf_palette_names(team = "Aerialbots", medium = "cartoon")
+#> [1] "silverbolt_cartoon" "air_raid_cartoon"   "fireflight_cartoon"
+#> [4] "skydive_cartoon"    "slingshot_cartoon"  "superion_cartoon"  
+tf_palette_names(role = "leader", medium = "all")
+#> [1] "optimus_prime"         "megatron"              "optimus_prime_cartoon"
+#> [4] "megatron_cartoon"      "optimus_prime_comic"   "megatron_comic"       
 ```

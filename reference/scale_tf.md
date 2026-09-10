@@ -8,24 +8,42 @@ are for discrete data, the `_c` variants for continuous data, and
 ## Usage
 
 ``` r
-scale_colour_tf_d(palette = "optimus_prime", reverse = FALSE, ...)
+scale_colour_tf_d(
+  palette = "optimus_prime",
+  reverse = FALSE,
+  medium = "toy",
+  ...
+)
 
-scale_fill_tf_d(palette = "optimus_prime", reverse = FALSE, ...)
+scale_fill_tf_d(
+  palette = "optimus_prime",
+  reverse = FALSE,
+  medium = "toy",
+  ...
+)
 
 scale_colour_tf_c(
   palette = "optimus_prime",
   reverse = FALSE,
   sort = FALSE,
+  medium = "toy",
   ...
 )
 
-scale_fill_tf_c(palette = "optimus_prime", reverse = FALSE, sort = FALSE, ...)
+scale_fill_tf_c(
+  palette = "optimus_prime",
+  reverse = FALSE,
+  sort = FALSE,
+  medium = "toy",
+  ...
+)
 
 scale_colour_tf(
   palette = "optimus_prime",
   discrete = TRUE,
   reverse = FALSE,
   sort = FALSE,
+  medium = "toy",
   ...
 )
 
@@ -34,18 +52,31 @@ scale_fill_tf(
   discrete = TRUE,
   reverse = FALSE,
   sort = FALSE,
+  medium = "toy",
   ...
 )
 
-scale_color_tf_d(palette = "optimus_prime", reverse = FALSE, ...)
+scale_color_tf_d(
+  palette = "optimus_prime",
+  reverse = FALSE,
+  medium = "toy",
+  ...
+)
 
-scale_color_tf_c(palette = "optimus_prime", reverse = FALSE, sort = FALSE, ...)
+scale_color_tf_c(
+  palette = "optimus_prime",
+  reverse = FALSE,
+  sort = FALSE,
+  medium = "toy",
+  ...
+)
 
 scale_color_tf(
   palette = "optimus_prime",
   discrete = TRUE,
   reverse = FALSE,
   sort = FALSE,
+  medium = "toy",
   ...
 )
 ```
@@ -60,6 +91,12 @@ scale_color_tf(
 - reverse:
 
   Logical. Reverse the order of colours in the palette?
+
+- medium:
+
+  Which version of the character to use: `"toy"` (default), `"cartoon"`
+  or `"comic"`. See
+  [`tf_media()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md).
 
 - ...:
 
@@ -109,6 +146,11 @@ library(ggplot2)
 ggplot(mpg, aes(displ, hwy, colour = drv)) +
   geom_point(size = 3) +
   scale_colour_tf("optimus_prime")
+
+
+ggplot(mpg, aes(displ, hwy, colour = drv)) +
+  geom_point(size = 3) +
+  scale_colour_tf("optimus_prime", medium = "cartoon")
 
 
 ggplot(diamonds, aes(cut, fill = clarity)) +

@@ -11,7 +11,7 @@ apply your own thresholds."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">transformeRs</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +46,7 @@ apply your own thresholds.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tf_palette_stats</span><span class="op">(</span>names <span class="op">=</span> <span class="fu"><a href="tf_palette_names.html">tf_palette_names</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tf_palette_stats</span><span class="op">(</span>names <span class="op">=</span> <span class="fu"><a href="tf_palette_names.html">tf_palette_names</a></span><span class="op">(</span>medium <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -54,7 +54,8 @@ apply your own thresholds.</p>
 
 
 <dl><dt id="arg-names">names<a class="anchor" aria-label="anchor" href="#arg-names"></a></dt>
-<dd><p>Palette names to compute for. Defaults to all palettes.</p></dd>
+<dd><p>Palette names to compute for. Defaults to every palette in
+every medium.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -108,13 +109,13 @@ count as a hue.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu">tf_palette_stats</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">s</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="op">-</span><span class="va">s</span><span class="op">$</span><span class="va">min_de_deutan</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"palette"</span>, <span class="st">"min_de"</span>, <span class="st">"min_de_deutan"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          palette   min_de min_de_deutan</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21          hook 59.59306      44.44229</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22     long_haul 59.59306      44.44229</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24   bonecrusher 59.59306      44.44229</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25     mixmaster 59.59306      44.44229</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49    headstrong 44.24602      44.14810</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  optimus_prime 52.83636      43.31489</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                palette   min_de min_de_deutan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89  drag_strip_cartoon 57.22242      50.23573</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 79        hook_cartoon 47.13860      47.04621</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 80   long_haul_cartoon 47.13860      47.04621</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 81    scrapper_cartoon 47.13860      47.04621</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 82 bonecrusher_cartoon 47.13860      47.04621</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83   mixmaster_cartoon 47.13860      47.04621</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -3,8 +3,9 @@
 Draws a swatch strip for each palette on the current graphics device,
 labelled with the palette name and, by default, the hex code under each
 swatch. Useful for picking a character or for reporting a colour that
-looks wrong. With no arguments every palette is drawn, which is a lot;
-filter by `faction`, `team`, `role` or `use` to narrow it down.
+looks wrong. With no arguments every toy palette is drawn, which is a
+lot; filter by `faction`, `team`, `role` or `use` to narrow it down, or
+pass a character's palettes across media to compare them.
 
 ## Usage
 
@@ -15,6 +16,7 @@ tf_show_palettes(
   team = NULL,
   role = NULL,
   use = NULL,
+  medium = "toy",
   ncol = 3,
   hex = TRUE
 )
@@ -30,12 +32,12 @@ tf_show_palettes(
 - faction:
 
   Optional faction to restrict to; see
-  [`tf_factions()`](https://bmaitner.github.io/transformeRs/reference/tf_factions.md).
+  [`tf_factions()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md).
 
 - team:
 
   Optional combiner team to restrict to; see
-  [`tf_teams()`](https://bmaitner.github.io/transformeRs/reference/tf_factions.md).
+  [`tf_teams()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md).
 
 - role:
 
@@ -46,6 +48,11 @@ tf_show_palettes(
 
   Optional use case to restrict to; see
   [`tf_find_palettes()`](https://bmaitner.github.io/transformeRs/reference/tf_find_palettes.md).
+
+- medium:
+
+  Which medium's palettes to show: `"toy"` (default), `"cartoon"`,
+  `"comic"` or `"all"`. Ignored when `names` is given.
 
 - ncol:
 
@@ -64,9 +71,11 @@ Invisibly, the character vector of palette names that were drawn.
 ``` r
 tf_show_palettes(team = "Aerialbots")
 
+tf_show_palettes(team = "Aerialbots", medium = "cartoon")
+
 tf_show_palettes(faction = "Decepticon", role = "combined form", ncol = 2)
 
 tf_show_palettes(use = "colorblind", ncol = 4)
 
-tf_show_palettes(c("optimus_prime", "megatron"), ncol = 1)
+tf_show_palettes(c("megatron", "megatron_cartoon", "megatron_comic"), ncol = 1)
 ```

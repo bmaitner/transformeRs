@@ -12,14 +12,17 @@
   : One colour per member of a combiner team
 - [`tf_palette_names()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_names.md)
   : List the available palettes
-- [`tf_factions()`](https://bmaitner.github.io/transformeRs/reference/tf_factions.md)
-  [`tf_teams()`](https://bmaitner.github.io/transformeRs/reference/tf_factions.md)
-  : List the factions and combiner teams in transformeRs
+- [`tf_media()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md)
+  [`tf_factions()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md)
+  [`tf_teams()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md)
+  : List the media, factions and combiner teams in transformeRs
 - [`tf_show_palettes()`](https://bmaitner.github.io/transformeRs/reference/tf_show_palettes.md)
   : Display Transformers palettes
 
-## Choosing a palette for a plot
+## Choosing colours for a plot
 
+- [`tf_pick()`](https://bmaitner.github.io/transformeRs/reference/tf_pick.md)
+  : Pick the most distinguishable colours from one or more palettes
 - [`tf_find_palettes()`](https://bmaitner.github.io/transformeRs/reference/tf_find_palettes.md)
   : Find Transformers palettes that suit a plotting use case
 - [`tf_palette_stats()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_stats.md)

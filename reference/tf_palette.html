@@ -11,7 +11,7 @@ across the whole palette (type = &quot;continuous&quot;)."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">transformeRs</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +51,8 @@ across the whole palette (<code>type = "continuous"</code>).</p>
 <span>  n <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"discrete"</span>, <span class="st">"continuous"</span><span class="op">)</span>,</span>
 <span>  strict <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  sort <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  sort <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  medium <span class="op">=</span> <span class="st">"toy"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -62,7 +63,8 @@ across the whole palette (<code>type = "continuous"</code>).</p>
 <dl><dt id="arg-name">name<a class="anchor" aria-label="anchor" href="#arg-name"></a></dt>
 <dd><p>Palette name. Case-insensitive, and spaces or hyphens may
 stand in for underscores, so <code>"Optimus Prime"</code> and <code>"Hun-Gurrr"</code> work.
-See <code><a href="tf_palette_names.html">tf_palette_names()</a></code>.</p></dd>
+See <code><a href="tf_palette_names.html">tf_palette_names()</a></code>. A full name with a medium suffix
+(<code>"megatron_cartoon"</code>) also works and takes precedence over <code>medium</code>.</p></dd>
 
 
 <dt id="arg-n">n<a class="anchor" aria-label="anchor" href="#arg-n"></a></dt>
@@ -86,6 +88,12 @@ colours instead.</p></dd>
 (by CIE lightness) before selecting or interpolating. Useful when a
 palette is used as a sequential gradient; see <code><a href="tf_find_palettes.html">tf_find_palettes()</a></code>.</p></dd>
 
+
+<dt id="arg-medium">medium<a class="anchor" aria-label="anchor" href="#arg-medium"></a></dt>
+<dd><p>Which version of the character to use: <code>"toy"</code> (default),
+<code>"cartoon"</code> or <code>"comic"</code>. See <code><a href="tf_media.html">tf_media()</a></code>. Errors with a pointer to
+the wishlist if the character has no palette in that medium yet.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -96,29 +104,34 @@ has a print method that draws the swatches.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">tf_palette</span><span class="op">(</span><span class="st">"optimus_prime"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Transformers palette 'optimus_prime' (5 colours)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Transformers palette 'optimus_prime' (5 colours, toy)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Autobot: Optimus Prime</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> #D0202A #1F3E8F #B8BABF #F2D23C #2D2D2D</span>
 <span class="r-plt img"><img src="tf_palette-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span><span class="fu">tf_palette</span><span class="op">(</span><span class="st">"Megatron"</span>, <span class="fl">3</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Transformers palette 'megatron' (3 colours)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Decepticon: Megatron</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #C9CBCF #8C9095 #C8323A</span>
+<span class="r-in"><span><span class="fu">tf_palette</span><span class="op">(</span><span class="st">"optimus_prime"</span>, medium <span class="op">=</span> <span class="st">"cartoon"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Transformers palette 'optimus_prime_cartoon' (5 colours, cartoon)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Autobot: Optimus Prime</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #D9262C #2244A0 #A9AEB3 #8FCBE8 #4A4F55</span>
 <span class="r-plt img"><img src="tf_palette-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="fu">tf_palette</span><span class="op">(</span><span class="st">"Megatron"</span>, <span class="fl">3</span>, medium <span class="op">=</span> <span class="st">"comic"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Transformers palette 'megatron_comic' (3 colours, comic)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Decepticon: Megatron</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #B9BDC2 #5E6368 #2B2B2B</span>
+<span class="r-plt img"><img src="tf_palette-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu">tf_palette</span><span class="op">(</span><span class="st">"devastator"</span>, <span class="fl">12</span>, type <span class="op">=</span> <span class="st">"continuous"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Transformers palette 'devastator' (12 colours)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Transformers palette 'devastator' (12 colours, toy)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Decepticon / Constructicons: Devastator</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> #3FA23F #507D63 #615987 #7449A5 #8E76AE #A8A2B8 #9B9DA1 #67686A #323333 #5B502B #A28933 #E9C23B</span>
-<span class="r-plt img"><img src="tf_palette-3.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="tf_palette-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu">tf_palette</span><span class="op">(</span><span class="st">"hot_spot"</span>, <span class="fl">12</span>, type <span class="op">=</span> <span class="st">"continuous"</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Transformers palette 'hot_spot' (12 colours)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Transformers palette 'hot_spot' (12 colours, toy)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Autobot / Protectobots: Hot Spot</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> #2A2A2A #26395A #22498B #2F51A3 #704173 #B13142 #C73E3F #B3686A #9F9296 #B2B4B6 #D2D3D3 #F2F2F0</span>
-<span class="r-plt img"><img src="tf_palette-4.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="tf_palette-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># base graphics</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, col <span class="op">=</span> <span class="fu">tf_palette</span><span class="op">(</span><span class="st">"predaking"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="tf_palette-5.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="tf_palette-6.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

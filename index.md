@@ -1,13 +1,15 @@
 # transformeRs
 
-Colour palettes for R and ggplot2 based on the original Generation 1
-Transformers toys: Optimus Prime, Megatron, and every member and
-combined form of the core combiner teams, from the Aerialbots and
-Superion to the Seacons and Piranacon. It works the same way as packages
-like `wesanderson`: pick a character by name, get a vector of hex
-colours, or drop a scale straight into a ggplot. Because the combiner
-teams are sets of five or six figures, each team also gives a ready-made
-categorical palette with one colour per member.
+Colour palettes for R and ggplot2 based on Generation 1 Transformers:
+Optimus Prime, Megatron, and every member and combined form of the core
+combiner teams, from the Aerialbots and Superion to the Seacons and
+Piranacon. Each character has a palette for the original toy and one for
+the cartoon animation model, and some have one for the Marvel comic,
+because the three often disagree about what colour a robot is. It works
+the same way as packages like `wesanderson`: pick a character by name,
+get a vector of hex colours, or drop a scale straight into a ggplot.
+Because the combiner teams are sets of five or six figures, each team
+also gives a ready-made categorical palette with one colour per member.
 
 transformeRs is a fan project and is not affiliated with or endorsed by
 Hasbro or Takara Tomy. Hex values are approximations of the toys’
@@ -41,9 +43,10 @@ pak::pak("bmaitner/transformeRs")
 library(transformeRs)
 
 # what is covered
+tf_media()
 tf_factions()
 tf_teams()
-table(tf_characters$team, tf_characters$faction)
+table(tf_characters$team, tf_characters$medium)
 
 # palette names, optionally for one faction, team or role
 tf_palette_names()
@@ -52,7 +55,7 @@ tf_palette_names(role = "combined form")
 
 # the colours of one character (prints the swatches and the hex codes)
 tf_palette("optimus_prime")
-#> Transformers palette 'optimus_prime' (5 colours)
+#> Transformers palette 'optimus_prime' (5 colours, toy)
 #> Autobot: Optimus Prime
 #> #D0202A #1F3E8F #B8BABF #F2D23C #2D2D2D
 
@@ -70,6 +73,40 @@ tf_show_palettes(faction = "Decepticon", role = "combined form", ncol = 3)
 forms](reference/figures/palettes-leaders-and-combiners.png)
 
 Leaders and combined forms
+
+### Toy, cartoon or comic
+
+Every function takes a `medium` argument that defaults to `"toy"`, so
+the plain names always give the toy colours. Ask for `"cartoon"` to get
+the flat colours of the Sunbow animation model, or `"comic"` for the
+Marvel colouring where one exists. The full names with a suffix work
+too.
+
+``` r
+
+tf_palette("drag_strip")                      # yellow-orange and plum toy
+tf_palette("drag_strip", medium = "cartoon")  # yellow and purple cartoon model
+tf_palette("megatron_comic")                  # same as medium = "comic"
+
+tf_palette_names(medium = "cartoon")
+tf_palette_names(role = "leader", medium = "all")
+tf_show_palettes(c("optimus_prime", "optimus_prime_cartoon", "optimus_prime_comic"), ncol = 1)
+tf_team_palette("Constructicons", medium = "cartoon")   # lime green, not grass green
+```
+
+![Toy, cartoon and comic
+versions](reference/figures/media-comparison.png)
+
+Toy, cartoon and comic versions
+
+Every character has a cartoon palette; the Seacons’ comes from the
+Japanese Super-God Masterforce series, since they never appeared in the
+Sunbow show. Comic palettes exist for Optimus Prime and Megatron so far,
+and the teams are queued in
+[`WISHLIST.md`](https://bmaitner.github.io/transformeRs/WISHLIST.md):
+Marvel colouring changed from issue to issue, so each one is added from
+a named issue rather than from memory. Asking for a medium a character
+does not have yet gives an error that says so.
 
 ### Team palettes
 
@@ -129,6 +166,10 @@ ggplot(faithfuld, aes(waiting, eruptions, fill = density)) +
 ggplot(economics_long, aes(date, value01, colour = variable)) +
   geom_line() +
   scale_colour_manual(values = unname(tf_team_palette("Combaticons")))
+
+ggplot(mpg, aes(displ, hwy, colour = drv)) +
+  geom_point(size = 2.5) +
+  scale_colour_tf("optimus_prime", medium = "cartoon")
 ```
 
 ![Example ggplot2 scales](reference/figures/examples.png)
@@ -171,18 +212,69 @@ lightness range, and the hue spread. The thresholds are simple
 heuristics, so treat the result as a shortlist to look at rather than a
 guarantee.
 
+### Picking the best few colours from one or more palettes
+
+Whole palettes are faithful to the characters, not to the chart.
+[`tf_pick()`](https://bmaitner.github.io/transformeRs/reference/tf_pick.md)
+pools the colours of the palettes you name, drops any that would not
+read against the background (white for `"light"` and `"greyscale"`,
+near-black for `"dark"`, judged by WCAG contrast), and then chooses the
+`n` colours whose closest pair is farthest apart in CIE Lab. With
+`colorblind = TRUE` the distance is the worst case across simulated
+deuteranopia, protanopia and tritanopia; with `style = "greyscale"` only
+lightness counts, so the result survives a black-and-white printer.
+
+``` r
+
+# five colours for a white-background plot, from the two leaders
+tf_pick(c("optimus_prime", "megatron"), n = 5)
+#> Transformers pick of 5 colours from optimus_prime + megatron
+#> light background #FFFFFF, min distance 21.7
+#> optimus_prime = #D0202A
+#> optimus_prime = #1F3E8F
+#> megatron = #8C9095
+#> megatron = #2A2A2A
+#> megatron = #6B3FA0
+
+# four colour-blind-safe colours for a dark theme, from a whole team
+tf_pick(tf_palette_names(team = "Combaticons"), n = 4,
+        style = "dark", colorblind = TRUE)
+
+# printable in greyscale, using the cartoon colours
+tf_pick(tf_palette_names(team = "Stunticons"), n = 4,
+        style = "greyscale", medium = "cartoon")
+
+ggplot(mpg, aes(displ, hwy, colour = drv)) +
+  geom_point(size = 2.5) +
+  scale_colour_manual(values = unname(tf_pick(c("optimus_prime", "megatron"), 3)))
+```
+
+![tf_pick examples](reference/figures/pick-examples.png)
+
+tf_pick examples
+
+Each colour is named after the palette it came from, and the
+`min_distance` attribute reports how separable the closest pair is
+(above 20 is comfortable, below about 12 is risky). The contrast filter
+is strict on purpose: saturated yellows fail it against white, so a
+light-mode pick from the Predacons has fewer colours to work with. Lower
+`min_contrast` to keep them, or pass a different `background`.
+
 ### Character background
 
 `tf_characters` is a data frame with one row per palette: the character,
-faction, combiner team and combined form, its role in the team,
-alternate mode, the year of the original toy, a description of the
-colours, and links to the character’s page and toy photograph on the
-Transformers Wiki.
+which medium the palette records, faction, combiner team and combined
+form, its role in the team, alternate mode, the year of the toy or first
+appearance, a description of the colours, and links to the character’s
+page and the reference image (toy photo, episode still or comic panel)
+on the Transformers Wiki.
 
 ``` r
 
 t(tf_characters[tf_characters$palette == "drag_strip", ])
 #> palette     "drag_strip"
+#> base        "drag_strip"
+#> medium      "toy"
 #> character   "Drag Strip"
 #> faction     "Decepticon"
 #> team        "Stunticons"
@@ -198,18 +290,18 @@ t(tf_characters[tf_characters$palette == "drag_strip", ])
 
 ## Coverage
 
-| Team | Faction | Members | Combined form | Year |
-|----|----|----|----|----|
-| (leaders) | both | Optimus Prime, Megatron |  | 1984 |
-| Aerialbots | Autobot | Silverbolt, Air Raid, Fireflight, Skydive, Slingshot | Superion | 1986 |
-| Protectobots | Autobot | Hot Spot, Streetwise, Blades, Groove, First Aid | Defensor | 1986 |
-| Technobots | Autobot | Scattershot, Lightspeed, Nosecone, Strafe, Afterburner | Computron | 1987 |
-| Constructicons | Decepticon | Hook, Long Haul, Scrapper, Bonecrusher, Mixmaster, Scavenger | Devastator | 1985 |
-| Stunticons | Decepticon | Motormaster, Dead End, Breakdown, Drag Strip, Wildrider | Menasor | 1986 |
-| Combaticons | Decepticon | Onslaught, Brawl, Swindle, Blast Off, Vortex | Bruticus | 1986 |
-| Terrorcons | Decepticon | Hun-Gurrr, Blot, Cutthroat, Rippersnapper, Sinnertwin | Abominus | 1987 |
-| Predacons | Decepticon | Razorclaw, Rampage, Tantrum, Headstrong, Divebomb | Predaking | 1986 |
-| Seacons | Decepticon | Snaptrap, Nautilator, Overbite, Seawing, Skalor, Tentakil | Piranacon | 1988 |
+| Team | Faction | Members | Combined form | Year | Media |
+|----|----|----|----|----|----|
+| (leaders) | both | Optimus Prime, Megatron |  | 1984 | toy, cartoon, comic |
+| Aerialbots | Autobot | Silverbolt, Air Raid, Fireflight, Skydive, Slingshot | Superion | 1986 | toy, cartoon |
+| Protectobots | Autobot | Hot Spot, Streetwise, Blades, Groove, First Aid | Defensor | 1986 | toy, cartoon |
+| Technobots | Autobot | Scattershot, Lightspeed, Nosecone, Strafe, Afterburner | Computron | 1987 | toy, cartoon |
+| Constructicons | Decepticon | Hook, Long Haul, Scrapper, Bonecrusher, Mixmaster, Scavenger | Devastator | 1985 | toy, cartoon |
+| Stunticons | Decepticon | Motormaster, Dead End, Breakdown, Drag Strip, Wildrider | Menasor | 1986 | toy, cartoon |
+| Combaticons | Decepticon | Onslaught, Brawl, Swindle, Blast Off, Vortex | Bruticus | 1986 | toy, cartoon |
+| Terrorcons | Decepticon | Hun-Gurrr, Blot, Cutthroat, Rippersnapper, Sinnertwin | Abominus | 1987 | toy, cartoon |
+| Predacons | Decepticon | Razorclaw, Rampage, Tantrum, Headstrong, Divebomb | Predaking | 1986 | toy, cartoon |
+| Seacons | Decepticon | Snaptrap, Nautilator, Overbite, Seawing, Skalor, Tentakil | Piranacon | 1988 | toy, cartoon (Masterforce) |
 
 Palette names are the character’s name in snake_case (`hun_gurrr`,
 `blast_off`);
@@ -238,6 +330,11 @@ are approximations built by hand:
 3.  Members of one combiner team share plastics, so their palettes share
     hex values on purpose. The combined form’s palette takes one colour
     from each contributing part.
+
+Cartoon palettes were read the same way from an episode still on the
+wiki, which the browser links to; they use the flat colours of the
+animation model, so a cartoon palette is typically brighter and simpler
+than its toy. Comic palettes name the Marvel issue they were taken from.
 
 Palettes range from four to six colours. Chrome and die-cast parts do
 not reduce to a single flat colour; a silver or grey stands in for them.
