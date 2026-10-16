@@ -1,12 +1,12 @@
 name: Request a character
-description: Ask for a Transformer (or a whole team) that transformeRs does not cover yet.
+description: Ask for a Transformer (or a whole team) that transformerpalettes does not cover yet.
 title: "[new] "
 labels: [palette, new]
 body:
   - type: markdown
     attributes:
       value: |
-        Check [WISHLIST.md](https://github.com/bmaitner/transformeRs/blob/main/WISHLIST.md) first: if the character is already queued there, a thumbs-up on this form is still useful for prioritising. Requests for a whole team (a combiner team, the Seekers, the Dinobots) are welcome; list the members.
+        Check [WISHLIST.md](https://github.com/bmaitner/transformerpalettes/blob/main/WISHLIST.md) first: if the character is already queued there, a thumbs-up on this form is still useful for prioritising. Requests for a whole team (a combiner team, the Seekers, the Dinobots) are welcome; list the members.
   - type: input
     id: character
     attributes:
@@ -28,7 +28,7 @@ body:
     id: media
     attributes:
       label: Which versions?
-      description: transformeRs records the toy, the cartoon animation model and the Marvel comic colours separately. Toy is always added first.
+      description: transformerpalettes records the toy, the cartoon animation model and the Marvel comic colours separately. Toy is always added first.
       multiple: true
       options:
         - toy

@@ -1,4 +1,4 @@
 library(testthat)
-library(transformeRs)
+library(transformerpalettes)
 
-test_check("transformeRs")
+test_check("transformerpalettes")

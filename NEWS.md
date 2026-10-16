@@ -1,5 +1,8 @@
-# transformeRs 0.2.0
+# transformerpalettes 0.2.0
 
+* The package is now called transformerpalettes (it started life as
+  transformeRs). Function names are unchanged; reinstall with
+  `pak::pak("bmaitner/transformerpalettes")`. The old GitHub URL redirects.
 * Palettes now record a `medium`: every character has a `toy` palette (the
   original release), every character has a `cartoon` palette (the Sunbow
   animation model, or the Masterforce model for the Seacons), and Optimus
@@ -24,7 +27,7 @@
   than guessed; Marvel colouring varies by issue, so each will cite the
   issue it was sampled from.
 
-# transformeRs 0.1.0
+# transformerpalettes 0.1.0
 
 * Initial release with 58 palettes: Optimus Prime, Megatron, and every member
   and combined form of the nine core Generation 1 combiner teams (Aerialbots,
@@ -40,6 +43,6 @@
   from the colours themselves.
 * `tf_characters` metadata table with faction, team, role, alternate mode,
   year, descriptions and Transformers Wiki links and toy photos.
-* pkgdown site at <https://bmaitner.github.io/transformeRs/> with a filterable
+* pkgdown site at <https://bmaitner.github.io/transformerpalettes/> with a filterable
   palette browser and prefilled GitHub issue forms for suggesting palette
   changes and requesting characters. `WISHLIST.md` tracks what is queued.

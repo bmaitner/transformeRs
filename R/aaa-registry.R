@@ -1,6 +1,6 @@
 # Palette registry ---------------------------------------------------------
 #
-# Every palette in transformeRs is defined here with its colours and metadata.
+# Every palette in transformerpalettes is defined here with its colours and metadata.
 # The exported objects `tf_palettes` and `tf_characters` are derived from this
 # registry in R/palettes.R. Keep entries in one place so the two never drift.
 #

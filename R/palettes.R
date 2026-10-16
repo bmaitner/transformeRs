@@ -102,7 +102,7 @@ tf_characters <- local({
 
 .media <- c("toy", "cartoon", "comic")
 
-#' List the media, factions and combiner teams in transformeRs
+#' List the media, factions and combiner teams in transformerpalettes
 #'
 #' @param faction Optional faction to restrict `tf_teams()` to; see
 #'   [tf_factions()].

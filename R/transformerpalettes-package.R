@@ -1,4 +1,4 @@
-#' transformeRs: Color Palettes Inspired by Generation 1 Transformers
+#' transformerpalettes: Color Palettes Inspired by Generation 1 Transformers
 #'
 #' Colour palettes based on the original Generation 1 Transformers toys, plus
 #' ggplot2 colour and fill scales.
@@ -11,7 +11,7 @@
 #' to shortlist the ones that suit a kind of plot.
 #'
 #' Hex values are approximations curated from product photography on the
-#' Transformers Wiki. transformeRs is a fan project and is not affiliated with
+#' Transformers Wiki. transformerpalettes is a fan project and is not affiliated with
 #' or endorsed by Hasbro or Takara Tomy.
 #'
 #' @keywords internal

@@ -4,17 +4,17 @@ title: "Browse the palettes"
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-library(transformeRs)
+library(transformerpalettes)
 ```
 
-Every palette in transformeRs, with its colours, where it came from, and the
+Every palette in transformerpalettes, with its colours, where it came from, and the
 toy photo, episode still or comic panel it was checked against. Most
 characters have a toy palette and a cartoon palette; a few have a comic one
 too. Filter by medium, faction, combiner team, role or what kind of plot the
 palette suits, click a swatch to copy its hex code, and use
 **Suggest a change** on any card to open a prefilled GitHub issue where you can
 propose different colours or attach a better photograph. Missing someone?
-[Request a character](https://github.com/bmaitner/transformeRs/issues/new?template=new-character.yml).
+[Request a character](https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml).
 
 ```{r data, results = "asis"}
 stats <- tf_palette_stats()
@@ -30,8 +30,8 @@ num <- c("min_de", "min_de_deutan", "min_de_protan", "min_de_tritan",
 cw[num] <- lapply(cw[num], round, 1)
 payload <- list(
   generated = format(Sys.Date()),
-  version = as.character(utils::packageVersion("transformeRs")),
-  repo = "https://github.com/bmaitner/transformeRs",
+  version = as.character(utils::packageVersion("transformerpalettes")),
+  repo = "https://github.com/bmaitner/transformerpalettes",
   teams = tf_teams(),
   media = tf_media(),
   palettes = cw
@@ -216,7 +216,7 @@ cat('<script id="tf-data" type="application/json">', json, '</script>', sep = "\
     else if (s === "year") out.sort(function (a, b) { return (a.year || 0) - (b.year || 0); });
     else if (s === "min_de" || s === "lum_range") out.sort(function (a, b) { return b[s] - a[s]; });
     else if (s === "cvd") out.sort(function (a, b) { return Math.min(b.min_de_deutan, b.min_de_protan, b.min_de_tritan) - Math.min(a.min_de_deutan, a.min_de_protan, a.min_de_tritan); });
-    count.textContent = out.length + " of " + pals.length + " palettes (transformeRs " + data.version + ", " + data.generated + ")";
+    count.textContent = out.length + " of " + pals.length + " palettes (transformerpalettes " + data.version + ", " + data.generated + ")";
     grid.innerHTML = out.length ? out.map(card).join("") : '<div class="tb-empty">No palettes match. Loosen a filter, or request a character with the link below.</div>';
   }
 
@@ -263,9 +263,9 @@ corrections are welcome. Each card links to a prefilled GitHub issue form:
   cartoon or comic version" as the kind of change. Comic palettes are added
   a team at a time from specific Marvel issues, so say which issue you have
   in mind.
-- [Request a character](https://github.com/bmaitner/transformeRs/issues/new?template=new-character.yml)
+- [Request a character](https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml)
   if a Transformer or team you care about is not covered yet. The
-  [wishlist](https://github.com/bmaitner/transformeRs/blob/main/WISHLIST.md)
+  [wishlist](https://github.com/bmaitner/transformerpalettes/blob/main/WISHLIST.md)
   shows what is already queued.
 
 You need a GitHub account to open an issue. If you would rather not, email the

@@ -1,4 +1,4 @@
-url: https://bmaitner.github.io/transformeRs/
+url: https://bmaitner.github.io/transformerpalettes/
 
 template:
   bootstrap: 5
@@ -6,14 +6,14 @@ template:
     primary: "#C8262E"
 
 home:
-  title: transformeRs - Generation 1 Transformers palettes for R
+  title: transformerpalettes - Generation 1 Transformers palettes for R
   links:
     - text: Browse the palettes
       href: articles/browse.html
     - text: Request a character
-      href: https://github.com/bmaitner/transformeRs/issues/new?template=new-character.yml
+      href: https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml
     - text: Suggest a palette change
-      href: https://github.com/bmaitner/transformeRs/issues/new/choose
+      href: https://github.com/bmaitner/transformerpalettes/issues/new/choose
 
 navbar:
   structure:
@@ -50,4 +50,4 @@ reference:
       - scale_tf
   - title: Package
     contents:
-      - transformeRs-package
+      - transformerpalettes-package

@@ -1,4 +1,4 @@
-# transformeRs wishlist
+# transformerpalettes wishlist
 
 This is the working to-do list for the package's palettes. It is deliberately
 a plain Markdown file so that adding a character is a one-line edit: put the
@@ -8,7 +8,7 @@ turns each queued line into registry entries, tests, figures and docs.
 `CLAUDE.md` describes that procedure step by step.
 
 Public requests arrive as GitHub issues from the
-[request form](https://github.com/bmaitner/transformeRs/issues/new?template=new-character.yml);
+[request form](https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml);
 triage them into this file rather than working straight from the issue, so
 the queue and its priorities live in one place.
 

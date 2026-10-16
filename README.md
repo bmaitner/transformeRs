@@ -1,7 +1,7 @@
-# transformeRs
+# transformerpalettes
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/bmaitner/transformeRs/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/bmaitner/transformeRs/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/bmaitner/transformerpalettes/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/bmaitner/transformerpalettes/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 Colour palettes for R and ggplot2 based on Generation 1 Transformers:
@@ -15,7 +15,7 @@ colours, or drop a scale straight into a ggplot. Because the combiner teams
 are sets of five or six figures, each team also gives a ready-made
 categorical palette with one colour per member.
 
-transformeRs is a fan project and is not affiliated with or endorsed by
+transformerpalettes is a fan project and is not affiliated with or endorsed by
 Hasbro or Takara Tomy. Hex values are approximations of the toys' plastic,
 chrome and paint colours; see "How the palettes were made" below.
 
@@ -23,22 +23,22 @@ chrome and paint colours; see "How the palettes were made" below.
 
 Every palette, with its colours, toy photo and Transformers Wiki link, is
 browsable and filterable at
-<https://bmaitner.github.io/transformeRs/articles/browse.html>. Each card has
+<https://bmaitner.github.io/transformerpalettes/articles/browse.html>. Each card has
 a **Suggest a change** link that opens a prefilled GitHub issue, and there is
-a form to [request a character](https://github.com/bmaitner/transformeRs/issues/new?template=new-character.yml)
+a form to [request a character](https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml)
 who is not covered yet. [`WISHLIST.md`](WISHLIST.md) lists what is queued.
 
 ## Installation
 
 ```r
 # install.packages("pak")
-pak::pak("bmaitner/transformeRs")
+pak::pak("bmaitner/transformerpalettes")
 ```
 
 ## Usage
 
 ```r
-library(transformeRs)
+library(transformerpalettes)
 
 # what is covered
 tf_media()
@@ -274,7 +274,7 @@ Palette names are the character's name in snake_case (`hun_gurrr`,
 `"Blast Off"`. Every team is drawn in `man/figures/palettes-<team>.png`.
 Characters and teams that are lined up to be added next are listed in
 [`WISHLIST.md`](WISHLIST.md); add a line there, or open a
-[request](https://github.com/bmaitner/transformeRs/issues/new?template=new-character.yml).
+[request](https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml).
 
 ## How the palettes were made
 
@@ -304,9 +304,9 @@ reduce to a single flat colour; a silver or grey stands in for them. Wiki
 photos vary in lighting, so expect some palettes to be rough, and the least
 certain ones are flagged in [`WISHLIST.md`](WISHLIST.md). Corrections are
 welcome, ideally with a photograph of the toy under neutral light. Use the
-[palette browser](https://bmaitner.github.io/transformeRs/articles/browse.html)
+[palette browser](https://bmaitner.github.io/transformerpalettes/articles/browse.html)
 to open a prefilled issue for a specific palette, or pick a form from the
-[issue templates](https://github.com/bmaitner/transformeRs/issues/new/choose).
+[issue templates](https://github.com/bmaitner/transformerpalettes/issues/new/choose).
 `tf_show_palettes()` prints the hex codes under each swatch to make reporting
 easy.
 

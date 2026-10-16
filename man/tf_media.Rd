@@ -4,7 +4,7 @@
 \alias{tf_media}
 \alias{tf_factions}
 \alias{tf_teams}
-\title{List the media, factions and combiner teams in transformeRs}
+\title{List the media, factions and combiner teams in transformerpalettes}
 \usage{
 tf_media()
 
@@ -25,7 +25,7 @@ passed to the matching argument of \code{\link[=tf_palette_names]{tf_palette_nam
 \code{\link[=tf_show_palettes]{tf_show_palettes()}} and \code{\link[=tf_find_palettes]{tf_find_palettes()}}.
 }
 \description{
-List the media, factions and combiner teams in transformeRs
+List the media, factions and combiner teams in transformerpalettes
 }
 \examples{
 tf_media()

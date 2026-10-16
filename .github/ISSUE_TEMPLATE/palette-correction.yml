@@ -1,5 +1,5 @@
 name: Suggest a palette change
-description: Propose adding, changing, removing or reordering colours in an existing transformeRs palette, or fixing its metadata.
+description: Propose adding, changing, removing or reordering colours in an existing transformerpalettes palette, or fixing its metadata.
 title: "[palette] palette change"
 labels: [palette]
 body:
@@ -11,7 +11,7 @@ body:
     id: palette
     attributes:
       label: Palette
-      description: The transformeRs palette name, e.g. `drag_strip`. See the [palette browser](https://bmaitner.github.io/transformeRs/articles/browse.html).
+      description: The transformerpalettes palette name, e.g. `drag_strip`. See the [palette browser](https://bmaitner.github.io/transformerpalettes/articles/browse.html).
       placeholder: drag_strip
     validations:
       required: true
