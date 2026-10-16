@@ -13,14 +13,14 @@ tf_palette_names(faction = NULL, team = NULL, role = NULL, medium = "toy")
 - faction:
 
   Optional faction (see
-  [`tf_factions()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md))
+  [`tf_factions()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md))
   to restrict the list to. Matched case-insensitively and by unique
   prefix, so `"auto"` works.
 
 - team:
 
   Optional combiner team (see
-  [`tf_teams()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md))
+  [`tf_teams()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md))
   to restrict the list to, matched the same way.
 
 - role:
@@ -33,12 +33,12 @@ tf_palette_names(faction = NULL, team = NULL, role = NULL, medium = "toy")
 
   Which medium's palettes to list: `"toy"` (default), `"cartoon"`,
   `"comic"`, or `"all"` for every palette regardless of medium. See
-  [`tf_media()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md).
+  [`tf_media()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md).
 
 ## Value
 
 A character vector of palette names accepted by
-[`tf_palette()`](https://bmaitner.github.io/transformeRs/reference/tf_palette.md)
+[`tf_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette.md)
 and the `scale_*_tf()` functions.
 
 ## Examples

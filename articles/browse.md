@@ -1,14 +1,14 @@
 # Browse the palettes
 
-Every palette in transformeRs, with its colours, where it came from, and
-the toy photo, episode still or comic panel it was checked against. Most
-characters have a toy palette and a cartoon palette; a few have a comic
-one too. Filter by medium, faction, combiner team, role or what kind of
-plot the palette suits, click a swatch to copy its hex code, and use
-**Suggest a change** on any card to open a prefilled GitHub issue where
-you can propose different colours or attach a better photograph. Missing
-someone? [Request a
-character](https://github.com/bmaitner/transformeRs/issues/new?template=new-character.yml).
+Every palette in transformerpalettes, with its colours, where it came
+from, and the toy photo, episode still or comic panel it was checked
+against. Most characters have a toy palette and a cartoon palette; a few
+have a comic one too. Filter by medium, faction, combiner team, role or
+what kind of plot the palette suits, click a swatch to copy its hex
+code, and use **Suggest a change** on any card to open a prefilled
+GitHub issue where you can propose different colours or attach a better
+photograph. Missing someone? [Request a
+character](https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml).
 
 Search
 
@@ -57,9 +57,9 @@ form:
   added a team at a time from specific Marvel issues, so say which issue
   you have in mind.
 - [Request a
-  character](https://github.com/bmaitner/transformeRs/issues/new?template=new-character.yml)
+  character](https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml)
   if a Transformer or team you care about is not covered yet. The
-  [wishlist](https://github.com/bmaitner/transformeRs/blob/main/WISHLIST.md)
+  [wishlist](https://github.com/bmaitner/transformerpalettes/blob/main/WISHLIST.md)
   shows what is already queued.
 
 You need a GitHub account to open an issue. If you would rather not,

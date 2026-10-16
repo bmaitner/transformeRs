@@ -86,7 +86,7 @@ scale_color_tf(
 - palette:
 
   Name of a character's palette. See
-  [`tf_palette_names()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_names.md).
+  [`tf_palette_names()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_names.md).
 
 - reverse:
 
@@ -96,7 +96,7 @@ scale_color_tf(
 
   Which version of the character to use: `"toy"` (default), `"cartoon"`
   or `"comic"`. See
-  [`tf_media()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md).
+  [`tf_media()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md).
 
 - ...:
 
@@ -113,7 +113,7 @@ scale_color_tf(
   Logical, continuous scales only. Order the palette from darkest to
   lightest before building the gradient, so the scale reads as
   low-to-high. See
-  [`tf_find_palettes()`](https://bmaitner.github.io/transformeRs/reference/tf_find_palettes.md)
+  [`tf_find_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_find_palettes.md)
   for palettes that suit this.
 
 - discrete:
@@ -134,7 +134,7 @@ palette has colours, the palette is interpolated with
 so that every level still receives a distinct colour; expect the result
 to be less legible than the curated colours. For a palette with one
 colour per member of a combiner team, pass
-[`tf_team_palette()`](https://bmaitner.github.io/transformeRs/reference/tf_team_palette.md)
+[`tf_team_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_team_palette.md)
 to
 [`ggplot2::scale_colour_manual()`](https://ggplot2.tidyverse.org/reference/scale_manual.html).
 

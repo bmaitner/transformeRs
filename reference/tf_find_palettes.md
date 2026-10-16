@@ -2,7 +2,7 @@
 
 Filters the palettes to those whose colors work for a given job, judged
 from the perceptual statistics in
-[`tf_palette_stats()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_stats.md).
+[`tf_palette_stats()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_stats.md).
 Many toys look great on a figure but poor on a chart; this surfaces the
 ones that hold up.
 
@@ -42,7 +42,7 @@ tf_find_palettes(
       chromatic colors) spanning at least 50 units of lightness, so a
       continuous gradient reads as low-to-high. Pair with `sort = TRUE`
       in
-      [`tf_palette()`](https://bmaitner.github.io/transformeRs/reference/tf_palette.md)
+      [`tf_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette.md)
       or the `_c` scales.
 
   `"diverging"`
@@ -50,19 +50,19 @@ tf_find_palettes(
   :   Exactly two distinct hue families plus a light or neutral color to
       sit between them. The curated order is not necessarily dark-A,
       light, dark-B; check
-      [`tf_palette_stats()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_stats.md)
+      [`tf_palette_stats()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_stats.md)
       and reorder the colors yourself for a continuous diverging scale.
 
   The thresholds are deliberately simple heuristics computed by
-  [`tf_palette_stats()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_stats.md);
+  [`tf_palette_stats()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_stats.md);
   treat the result as a shortlist to look at with
-  [`tf_show_palettes()`](https://bmaitner.github.io/transformeRs/reference/tf_show_palettes.md),
+  [`tf_show_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_show_palettes.md),
   not a guarantee.
 
 - faction, team, role, medium:
 
   Optional filters passed to
-  [`tf_palette_names()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_names.md).
+  [`tf_palette_names()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_names.md).
   `medium` defaults to `"toy"`; use `"all"` to search cartoon and comic
   palettes too.
 

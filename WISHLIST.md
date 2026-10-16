@@ -1,4 +1,4 @@
-# transformeRs wishlist
+# transformerpalettes wishlist
 
 This is the working to-do list for the package’s palettes. It is
 deliberately a plain Markdown file so that adding a character is a
@@ -9,7 +9,7 @@ entries, tests, figures and docs. `CLAUDE.md` describes that procedure
 step by step.
 
 Public requests arrive as GitHub issues from the [request
-form](https://github.com/bmaitner/transformeRs/issues/new?template=new-character.yml);
+form](https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml);
 triage them into this file rather than working straight from the issue,
 so the queue and its priorities live in one place.
 
@@ -225,7 +225,7 @@ If a Takara variant is wanted, add it as a separate palette
 (`megatron_takara`) rather than editing this one.
 
 **Team palettes for shared-plastic teams.**
-[`tf_team_palette()`](https://bmaitner.github.io/transformeRs/reference/tf_team_palette.md)
+[`tf_team_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_team_palette.md)
 with `distinct = TRUE` is a greedy heuristic. If a better ordering
 exists for a team (e.g. Constructicons: green, purple, silver, yellow,
 black, then a repeat), it could be curated per team in the registry.

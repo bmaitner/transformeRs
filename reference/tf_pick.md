@@ -27,7 +27,7 @@ tf_pick(
 - palettes:
 
   Character vector of one or more palette names; see
-  [`tf_palette_names()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_names.md).
+  [`tf_palette_names()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_names.md).
   Team names are not accepted; use `tf_palette_names(team = ...)` to
   expand a team.
 
@@ -48,7 +48,7 @@ tf_pick(
 - medium:
 
   Medium for plain palette names; see
-  [`tf_media()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md).
+  [`tf_media()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md).
 
 - background:
 
@@ -107,9 +107,9 @@ and says how many it had, so add palettes or lower `min_contrast`.
 
 ## See also
 
-[`tf_find_palettes()`](https://bmaitner.github.io/transformeRs/reference/tf_find_palettes.md)
+[`tf_find_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_find_palettes.md)
 to shortlist whole palettes instead;
-[`tf_palette_stats()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_stats.md)
+[`tf_palette_stats()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_stats.md)
 for the underlying measures.
 
 ## Examples

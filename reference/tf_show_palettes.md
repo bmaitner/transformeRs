@@ -32,22 +32,22 @@ tf_show_palettes(
 - faction:
 
   Optional faction to restrict to; see
-  [`tf_factions()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md).
+  [`tf_factions()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md).
 
 - team:
 
   Optional combiner team to restrict to; see
-  [`tf_teams()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md).
+  [`tf_teams()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md).
 
 - role:
 
   Optional role to restrict to; see
-  [`tf_palette_names()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_names.md).
+  [`tf_palette_names()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_names.md).
 
 - use:
 
   Optional use case to restrict to; see
-  [`tf_find_palettes()`](https://bmaitner.github.io/transformeRs/reference/tf_find_palettes.md).
+  [`tf_find_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_find_palettes.md).
 
 - medium:
 

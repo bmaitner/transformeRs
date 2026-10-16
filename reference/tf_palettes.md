@@ -5,15 +5,15 @@ every member and combined form of the core Generation 1 combiner teams.
 Each character has a palette for the original toy, most also have one
 for the Sunbow cartoon, and some have one for the Marvel comic; see the
 `medium` column of
-[tf_characters](https://bmaitner.github.io/transformeRs/reference/tf_characters.md).
+[tf_characters](https://bmaitner.github.io/transformerpalettes/reference/tf_characters.md).
 Each element is a character vector of four to six hex colours ordered so
 that the first few are the most distinct from one another (body colour
 first, then secondary colour, then accents). Use
-[`tf_palette()`](https://bmaitner.github.io/transformeRs/reference/tf_palette.md)
+[`tf_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette.md)
 to pull colours from a palette,
-[`tf_team_palette()`](https://bmaitner.github.io/transformeRs/reference/tf_team_palette.md)
+[`tf_team_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_team_palette.md)
 to take one colour from each member of a combiner team, and
-[tf_characters](https://bmaitner.github.io/transformeRs/reference/tf_characters.md)
+[tf_characters](https://bmaitner.github.io/transformerpalettes/reference/tf_characters.md)
 for background on each character.
 
 ## Usage
@@ -40,12 +40,12 @@ entries reflect how the part photographs.
 
 ## See also
 
-[`tf_palette()`](https://bmaitner.github.io/transformeRs/reference/tf_palette.md),
-[`tf_palette_names()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_names.md),
-[`tf_media()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md),
-[`tf_teams()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md),
-[tf_characters](https://bmaitner.github.io/transformeRs/reference/tf_characters.md),
-[`tf_show_palettes()`](https://bmaitner.github.io/transformeRs/reference/tf_show_palettes.md)
+[`tf_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette.md),
+[`tf_palette_names()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_names.md),
+[`tf_media()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md),
+[`tf_teams()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md),
+[tf_characters](https://bmaitner.github.io/transformerpalettes/reference/tf_characters.md),
+[`tf_show_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_show_palettes.md)
 
 ## Examples
 

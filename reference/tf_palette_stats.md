@@ -2,7 +2,7 @@
 
 Computes, from the hex colors alone, how suitable each palette is for
 the common plotting jobs. Used by
-[`tf_find_palettes()`](https://bmaitner.github.io/transformeRs/reference/tf_find_palettes.md);
+[`tf_find_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_find_palettes.md);
 exposed so you can apply your own thresholds.
 
 ## Usage
@@ -61,7 +61,7 @@ A data frame with one row per palette and the columns:
 - categorical, colorblind, sequential, diverging:
 
   Logical flags as used by
-  [`tf_find_palettes()`](https://bmaitner.github.io/transformeRs/reference/tf_find_palettes.md).
+  [`tf_find_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_find_palettes.md).
 
 ## Details
 

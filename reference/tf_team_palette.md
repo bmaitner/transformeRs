@@ -22,7 +22,7 @@ tf_team_palette(
 - team:
 
   Combiner team name; see
-  [`tf_teams()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md).
+  [`tf_teams()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md).
   Matched case-insensitively and by unique prefix.
 
 - which:
@@ -61,7 +61,7 @@ for the members before it, so the palette stays legible while every
 colour is still one the member actually wears. The Stunticons,
 Combaticons and Terrorcons are distinct either way; for the others
 `distinct = TRUE` is the useful setting. Check the result with
-[`tf_palette_stats()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_stats.md)
+[`tf_palette_stats()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_stats.md)
 on the returned colours if legibility matters.
 
 ## Examples

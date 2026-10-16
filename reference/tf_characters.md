@@ -1,7 +1,7 @@
 # Generation 1 Transformers character metadata
 
 Background information for every palette in
-[tf_palettes](https://bmaitner.github.io/transformeRs/reference/tf_palettes.md):
+[tf_palettes](https://bmaitner.github.io/transformerpalettes/reference/tf_palettes.md):
 the character, which medium the palette records (toy, cartoon or comic),
 its faction, the combiner team and combined form it belongs to, its role
 in that team, its alternate mode, the year of the reference, a
@@ -21,7 +21,7 @@ A data frame with one row per palette and the columns:
 - palette:
 
   Palette name, as used by
-  [`tf_palette()`](https://bmaitner.github.io/transformeRs/reference/tf_palette.md).
+  [`tf_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette.md).
   Unique.
 
 - base:
@@ -33,7 +33,7 @@ A data frame with one row per palette and the columns:
 - medium:
 
   `"toy"`, `"cartoon"` or `"comic"`. See
-  [`tf_media()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md).
+  [`tf_media()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md).
 
 - character:
 
@@ -42,13 +42,13 @@ A data frame with one row per palette and the columns:
 - faction:
 
   `"Autobot"` or `"Decepticon"`. See
-  [`tf_factions()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md).
+  [`tf_factions()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md).
 
 - team:
 
   Combiner team, e.g. `"Aerialbots"`, or `NA` for characters that are
   not part of a team. See
-  [`tf_teams()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md).
+  [`tf_teams()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md).
 
 - combiner:
 

@@ -1,4 +1,4 @@
-# transformeRs
+# transformerpalettes
 
 Colour palettes for R and ggplot2 based on Generation 1 Transformers:
 Optimus Prime, Megatron, and every member and combined form of the core
@@ -11,21 +11,21 @@ get a vector of hex colours, or drop a scale straight into a ggplot.
 Because the combiner teams are sets of five or six figures, each team
 also gives a ready-made categorical palette with one colour per member.
 
-transformeRs is a fan project and is not affiliated with or endorsed by
-Hasbro or Takara Tomy. Hex values are approximations of the toys’
-plastic, chrome and paint colours; see “How the palettes were made”
-below.
+transformerpalettes is a fan project and is not affiliated with or
+endorsed by Hasbro or Takara Tomy. Hex values are approximations of the
+toys’ plastic, chrome and paint colours; see “How the palettes were
+made” below.
 
 ## Browse online
 
 Every palette, with its colours, toy photo and Transformers Wiki link,
 is browsable and filterable at
-<https://bmaitner.github.io/transformeRs/articles/browse.html>. Each
-card has a **Suggest a change** link that opens a prefilled GitHub
+<https://bmaitner.github.io/transformerpalettes/articles/browse.html>.
+Each card has a **Suggest a change** link that opens a prefilled GitHub
 issue, and there is a form to [request a
-character](https://github.com/bmaitner/transformeRs/issues/new?template=new-character.yml)
+character](https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml)
 who is not covered yet.
-[`WISHLIST.md`](https://bmaitner.github.io/transformeRs/WISHLIST.md)
+[`WISHLIST.md`](https://bmaitner.github.io/transformerpalettes/WISHLIST.md)
 lists what is queued.
 
 ## Installation
@@ -33,14 +33,14 @@ lists what is queued.
 ``` r
 
 # install.packages("pak")
-pak::pak("bmaitner/transformeRs")
+pak::pak("bmaitner/transformerpalettes")
 ```
 
 ## Usage
 
 ``` r
 
-library(transformeRs)
+library(transformerpalettes)
 
 # what is covered
 tf_media()
@@ -103,14 +103,14 @@ Every character has a cartoon palette; the Seacons’ comes from the
 Japanese Super-God Masterforce series, since they never appeared in the
 Sunbow show. Comic palettes exist for Optimus Prime and Megatron so far,
 and the teams are queued in
-[`WISHLIST.md`](https://bmaitner.github.io/transformeRs/WISHLIST.md):
+[`WISHLIST.md`](https://bmaitner.github.io/transformerpalettes/WISHLIST.md):
 Marvel colouring changed from issue to issue, so each one is added from
 a named issue rather than from memory. Asking for a medium a character
 does not have yet gives an error that says so.
 
 ### Team palettes
 
-[`tf_team_palette()`](https://bmaitner.github.io/transformeRs/reference/tf_team_palette.md)
+[`tf_team_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_team_palette.md)
 takes one colour from each member of a combiner team, in the team’s
 order (torso first, then limbs), and names each colour after the member
 it came from. The body colours are faithful but collapse for teams cast
@@ -137,9 +137,9 @@ Team palettes
 
 ### ggplot2
 
-[`scale_colour_tf()`](https://bmaitner.github.io/transformeRs/reference/scale_tf.md)
+[`scale_colour_tf()`](https://bmaitner.github.io/transformerpalettes/reference/scale_tf.md)
 and
-[`scale_fill_tf()`](https://bmaitner.github.io/transformeRs/reference/scale_tf.md)
+[`scale_fill_tf()`](https://bmaitner.github.io/transformerpalettes/reference/scale_tf.md)
 build a discrete scale by default, or a continuous gradient with
 `discrete = FALSE`. The explicit `_d` and `_c` variants and the American
 `scale_color_*` spellings are also exported. `sort = TRUE` on a
@@ -183,7 +183,7 @@ level still gets a colour, at some cost to legibility.
 ### Finding a palette that works for a plot
 
 Toy colours were chosen to look good on a shelf, not on a chart.
-[`tf_find_palettes()`](https://bmaitner.github.io/transformeRs/reference/tf_find_palettes.md)
+[`tf_find_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_find_palettes.md)
 shortlists the palettes whose colours hold up for a given job, judged
 from the colours themselves:
 
@@ -205,7 +205,7 @@ shortlist](reference/figures/palettes-colorblind.png)
 Colorblind-friendly shortlist
 
 The judgments come from
-[`tf_palette_stats()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_stats.md),
+[`tf_palette_stats()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_stats.md),
 which reports the smallest pairwise distance between colours in CIE Lab,
 the same after simulating deuteranopia, protanopia and tritanopia, the
 lightness range, and the hue spread. The thresholds are simple
@@ -215,7 +215,7 @@ guarantee.
 ### Picking the best few colours from one or more palettes
 
 Whole palettes are faithful to the characters, not to the chart.
-[`tf_pick()`](https://bmaitner.github.io/transformeRs/reference/tf_pick.md)
+[`tf_pick()`](https://bmaitner.github.io/transformerpalettes/reference/tf_pick.md)
 pools the colours of the palettes you name, drops any that would not
 read against the background (white for `"light"` and `"greyscale"`,
 near-black for `"dark"`, judged by WCAG contrast), and then chooses the
@@ -305,13 +305,13 @@ t(tf_characters[tf_characters$palette == "drag_strip", ])
 
 Palette names are the character’s name in snake_case (`hun_gurrr`,
 `blast_off`);
-[`tf_palette()`](https://bmaitner.github.io/transformeRs/reference/tf_palette.md)
+[`tf_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette.md)
 also accepts `"Hun-Gurrr"` and `"Blast Off"`. Every team is drawn in
 `man/figures/palettes-<team>.png`. Characters and teams that are lined
 up to be added next are listed in
-[`WISHLIST.md`](https://bmaitner.github.io/transformeRs/WISHLIST.md);
+[`WISHLIST.md`](https://bmaitner.github.io/transformerpalettes/WISHLIST.md);
 add a line there, or open a
-[request](https://github.com/bmaitner/transformeRs/issues/new?template=new-character.yml).
+[request](https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml).
 
 ## How the palettes were made
 
@@ -340,14 +340,14 @@ Palettes range from four to six colours. Chrome and die-cast parts do
 not reduce to a single flat colour; a silver or grey stands in for them.
 Wiki photos vary in lighting, so expect some palettes to be rough, and
 the least certain ones are flagged in
-[`WISHLIST.md`](https://bmaitner.github.io/transformeRs/WISHLIST.md).
+[`WISHLIST.md`](https://bmaitner.github.io/transformerpalettes/WISHLIST.md).
 Corrections are welcome, ideally with a photograph of the toy under
 neutral light. Use the [palette
-browser](https://bmaitner.github.io/transformeRs/articles/browse.html)
+browser](https://bmaitner.github.io/transformerpalettes/articles/browse.html)
 to open a prefilled issue for a specific palette, or pick a form from
 the [issue
-templates](https://github.com/bmaitner/transformeRs/issues/new/choose).
-[`tf_show_palettes()`](https://bmaitner.github.io/transformeRs/reference/tf_show_palettes.md)
+templates](https://github.com/bmaitner/transformerpalettes/issues/new/choose).
+[`tf_show_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_show_palettes.md)
 prints the hex codes under each swatch to make reporting easy.
 
 ## Trademarks

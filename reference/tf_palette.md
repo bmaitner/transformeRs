@@ -23,7 +23,7 @@ tf_palette(
 
   Palette name. Case-insensitive, and spaces or hyphens may stand in for
   underscores, so `"Optimus Prime"` and `"Hun-Gurrr"` work. See
-  [`tf_palette_names()`](https://bmaitner.github.io/transformeRs/reference/tf_palette_names.md).
+  [`tf_palette_names()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_names.md).
   A full name with a medium suffix (`"megatron_cartoon"`) also works and
   takes precedence over `medium`.
 
@@ -49,13 +49,13 @@ tf_palette(
   Logical. If `TRUE`, order the colours from darkest to lightest (by CIE
   lightness) before selecting or interpolating. Useful when a palette is
   used as a sequential gradient; see
-  [`tf_find_palettes()`](https://bmaitner.github.io/transformeRs/reference/tf_find_palettes.md).
+  [`tf_find_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_find_palettes.md).
 
 - medium:
 
   Which version of the character to use: `"toy"` (default), `"cartoon"`
   or `"comic"`. See
-  [`tf_media()`](https://bmaitner.github.io/transformeRs/reference/tf_media.md).
+  [`tf_media()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md).
   Errors with a pointer to the wishlist if the character has no palette
   in that medium yet.
 
