@@ -1,12 +1,12 @@
-# Generation 1 Transformers character metadata
+# Transformers character metadata
 
 Background information for every palette in
 [tf_palettes](https://bmaitner.github.io/transformerpalettes/reference/tf_palettes.md):
-the character, which medium the palette records (toy, cartoon or comic),
-its faction, the combiner team and combined form it belongs to, its role
-in that team, its alternate mode, the year of the reference, a
-description of the colors, and links to the reference page and image on
-the Transformers Wiki.
+the character, which medium the palette records (toy, cartoon, comic or
+Generation 2 re-release), its faction, the combiner team and combined
+form it belongs to, its role in that team, its alternate mode, the year
+of the reference, a description of the colors, and links to the
+reference page and image on the Transformers Wiki.
 
 ## Usage
 

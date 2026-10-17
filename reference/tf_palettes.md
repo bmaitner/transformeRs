@@ -1,12 +1,13 @@
-# Generation 1 Transformers palettes
+# Transformers palettes
 
-A named list of color palettes covering the Generation 1 Transformers
-cast: the leaders, every member and combined form of the combiner teams,
-the Dinobots, Seekers, cassettes, Insecticons, the 1984 Autobot cars and
-Mini Vehicles, and the 1986 movie cast. Each character has a palette for
-the original toy, most have one for the cartoon, many have one for the
-Marvel comic, and the three combiner teams Hasbro re-released in
-Generation 2 have one for that; see the `medium` column of
+A named list of color palettes covering the Transformers cast from the
+1984 Generation 1 toys onward: the leaders, every member and combined
+form of the combiner teams, the Dinobots, Seekers, cassettes,
+Insecticons, the 1984 Autobot cars and Mini Vehicles, and the 1986 movie
+cast. Each character has a palette for the original toy, most have one
+for the cartoon, many have one for the Marvel comic, and the three
+combiner teams Hasbro re-released in Generation 2 have one for that; see
+the `medium` column of
 [tf_characters](https://bmaitner.github.io/transformerpalettes/reference/tf_characters.md).
 Each element is a character vector of four to six hex colors ordered so
 that the first few are the most distinct from one another (body color

@@ -3,9 +3,9 @@
 ## Palettes
 
 - [`tf_palettes`](https://bmaitner.github.io/transformerpalettes/reference/tf_palettes.md)
-  : Generation 1 Transformers palettes
+  : Transformers palettes
 - [`tf_characters`](https://bmaitner.github.io/transformerpalettes/reference/tf_characters.md)
-  : Generation 1 Transformers character metadata
+  : Transformers character metadata
 - [`tf_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette.md)
   : Get colors from a character's palette
 - [`tf_team_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_team_palette.md)
@@ -18,6 +18,8 @@
   : List the media, factions and combiner teams in transformerpalettes
 - [`tf_show_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_show_palettes.md)
   : Display Transformers palettes
+- [`tf_credit()`](https://bmaitner.github.io/transformerpalettes/reference/tf_credit.md)
+  : Credit the rights holders behind a plot's colors
 
 ## Choosing colors for a plot
 
@@ -45,5 +47,5 @@
 
 - [`transformerpalettes`](https://bmaitner.github.io/transformerpalettes/reference/transformerpalettes-package.md)
   [`transformerpalettes-package`](https://bmaitner.github.io/transformerpalettes/reference/transformerpalettes-package.md)
-  : transformerpalettes: Color Palettes Inspired by Generation 1
-  Transformers
+  : transformerpalettes: Color Palettes Inspired by Transformers Toys,
+  Cartoons and Comics

@@ -1,15 +1,19 @@
 # transformerpalettes
 
-Color palettes for R and ggplot2 based on Generation 1 Transformers:
-Optimus Prime, Megatron, and every member and combined form of the core
-combiner teams, from the Aerialbots and Superion to the Seacons and
-Piranacon. Each character has a palette for the original toy and one for
-the cartoon animation model, and some have one for the Marvel comic,
-because the three often disagree about what color a robot is. It works
-the same way as packages like `wesanderson`: pick a character by name,
-get a vector of hex colors, or drop a scale straight into a ggplot.
-Because the combiner teams are sets of five or six figures, each team
-also gives a ready-made categorical palette with one color per member.
+Color palettes for R and ggplot2 drawn from the Transformers franchise,
+centered on the Generation 1 toys and extending to their Generation 2
+re-releases, the cartoon animation models and the Marvel comics. It
+covers Optimus Prime, Megatron, every member and combined form of the
+combiner teams from the Aerialbots and Superion to the Seacons and
+Piranacon, and the rest of the 1984-1989 cast. Each character has a
+palette for the original toy, most have one for the cartoon, many have
+one for the comic, and the teams Hasbro recolored for Generation 2 have
+one for that, because the sources often disagree about what color a
+robot is. It works the same way as packages like `wesanderson`: pick a
+character by name, get a vector of hex colors, or drop a scale straight
+into a ggplot. Because the combiner teams are sets of five or six
+figures, each team also gives a ready-made categorical palette with one
+color per member.
 
 transformerpalettes is a fan project and is not affiliated with or
 endorsed by Hasbro or Takara Tomy. Hex values are approximations of the
@@ -264,6 +268,48 @@ Each color is named after the palette it came from, and the
 is strict on purpose: saturated yellows fail it against white, so a
 light-mode pick from the Predacons has fewer colors to work with. Lower
 `min_contrast` to keep them, or pass a different `background`.
+
+### Crediting the sources
+
+The colors belong to the toys, cartoons and comics they came from, so
+give them a line.
+[`tf_credit()`](https://bmaitner.github.io/transformerpalettes/reference/tf_credit.md)
+writes that line from the palette metadata, grouped by medium, and
+follows a
+[`tf_pick()`](https://bmaitner.github.io/transformerpalettes/reference/tf_pick.md)
+or
+[`tf_team_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_team_palette.md)
+result back to every character that contributed. The caption form is one
+sentence; the acknowledgment form adds that the hex values are
+approximations that imply no endorsement, which is the wording journals
+tend to want. Cite the package itself with
+`citation("transformerpalettes")`.
+
+``` r
+
+tf_credit("optimus_prime")
+#> [1] "Colors: Optimus Prime toy colorway by Hasbro and Takara Tomy, via the transformerpalettes R package."
+
+tf_credit(tf_team_palette("Stunticons"))
+#> [1] "Colors: Motormaster, Dead End, Breakdown, Drag Strip and Wildrider toy colorways by Hasbro and Takara Tomy, via the transformerpalettes R package."
+
+tf_credit(c("optimus_prime", "megatron_cartoon"))
+#> [1] "Colors: Optimus Prime toy colorway by Hasbro and Takara Tomy and Megatron cartoon colors from the Generation 1 animated series, via the transformerpalettes R package."
+
+tf_credit("optimus_prime", format = "acknowledgment")
+#> [1] "Figure colors are derived from the Optimus Prime toy colorway designed by Hasbro and Takara Tomy. Hex values are approximations from the transformerpalettes R package (Maitner 2026) and imply no endorsement by Hasbro or Takara Tomy."
+
+# straight into a figure caption
+cols <- tf_pick(c("optimus_prime", "megatron"), n = 3)
+ggplot(mpg, aes(displ, hwy, color = drv)) +
+  geom_point(size = 2.5) +
+  scale_color_manual(values = unname(cols)) +
+  labs(caption = tf_credit(cols))
+```
+
+`format = "markdown"` links each character to its Transformers Wiki
+page, for Quarto and R Markdown captions, and `package = FALSE` drops
+the package mention when it is cited elsewhere.
 
 ### Character background
 

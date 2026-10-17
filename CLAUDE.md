@@ -1,9 +1,10 @@
 # transformerpalettes
 
-R package of color palettes based on Generation 1 Transformers toys,
-built on the same pattern as the sibling package `glyospalettes` (same
-author, Glyos colorways; formerly `rglyos`). Fan project; hex values are
-hand-curated approximations.
+R package of color palettes drawn from the Transformers franchise
+(Generation 1 toys, their Generation 2 re-releases, the cartoon and the
+Marvel comics), built on the same pattern as the sibling package
+`glyospalettes` (same author, Glyos colorways; formerly `rglyos`). Fan
+project; hex values are hand-curated approximations.
 
 ## Where things live
 
