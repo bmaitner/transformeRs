@@ -25,7 +25,8 @@ test_that("metadata table matches the palette list", {
   expect_true(all(nzchar(tf_characters$alt_mode)))
   expect_true(all(tf_characters$faction %in% c("Autobot", "Decepticon")))
   expect_true(all(tf_characters$role %in%
-    c("leader", "combiner torso", "combiner limb", "combined form")))
+    c("leader", "standalone", "combiner torso", "combiner limb",
+      "combined form", "subgroup member")))
   expect_true(all(grepl("^https://tfwiki.net/wiki/", tf_characters$source)))
   img <- tf_characters$image[!is.na(tf_characters$image)]
   expect_true(all(grepl("^https://tfwiki.net/mediawiki/images2/", img)))
@@ -34,10 +35,16 @@ test_that("metadata table matches the palette list", {
   expect_false(anyNA(tf_characters$year))
 })
 
-test_that("every team has one torso, one combined form and at least four limbs", {
+test_that("every combiner team has one torso, one combined form and at least four limbs", {
   for (tm in tf_teams()) {
     rows <- tf_characters[!is.na(tf_characters$team) & tf_characters$team == tm &
                             tf_characters$medium == "toy", ]
+    if (all(rows$role == "subgroup member")) {
+      # a subgroup: no combined form, no combiner, at least three members
+      expect_true(all(is.na(rows$combiner)), info = tm)
+      expect_gte(nrow(rows), 3)
+      next
+    }
     expect_equal(sum(rows$role == "combined form"), 1, info = tm)
     expect_gte(sum(rows$role == "combiner torso"), 1)
     expect_gte(sum(rows$role == "combiner limb"), 4)
@@ -48,7 +55,7 @@ test_that("every team has one torso, one combined form and at least four limbs",
     # combined form is listed last so team order reads torso, limbs, gestalt
     expect_equal(rows$role[nrow(rows)], "combined form", info = tm)
   }
-  leaders <- tf_characters[tf_characters$role == "leader", ]
+  leaders <- tf_characters[tf_characters$role %in% c("leader", "standalone"), ]
   expect_true(all(is.na(leaders$team)))
   expect_true(all(is.na(leaders$combiner)))
 })
@@ -58,9 +65,13 @@ test_that("factions and teams are listed in package order", {
   expect_equal(tf_teams()[1], "Aerialbots")
   expect_setequal(tf_teams(), unique(stats::na.omit(tf_characters$team)))
   expect_setequal(tf_teams(faction = "Autobot"),
-                  c("Aerialbots", "Protectobots", "Technobots"))
+                  c("Aerialbots", "Protectobots", "Technobots", "Dinobots",
+                    "Autobot Cars", "Minibots"))
   expect_true(all(tf_teams(faction = "decept") %in% tf_teams()))
-  expect_length(tf_teams(faction = "Decepticon"), 6)
+  expect_setequal(tf_teams(faction = "Decepticon"),
+                  c("Constructicons", "Stunticons", "Combaticons", "Terrorcons",
+                    "Predacons", "Seacons", "Pretender Monsters", "Breastforce",
+                    "Seekers", "Cassettes", "Insecticons"))
 })
 
 test_that("palette names can be filtered by faction, team and role", {
@@ -77,8 +88,15 @@ test_that("palette names can be filtered by faction, team and role", {
   gestalts <- tf_palette_names(role = "combined form")
   expect_setequal(gestalts, c("superion", "defensor", "computron", "devastator",
                               "menasor", "bruticus", "abominus", "predaking",
-                              "piranacon"))
-  expect_equal(tf_palette_names(faction = "Autobot", role = "leader"), "optimus_prime")
+                              "piranacon", "monstructor", "liokaiser"))
+  expect_setequal(tf_palette_names(faction = "Autobot", role = "leader"),
+                  c("optimus_prime", "rodimus_prime", "ultra_magnus"))
+  expect_true(all(c("shockwave", "soundwave", "hot_rod", "gnaw") %in%
+                    tf_palette_names(role = "standalone")))
+  seekers <- tf_palette_names(team = "Seekers")
+  expect_equal(seekers[1:3], c("starscream", "thundercracker", "skywarp"))
+  expect_true(all(c(seekers, tf_palette_names(team = "Dinobots")) %in%
+                    tf_palette_names(role = "subgroup member")))
 
   expect_error(tf_palette_names(team = "nope"), "Unknown or ambiguous")
   expect_error(tf_palette_names(faction = c("a", "b")), "single string")

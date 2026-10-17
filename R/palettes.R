@@ -1,10 +1,13 @@
 #' Generation 1 Transformers palettes
 #'
-#' A named list of colour palettes covering Optimus Prime, Megatron, and every
-#' member and combined form of the core Generation 1 combiner teams. Each
-#' character has a palette for the original toy, most also have one for the
-#' Sunbow cartoon, and some have one for the Marvel comic; see the `medium`
-#' column of [tf_characters]. Each element is a character vector of four to
+#' A named list of colour palettes covering the Generation 1 Transformers
+#' cast: the leaders, every member and combined form of the combiner teams,
+#' the Dinobots, Seekers, cassettes, Insecticons, the 1984 Autobot cars and
+#' Mini Vehicles, and the 1986 movie cast. Each character has a palette for
+#' the original toy, most have one for the cartoon, many have one for the
+#' Marvel comic, and the three combiner teams Hasbro re-released in
+#' Generation 2 have one for that; see the `medium` column of
+#' [tf_characters]. Each element is a character vector of four to
 #' six hex colours ordered so that the first few are the most distinct from
 #' one another (body colour first, then secondary colour, then accents). Use
 #' [tf_palette()] to pull colours from a palette, [tf_team_palette()] to take
@@ -50,15 +53,20 @@ tf_palettes <- stats::setNames(
 #'   \item{base}{The character's toy palette name, shared by all of that
 #'     character's palettes across media (e.g. `"optimus_prime"` for both
 #'     `optimus_prime` and `optimus_prime_cartoon`).}
-#'   \item{medium}{`"toy"`, `"cartoon"` or `"comic"`. See [tf_media()].}
+#'   \item{medium}{`"toy"`, `"cartoon"`, `"comic"` or `"g2"`. See
+#'     [tf_media()].}
 #'   \item{character}{Character name as printed on the toy's packaging.}
 #'   \item{faction}{`"Autobot"` or `"Decepticon"`. See [tf_factions()].}
-#'   \item{team}{Combiner team, e.g. `"Aerialbots"`, or `NA` for characters
-#'     that are not part of a team. See [tf_teams()].}
+#'   \item{team}{Combiner team or subgroup, e.g. `"Aerialbots"` or
+#'     `"Seekers"`, or `NA` for characters that are not part of one. See
+#'     [tf_teams()].}
 #'   \item{combiner}{Base palette name of the team's combined form, e.g.
-#'     `"superion"`, or `NA`.}
-#'   \item{role}{One of `"leader"`, `"combiner torso"`, `"combiner limb"` or
-#'     `"combined form"`.}
+#'     `"superion"`, or `NA` for leaders and for subgroups that do not
+#'     combine.}
+#'   \item{role}{One of `"leader"`, `"standalone"` (a character outside any
+#'     team), `"combiner torso"`, `"combiner limb"`, `"combined form"` or
+#'     `"subgroup member"` (Dinobots, Seekers, Cassettes, Insecticons,
+#'     Autobot Cars, Minibots).}
 #'   \item{alt_mode}{The character's alternate mode.}
 #'   \item{year}{Year of the reference: the original Hasbro release for toy
 #'     palettes, the character's first appearance for cartoon and comic
@@ -100,7 +108,7 @@ tf_characters <- local({
   out
 })
 
-.media <- c("toy", "cartoon", "comic")
+.media <- c("toy", "cartoon", "comic", "g2")
 
 #' List the media, factions and combiner teams in transformerpalettes
 #'
@@ -108,9 +116,11 @@ tf_characters <- local({
 #'   [tf_factions()].
 #'
 #' @return `tf_media()` returns the media a palette can record, in the order
-#'   `"toy"`, `"cartoon"`, `"comic"`. `tf_factions()` returns a character
+#'   `"toy"` (the original Generation 1 release), `"cartoon"` (the animation
+#'   model), `"comic"` (Marvel) and `"g2"` (the Generation 2 re-release of
+#'   the toy in new colours, 1992-1994). `tf_factions()` returns a character
 #'   vector of faction names. `tf_teams()` returns a character vector of
-#'   combiner team names, in package order (Autobot teams first). All can be
+#'   team and subgroup names, in package order (Autobot teams first). All can be
 #'   passed to the matching argument of [tf_palette_names()],
 #'   [tf_show_palettes()] and [tf_find_palettes()].
 #' @examples
@@ -143,14 +153,14 @@ tf_teams <- function(faction = NULL) {
 #'
 #' @param faction Optional faction (see [tf_factions()]) to restrict the list
 #'   to. Matched case-insensitively and by unique prefix, so `"auto"` works.
-#' @param team Optional combiner team (see [tf_teams()]) to restrict the list
-#'   to, matched the same way.
+#' @param team Optional team or subgroup (see [tf_teams()]) to restrict the
+#'   list to, matched the same way.
 #' @param role Optional role to restrict the list to: one of `"leader"`,
-#'   `"combiner torso"`, `"combiner limb"` or `"combined form"`, matched the
-#'   same way.
+#'   `"combiner torso"`, `"combiner limb"`, `"combined form"` or
+#'   `"subgroup member"`, matched the same way.
 #' @param medium Which medium's palettes to list: `"toy"` (default),
-#'   `"cartoon"`, `"comic"`, or `"all"` for every palette regardless of
-#'   medium. See [tf_media()].
+#'   `"cartoon"`, `"comic"`, `"g2"`, or `"all"` for every palette regardless
+#'   of medium. See [tf_media()].
 #'
 #' @return A character vector of palette names accepted by [tf_palette()]
 #'   and the `scale_*_tf()` functions.
@@ -261,8 +271,8 @@ palette_key <- function(name, medium = "toy") {
 #'   (by CIE lightness) before selecting or interpolating. Useful when a
 #'   palette is used as a sequential gradient; see [tf_find_palettes()].
 #' @param medium Which version of the character to use: `"toy"` (default),
-#'   `"cartoon"` or `"comic"`. See [tf_media()]. Errors with a pointer to
-#'   the wishlist if the character has no palette in that medium yet.
+#'   `"cartoon"`, `"comic"` or `"g2"`. See [tf_media()]. Errors with a
+#'   pointer to the wishlist if the character has no palette in that medium.
 #'
 #' @return A character vector of hex colours with class `"tf_palette"`, which
 #'   has a print method that draws the swatches.
@@ -270,6 +280,7 @@ palette_key <- function(name, medium = "toy") {
 #' tf_palette("optimus_prime")
 #' tf_palette("optimus_prime", medium = "cartoon")
 #' tf_palette("Megatron", 3, medium = "comic")
+#' tf_palette("devastator", medium = "g2")
 #' tf_palette("devastator", 12, type = "continuous")
 #' tf_palette("hot_spot", 12, type = "continuous", sort = TRUE)
 #'
@@ -318,11 +329,12 @@ subset_palette <- function(pal, key, n, type, strict, sort) {
   structure(out, class = "tf_palette", name = key)
 }
 
-#' One colour per member of a combiner team
+#' One colour per member of a team
 #'
-#' Builds a categorical palette for a combiner team by taking one colour from
-#' each member, in the team's order: torso first, then limbs. Each colour is
-#' named after the member it came from, so the palette doubles as a legend.
+#' Builds a categorical palette for a combiner team or subgroup by taking one
+#' colour from each member, in the team's order (torso first, then limbs, for
+#' a combiner team). Each colour is named after the member it came from, so
+#' the palette doubles as a legend.
 #'
 #' @details
 #' By default the body colour of each member is used, which is faithful but
@@ -353,6 +365,7 @@ subset_palette <- function(pal, key, n, type, strict, sort) {
 #' @return A named character vector of hex colours with class `"tf_palette"`.
 #' @examples
 #' tf_team_palette("Stunticons")
+#' tf_team_palette("Seekers")
 #' tf_team_palette("Aerialbots")
 #' tf_team_palette("Aerialbots", distinct = TRUE)
 #' tf_team_palette("Predacons", which = 2)

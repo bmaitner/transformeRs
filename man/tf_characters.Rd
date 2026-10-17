@@ -11,15 +11,20 @@ A data frame with one row per palette and the columns:
 \item{base}{The character's toy palette name, shared by all of that
 character's palettes across media (e.g. \code{"optimus_prime"} for both
 \code{optimus_prime} and \code{optimus_prime_cartoon}).}
-\item{medium}{\code{"toy"}, \code{"cartoon"} or \code{"comic"}. See \code{\link[=tf_media]{tf_media()}}.}
+\item{medium}{\code{"toy"}, \code{"cartoon"}, \code{"comic"} or \code{"g2"}. See
+\code{\link[=tf_media]{tf_media()}}.}
 \item{character}{Character name as printed on the toy's packaging.}
 \item{faction}{\code{"Autobot"} or \code{"Decepticon"}. See \code{\link[=tf_factions]{tf_factions()}}.}
-\item{team}{Combiner team, e.g. \code{"Aerialbots"}, or \code{NA} for characters
-that are not part of a team. See \code{\link[=tf_teams]{tf_teams()}}.}
+\item{team}{Combiner team or subgroup, e.g. \code{"Aerialbots"} or
+\code{"Seekers"}, or \code{NA} for characters that are not part of one. See
+\code{\link[=tf_teams]{tf_teams()}}.}
 \item{combiner}{Base palette name of the team's combined form, e.g.
-\code{"superion"}, or \code{NA}.}
-\item{role}{One of \code{"leader"}, \code{"combiner torso"}, \code{"combiner limb"} or
-\code{"combined form"}.}
+\code{"superion"}, or \code{NA} for leaders and for subgroups that do not
+combine.}
+\item{role}{One of \code{"leader"}, \code{"standalone"} (a character outside any
+team), \code{"combiner torso"}, \code{"combiner limb"}, \code{"combined form"} or
+\code{"subgroup member"} (Dinobots, Seekers, Cassettes, Insecticons,
+Autobot Cars, Minibots).}
 \item{alt_mode}{The character's alternate mode.}
 \item{year}{Year of the reference: the original Hasbro release for toy
 palettes, the character's first appearance for cartoon and comic

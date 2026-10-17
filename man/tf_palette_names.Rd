@@ -10,16 +10,16 @@ tf_palette_names(faction = NULL, team = NULL, role = NULL, medium = "toy")
 \item{faction}{Optional faction (see \code{\link[=tf_factions]{tf_factions()}}) to restrict the list
 to. Matched case-insensitively and by unique prefix, so \code{"auto"} works.}
 
-\item{team}{Optional combiner team (see \code{\link[=tf_teams]{tf_teams()}}) to restrict the list
-to, matched the same way.}
+\item{team}{Optional team or subgroup (see \code{\link[=tf_teams]{tf_teams()}}) to restrict the
+list to, matched the same way.}
 
 \item{role}{Optional role to restrict the list to: one of \code{"leader"},
-\code{"combiner torso"}, \code{"combiner limb"} or \code{"combined form"}, matched the
-same way.}
+\code{"combiner torso"}, \code{"combiner limb"}, \code{"combined form"} or
+\code{"subgroup member"}, matched the same way.}
 
 \item{medium}{Which medium's palettes to list: \code{"toy"} (default),
-\code{"cartoon"}, \code{"comic"}, or \code{"all"} for every palette regardless of
-medium. See \code{\link[=tf_media]{tf_media()}}.}
+\code{"cartoon"}, \code{"comic"}, \code{"g2"}, or \code{"all"} for every palette regardless
+of medium. See \code{\link[=tf_media]{tf_media()}}.}
 }
 \value{
 A character vector of palette names accepted by \code{\link[=tf_palette]{tf_palette()}}

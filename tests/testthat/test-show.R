@@ -8,7 +8,7 @@ test_that("tf_show_palettes draws without error", {
   aero <- tf_show_palettes(team = "Aerialbots", ncol = 2)
   expect_equal(aero, tf_palette_names(team = "Aerialbots"))
   gestalts <- tf_show_palettes(role = "combined form")
-  expect_length(gestalts, 9)
+  expect_length(gestalts, 11)
   expect_error(tf_show_palettes("nope"))
   expect_error(tf_show_palettes(team = "nope"))
 })

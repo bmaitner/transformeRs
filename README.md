@@ -73,8 +73,10 @@ tf_show_palettes(faction = "Decepticon", role = "combined form", ncol = 3)
 
 Every function takes a `medium` argument that defaults to `"toy"`, so the
 plain names always give the toy colours. Ask for `"cartoon"` to get the flat
-colours of the Sunbow animation model, or `"comic"` for the Marvel colouring
-where one exists. The full names with a suffix work too.
+colours of the Sunbow animation model, `"comic"` for the Marvel colouring
+where one exists, or `"g2"` for the Generation 2 re-release of the three
+combiner teams Hasbro recoloured in 1992-94. The full names with a suffix
+work too.
 
 ```r
 tf_palette("drag_strip")                      # yellow-orange and plum toy
@@ -85,15 +87,19 @@ tf_palette_names(medium = "cartoon")
 tf_palette_names(role = "leader", medium = "all")
 tf_show_palettes(c("optimus_prime", "optimus_prime_cartoon", "optimus_prime_comic"), ncol = 1)
 tf_team_palette("Constructicons", medium = "cartoon")   # lime green, not grass green
+tf_team_palette("Combaticons", medium = "g2")           # 1994 camouflage colours
 ```
 
 ![Toy, cartoon and comic versions](man/figures/media-comparison.png)
 
 Every character has a cartoon palette; the Seacons' comes from the Japanese
 Super-God Masterforce series, since they never appeared in the Sunbow show.
-Comic palettes exist for Optimus Prime and Megatron so far, and the teams are
-queued in [`WISHLIST.md`](WISHLIST.md): Marvel colouring changed from issue to
-issue, so each one is added from a named issue rather than from memory.
+Comic palettes exist for the two leaders and all nine core combiner teams,
+each sampled from a named Marvel US or UK story that the browser links to.
+Marvel colouring changed from issue to issue (and Marvel UK recoloured the
+same art), so treat them as one issue's reading rather than a canon. The
+Pretender Monsters have no cartoon palette because they never appeared in
+one; [`WISHLIST.md`](WISHLIST.md) lists what is still open.
 Asking for a medium a character does not have yet gives an error that says
 so.
 
@@ -259,19 +265,29 @@ t(tf_characters[tf_characters$palette == "drag_strip", ])
 | Team | Faction | Members | Combined form | Year | Media |
 |---|---|---|---|---|---|
 | (leaders) | both | Optimus Prime, Megatron | | 1984 | toy, cartoon, comic |
-| Aerialbots | Autobot | Silverbolt, Air Raid, Fireflight, Skydive, Slingshot | Superion | 1986 | toy, cartoon |
-| Protectobots | Autobot | Hot Spot, Streetwise, Blades, Groove, First Aid | Defensor | 1986 | toy, cartoon |
-| Technobots | Autobot | Scattershot, Lightspeed, Nosecone, Strafe, Afterburner | Computron | 1987 | toy, cartoon |
-| Constructicons | Decepticon | Hook, Long Haul, Scrapper, Bonecrusher, Mixmaster, Scavenger | Devastator | 1985 | toy, cartoon |
-| Stunticons | Decepticon | Motormaster, Dead End, Breakdown, Drag Strip, Wildrider | Menasor | 1986 | toy, cartoon |
-| Combaticons | Decepticon | Onslaught, Brawl, Swindle, Blast Off, Vortex | Bruticus | 1986 | toy, cartoon |
-| Terrorcons | Decepticon | Hun-Gurrr, Blot, Cutthroat, Rippersnapper, Sinnertwin | Abominus | 1987 | toy, cartoon |
-| Predacons | Decepticon | Razorclaw, Rampage, Tantrum, Headstrong, Divebomb | Predaking | 1986 | toy, cartoon |
-| Seacons | Decepticon | Snaptrap, Nautilator, Overbite, Seawing, Skalor, Tentakil | Piranacon | 1988 | toy, cartoon (Masterforce) |
+| Aerialbots | Autobot | Silverbolt, Air Raid, Fireflight, Skydive, Slingshot | Superion | 1986 | toy, cartoon, comic, g2 |
+| Protectobots | Autobot | Hot Spot, Streetwise, Blades, Groove, First Aid | Defensor | 1986 | toy, cartoon, comic |
+| Technobots | Autobot | Scattershot, Lightspeed, Nosecone, Strafe, Afterburner | Computron | 1987 | toy, cartoon, comic |
+| Dinobots | Autobot | Grimlock, Slag, Sludge, Snarl, Swoop | (subgroup) | 1985 | toy, cartoon |
+| Constructicons | Decepticon | Hook, Long Haul, Scrapper, Bonecrusher, Mixmaster, Scavenger | Devastator | 1985 | toy, cartoon, comic, g2 |
+| Stunticons | Decepticon | Motormaster, Dead End, Breakdown, Drag Strip, Wildrider | Menasor | 1986 | toy, cartoon, comic |
+| Combaticons | Decepticon | Onslaught, Brawl, Swindle, Blast Off, Vortex | Bruticus | 1986 | toy, cartoon, comic, g2 |
+| Terrorcons | Decepticon | Hun-Gurrr, Blot, Cutthroat, Rippersnapper, Sinnertwin | Abominus | 1987 | toy, cartoon, comic |
+| Predacons | Decepticon | Razorclaw, Rampage, Tantrum, Headstrong, Divebomb | Predaking | 1986 | toy, cartoon, comic |
+| Seacons | Decepticon | Snaptrap, Nautilator, Overbite, Seawing, Skalor, Tentakil | Piranacon | 1988 | toy, cartoon (Masterforce), comic |
+| Seekers | Decepticon | Starscream, Thundercracker, Skywarp, Dirge, Ramjet, Thrust | (subgroup) | 1984-85 | toy, cartoon |
+| Pretender Monsters | Decepticon | Slog, Birdbrain, Icepick, Bristleback, Wildfly, Scowl | Monstructor | 1989 | toy |
+| Breastforce | Decepticon | Leozack, Drillhorn, Guyhawk, Hellbat, Jallguar, Killbison | Liokaiser | 1989 (Takara) | toy, cartoon (Victory) |
+| Cassettes | Decepticon | Laserbeak, Buzzsaw, Ravage, Rumble, Frenzy, Ratbat | (subgroup) | 1984-86 | toy, cartoon |
+| Insecticons | Decepticon | Shrapnel, Bombshell, Kickback | (subgroup) | 1985 | toy, cartoon |
+| Autobot Cars | Autobot | Jazz, Prowl, Ironhide, Ratchet, Wheeljack, Sunstreaker, Sideswipe, Hound, Mirage, Trailbreaker, Bluestreak | (subgroup) | 1984 | toy, cartoon |
+| Minibots | Autobot | Bumblebee, Cliffjumper, Brawn, Huffer, Windcharger, Gears | (subgroup) | 1984 | toy, cartoon |
+| (standalone) | both | Shockwave, Soundwave, Hot Rod, Rodimus Prime, Ultra Magnus, Kup, Blurr, Springer, Wreck-Gar, Galvatron, Cyclonus, Scourge, Gnaw | | 1984-86 | toy, cartoon |
 
 Palette names are the character's name in snake_case (`hun_gurrr`,
 `blast_off`); `tf_palette()` also accepts `"Hun-Gurrr"` and
-`"Blast Off"`. Every team is drawn in `man/figures/palettes-<team>.png`.
+`"Blast Off"`. Every team is drawn in `man/figures/palettes-<team>.png`
+(spaces in a team name become hyphens).
 Characters and teams that are lined up to be added next are listed in
 [`WISHLIST.md`](WISHLIST.md); add a line there, or open a
 [request](https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml).

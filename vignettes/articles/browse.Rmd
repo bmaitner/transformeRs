@@ -61,6 +61,7 @@ cat('<script id="tf-data" type="application/json">', json, '</script>', sep = "\
 .tb-medium.toy { background: #555; }
 .tb-medium.cartoon { background: #1575CC; }
 .tb-medium.comic { background: #B8860B; }
+.tb-medium.g2 { background: #2E8B57; }
 .tb-strip { display: flex; height: 56px; border-radius: 5px; overflow: hidden; }
 .tb-strip button { flex: 1; border: 0; padding: 0; cursor: pointer; position: relative; font: inherit; }
 .tb-strip button span { position: absolute; left: 0; right: 0; bottom: 3px; font-size: .62rem; font-family: ui-monospace, Menlo, monospace; text-align: center; opacity: 0; transition: opacity .15s; padding: 1px 0; }
@@ -90,8 +91,8 @@ cat('<script id="tf-data" type="application/json">', json, '</script>', sep = "\
   <div><label for="tb-medium">Medium</label><select id="tb-medium"><option value="">All media</option></select></div>
   <div><label for="tb-faction">Faction</label><select id="tb-faction"><option value="">Both factions</option></select></div>
   <div><label for="tb-team">Team</label><select id="tb-team"><option value="">All teams</option></select></div>
-  <div><label for="tb-role">Role</label><select id="tb-role"><option value="">Any role</option><option value="leader">leader</option><option value="combiner torso">combiner torso</option><option value="combiner limb">combiner limb</option><option value="combined form">combined form</option></select></div>
-  <div><label for="tb-n">Colours</label><select id="tb-n"><option value="">Any number</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></div>
+  <div><label for="tb-role">Role</label><select id="tb-role"><option value="">Any role</option><option value="leader">leader</option><option value="combiner torso">combiner torso</option><option value="combiner limb">combiner limb</option><option value="standalone">standalone</option><option value="combined form">combined form</option><option value="subgroup member">subgroup member</option></select></div>
+  <div><label for="tb-n">Colours</label><select id="tb-n"><option value="">Any number</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></div>
   <div><label for="tb-sort">Sort by</label><select id="tb-sort"><option value="default">Package order</option><option value="palette">Name</option><option value="team">Team</option><option value="year">Year</option><option value="min_de">Most distinct colours</option><option value="cvd">Most colorblind-safe</option><option value="lum_range">Widest lightness range</option></select></div>
 </div>
 <div class="tb-uses">
@@ -168,7 +169,7 @@ cat('<script id="tf-data" type="application/json">', json, '</script>', sep = "\
       return '<span class="tb-badge' + (p[u] ? " on" : "") + '">' + u + "</span>";
     }).join("");
     var where = [p.faction, p.team, p.role].filter(function (x) { return x != null && x !== ""; }).join(" &middot; ");
-    var refWord = p.medium === "toy" ? "Toy photo" : p.medium === "cartoon" ? "Episode still" : "Comic panel";
+    var refWord = p.medium === "toy" ? "Toy photo" : p.medium === "cartoon" ? "Episode still" : p.medium === "g2" ? "G2 toy photo" : "Comic panel";
     var photo = p.image
       ? '<div class="tb-photo"><a href="' + esc(p.image) + '" target="_blank" rel="noopener noreferrer"><img loading="lazy" referrerpolicy="no-referrer" src="' + esc(p.image) + '" alt="' + refWord + ': ' + esc(p.character) + '"></a></div>'
       : '<div class="tb-photo"><span class="tb-nophoto">No reference image linked yet. Know a good one? Use Suggest a change.</span></div>';

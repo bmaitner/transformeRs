@@ -2,7 +2,7 @@
 % Please edit documentation in R/palettes.R
 \name{tf_team_palette}
 \alias{tf_team_palette}
-\title{One colour per member of a combiner team}
+\title{One colour per member of a team}
 \usage{
 tf_team_palette(
   team,
@@ -35,9 +35,10 @@ medium.}
 A named character vector of hex colours with class \code{"tf_palette"}.
 }
 \description{
-Builds a categorical palette for a combiner team by taking one colour from
-each member, in the team's order: torso first, then limbs. Each colour is
-named after the member it came from, so the palette doubles as a legend.
+Builds a categorical palette for a combiner team or subgroup by taking one
+colour from each member, in the team's order (torso first, then limbs, for
+a combiner team). Each colour is named after the member it came from, so
+the palette doubles as a legend.
 }
 \details{
 By default the body colour of each member is used, which is faithful but
@@ -53,6 +54,7 @@ returned colours if legibility matters.
 }
 \examples{
 tf_team_palette("Stunticons")
+tf_team_palette("Seekers")
 tf_team_palette("Aerialbots")
 tf_team_palette("Aerialbots", distinct = TRUE)
 tf_team_palette("Predacons", which = 2)

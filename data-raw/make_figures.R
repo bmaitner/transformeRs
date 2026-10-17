@@ -14,7 +14,7 @@ dev.off()
 # One figure per combiner team: members then combined form
 for (tm in tf_teams()) {
   nms <- tf_palette_names(team = tm)
-  slug <- tolower(tm)
+  slug <- gsub(" ", "-", tolower(tm), fixed = TRUE)
   ncol <- 2
   nrow <- ceiling(length(nms) / ncol)
   png(sprintf("man/figures/palettes-%s.png", slug),
@@ -43,8 +43,9 @@ for (tm in teams) {
 par(old)
 dev.off()
 
-# Toy, cartoon and comic versions side by side for the leaders and combined forms
-trio <- c(lead, gestalts)
+# Toy, cartoon, comic and G2 versions side by side for the original leaders
+# and the nine core combined forms
+trio <- c("optimus_prime", "megatron", gestalts[1:9])
 keys <- unlist(lapply(trio, function(b) {
   tf_characters$palette[tf_characters$base == b]
 }))

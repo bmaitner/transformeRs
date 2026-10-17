@@ -18,9 +18,11 @@ tf_teams(faction = NULL)
 }
 \value{
 \code{tf_media()} returns the media a palette can record, in the order
-\code{"toy"}, \code{"cartoon"}, \code{"comic"}. \code{tf_factions()} returns a character
+\code{"toy"} (the original Generation 1 release), \code{"cartoon"} (the animation
+model), \code{"comic"} (Marvel) and \code{"g2"} (the Generation 2 re-release of
+the toy in new colours, 1992-1994). \code{tf_factions()} returns a character
 vector of faction names. \code{tf_teams()} returns a character vector of
-combiner team names, in package order (Autobot teams first). All can be
+team and subgroup names, in package order (Autobot teams first). All can be
 passed to the matching argument of \code{\link[=tf_palette_names]{tf_palette_names()}},
 \code{\link[=tf_show_palettes]{tf_show_palettes()}} and \code{\link[=tf_find_palettes]{tf_find_palettes()}}.
 }

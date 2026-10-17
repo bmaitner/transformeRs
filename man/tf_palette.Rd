@@ -34,8 +34,8 @@ colours instead.}
 palette is used as a sequential gradient; see \code{\link[=tf_find_palettes]{tf_find_palettes()}}.}
 
 \item{medium}{Which version of the character to use: \code{"toy"} (default),
-\code{"cartoon"} or \code{"comic"}. See \code{\link[=tf_media]{tf_media()}}. Errors with a pointer to
-the wishlist if the character has no palette in that medium yet.}
+\code{"cartoon"}, \code{"comic"} or \code{"g2"}. See \code{\link[=tf_media]{tf_media()}}. Errors with a
+pointer to the wishlist if the character has no palette in that medium.}
 }
 \value{
 A character vector of hex colours with class \code{"tf_palette"}, which
@@ -50,6 +50,7 @@ across the whole palette (\code{type = "continuous"}).
 tf_palette("optimus_prime")
 tf_palette("optimus_prime", medium = "cartoon")
 tf_palette("Megatron", 3, medium = "comic")
+tf_palette("devastator", medium = "g2")
 tf_palette("devastator", 12, type = "continuous")
 tf_palette("hot_spot", 12, type = "continuous", sort = TRUE)
 

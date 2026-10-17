@@ -1,5 +1,5 @@
 test_that("media are listed and every palette belongs to one", {
-  expect_equal(tf_media(), c("toy", "cartoon", "comic"))
+  expect_equal(tf_media(), c("toy", "cartoon", "comic", "g2"))
   expect_true(all(tf_characters$medium %in% tf_media()))
   # toy palettes are the base; variants are base + suffix
   toys <- tf_characters[tf_characters$medium == "toy", ]
@@ -9,8 +9,16 @@ test_that("media are listed and every palette belongs to one", {
   expect_true(all(vars$base %in% toys$palette))
   # a character has at most one palette per medium
   expect_equal(anyDuplicated(paste(tf_characters$base, tf_characters$medium)), 0)
-  # every character has a cartoon palette
-  expect_setequal(vars$base[vars$medium == "cartoon"], toys$palette)
+  # every character that could have appeared in a cartoon (toy year up to
+  # 1988) has a cartoon palette; the 1989 Pretender Monsters never did
+  sunbow <- toys$palette[toys$year <= 1988]
+  expect_true(all(sunbow %in% vars$base[vars$medium == "cartoon"]))
+  expect_false("monstructor" %in% vars$base[vars$medium == "cartoon"])
+  # g2 palettes exist exactly for the three re-released combiner teams
+  g2 <- vars$base[vars$medium == "g2"]
+  expect_setequal(g2, c(tf_palette_names(team = "Constructicons"),
+                        tf_palette_names(team = "Aerialbots"),
+                        tf_palette_names(team = "Combaticons")))
   # variants inherit the toy's metadata and link to a section of its page
   for (i in seq_len(nrow(vars))) {
     toy <- toys[toys$palette == vars$base[i], ]
@@ -18,7 +26,7 @@ test_that("media are listed and every palette belongs to one", {
     expect_equal(vars$faction[i], toy$faction)
     expect_equal(vars$team[i], toy$team)
     expect_equal(vars$role[i], toy$role)
-    expect_match(vars$source[i], "^https://tfwiki.net/wiki/.*#[A-Za-z_-]+$")
+    expect_match(vars$source[i], "^https://tfwiki.net/wiki/.*#[A-Za-z0-9_-]+$")
   }
 })
 
@@ -28,11 +36,22 @@ test_that("tf_palette_names filters by medium and defaults to toys", {
   expect_false(any(grepl("_(cartoon|comic)$", toys)))
   cart <- tf_palette_names(medium = "cartoon")
   expect_true(all(endsWith(cart, "_cartoon")))
-  expect_length(cart, length(toys))
+  expect_lte(length(cart), length(toys))
+  expect_true(all(endsWith(tf_palette_names(medium = "g2"), "_g2")))
+  expect_equal(as.character(tf_palette("devastator", medium = "g2")),
+               tf_palettes[["devastator_g2"]])
+  expect_equal(as.character(tf_palette("devastator_g2")), tf_palettes[["devastator_g2"]])
   expect_equal(length(tf_palette_names(medium = "all")), nrow(tf_characters))
   expect_length(tf_palette_names(team = "Aerialbots", medium = "cartoon"), 6)
   expect_equal(tf_palette_names(role = "leader", medium = "comic"),
                c("optimus_prime_comic", "megatron_comic"))
+  expect_length(tf_palette_names(team = "Constructicons", medium = "comic"), 7)
+  for (tm in c("Aerialbots", "Stunticons", "Protectobots", "Combaticons", "Predacons",
+               "Technobots", "Terrorcons")) {
+    expect_length(tf_palette_names(team = tm, medium = "comic"), 6)
+  }
+  expect_length(tf_palette_names(team = "Seacons", medium = "comic"), 7)
+  expect_length(tf_team_palette("Combaticons", medium = "g2"), 5)
   expect_error(tf_palette_names(medium = "manga"), "Unknown or ambiguous medium")
   expect_error(tf_palette_names(medium = c("toy", "comic")), "single string")
 })
@@ -49,8 +68,8 @@ test_that("tf_palette resolves a name plus medium", {
                tf_palettes[["megatron_cartoon"]])
   expect_equal(as.character(tf_palette("megatron_cartoon", medium = "toy")),
                tf_palettes[["megatron_cartoon"]])
-  expect_error(tf_palette("silverbolt", medium = "comic"), "No comic palette for 'silverbolt'")
-  expect_error(tf_palette("silverbolt_comic"), "No comic palette")
+  expect_error(tf_palette("hun_gurrr", medium = "g2"), "No g2 palette for 'hun_gurrr'")
+  expect_error(tf_palette("hun_gurrr_g2"), "No g2 palette")
   expect_error(tf_palette("nobody", medium = "cartoon"), "Unknown Transformers palette")
 })
 
@@ -59,13 +78,16 @@ test_that("team and show helpers honour medium", {
   expect_equal(names(cart), tf_palette_names(team = "Aerialbots", medium = "cartoon")[1:5])
   expect_equal(unname(cart[[1]]), tf_palettes[["silverbolt_cartoon"]][1])
   expect_equal(attr(cart, "name"), "aerialbots_cartoon")
-  expect_error(tf_team_palette("Aerialbots", medium = "comic"), "No comic palette yet for")
+  expect_error(tf_team_palette("Terrorcons", medium = "g2"), "No g2 palette yet for")
+  con <- tf_team_palette("Constructicons", medium = "comic")
+  expect_length(con, 6)
+  expect_true(all(endsWith(names(con), "_comic")))
 
   tmp <- tempfile(fileext = ".png")
   grDevices::png(tmp, width = 2000, height = 4000)
   on.exit(grDevices::dev.off(), add = TRUE)
   expect_length(tf_show_palettes(team = "Aerialbots", medium = "cartoon"), 6)
-  expect_length(tf_show_palettes(role = "leader", medium = "all"), 6)
+  expect_length(tf_show_palettes(role = "leader", medium = "all"), 12)
   expect_equal(tf_show_palettes(c("megatron", "megatron_comic")), c("megatron", "megatron_comic"))
 
   found <- tf_find_palettes("categorical", medium = "cartoon")

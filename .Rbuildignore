@@ -12,3 +12,4 @@
 ^\.claude$
 ^CLAUDE\.md$
 ^WISHLIST\.md$
+^.*\.Rproj$

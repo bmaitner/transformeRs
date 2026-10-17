@@ -11,11 +11,14 @@ A named list of character vectors of hex colours.
 tf_palettes
 }
 \description{
-A named list of colour palettes covering Optimus Prime, Megatron, and every
-member and combined form of the core Generation 1 combiner teams. Each
-character has a palette for the original toy, most also have one for the
-Sunbow cartoon, and some have one for the Marvel comic; see the \code{medium}
-column of \link{tf_characters}. Each element is a character vector of four to
+A named list of colour palettes covering the Generation 1 Transformers
+cast: the leaders, every member and combined form of the combiner teams,
+the Dinobots, Seekers, cassettes, Insecticons, the 1984 Autobot cars and
+Mini Vehicles, and the 1986 movie cast. Each character has a palette for
+the original toy, most have one for the cartoon, many have one for the
+Marvel comic, and the three combiner teams Hasbro re-released in
+Generation 2 have one for that; see the \code{medium} column of
+\link{tf_characters}. Each element is a character vector of four to
 six hex colours ordered so that the first few are the most distinct from
 one another (body colour first, then secondary colour, then accents). Use
 \code{\link[=tf_palette]{tf_palette()}} to pull colours from a palette, \code{\link[=tf_team_palette]{tf_team_palette()}} to take
