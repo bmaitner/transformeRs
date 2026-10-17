@@ -76,11 +76,11 @@ blacks do not count as a hue.
 ``` r
 s <- tf_palette_stats()
 head(s[order(-s$min_de_deutan), c("palette", "min_de", "min_de_deutan")])
-#>                palette   min_de min_de_deutan
-#> 89  drag_strip_cartoon 57.22242      50.23573
-#> 79        hook_cartoon 47.13860      47.04621
-#> 80   long_haul_cartoon 47.13860      47.04621
-#> 81    scrapper_cartoon 47.13860      47.04621
-#> 82 bonecrusher_cartoon 47.13860      47.04621
-#> 83   mixmaster_cartoon 47.13860      47.04621
+#>               palette   min_de min_de_deutan
+#> 277 scattershot_comic 60.24956      60.12099
+#> 248    air_raid_comic 60.16312      58.55659
+#> 249  fireflight_comic 60.16312      58.55659
+#> 251   slingshot_comic 60.16312      58.55659
+#> 204    mirage_cartoon 57.99994      53.21237
+#> 119            ratbat 59.59306      51.21162
 ```

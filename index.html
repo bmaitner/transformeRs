@@ -11,8 +11,8 @@
 <script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="transformerpalettes - Generation 1 Transformers palettes for R">
-<meta name="description" content="Color palettes based on the original 1984-1988 Generation 1 Transformers toys: Optimus Prime, Megatron, and every member and combined form of the core combiner teams (Aerialbots, Protectobots, Technobots, Constructicons, Stunticons, Combaticons, Terrorcons, Predacons and Seacons), with separate palettes for the toy, the cartoon animation model and, where available, the Marvel comic colouring of each character. Includes ggplot2 colour and fill scales for discrete and continuous data, team palettes that take one colour from each member of a combiner team, metadata linking each palette to its character, faction, team and reference page, and helpers to shortlist palettes that suit categorical, colour-blind-safe, sequential or diverging use. Hex values are approximations of the toys' plastic and paint colours; transformerpalettes is a fan project and is not affiliated with or endorsed by Hasbro or Takara Tomy.">
-<meta property="og:description" content="Color palettes based on the original 1984-1988 Generation 1 Transformers toys: Optimus Prime, Megatron, and every member and combined form of the core combiner teams (Aerialbots, Protectobots, Technobots, Constructicons, Stunticons, Combaticons, Terrorcons, Predacons and Seacons), with separate palettes for the toy, the cartoon animation model and, where available, the Marvel comic colouring of each character. Includes ggplot2 colour and fill scales for discrete and continuous data, team palettes that take one colour from each member of a combiner team, metadata linking each palette to its character, faction, team and reference page, and helpers to shortlist palettes that suit categorical, colour-blind-safe, sequential or diverging use. Hex values are approximations of the toys' plastic and paint colours; transformerpalettes is a fan project and is not affiliated with or endorsed by Hasbro or Takara Tomy.">
+<meta name="description" content="Color palettes based on the original 1984-1988 Generation 1 Transformers toys: the leaders, every member and combined form of the combiner teams (Aerialbots, Protectobots, Technobots, Constructicons, Stunticons, Combaticons, Terrorcons, Predacons, Seacons, Pretender Monsters and Breastforce), the Dinobots, the Seeker jets, Soundwave and the cassettes, the Insecticons, the 1984 Autobot cars and Mini Vehicles and the 1986 movie cast, with separate palettes for the toy, the cartoon animation model, the Marvel comic colouring and the Generation 2 re-release where each exists. Includes ggplot2 colour and fill scales for discrete and continuous data, team palettes that take one colour from each member of a combiner team, metadata linking each palette to its character, faction, team and reference page, and helpers to shortlist palettes that suit categorical, colour-blind-safe, sequential or diverging use. Hex values are approximations of the toys' plastic and paint colours; transformerpalettes is a fan project and is not affiliated with or endorsed by Hasbro or Takara Tomy.">
+<meta property="og:description" content="Color palettes based on the original 1984-1988 Generation 1 Transformers toys: the leaders, every member and combined form of the combiner teams (Aerialbots, Protectobots, Technobots, Constructicons, Stunticons, Combaticons, Terrorcons, Predacons, Seacons, Pretender Monsters and Breastforce), the Dinobots, the Seeker jets, Soundwave and the cassettes, the Insecticons, the 1984 Autobot cars and Mini Vehicles and the 1986 movie cast, with separate palettes for the toy, the cartoon animation model, the Marvel comic colouring and the Generation 2 re-release where each exists. Includes ggplot2 colour and fill scales for discrete and continuous data, team palettes that take one colour from each member of a combiner team, metadata linking each palette to its character, faction, team and reference page, and helpers to shortlist palettes that suit categorical, colour-blind-safe, sequential or diverging use. Hex values are approximations of the toys' plastic and paint colours; transformerpalettes is a fan project and is not affiliated with or endorsed by Hasbro or Takara Tomy.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">transformerpalettes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,7 +103,7 @@
 <div class="section level3">
 <h3 id="toy-cartoon-or-comic">Toy, cartoon or comic<a class="anchor" aria-label="anchor" href="#toy-cartoon-or-comic"></a>
 </h3>
-<p>Every function takes a <code>medium</code> argument that defaults to <code>"toy"</code>, so the plain names always give the toy colours. Ask for <code>"cartoon"</code> to get the flat colours of the Sunbow animation model, or <code>"comic"</code> for the Marvel colouring where one exists. The full names with a suffix work too.</p>
+<p>Every function takes a <code>medium</code> argument that defaults to <code>"toy"</code>, so the plain names always give the toy colours. Ask for <code>"cartoon"</code> to get the flat colours of the Sunbow animation model, <code>"comic"</code> for the Marvel colouring where one exists, or <code>"g2"</code> for the Generation 2 re-release of the three combiner teams Hasbro recoloured in 1992-94. The full names with a suffix work too.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/tf_palette.html">tf_palette</a></span><span class="op">(</span><span class="st">"drag_strip"</span><span class="op">)</span>                      <span class="co"># yellow-orange and plum toy</span></span>
 <span><span class="fu"><a href="reference/tf_palette.html">tf_palette</a></span><span class="op">(</span><span class="st">"drag_strip"</span>, medium <span class="op">=</span> <span class="st">"cartoon"</span><span class="op">)</span>  <span class="co"># yellow and purple cartoon model</span></span>
@@ -112,11 +112,12 @@
 <span><span class="fu"><a href="reference/tf_palette_names.html">tf_palette_names</a></span><span class="op">(</span>medium <span class="op">=</span> <span class="st">"cartoon"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/tf_palette_names.html">tf_palette_names</a></span><span class="op">(</span>role <span class="op">=</span> <span class="st">"leader"</span>, medium <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/tf_show_palettes.html">tf_show_palettes</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"optimus_prime"</span>, <span class="st">"optimus_prime_cartoon"</span>, <span class="st">"optimus_prime_comic"</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/tf_team_palette.html">tf_team_palette</a></span><span class="op">(</span><span class="st">"Constructicons"</span>, medium <span class="op">=</span> <span class="st">"cartoon"</span><span class="op">)</span>   <span class="co"># lime green, not grass green</span></span></code></pre></div>
+<span><span class="fu"><a href="reference/tf_team_palette.html">tf_team_palette</a></span><span class="op">(</span><span class="st">"Constructicons"</span>, medium <span class="op">=</span> <span class="st">"cartoon"</span><span class="op">)</span>   <span class="co"># lime green, not grass green</span></span>
+<span><span class="fu"><a href="reference/tf_team_palette.html">tf_team_palette</a></span><span class="op">(</span><span class="st">"Combaticons"</span>, medium <span class="op">=</span> <span class="st">"g2"</span><span class="op">)</span>           <span class="co"># 1994 camouflage colours</span></span></code></pre></div>
 <div class="float">
 <img src="reference/figures/media-comparison.png" alt="Toy, cartoon and comic versions"><div class="figcaption">Toy, cartoon and comic versions</div>
 </div>
-<p>Every character has a cartoon palette; the Seacons’ comes from the Japanese Super-God Masterforce series, since they never appeared in the Sunbow show. Comic palettes exist for Optimus Prime and Megatron so far, and the teams are queued in <a href="WISHLIST.html"><code>WISHLIST.md</code></a>: Marvel colouring changed from issue to issue, so each one is added from a named issue rather than from memory. Asking for a medium a character does not have yet gives an error that says so.</p>
+<p>Every character has a cartoon palette; the Seacons’ comes from the Japanese Super-God Masterforce series, since they never appeared in the Sunbow show. Comic palettes exist for the two leaders and all nine core combiner teams, each sampled from a named Marvel US or UK story that the browser links to. Marvel colouring changed from issue to issue (and Marvel UK recoloured the same art), so treat them as one issue’s reading rather than a canon. The Pretender Monsters have no cartoon palette because they never appeared in one; <a href="WISHLIST.html"><code>WISHLIST.md</code></a> lists what is still open. Asking for a medium a character does not have yet gives an error that says so.</p>
 </div>
 <div class="section level3">
 <h3 id="team-palettes">Team palettes<a class="anchor" aria-label="anchor" href="#team-palettes"></a>
@@ -274,7 +275,7 @@
 <td>Silverbolt, Air Raid, Fireflight, Skydive, Slingshot</td>
 <td>Superion</td>
 <td>1986</td>
-<td>toy, cartoon</td>
+<td>toy, cartoon, comic, g2</td>
 </tr>
 <tr>
 <td>Protectobots</td>
@@ -282,7 +283,7 @@
 <td>Hot Spot, Streetwise, Blades, Groove, First Aid</td>
 <td>Defensor</td>
 <td>1986</td>
-<td>toy, cartoon</td>
+<td>toy, cartoon, comic</td>
 </tr>
 <tr>
 <td>Technobots</td>
@@ -290,6 +291,14 @@
 <td>Scattershot, Lightspeed, Nosecone, Strafe, Afterburner</td>
 <td>Computron</td>
 <td>1987</td>
+<td>toy, cartoon, comic</td>
+</tr>
+<tr>
+<td>Dinobots</td>
+<td>Autobot</td>
+<td>Grimlock, Slag, Sludge, Snarl, Swoop</td>
+<td>(subgroup)</td>
+<td>1985</td>
 <td>toy, cartoon</td>
 </tr>
 <tr>
@@ -298,7 +307,7 @@
 <td>Hook, Long Haul, Scrapper, Bonecrusher, Mixmaster, Scavenger</td>
 <td>Devastator</td>
 <td>1985</td>
-<td>toy, cartoon</td>
+<td>toy, cartoon, comic, g2</td>
 </tr>
 <tr>
 <td>Stunticons</td>
@@ -306,7 +315,7 @@
 <td>Motormaster, Dead End, Breakdown, Drag Strip, Wildrider</td>
 <td>Menasor</td>
 <td>1986</td>
-<td>toy, cartoon</td>
+<td>toy, cartoon, comic</td>
 </tr>
 <tr>
 <td>Combaticons</td>
@@ -314,7 +323,7 @@
 <td>Onslaught, Brawl, Swindle, Blast Off, Vortex</td>
 <td>Bruticus</td>
 <td>1986</td>
-<td>toy, cartoon</td>
+<td>toy, cartoon, comic, g2</td>
 </tr>
 <tr>
 <td>Terrorcons</td>
@@ -322,7 +331,7 @@
 <td>Hun-Gurrr, Blot, Cutthroat, Rippersnapper, Sinnertwin</td>
 <td>Abominus</td>
 <td>1987</td>
-<td>toy, cartoon</td>
+<td>toy, cartoon, comic</td>
 </tr>
 <tr>
 <td>Predacons</td>
@@ -330,7 +339,7 @@
 <td>Razorclaw, Rampage, Tantrum, Headstrong, Divebomb</td>
 <td>Predaking</td>
 <td>1986</td>
-<td>toy, cartoon</td>
+<td>toy, cartoon, comic</td>
 </tr>
 <tr>
 <td>Seacons</td>
@@ -338,11 +347,75 @@
 <td>Snaptrap, Nautilator, Overbite, Seawing, Skalor, Tentakil</td>
 <td>Piranacon</td>
 <td>1988</td>
-<td>toy, cartoon (Masterforce)</td>
+<td>toy, cartoon (Masterforce), comic</td>
+</tr>
+<tr>
+<td>Seekers</td>
+<td>Decepticon</td>
+<td>Starscream, Thundercracker, Skywarp, Dirge, Ramjet, Thrust</td>
+<td>(subgroup)</td>
+<td>1984-85</td>
+<td>toy, cartoon</td>
+</tr>
+<tr>
+<td>Pretender Monsters</td>
+<td>Decepticon</td>
+<td>Slog, Birdbrain, Icepick, Bristleback, Wildfly, Scowl</td>
+<td>Monstructor</td>
+<td>1989</td>
+<td>toy</td>
+</tr>
+<tr>
+<td>Breastforce</td>
+<td>Decepticon</td>
+<td>Leozack, Drillhorn, Guyhawk, Hellbat, Jallguar, Killbison</td>
+<td>Liokaiser</td>
+<td>1989 (Takara)</td>
+<td>toy, cartoon (Victory)</td>
+</tr>
+<tr>
+<td>Cassettes</td>
+<td>Decepticon</td>
+<td>Laserbeak, Buzzsaw, Ravage, Rumble, Frenzy, Ratbat</td>
+<td>(subgroup)</td>
+<td>1984-86</td>
+<td>toy, cartoon</td>
+</tr>
+<tr>
+<td>Insecticons</td>
+<td>Decepticon</td>
+<td>Shrapnel, Bombshell, Kickback</td>
+<td>(subgroup)</td>
+<td>1985</td>
+<td>toy, cartoon</td>
+</tr>
+<tr>
+<td>Autobot Cars</td>
+<td>Autobot</td>
+<td>Jazz, Prowl, Ironhide, Ratchet, Wheeljack, Sunstreaker, Sideswipe, Hound, Mirage, Trailbreaker, Bluestreak</td>
+<td>(subgroup)</td>
+<td>1984</td>
+<td>toy, cartoon</td>
+</tr>
+<tr>
+<td>Minibots</td>
+<td>Autobot</td>
+<td>Bumblebee, Cliffjumper, Brawn, Huffer, Windcharger, Gears</td>
+<td>(subgroup)</td>
+<td>1984</td>
+<td>toy, cartoon</td>
+</tr>
+<tr>
+<td>(standalone)</td>
+<td>both</td>
+<td>Shockwave, Soundwave, Hot Rod, Rodimus Prime, Ultra Magnus, Kup, Blurr, Springer, Wreck-Gar, Galvatron, Cyclonus, Scourge, Gnaw</td>
+<td></td>
+<td>1984-86</td>
+<td>toy, cartoon</td>
 </tr>
 </tbody>
 </table>
-<p>Palette names are the character’s name in snake_case (<code>hun_gurrr</code>, <code>blast_off</code>); <code><a href="reference/tf_palette.html">tf_palette()</a></code> also accepts <code>"Hun-Gurrr"</code> and <code>"Blast Off"</code>. Every team is drawn in <code>man/figures/palettes-&lt;team&gt;.png</code>. Characters and teams that are lined up to be added next are listed in <a href="WISHLIST.html"><code>WISHLIST.md</code></a>; add a line there, or open a <a href="https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml" class="external-link">request</a>.</p>
+<p>Palette names are the character’s name in snake_case (<code>hun_gurrr</code>, <code>blast_off</code>); <code><a href="reference/tf_palette.html">tf_palette()</a></code> also accepts <code>"Hun-Gurrr"</code> and <code>"Blast Off"</code>. Every team is drawn in <code>man/figures/palettes-&lt;team&gt;.png</code> (spaces in a team name become hyphens). Characters and teams that are lined up to be added next are listed in <a href="WISHLIST.html"><code>WISHLIST.md</code></a>; add a line there, or open a <a href="https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml" class="external-link">request</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="how-the-palettes-were-made">How the palettes were made<a class="anchor" aria-label="anchor" href="#how-the-palettes-were-made"></a>

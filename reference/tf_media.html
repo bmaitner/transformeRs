@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">transformerpalettes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,9 +59,11 @@
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p><code>tf_media()</code> returns the media a palette can record, in the order
-<code>"toy"</code>, <code>"cartoon"</code>, <code>"comic"</code>. <code>tf_factions()</code> returns a character
+<code>"toy"</code> (the original Generation 1 release), <code>"cartoon"</code> (the animation
+model), <code>"comic"</code> (Marvel) and <code>"g2"</code> (the Generation 2 re-release of
+the toy in new colours, 1992-1994). <code>tf_factions()</code> returns a character
 vector of faction names. <code>tf_teams()</code> returns a character vector of
-combiner team names, in package order (Autobot teams first). All can be
+team and subgroup names, in package order (Autobot teams first). All can be
 passed to the matching argument of <code><a href="tf_palette_names.html">tf_palette_names()</a></code>,
 <code><a href="tf_show_palettes.html">tf_show_palettes()</a></code> and <code><a href="tf_find_palettes.html">tf_find_palettes()</a></code>.</p>
     </div>
@@ -69,16 +71,21 @@ passed to the matching argument of <code><a href="tf_palette_names.html">tf_pale
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">tf_media</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "toy"     "cartoon" "comic"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "toy"     "cartoon" "comic"   "g2"     </span>
 <span class="r-in"><span><span class="fu">tf_factions</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Autobot"    "Decepticon"</span>
 <span class="r-in"><span><span class="fu">tf_teams</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Aerialbots"     "Protectobots"   "Technobots"     "Constructicons"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "Stunticons"     "Combaticons"    "Terrorcons"     "Predacons"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [9] "Seacons"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "Aerialbots"         "Protectobots"       "Technobots"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "Dinobots"           "Autobot Cars"       "Minibots"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "Constructicons"     "Stunticons"         "Combaticons"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "Terrorcons"         "Predacons"          "Seacons"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "Pretender Monsters" "Breastforce"        "Seekers"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "Cassettes"          "Insecticons"       </span>
 <span class="r-in"><span><span class="fu">tf_teams</span><span class="op">(</span>faction <span class="op">=</span> <span class="st">"Decepticon"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Constructicons" "Stunticons"     "Combaticons"    "Terrorcons"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "Predacons"      "Seacons"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "Constructicons"     "Stunticons"         "Combaticons"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "Terrorcons"         "Predacons"          "Seacons"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "Pretender Monsters" "Breastforce"        "Seekers"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "Cassettes"          "Insecticons"       </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">transformerpalettes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,6 +33,19 @@
       <small>Source: <a href="https://github.com/bmaitner/transformerpalettes/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.4.0" id="transformerpalettes-040">transformerpalettes 0.4.0<a class="anchor" aria-label="anchor" href="#transformerpalettes-040"></a></h2>
+<ul><li>Third pass through the wishlist, clearing the queue: Shockwave, Soundwave and the six cassettes, the Insecticons, the eleven 1984 Autobot cars, the six Mini Vehicles, the 1986 movie cast (Hot Rod, Rodimus Prime, Ultra Magnus, Kup, Blurr, Springer, Wreck-Gar, Galvatron, Cyclonus, Scourge, Gnaw), and two more combiner teams, the Pretender Monsters (Monstructor) and Takara’s Breastforce (Liokaiser). Each has a toy palette checked against a TFWiki toy photo and, where the character appeared in a cartoon, a cartoon palette linked to an episode still.</li>
+<li>New <code>"standalone"</code> role for characters outside any team, and new subgroups Cassettes, Insecticons, Autobot Cars and Minibots.</li>
+<li>Comic palettes for the Technobots, Terrorcons and Seacons from the Marvel UK stories “Love and Steel!” and “Enemy Action!”.</li>
+<li>New <code>"g2"</code> medium: the Generation 2 re-releases of the Constructicons (1992, yellow), Aerialbots (1994) and Combaticons (1994, camouflage), keyed <code>&lt;name&gt;_g2</code>. 296 palettes in total.</li>
+<li>Corrected the wishlist note on Rumble and Frenzy: the Hasbro toy carded as Rumble is red and Frenzy is blue; the cartoon swapped them. The palettes follow the toys for <code>toy</code> and the cartoon for <code>cartoon</code>.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.3.0" id="transformerpalettes-030">transformerpalettes 0.3.0<a class="anchor" aria-label="anchor" href="#transformerpalettes-030"></a></h2>
+<ul><li>First pass through the wishlist. New subgroups that do not combine, with a <code>"subgroup member"</code> role and <code>NA</code> combiner: the <strong>Dinobots</strong> (Grimlock, Slag, Sludge, Snarl, Swoop) and the <strong>Seekers</strong> (Starscream, Thundercracker, Skywarp, Dirge, Ramjet, Thrust), each with toy and cartoon palettes checked against TFWiki toy photos and episode stills. <code><a href="../reference/tf_media.html">tf_teams()</a></code> now lists subgroups alongside combiner teams and <code><a href="../reference/tf_team_palette.html">tf_team_palette()</a></code> works for them.</li>
+<li>Comic palettes for six combiner teams, each sampled from a named Marvel US issue and linked to the panel: Constructicons (<a href="https://github.com/bmaitner/transformerpalettes/issues/10" class="external-link">#10</a>), Aerialbots (<a href="https://github.com/bmaitner/transformerpalettes/issues/21" class="external-link">#21</a>), Stunticons (<a href="https://github.com/bmaitner/transformerpalettes/issues/22" class="external-link">#22</a>), Protectobots (<a href="https://github.com/bmaitner/transformerpalettes/issues/24" class="external-link">#24</a>), Predacons (<a href="https://github.com/bmaitner/transformerpalettes/issues/25" class="external-link">#25</a>) and Combaticons (<a href="https://github.com/bmaitner/transformerpalettes/issues/32" class="external-link">#32</a>). Marvel’s colouring often departs from the toys: Menasor is yellow and magenta, Vortex is cyan, Rampage and Headstrong are red. 177 palettes in total.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="transformerpalettes-020">transformerpalettes 0.2.0<a class="anchor" aria-label="anchor" href="#transformerpalettes-020"></a></h2>
 <ul><li>The package is now called transformerpalettes (it started life as transformeRs). Function names are unchanged; reinstall with <code>pak::pak("bmaitner/transformerpalettes")</code>. The old GitHub URL redirects.</li>

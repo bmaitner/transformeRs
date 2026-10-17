@@ -53,11 +53,11 @@ tf_palette(
 
 - medium:
 
-  Which version of the character to use: `"toy"` (default), `"cartoon"`
-  or `"comic"`. See
+  Which version of the character to use: `"toy"` (default), `"cartoon"`,
+  `"comic"` or `"g2"`. See
   [`tf_media()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md).
   Errors with a pointer to the wishlist if the character has no palette
-  in that medium yet.
+  in that medium.
 
 ## Value
 
@@ -81,6 +81,11 @@ tf_palette("Megatron", 3, medium = "comic")
 #> Transformers palette 'megatron_comic' (3 colours, comic)
 #> Decepticon: Megatron
 #> #B9BDC2 #5E6368 #2B2B2B
+
+tf_palette("devastator", medium = "g2")
+#> Transformers palette 'devastator_g2' (5 colours, g2)
+#> Decepticon / Constructicons: Devastator
+#> #F2D21E #6E3FA3 #B5B8BD #262626 #F07C1E
 
 tf_palette("devastator", 12, type = "continuous")
 #> Transformers palette 'devastator' (12 colours, toy)

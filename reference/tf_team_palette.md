@@ -1,9 +1,9 @@
-# One colour per member of a combiner team
+# One colour per member of a team
 
-Builds a categorical palette for a combiner team by taking one colour
-from each member, in the team's order: torso first, then limbs. Each
-colour is named after the member it came from, so the palette doubles as
-a legend.
+Builds a categorical palette for a combiner team or subgroup by taking
+one colour from each member, in the team's order (torso first, then
+limbs, for a combiner team). Each colour is named after the member it
+came from, so the palette doubles as a legend.
 
 ## Usage
 
@@ -74,6 +74,15 @@ tf_team_palette("Stunticons")
 #> breakdown = #F0F0EC
 #> drag_strip = #F4A21C
 #> wildrider = #4E5257
+
+tf_team_palette("Seekers")
+#> Transformers team palette 'seekers' (6 colours)
+#> starscream = #C9CCCF
+#> thundercracker = #2F5FA8
+#> skywarp = #1E1E1E
+#> dirge = #1F3F94
+#> ramjet = #F0F0EC
+#> thrust = #7A1F2E
 
 tf_team_palette("Aerialbots")
 #> Transformers team palette 'aerialbots' (5 colours)

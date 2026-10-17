@@ -1,5 +1,56 @@
 # Changelog
 
+## transformerpalettes 0.4.0
+
+- Third pass through the wishlist, clearing the queue: Shockwave,
+  Soundwave and the six cassettes, the Insecticons, the eleven 1984
+  Autobot cars, the six Mini Vehicles, the 1986 movie cast (Hot Rod,
+  Rodimus Prime, Ultra Magnus, Kup, Blurr, Springer, Wreck-Gar,
+  Galvatron, Cyclonus, Scourge, Gnaw), and two more combiner teams, the
+  Pretender Monsters (Monstructor) and Takara’s Breastforce (Liokaiser).
+  Each has a toy palette checked against a TFWiki toy photo and, where
+  the character appeared in a cartoon, a cartoon palette linked to an
+  episode still.
+- New `"standalone"` role for characters outside any team, and new
+  subgroups Cassettes, Insecticons, Autobot Cars and Minibots.
+- Comic palettes for the Technobots, Terrorcons and Seacons from the
+  Marvel UK stories “Love and Steel!” and “Enemy Action!”.
+- New `"g2"` medium: the Generation 2 re-releases of the Constructicons
+  (1992, yellow), Aerialbots (1994) and Combaticons (1994, camouflage),
+  keyed `<name>_g2`. 296 palettes in total.
+- Corrected the wishlist note on Rumble and Frenzy: the Hasbro toy
+  carded as Rumble is red and Frenzy is blue; the cartoon swapped them.
+  The palettes follow the toys for `toy` and the cartoon for `cartoon`.
+
+## transformerpalettes 0.3.0
+
+- First pass through the wishlist. New subgroups that do not combine,
+  with a `"subgroup member"` role and `NA` combiner: the **Dinobots**
+  (Grimlock, Slag, Sludge, Snarl, Swoop) and the **Seekers**
+  (Starscream, Thundercracker, Skywarp, Dirge, Ramjet, Thrust), each
+  with toy and cartoon palettes checked against TFWiki toy photos and
+  episode stills.
+  [`tf_teams()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md)
+  now lists subgroups alongside combiner teams and
+  [`tf_team_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_team_palette.md)
+  works for them.
+- Comic palettes for six combiner teams, each sampled from a named
+  Marvel US issue and linked to the panel: Constructicons
+  ([\#10](https://github.com/bmaitner/transformerpalettes/issues/10)),
+  Aerialbots
+  ([\#21](https://github.com/bmaitner/transformerpalettes/issues/21)),
+  Stunticons
+  ([\#22](https://github.com/bmaitner/transformerpalettes/issues/22)),
+  Protectobots
+  ([\#24](https://github.com/bmaitner/transformerpalettes/issues/24)),
+  Predacons
+  ([\#25](https://github.com/bmaitner/transformerpalettes/issues/25))
+  and Combaticons
+  ([\#32](https://github.com/bmaitner/transformerpalettes/issues/32)).
+  Marvel’s colouring often departs from the toys: Menasor is yellow and
+  magenta, Vortex is cyan, Rampage and Headstrong are red. 177 palettes
+  in total.
+
 ## transformerpalettes 0.2.0
 
 - The package is now called transformerpalettes (it started life as

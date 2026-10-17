@@ -18,9 +18,10 @@ FactionBoth factions
 
 TeamAll teams
 
-RoleAny role leader combiner torso combiner limb combined form
+RoleAny role leader combiner torso combiner limb standalone combined
+form subgroup member
 
-ColoursAny number 4 5 6
+ColoursAny number 3 4 5 6
 
 Sort byPackage order Name Team Year Most distinct colours Most
 colorblind-safe Widest lightness range

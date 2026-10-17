@@ -15,7 +15,7 @@ and links to the reference page and image on the Transformers Wiki."></head><bod
 
     <a class="navbar-brand me-2" href="../index.html">transformerpalettes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +66,8 @@ character's palettes across media (e.g. <code>"optimus_prime"</code> for both
 <code>optimus_prime</code> and <code>optimus_prime_cartoon</code>).</p></dd>
 
 <dt>medium</dt>
-<dd><p><code>"toy"</code>, <code>"cartoon"</code> or <code>"comic"</code>. See <code><a href="tf_media.html">tf_media()</a></code>.</p></dd>
+<dd><p><code>"toy"</code>, <code>"cartoon"</code>, <code>"comic"</code> or <code>"g2"</code>. See
+<code><a href="tf_media.html">tf_media()</a></code>.</p></dd>
 
 <dt>character</dt>
 <dd><p>Character name as printed on the toy's packaging.</p></dd>
@@ -75,16 +76,20 @@ character's palettes across media (e.g. <code>"optimus_prime"</code> for both
 <dd><p><code>"Autobot"</code> or <code>"Decepticon"</code>. See <code><a href="tf_media.html">tf_factions()</a></code>.</p></dd>
 
 <dt>team</dt>
-<dd><p>Combiner team, e.g. <code>"Aerialbots"</code>, or <code>NA</code> for characters
-that are not part of a team. See <code><a href="tf_media.html">tf_teams()</a></code>.</p></dd>
+<dd><p>Combiner team or subgroup, e.g. <code>"Aerialbots"</code> or
+<code>"Seekers"</code>, or <code>NA</code> for characters that are not part of one. See
+<code><a href="tf_media.html">tf_teams()</a></code>.</p></dd>
 
 <dt>combiner</dt>
 <dd><p>Base palette name of the team's combined form, e.g.
-<code>"superion"</code>, or <code>NA</code>.</p></dd>
+<code>"superion"</code>, or <code>NA</code> for leaders and for subgroups that do not
+combine.</p></dd>
 
 <dt>role</dt>
-<dd><p>One of <code>"leader"</code>, <code>"combiner torso"</code>, <code>"combiner limb"</code> or
-<code>"combined form"</code>.</p></dd>
+<dd><p>One of <code>"leader"</code>, <code>"standalone"</code> (a character outside any
+team), <code>"combiner torso"</code>, <code>"combiner limb"</code>, <code>"combined form"</code> or
+<code>"subgroup member"</code> (Dinobots, Seekers, Cassettes, Insecticons,
+Autobot Cars, Minibots).</p></dd>
 
 <dt>alt_mode</dt>
 <dd><p>The character's alternate mode.</p></dd>
@@ -122,59 +127,67 @@ the Transformers Wiki, or <code>NA</code> where none has been identified yet.</p
 <span class="r-out co"><span class="r-pr">#&gt;</span>         palette          base medium     character    faction       team</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 optimus_prime optimus_prime    toy Optimus Prime    Autobot       &lt;NA&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2      megatron      megatron    toy      Megatron Decepticon       &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3    silverbolt    silverbolt    toy    Silverbolt    Autobot Aerialbots</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4      air_raid      air_raid    toy      Air Raid    Autobot Aerialbots</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5    fireflight    fireflight    toy    Fireflight    Autobot Aerialbots</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6       skydive       skydive    toy       Skydive    Autobot Aerialbots</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     shockwave     shockwave    toy     Shockwave Decepticon       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     soundwave     soundwave    toy     Soundwave Decepticon       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    silverbolt    silverbolt    toy    Silverbolt    Autobot Aerialbots</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6      air_raid      air_raid    toy      Air Raid    Autobot Aerialbots</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   combiner           role                         alt_mode year n_colours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1     &lt;NA&gt;         leader Freightliner cab-over semi truck 1984         5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2     &lt;NA&gt;         leader               Walther P38 pistol 1984         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 superion combiner torso     Concorde supersonic airliner 1986         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 superion  combiner limb           F-15 Eagle fighter jet 1986         4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 superion  combiner limb       F-4 Phantom II fighter jet 1986         4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 superion  combiner limb F-16 Fighting Falcon fighter jet 1986         5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     &lt;NA&gt;     standalone                     Laser pistol 1985         5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     &lt;NA&gt;     standalone           Microcassette recorder 1984         5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 superion combiner torso     Concorde supersonic airliner 1986         5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 superion  combiner limb           F-15 Eagle fighter jet 1986         4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                             description</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1                                  Red cab plastic, blue legs and forearms, silver die-cast chest and grey thighs, yellow detail stickers, black tyres.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 Chromed silver body, grey plastic barrel and legs, red inner arms and legs on the Hasbro release, black grip and trigger, purple Decepticon insignia.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                           White jet plastic, dark grey legs and arms, red and yellow chest stickers, black detailing.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                      Black jet plastic with red and white stripe stickers, grey chrome and detailing.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                               Red fuselage plastic with white wings, grey chrome and black detailing.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                                     Dark grey jet plastic with black, blue accents, red stickers and white detailing.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                              Purple plastic with light lavender-grey arms and barrel, yellow eye and hose, black grip, silver chrome.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                             Dark blue plastic with grey chest door and limbs, black detailing, yellow eyes and buttons, red stickers.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                           White jet plastic, dark grey legs and arms, red and yellow chest stickers, black detailing.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                                      Black jet plastic with red and white stripe stickers, grey chrome and detailing.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                            source</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://tfwiki.net/wiki/Optimus_Prime_(G1)/toys</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2      https://tfwiki.net/wiki/Megatron_(G1)/toys</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         https://tfwiki.net/wiki/Silverbolt_(G1)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4           https://tfwiki.net/wiki/Air_Raid_(G1)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         https://tfwiki.net/wiki/Fireflight_(G1)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6            https://tfwiki.net/wiki/Skydive_(G1)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     https://tfwiki.net/wiki/Shockwave_(G1)/toys</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     https://tfwiki.net/wiki/Soundwave_(G1)/toys</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         https://tfwiki.net/wiki/Silverbolt_(G1)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6           https://tfwiki.net/wiki/Air_Raid_(G1)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                               image</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://tfwiki.net/mediawiki/images2/2/2d/G1_OptimusPrime_toy.jpg</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2      https://tfwiki.net/mediawiki/images2/d/d7/G1Megatron_toy.jpg</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                              &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         https://tfwiki.net/mediawiki/images2/2/2d/Airraid_toy.jpg</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5    https://tfwiki.net/mediawiki/images2/a/a7/G1Fireflight_toy.JPG</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6       https://tfwiki.net/mediawiki/images2/7/77/G1Skydive_Toy.JPG</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     https://tfwiki.net/mediawiki/images2/4/4e/G1Shockwave_toy.jpg</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     https://tfwiki.net/mediawiki/images2/3/36/G1Soundwave_toy.jpg</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                              &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         https://tfwiki.net/mediawiki/images2/2/2d/Airraid_toy.jpg</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">tf_characters</span><span class="op">$</span><span class="va">team</span>, <span class="va">tf_characters</span><span class="op">$</span><span class="va">medium</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  cartoon comic toy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Aerialbots           6     0   6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Combaticons          6     0   6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Constructicons       7     0   7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Predacons            6     0   6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Protectobots         6     0   6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Seacons              7     0   7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Stunticons           6     0   6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Technobots           6     0   6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Terrorcons           6     0   6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      cartoon comic g2 toy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Aerialbots               6     6  6   6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Autobot Cars            11     0  0  11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Breastforce              7     0  0   7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Cassettes                6     0  0   6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Combaticons              6     6  6   6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Constructicons           7     7  7   7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Dinobots                 5     0  0   5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Insecticons              3     0  0   3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Minibots                 6     0  0   6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Predacons                6     6  0   6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Pretender Monsters       0     0  0   7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Protectobots             6     6  0   6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Seacons                  7     7  0   7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Seekers                  6     0  0   6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Stunticons               6     6  0   6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Technobots               6     6  0   6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Terrorcons               6     6  0   6</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">tf_characters</span>, <span class="va">base</span> <span class="op">==</span> <span class="st">"megatron"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">palette</span>, <span class="va">medium</span>, <span class="va">description</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              palette  medium</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2           megatron     toy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 60  megatron_cartoon cartoon</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 118   megatron_comic   comic</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 124 megatron_cartoon cartoon</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 239   megatron_comic   comic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                               description</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2   Chromed silver body, grey plastic barrel and legs, red inner arms and legs on the Hasbro release, black grip and trigger, purple Decepticon insignia.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 60                   Animation model: light grey body, darker grey arms and lower legs, black fusion cannon and chest details, red eyes, purple insignia.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 118                   Marvel US #1 onwards: light grey body with darker grey limbs, black fusion cannon and chest, red eyes and details, purple insignia.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 124                  Animation model: light grey body, darker grey arms and lower legs, black fusion cannon and chest details, red eyes, purple insignia.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 239                   Marvel US #1 onwards: light grey body with darker grey limbs, black fusion cannon and chest, red eyes and details, purple insignia.</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

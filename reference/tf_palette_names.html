@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">transformerpalettes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,20 +53,20 @@ to. Matched case-insensitively and by unique prefix, so <code>"auto"</code> work
 
 
 <dt id="arg-team">team<a class="anchor" aria-label="anchor" href="#arg-team"></a></dt>
-<dd><p>Optional combiner team (see <code><a href="tf_media.html">tf_teams()</a></code>) to restrict the list
-to, matched the same way.</p></dd>
+<dd><p>Optional team or subgroup (see <code><a href="tf_media.html">tf_teams()</a></code>) to restrict the
+list to, matched the same way.</p></dd>
 
 
 <dt id="arg-role">role<a class="anchor" aria-label="anchor" href="#arg-role"></a></dt>
 <dd><p>Optional role to restrict the list to: one of <code>"leader"</code>,
-<code>"combiner torso"</code>, <code>"combiner limb"</code> or <code>"combined form"</code>, matched the
-same way.</p></dd>
+<code>"combiner torso"</code>, <code>"combiner limb"</code>, <code>"combined form"</code> or
+<code>"subgroup member"</code>, matched the same way.</p></dd>
 
 
 <dt id="arg-medium">medium<a class="anchor" aria-label="anchor" href="#arg-medium"></a></dt>
 <dd><p>Which medium's palettes to list: <code>"toy"</code> (default),
-<code>"cartoon"</code>, <code>"comic"</code>, or <code>"all"</code> for every palette regardless of
-medium. See <code><a href="tf_media.html">tf_media()</a></code>.</p></dd>
+<code>"cartoon"</code>, <code>"comic"</code>, <code>"g2"</code>, or <code>"all"</code> for every palette regardless
+of medium. See <code><a href="tf_media.html">tf_media()</a></code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -78,38 +78,65 @@ and the <code>scale_*_tf()</code> functions.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">tf_palette_names</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "optimus_prime" "megatron"      "silverbolt"    "air_raid"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "fireflight"    "skydive"       "slingshot"     "superion"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "hot_spot"      "streetwise"    "blades"        "groove"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "first_aid"     "defensor"      "scattershot"   "lightspeed"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "nosecone"      "strafe"        "afterburner"   "computron"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "hook"          "long_haul"     "scrapper"      "bonecrusher"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "mixmaster"     "scavenger"     "devastator"    "motormaster"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "dead_end"      "breakdown"     "drag_strip"    "wildrider"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "menasor"       "onslaught"     "brawl"         "swindle"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "blast_off"     "vortex"        "bruticus"      "hun_gurrr"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "blot"          "cutthroat"     "rippersnapper" "sinnertwin"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "abominus"      "razorclaw"     "rampage"       "tantrum"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "headstrong"    "divebomb"      "predaking"     "snaptrap"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "nautilator"    "overbite"      "seawing"       "skalor"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [57] "tentakil"      "piranacon"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] "optimus_prime"  "megatron"       "shockwave"      "soundwave"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [5] "silverbolt"     "air_raid"       "fireflight"     "skydive"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [9] "slingshot"      "superion"       "hot_spot"       "streetwise"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [13] "blades"         "groove"         "first_aid"      "defensor"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [17] "scattershot"    "lightspeed"     "nosecone"       "strafe"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [21] "afterburner"    "computron"      "grimlock"       "slag"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "sludge"         "snarl"          "swoop"          "jazz"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] "prowl"          "ironhide"       "ratchet"        "wheeljack"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [33] "sunstreaker"    "sideswipe"      "hound"          "mirage"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "trailbreaker"   "bluestreak"     "bumblebee"      "cliffjumper"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [41] "brawn"          "huffer"         "windcharger"    "gears"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] "hot_rod"        "rodimus_prime"  "ultra_magnus"   "kup"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "blurr"          "springer"       "wreck_gar"      "galvatron"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [53] "cyclonus"       "scourge"        "gnaw"           "hook"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "long_haul"      "scrapper"       "bonecrusher"    "mixmaster"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "scavenger"      "devastator"     "motormaster"    "dead_end"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "breakdown"      "drag_strip"     "wildrider"      "menasor"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "onslaught"      "brawl"          "swindle"        "blast_off"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "vortex"         "bruticus"       "hun_gurrr"      "blot"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "cutthroat"      "rippersnapper"  "sinnertwin"     "abominus"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "razorclaw"      "rampage"        "tantrum"        "headstrong"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "divebomb"       "predaking"      "snaptrap"       "nautilator"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "overbite"       "seawing"        "skalor"         "tentakil"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "piranacon"      "slog"           "birdbrain"      "icepick"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "bristleback"    "wildfly"        "scowl"          "monstructor"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "leozack"        "drillhorn"      "guyhawk"        "hellbat"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "jallguar"       "killbison"      "liokaiser"      "starscream"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "thundercracker" "skywarp"        "dirge"          "ramjet"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "thrust"         "laserbeak"      "buzzsaw"        "ravage"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "rumble"         "frenzy"         "ratbat"         "shrapnel"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "bombshell"      "kickback"      </span>
 <span class="r-in"><span><span class="fu">tf_palette_names</span><span class="op">(</span>faction <span class="op">=</span> <span class="st">"Decepticon"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "megatron"      "hook"          "long_haul"     "scrapper"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "bonecrusher"   "mixmaster"     "scavenger"     "devastator"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "motormaster"   "dead_end"      "breakdown"     "drag_strip"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "wildrider"     "menasor"       "onslaught"     "brawl"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "swindle"       "blast_off"     "vortex"        "bruticus"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "hun_gurrr"     "blot"          "cutthroat"     "rippersnapper"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "sinnertwin"    "abominus"      "razorclaw"     "rampage"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "tantrum"       "headstrong"    "divebomb"      "predaking"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "snaptrap"      "nautilator"    "overbite"      "seawing"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "skalor"        "tentakil"      "piranacon"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "megatron"       "shockwave"      "soundwave"      "galvatron"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "cyclonus"       "scourge"        "gnaw"           "hook"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "long_haul"      "scrapper"       "bonecrusher"    "mixmaster"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "scavenger"      "devastator"     "motormaster"    "dead_end"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "breakdown"      "drag_strip"     "wildrider"      "menasor"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "onslaught"      "brawl"          "swindle"        "blast_off"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "vortex"         "bruticus"       "hun_gurrr"      "blot"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "cutthroat"      "rippersnapper"  "sinnertwin"     "abominus"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "razorclaw"      "rampage"        "tantrum"        "headstrong"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "divebomb"       "predaking"      "snaptrap"       "nautilator"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "overbite"       "seawing"        "skalor"         "tentakil"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "piranacon"      "slog"           "birdbrain"      "icepick"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "bristleback"    "wildfly"        "scowl"          "monstructor"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "leozack"        "drillhorn"      "guyhawk"        "hellbat"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [57] "jallguar"       "killbison"      "liokaiser"      "starscream"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [61] "thundercracker" "skywarp"        "dirge"          "ramjet"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [65] "thrust"         "laserbeak"      "buzzsaw"        "ravage"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [69] "rumble"         "frenzy"         "ratbat"         "shrapnel"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [73] "bombshell"      "kickback"      </span>
 <span class="r-in"><span><span class="fu">tf_palette_names</span><span class="op">(</span>team <span class="op">=</span> <span class="st">"Aerialbots"</span>, medium <span class="op">=</span> <span class="st">"cartoon"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "silverbolt_cartoon" "air_raid_cartoon"   "fireflight_cartoon"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4] "skydive_cartoon"    "slingshot_cartoon"  "superion_cartoon"  </span>
 <span class="r-in"><span><span class="fu">tf_palette_names</span><span class="op">(</span>role <span class="op">=</span> <span class="st">"leader"</span>, medium <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "optimus_prime"         "megatron"              "optimus_prime_cartoon"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "megatron_cartoon"      "optimus_prime_comic"   "megatron_comic"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "optimus_prime"         "megatron"              "rodimus_prime"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "ultra_magnus"          "galvatron"             "optimus_prime_cartoon"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "megatron_cartoon"      "rodimus_prime_cartoon" "ultra_magnus_cartoon" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "galvatron_cartoon"     "optimus_prime_comic"   "megatron_comic"       </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

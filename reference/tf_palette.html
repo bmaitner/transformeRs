@@ -11,7 +11,7 @@ across the whole palette (type = &quot;continuous&quot;)."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">transformerpalettes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,8 +91,8 @@ palette is used as a sequential gradient; see <code><a href="tf_find_palettes.ht
 
 <dt id="arg-medium">medium<a class="anchor" aria-label="anchor" href="#arg-medium"></a></dt>
 <dd><p>Which version of the character to use: <code>"toy"</code> (default),
-<code>"cartoon"</code> or <code>"comic"</code>. See <code><a href="tf_media.html">tf_media()</a></code>. Errors with a pointer to
-the wishlist if the character has no palette in that medium yet.</p></dd>
+<code>"cartoon"</code>, <code>"comic"</code> or <code>"g2"</code>. See <code><a href="tf_media.html">tf_media()</a></code>. Errors with a
+pointer to the wishlist if the character has no palette in that medium.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -118,20 +118,25 @@ has a print method that draws the swatches.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Decepticon: Megatron</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> #B9BDC2 #5E6368 #2B2B2B</span>
 <span class="r-plt img"><img src="tf_palette-3.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="fu">tf_palette</span><span class="op">(</span><span class="st">"devastator"</span>, medium <span class="op">=</span> <span class="st">"g2"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Transformers palette 'devastator_g2' (5 colours, g2)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Decepticon / Constructicons: Devastator</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #F2D21E #6E3FA3 #B5B8BD #262626 #F07C1E</span>
+<span class="r-plt img"><img src="tf_palette-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu">tf_palette</span><span class="op">(</span><span class="st">"devastator"</span>, <span class="fl">12</span>, type <span class="op">=</span> <span class="st">"continuous"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Transformers palette 'devastator' (12 colours, toy)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Decepticon / Constructicons: Devastator</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> #3FA23F #507D63 #615987 #7449A5 #8E76AE #A8A2B8 #9B9DA1 #67686A #323333 #5B502B #A28933 #E9C23B</span>
-<span class="r-plt img"><img src="tf_palette-4.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="tf_palette-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu">tf_palette</span><span class="op">(</span><span class="st">"hot_spot"</span>, <span class="fl">12</span>, type <span class="op">=</span> <span class="st">"continuous"</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Transformers palette 'hot_spot' (12 colours, toy)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Autobot / Protectobots: Hot Spot</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> #2A2A2A #26395A #22498B #2F51A3 #704173 #B13142 #C73E3F #B3686A #9F9296 #B2B4B6 #D2D3D3 #F2F2F0</span>
-<span class="r-plt img"><img src="tf_palette-5.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="tf_palette-6.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># base graphics</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, col <span class="op">=</span> <span class="fu">tf_palette</span><span class="op">(</span><span class="st">"predaking"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="tf_palette-6.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="tf_palette-7.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

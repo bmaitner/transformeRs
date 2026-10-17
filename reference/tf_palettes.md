@@ -1,10 +1,12 @@
 # Generation 1 Transformers palettes
 
-A named list of colour palettes covering Optimus Prime, Megatron, and
-every member and combined form of the core Generation 1 combiner teams.
-Each character has a palette for the original toy, most also have one
-for the Sunbow cartoon, and some have one for the Marvel comic; see the
-`medium` column of
+A named list of colour palettes covering the Generation 1 Transformers
+cast: the leaders, every member and combined form of the combiner teams,
+the Dinobots, Seekers, cassettes, Insecticons, the 1984 Autobot cars and
+Mini Vehicles, and the 1986 movie cast. Each character has a palette for
+the original toy, most have one for the cartoon, many have one for the
+Marvel comic, and the three combiner teams Hasbro re-released in
+Generation 2 have one for that; see the `medium` column of
 [tf_characters](https://bmaitner.github.io/transformerpalettes/reference/tf_characters.md).
 Each element is a character vector of four to six hex colours ordered so
 that the first few are the most distinct from one another (body colour
@@ -51,7 +53,7 @@ entries reflect how the part photographs.
 
 ``` r
 length(tf_palettes)
-#> [1] 118
+#> [1] 314
 tf_palettes$optimus_prime
 #> [1] "#D0202A" "#1F3E8F" "#B8BABF" "#F2D23C" "#2D2D2D"
 tf_palettes$optimus_prime_cartoon

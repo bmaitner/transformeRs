@@ -19,20 +19,21 @@ tf_palette_names(faction = NULL, team = NULL, role = NULL, medium = "toy")
 
 - team:
 
-  Optional combiner team (see
+  Optional team or subgroup (see
   [`tf_teams()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md))
   to restrict the list to, matched the same way.
 
 - role:
 
   Optional role to restrict the list to: one of `"leader"`,
-  `"combiner torso"`, `"combiner limb"` or `"combined form"`, matched
-  the same way.
+  `"combiner torso"`, `"combiner limb"`, `"combined form"` or
+  `"subgroup member"`, matched the same way.
 
 - medium:
 
   Which medium's palettes to list: `"toy"` (default), `"cartoon"`,
-  `"comic"`, or `"all"` for every palette regardless of medium. See
+  `"comic"`, `"g2"`, or `"all"` for every palette regardless of medium.
+  See
   [`tf_media()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md).
 
 ## Value
@@ -45,36 +46,63 @@ and the `scale_*_tf()` functions.
 
 ``` r
 tf_palette_names()
-#>  [1] "optimus_prime" "megatron"      "silverbolt"    "air_raid"     
-#>  [5] "fireflight"    "skydive"       "slingshot"     "superion"     
-#>  [9] "hot_spot"      "streetwise"    "blades"        "groove"       
-#> [13] "first_aid"     "defensor"      "scattershot"   "lightspeed"   
-#> [17] "nosecone"      "strafe"        "afterburner"   "computron"    
-#> [21] "hook"          "long_haul"     "scrapper"      "bonecrusher"  
-#> [25] "mixmaster"     "scavenger"     "devastator"    "motormaster"  
-#> [29] "dead_end"      "breakdown"     "drag_strip"    "wildrider"    
-#> [33] "menasor"       "onslaught"     "brawl"         "swindle"      
-#> [37] "blast_off"     "vortex"        "bruticus"      "hun_gurrr"    
-#> [41] "blot"          "cutthroat"     "rippersnapper" "sinnertwin"   
-#> [45] "abominus"      "razorclaw"     "rampage"       "tantrum"      
-#> [49] "headstrong"    "divebomb"      "predaking"     "snaptrap"     
-#> [53] "nautilator"    "overbite"      "seawing"       "skalor"       
-#> [57] "tentakil"      "piranacon"    
+#>   [1] "optimus_prime"  "megatron"       "shockwave"      "soundwave"     
+#>   [5] "silverbolt"     "air_raid"       "fireflight"     "skydive"       
+#>   [9] "slingshot"      "superion"       "hot_spot"       "streetwise"    
+#>  [13] "blades"         "groove"         "first_aid"      "defensor"      
+#>  [17] "scattershot"    "lightspeed"     "nosecone"       "strafe"        
+#>  [21] "afterburner"    "computron"      "grimlock"       "slag"          
+#>  [25] "sludge"         "snarl"          "swoop"          "jazz"          
+#>  [29] "prowl"          "ironhide"       "ratchet"        "wheeljack"     
+#>  [33] "sunstreaker"    "sideswipe"      "hound"          "mirage"        
+#>  [37] "trailbreaker"   "bluestreak"     "bumblebee"      "cliffjumper"   
+#>  [41] "brawn"          "huffer"         "windcharger"    "gears"         
+#>  [45] "hot_rod"        "rodimus_prime"  "ultra_magnus"   "kup"           
+#>  [49] "blurr"          "springer"       "wreck_gar"      "galvatron"     
+#>  [53] "cyclonus"       "scourge"        "gnaw"           "hook"          
+#>  [57] "long_haul"      "scrapper"       "bonecrusher"    "mixmaster"     
+#>  [61] "scavenger"      "devastator"     "motormaster"    "dead_end"      
+#>  [65] "breakdown"      "drag_strip"     "wildrider"      "menasor"       
+#>  [69] "onslaught"      "brawl"          "swindle"        "blast_off"     
+#>  [73] "vortex"         "bruticus"       "hun_gurrr"      "blot"          
+#>  [77] "cutthroat"      "rippersnapper"  "sinnertwin"     "abominus"      
+#>  [81] "razorclaw"      "rampage"        "tantrum"        "headstrong"    
+#>  [85] "divebomb"       "predaking"      "snaptrap"       "nautilator"    
+#>  [89] "overbite"       "seawing"        "skalor"         "tentakil"      
+#>  [93] "piranacon"      "slog"           "birdbrain"      "icepick"       
+#>  [97] "bristleback"    "wildfly"        "scowl"          "monstructor"   
+#> [101] "leozack"        "drillhorn"      "guyhawk"        "hellbat"       
+#> [105] "jallguar"       "killbison"      "liokaiser"      "starscream"    
+#> [109] "thundercracker" "skywarp"        "dirge"          "ramjet"        
+#> [113] "thrust"         "laserbeak"      "buzzsaw"        "ravage"        
+#> [117] "rumble"         "frenzy"         "ratbat"         "shrapnel"      
+#> [121] "bombshell"      "kickback"      
 tf_palette_names(faction = "Decepticon")
-#>  [1] "megatron"      "hook"          "long_haul"     "scrapper"     
-#>  [5] "bonecrusher"   "mixmaster"     "scavenger"     "devastator"   
-#>  [9] "motormaster"   "dead_end"      "breakdown"     "drag_strip"   
-#> [13] "wildrider"     "menasor"       "onslaught"     "brawl"        
-#> [17] "swindle"       "blast_off"     "vortex"        "bruticus"     
-#> [21] "hun_gurrr"     "blot"          "cutthroat"     "rippersnapper"
-#> [25] "sinnertwin"    "abominus"      "razorclaw"     "rampage"      
-#> [29] "tantrum"       "headstrong"    "divebomb"      "predaking"    
-#> [33] "snaptrap"      "nautilator"    "overbite"      "seawing"      
-#> [37] "skalor"        "tentakil"      "piranacon"    
+#>  [1] "megatron"       "shockwave"      "soundwave"      "galvatron"     
+#>  [5] "cyclonus"       "scourge"        "gnaw"           "hook"          
+#>  [9] "long_haul"      "scrapper"       "bonecrusher"    "mixmaster"     
+#> [13] "scavenger"      "devastator"     "motormaster"    "dead_end"      
+#> [17] "breakdown"      "drag_strip"     "wildrider"      "menasor"       
+#> [21] "onslaught"      "brawl"          "swindle"        "blast_off"     
+#> [25] "vortex"         "bruticus"       "hun_gurrr"      "blot"          
+#> [29] "cutthroat"      "rippersnapper"  "sinnertwin"     "abominus"      
+#> [33] "razorclaw"      "rampage"        "tantrum"        "headstrong"    
+#> [37] "divebomb"       "predaking"      "snaptrap"       "nautilator"    
+#> [41] "overbite"       "seawing"        "skalor"         "tentakil"      
+#> [45] "piranacon"      "slog"           "birdbrain"      "icepick"       
+#> [49] "bristleback"    "wildfly"        "scowl"          "monstructor"   
+#> [53] "leozack"        "drillhorn"      "guyhawk"        "hellbat"       
+#> [57] "jallguar"       "killbison"      "liokaiser"      "starscream"    
+#> [61] "thundercracker" "skywarp"        "dirge"          "ramjet"        
+#> [65] "thrust"         "laserbeak"      "buzzsaw"        "ravage"        
+#> [69] "rumble"         "frenzy"         "ratbat"         "shrapnel"      
+#> [73] "bombshell"      "kickback"      
 tf_palette_names(team = "Aerialbots", medium = "cartoon")
 #> [1] "silverbolt_cartoon" "air_raid_cartoon"   "fireflight_cartoon"
 #> [4] "skydive_cartoon"    "slingshot_cartoon"  "superion_cartoon"  
 tf_palette_names(role = "leader", medium = "all")
-#> [1] "optimus_prime"         "megatron"              "optimus_prime_cartoon"
-#> [4] "megatron_cartoon"      "optimus_prime_comic"   "megatron_comic"       
+#>  [1] "optimus_prime"         "megatron"              "rodimus_prime"        
+#>  [4] "ultra_magnus"          "galvatron"             "optimus_prime_cartoon"
+#>  [7] "megatron_cartoon"      "rodimus_prime_cartoon" "ultra_magnus_cartoon" 
+#> [10] "galvatron_cartoon"     "optimus_prime_comic"   "megatron_comic"       
 ```

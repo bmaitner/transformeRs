@@ -9,7 +9,7 @@
 - [`tf_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette.md)
   : Get colours from a character's palette
 - [`tf_team_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_team_palette.md)
-  : One colour per member of a combiner team
+  : One colour per member of a team
 - [`tf_palette_names()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_names.md)
   : List the available palettes
 - [`tf_media()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md)

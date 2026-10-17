@@ -13,7 +13,7 @@ hold up."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">transformerpalettes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,42 +110,75 @@ candidates for the use case come first.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">tf_find_palettes</span><span class="op">(</span><span class="st">"colorblind"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "blades"        "computron"     "air_raid"      "superion"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "scattershot"   "fireflight"    "hot_spot"      "defensor"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "silverbolt"    "nosecone"      "headstrong"    "slingshot"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "rippersnapper" "lightspeed"    "strafe"        "hook"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "long_haul"     "scrapper"      "bonecrusher"   "mixmaster"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "scavenger"     "devastator"    "first_aid"     "streetwise"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "skydive"       "optimus_prime" "wildrider"     "groove"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "afterburner"   "megatron"      "blast_off"     "swindle"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "cutthroat"     "breakdown"     "motormaster"   "menasor"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "vortex"        "divebomb"      "abominus"      "drag_strip"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "blades"        "computron"     "air_raid"      "huffer"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "superion"      "brawn"         "scattershot"   "jallguar"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "fireflight"    "hot_spot"      "defensor"      "trailbreaker" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "silverbolt"    "nosecone"      "ratchet"       "sunstreaker"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "bumblebee"     "cliffjumper"   "windcharger"   "gears"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "ultra_magnus"  "headstrong"    "slingshot"     "rippersnapper"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "ramjet"        "lightspeed"    "strafe"        "snarl"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "swoop"         "soundwave"     "drillhorn"     "hook"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "long_haul"     "scrapper"      "bonecrusher"   "mixmaster"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "scavenger"     "devastator"    "ratbat"        "shrapnel"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "bombshell"     "kickback"      "first_aid"     "streetwise"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "skydive"       "galvatron"     "optimus_prime" "wreck_gar"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "wildrider"     "groove"        "afterburner"   "megatron"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "blast_off"     "hot_rod"       "birdbrain"     "swindle"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [57] "cutthroat"     "jazz"          "prowl"         "sideswipe"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [61] "mirage"        "bluestreak"    "breakdown"     "motormaster"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [65] "menasor"       "kup"           "vortex"        "wheeljack"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [69] "slog"          "rodimus_prime" "divebomb"      "leozack"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [73] "guyhawk"       "hellbat"       "scourge"       "abominus"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [77] "drag_strip"   </span>
 <span class="r-in"><span><span class="fu">tf_find_palettes</span><span class="op">(</span><span class="st">"diverging"</span>, faction <span class="op">=</span> <span class="st">"Decepticon"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "scrapper"      "scavenger"     "devastator"    "rippersnapper"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "breakdown"     "piranacon"     "snaptrap"      "hook"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "long_haul"     "bonecrusher"   "mixmaster"     "blot"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "nautilator"    "seawing"       "drag_strip"    "swindle"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "tentakil"      "motormaster"   "menasor"       "blast_off"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "overbite"      "megatron"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "hellbat"        "scrapper"       "scavenger"      "devastator"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "rippersnapper"  "birdbrain"      "breakdown"      "drillhorn"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "starscream"     "jallguar"       "piranacon"      "soundwave"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "snaptrap"       "hook"           "long_haul"      "bonecrusher"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "mixmaster"      "slog"           "shockwave"      "leozack"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "blot"           "nautilator"     "seawing"        "scourge"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "shrapnel"       "bombshell"      "kickback"       "drag_strip"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "swindle"        "tentakil"       "motormaster"    "menasor"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "blast_off"      "thundercracker" "overbite"       "gnaw"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "killbison"      "scowl"          "megatron"       "skywarp"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "dirge"          "galvatron"      "ratbat"        </span>
 <span class="r-in"><span><span class="fu">tf_find_palettes</span><span class="op">(</span><span class="st">"sequential"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "air_raid"    "blades"      "fireflight"  "scattershot" "afterburner"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "first_aid"   "slingshot"   "dead_end"    "wildrider"   "nosecone"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "rampage"     "brawl"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "air_raid"    "thrust"      "blades"      "ratchet"     "sideswipe"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "cliffjumper" "windcharger" "fireflight"  "scattershot" "afterburner"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "ramjet"      "first_aid"   "slingshot"   "springer"    "dead_end"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "wildrider"   "ravage"      "ironhide"    "laserbeak"   "buzzsaw"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "rumble"      "frenzy"      "nosecone"    "rampage"     "brawl"      </span>
 <span class="r-in"><span><span class="fu">tf_find_palettes</span><span class="op">(</span><span class="st">"colorblind"</span>, medium <span class="op">=</span> <span class="st">"cartoon"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "silverbolt_cartoon"    "blades_cartoon"        "first_aid_cartoon"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "air_raid_cartoon"      "fireflight_cartoon"    "slingshot_cartoon"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "computron_cartoon"     "nosecone_cartoon"      "scattershot_cartoon"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "hot_spot_cartoon"      "defensor_cartoon"      "lightspeed_cartoon"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "strafe_cartoon"        "streetwise_cartoon"    "groove_cartoon"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "superion_cartoon"      "rippersnapper_cartoon" "razorclaw_cartoon"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "tantrum_cartoon"       "headstrong_cartoon"    "drag_strip_cartoon"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "rampage_cartoon"       "skydive_cartoon"       "wildrider_cartoon"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "blast_off_cartoon"     "breakdown_cartoon"     "hook_cartoon"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "long_haul_cartoon"     "scrapper_cartoon"      "bonecrusher_cartoon"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "mixmaster_cartoon"     "scavenger_cartoon"     "devastator_cartoon"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "afterburner_cartoon"   "motormaster_cartoon"   "menasor_cartoon"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "megatron_cartoon"      "swindle_cartoon"       "optimus_prime_cartoon"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [40] "divebomb_cartoon"      "predaking_cartoon"     "onslaught_cartoon"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "silverbolt_cartoon"     "blades_cartoon"         "first_aid_cartoon"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "air_raid_cartoon"       "fireflight_cartoon"     "slingshot_cartoon"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "computron_cartoon"      "brawn_cartoon"          "huffer_cartoon"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "skywarp_cartoon"        "jallguar_cartoon"       "bumblebee_cartoon"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "nosecone_cartoon"       "scattershot_cartoon"    "hot_spot_cartoon"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "defensor_cartoon"       "lightspeed_cartoon"     "strafe_cartoon"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "streetwise_cartoon"     "groove_cartoon"         "superion_cartoon"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "rippersnapper_cartoon"  "razorclaw_cartoon"      "tantrum_cartoon"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "headstrong_cartoon"     "thundercracker_cartoon" "ramjet_cartoon"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "soundwave_cartoon"      "laserbeak_cartoon"      "buzzsaw_cartoon"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "rumble_cartoon"         "frenzy_cartoon"         "jazz_cartoon"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "prowl_cartoon"          "ironhide_cartoon"       "ratchet_cartoon"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "sunstreaker_cartoon"    "sideswipe_cartoon"      "mirage_cartoon"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [40] "trailbreaker_cartoon"   "bluestreak_cartoon"     "cliffjumper_cartoon"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "windcharger_cartoon"    "gears_cartoon"          "ultra_magnus_cartoon"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [46] "grimlock_cartoon"       "slag_cartoon"           "sludge_cartoon"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "snarl_cartoon"          "swoop_cartoon"          "leozack_cartoon"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [52] "drillhorn_cartoon"      "drag_strip_cartoon"     "ratbat_cartoon"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [55] "shrapnel_cartoon"       "bombshell_cartoon"      "kickback_cartoon"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [58] "rampage_cartoon"        "galvatron_cartoon"      "hound_cartoon"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [61] "wreck_gar_cartoon"      "skydive_cartoon"        "wildrider_cartoon"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [64] "blast_off_cartoon"      "hot_rod_cartoon"        "breakdown_cartoon"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [67] "hook_cartoon"           "long_haul_cartoon"      "scrapper_cartoon"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [70] "bonecrusher_cartoon"    "mixmaster_cartoon"      "scavenger_cartoon"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [73] "devastator_cartoon"     "afterburner_cartoon"    "motormaster_cartoon"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [76] "menasor_cartoon"        "megatron_cartoon"       "swindle_cartoon"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [79] "kup_cartoon"            "wheeljack_cartoon"      "optimus_prime_cartoon" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [82] "divebomb_cartoon"       "predaking_cartoon"      "rodimus_prime_cartoon" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [85] "guyhawk_cartoon"        "hellbat_cartoon"        "scourge_cartoon"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [88] "gnaw_cartoon"           "onslaught_cartoon"     </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

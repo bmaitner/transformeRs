@@ -28,6 +28,9 @@ this order; scripts and people both read from the top.
 - One toy palette per character; combiner teams also get a palette for
   the combined form, listed last within the team. Team order is torso
   first, then limbs, then the combined form (tests enforce this).
+  Subgroups that do not combine (Dinobots, Seekers) use `subgroup()` in
+  the registry, which sets role `subgroup member` and no combiner; list
+  members in release order.
 - Every character also gets a `cartoon` palette (the animation model,
   read from an episode still linked as the image; tests enforce this),
   and may get a `comic` palette. A comic palette must say in its
@@ -57,6 +60,22 @@ this order; scripts and people both read from the top.
 | Optimus Prime, Megatron | `optimus_prime`, `megatron` | 0.1.0 |
 | Cartoon palettes for all 58 characters | `<name>_cartoon` | 0.2.0 |
 | Comic palettes for Optimus Prime, Megatron | `optimus_prime_comic`, `megatron_comic` | 0.2.0 |
+| Constructicons + Devastator (comic, Marvel US \#10) | `hook_comic` … `devastator_comic` | 0.3.0 |
+| Aerialbots + Superion (comic, Marvel US \#21) | `silverbolt_comic` … `superion_comic` | 0.3.0 |
+| Stunticons + Menasor (comic, Marvel US \#22) | `motormaster_comic` … `menasor_comic` | 0.3.0 |
+| Protectobots + Defensor (comic, Marvel US \#24) | `hot_spot_comic` … `defensor_comic` | 0.3.0 |
+| Combaticons + Bruticus (comic, Marvel US \#32) | `onslaught_comic` … `bruticus_comic` | 0.3.0 |
+| Predacons + Predaking (comic, Marvel US \#25) | `razorclaw_comic` … `predaking_comic` | 0.3.0 |
+| Seekers (toy + cartoon) | `starscream`, `thundercracker`, `skywarp`, `dirge`, `ramjet`, `thrust` | 0.3.0 |
+| Dinobots (toy + cartoon) | `grimlock`, `slag`, `sludge`, `snarl`, `swoop` | 0.3.0 |
+| Technobots, Terrorcons, Seacons (comic, Marvel UK) | `scattershot_comic` … `piranacon_comic` | 0.4.0 |
+| Pretender Monsters + Monstructor (toy) | `slog`, `birdbrain`, `icepick`, `bristleback`, `wildfly`, `scowl`, `monstructor` | 0.4.0 |
+| Breastforce + Liokaiser (toy + Victory cartoon) | `leozack` … `liokaiser` | 0.4.0 |
+| Shockwave, Soundwave and the cassettes | `shockwave`, `soundwave`, `laserbeak`, `buzzsaw`, `ravage`, `rumble`, `frenzy`, `ratbat` | 0.4.0 |
+| Insecticons | `shrapnel`, `bombshell`, `kickback` | 0.4.0 |
+| 1984 Autobot cars and Mini Vehicles | `jazz` … `bluestreak`, `bumblebee` … `gears` | 0.4.0 |
+| 1986 movie cast | `hot_rod`, `rodimus_prime`, `ultra_magnus`, `kup`, `blurr`, `springer`, `wreck_gar`, `galvatron`, `cyclonus`, `scourge`, `gnaw` | 0.4.0 |
+| Generation 2 Constructicons, Aerialbots, Combaticons | `<name>_g2` | 0.4.0 |
 | Aerialbots + Superion | `silverbolt`, `air_raid`, `fireflight`, `skydive`, `slingshot`, `superion` | 0.1.0 |
 | Protectobots + Defensor | `hot_spot`, `streetwise`, `blades`, `groove`, `first_aid`, `defensor` | 0.1.0 |
 | Technobots + Computron | `scattershot`, `lightspeed`, `nosecone`, `strafe`, `afterburner`, `computron` | 0.1.0 |
@@ -79,51 +98,7 @@ issue to sample from; the suggestions below are the teams’ first or most
 prominent US appearances. Marvel UK reprinted the US art with its own
 colouring, so say which edition was used.
 
-**Constructicons + Devastator (comic)** (Decepticon; 1985) - priority:
-high TFWiki:
-<https://tfwiki.net/wiki/Devastator_(G1)#Marvel_Comics_continuity>
-Notes: Marvel US \#10 “The Next Best Thing to Being There”. Green and
-purple like the toys but check the shade of green and the chest colours.
-
-**Aerialbots + Superion (comic)** (Autobot; 1986) - priority: normal
-Notes: Marvel US \#21-22 “Aerialbots over America” / “Heavy Traffic”.
-
-**Stunticons + Menasor (comic)** (Decepticon; 1986) - priority: normal
-Notes: Marvel US \#22 “Heavy Traffic”.
-
-**Protectobots + Defensor (comic)** (Autobot; 1986) - priority: normal
-Notes: Marvel US \#24 “Afterdeath!”.
-
-**Combaticons + Bruticus (comic)** (Decepticon; 1987) - priority: normal
-Notes: Marvel US \#32 “Used Autobots” onwards (they debut in the UK
-first).
-
-**Predacons + Predaking (comic)** (Decepticon; 1986) - priority: normal
-Notes: Marvel US \#25 “Gone But Not Forgotten!”.
-
-**Technobots + Computron (comic)** (Autobot; 1987) - priority: low
-Notes: Marvel US \#38 “Trial by Fire!” onwards; UK “Space Pirates”.
-
-**Terrorcons + Abominus (comic)** (Decepticon; 1987) - priority: low
-Notes: mostly Marvel UK; US appearances are brief.
-
-**Seacons + Piranacon (comic)** (Decepticon; 1988) - priority: low
-Notes: Marvel US \#47 “Club Con!” (as Seacons); UK gives them more page
-time.
-
 ### Remaining Generation 1 combiner teams
-
-**Pretender Monsters + Monstructor** (Decepticon; combiner team; 1989) -
-priority: normal TFWiki: <https://tfwiki.net/wiki/Monstructor_(G1)>
-Notes: Icepick, Bristleback, Wildfly, Slog, Birdbrain, Scowl. Six-member
-team with no fixed torso; use the inner robots’ colours, not the
-Pretender shells. Would add a `role` such as `combiner component`.
-
-**Breastforce + Liokaiser** (Decepticon; combiner team; Japan, 1989) -
-priority: normal TFWiki: <https://tfwiki.net/wiki/Liokaiser> Notes:
-Leozack, Drillhorn, Guyhawk, Hellbat, Jallguar, Killbison. Takara
-Victory release only, so the “original Hasbro release” rule needs a
-Takara exception; note that in the description.
 
 **Multiforce + Landcross** (Autobot; combiner team; Japan, 1989) -
 priority: low TFWiki: <https://tfwiki.net/wiki/Landcross>
@@ -140,40 +115,17 @@ Pretender-shell redecos of the Pretender Monsters; do after Monstructor.
 
 ### Other subgroups people will ask for
 
-**Seekers** (Decepticon; jets; 1984-85) - priority: high TFWiki:
-<https://tfwiki.net/wiki/Starscream_(G1)> Notes: Starscream,
-Thundercracker, Skywarp, then the coneheads Dirge, Ramjet, Thrust. Same
-mould, so shared greys; body colour differs.
+**Generation 2 orange Constructicons** (Decepticon; 1993) - priority:
+low Notes: the `g2` palettes record the 1992 yellow release. The 1993
+orange release would need a second medium or a variant key.
 
-**Dinobots** (Autobot; 1985) - priority: high TFWiki:
-<https://tfwiki.net/wiki/Dinobot> Notes: Grimlock, Slag, Sludge, Snarl,
-Swoop. Grey and gold chrome with red; Swoop’s red/blue is the outlier.
+**Generation 2 Stunticons and Protectobots** (both; unreleased 1994) -
+priority: low Notes: prototypes only (see the Menasor and Defensor toy
+pages). Add only if a clear photo of the prototypes turns up.
 
-**Soundwave and the cassettes** (Decepticon; 1984-86) - priority: normal
-TFWiki: <https://tfwiki.net/wiki/Soundwave_(G1)> Notes: Soundwave,
-Laserbeak, Buzzsaw, Ravage, Rumble, Frenzy, Ratbat. Which of Rumble and
-Frenzy is red and which is blue differs between the toys and the
-cartoon; follow the Hasbro toys (Rumble blue, Frenzy red) and say so in
-the description.
-
-**1984 Autobot cars** (Autobot; 1984) - priority: normal TFWiki:
-<https://tfwiki.net/wiki/Autobot_Cars> Notes: Bumblebee, Cliffjumper,
-Jazz, Prowl, Ironhide, Ratchet, Wheeljack, Sunstreaker, Sideswipe,
-Hound, Mirage, Trailbreaker, Bluestreak. Big batch; could land in two
-passes (minibots, then Diaclone cars).
-
-**Insecticons** (Decepticon; 1985) - priority: normal TFWiki:
-<https://tfwiki.net/wiki/Insecticon> Notes: Shrapnel, Bombshell,
-Kickback. Black and purple with silver.
-
-**1986 movie cast** (both; 1986) - priority: normal TFWiki:
-<https://tfwiki.net/wiki/The_Transformers:_The_Movie> Notes: Hot Rod,
-Rodimus Prime, Ultra Magnus, Kup, Blurr, Springer, Wreck-Gar, Galvatron,
-Cyclonus, Scourge, Sharkticons. Arcee and Unicron had no G1 toy; skip or
-mark the source as the animation model.
-
-**Shockwave** (Decepticon; 1985) - priority: normal TFWiki:
-<https://tfwiki.net/wiki/Shockwave_(G1)>
+**Arcee, Unicron** (1986 movie) - priority: low Notes: no G1 toy. Could
+be added as cartoon-only characters if the toy-first rule is relaxed for
+them.
 
 **Triple Changers** (both; 1985-86) - priority: low TFWiki:
 <https://tfwiki.net/wiki/Triple_Changer> Notes: Blitzwing, Astrotrain,
@@ -206,6 +158,13 @@ Cutthroat, Drag Strip, Vortex (the last three were corrected on
 toys; a pass through the remaining photos in the browser would be
 worthwhile.
 
+**The 0.4.0 batch was checked against toy photos, not stills.** Toy
+palettes for the movie cast, Pretender Monsters, Breastforce and the G2
+teams were set from the linked photos; the cassettes, Insecticons,
+Autobot cars and Mini Vehicles were set from memory with the photo
+linked but not individually reviewed. Comic palettes for the Technobots,
+Terrorcons and Seacons come from one team panel each.
+
 **Most cartoon palettes are unchecked against their stills.** They were
 set from knowledge of the Sunbow models, then an episode still was
 linked for each (none for Hot Spot, Scattershot or any Seacon). Checked
@@ -214,6 +173,13 @@ not the green/red of later art) and Drag Strip (matched). Open the
 browser with `?medium=cartoon`, turn on photos, and correct what looks
 off. Watch for episode stills with unusual lighting (night scenes,
 energy effects).
+
+**Comic palettes for team members are read from a team panel.** The
+linked panels show the combined form (Aerialbots, Stunticons,
+Protectobots), a small group shot (Predacons) or vehicle modes
+(Combaticons), so individual members’ comic colours are inferred from
+the team’s palette and the toy. A pass that links each member to a
+robot-mode panel of its own would tighten them.
 
 **Seacon cartoon palettes have no reference image.** Their Masterforce
 appearances are not illustrated on the English wiki pages; the Japanese
