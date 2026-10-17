@@ -4,12 +4,15 @@
 [![R-CMD-check](https://github.com/bmaitner/transformerpalettes/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/bmaitner/transformerpalettes/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-Color palettes for R and ggplot2 based on Generation 1 Transformers:
-Optimus Prime, Megatron, and every member and combined form of the core
-combiner teams, from the Aerialbots and Superion to the Seacons and
-Piranacon. Each character has a palette for the original toy and one for the
-cartoon animation model, and some have one for the Marvel comic, because the
-three often disagree about what color a robot is. It works the same way as
+Color palettes for R and ggplot2 drawn from the Transformers franchise,
+centered on the Generation 1 toys and extending to their Generation 2
+re-releases, the cartoon animation models and the Marvel comics. It covers
+Optimus Prime, Megatron, every member and combined form of the combiner
+teams from the Aerialbots and Superion to the Seacons and Piranacon, and the
+rest of the 1984-1989 cast. Each character has a palette for the original
+toy, most have one for the cartoon, many have one for the comic, and the
+teams Hasbro recolored for Generation 2 have one for that, because the
+sources often disagree about what color a robot is. It works the same way as
 packages like `wesanderson`: pick a character by name, get a vector of hex
 colors, or drop a scale straight into a ggplot. Because the combiner teams
 are sets of five or six figures, each team also gives a ready-made

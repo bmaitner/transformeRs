@@ -6,7 +6,7 @@ template:
     primary: "#C8262E"
 
 home:
-  title: transformerpalettes - Generation 1 Transformers palettes for R
+  title: transformerpalettes - Transformers palettes for R
   links:
     - text: Browse the palettes
       href: articles/browse.html

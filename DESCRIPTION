@@ -1,10 +1,12 @@
 Package: transformerpalettes
-Title: Color Palettes Inspired by Generation 1 Transformers
+Title: Color Palettes Inspired by Transformers Toys, Cartoons and Comics
 Version: 0.4.0
 Authors@R: 
     person("Brian", "Maitner", , "bmaitner@gmail.com", role = c("aut", "cre"))
-Description: Color palettes based on the original 1984-1988 Generation 1
-    Transformers toys: the leaders, every member and combined form of the
+Description: Color palettes drawn from the Transformers franchise, centered
+    on the 1984-1989 Generation 1 toys and extending to their Generation 2
+    re-releases, the cartoon animation models and the Marvel comics. Covers
+    the leaders, every member and combined form of the
     combiner teams (Aerialbots, Protectobots, Technobots, Constructicons,
     Stunticons, Combaticons, Terrorcons, Predacons, Seacons, Pretender
     Monsters and Breastforce), the Dinobots, the Seeker jets, Soundwave and

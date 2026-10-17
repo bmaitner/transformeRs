@@ -1,7 +1,8 @@
-#' Generation 1 Transformers palettes
+#' Transformers palettes
 #'
-#' A named list of color palettes covering the Generation 1 Transformers
-#' cast: the leaders, every member and combined form of the combiner teams,
+#' A named list of color palettes covering the Transformers cast from the
+#' 1984 Generation 1 toys onward: the leaders, every member and combined
+#' form of the combiner teams,
 #' the Dinobots, Seekers, cassettes, Insecticons, the 1984 Autobot cars and
 #' Mini Vehicles, and the 1986 movie cast. Each character has a palette for
 #' the original toy, most have one for the cartoon, many have one for the
@@ -39,10 +40,11 @@ tf_palettes <- stats::setNames(
   vapply(.registry, `[[`, character(1), "palette")
 )
 
-#' Generation 1 Transformers character metadata
+#' Transformers character metadata
 #'
 #' Background information for every palette in [tf_palettes]: the character,
-#' which medium the palette records (toy, cartoon or comic), its faction, the
+#' which medium the palette records (toy, cartoon, comic or Generation 2
+#' re-release), its faction, the
 #' combiner team and combined form it belongs to, its role in that team, its
 #' alternate mode, the year of the reference, a description of the colors,
 #' and links to the reference page and image on the Transformers Wiki.

@@ -4,10 +4,12 @@
 \name{transformerpalettes-package}
 \alias{transformerpalettes}
 \alias{transformerpalettes-package}
-\title{transformerpalettes: Color Palettes Inspired by Generation 1 Transformers}
+\title{transformerpalettes: Color Palettes Inspired by Transformers Toys, Cartoons and Comics}
 \description{
-Color palettes based on the original Generation 1 Transformers toys, plus
-ggplot2 color and fill scales.
+Color palettes drawn from the Transformers franchise, centered on the
+Generation 1 toys and extending to their Generation 2 re-releases, the
+cartoon animation models and the Marvel comics, plus ggplot2 color and
+fill scales.
 }
 \details{
 Start with \code{\link[=tf_palette]{tf_palette()}} to pull colors from a character,

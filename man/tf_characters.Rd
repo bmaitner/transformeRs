@@ -3,7 +3,7 @@
 \docType{data}
 \name{tf_characters}
 \alias{tf_characters}
-\title{Generation 1 Transformers character metadata}
+\title{Transformers character metadata}
 \format{
 A data frame with one row per palette and the columns:
 \describe{
@@ -46,7 +46,8 @@ tf_characters
 }
 \description{
 Background information for every palette in \link{tf_palettes}: the character,
-which medium the palette records (toy, cartoon or comic), its faction, the
+which medium the palette records (toy, cartoon, comic or Generation 2
+re-release), its faction, the
 combiner team and combined form it belongs to, its role in that team, its
 alternate mode, the year of the reference, a description of the colors,
 and links to the reference page and image on the Transformers Wiki.

@@ -3,7 +3,7 @@
 \docType{data}
 \name{tf_palettes}
 \alias{tf_palettes}
-\title{Generation 1 Transformers palettes}
+\title{Transformers palettes}
 \format{
 A named list of character vectors of hex colors.
 }
@@ -11,8 +11,9 @@ A named list of character vectors of hex colors.
 tf_palettes
 }
 \description{
-A named list of color palettes covering the Generation 1 Transformers
-cast: the leaders, every member and combined form of the combiner teams,
+A named list of color palettes covering the Transformers cast from the
+1984 Generation 1 toys onward: the leaders, every member and combined
+form of the combiner teams,
 the Dinobots, Seekers, cassettes, Insecticons, the 1984 Autobot cars and
 Mini Vehicles, and the 1986 movie cast. Each character has a palette for
 the original toy, most have one for the cartoon, many have one for the
