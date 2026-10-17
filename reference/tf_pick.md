@@ -1,11 +1,11 @@
-# Pick the most distinguishable colours from one or more palettes
+# Pick the most distinguishable colors from one or more palettes
 
-Pools the colours of the named palettes and selects the `n` that are
+Pools the colors of the named palettes and selects the `n` that are
 hardest to confuse with one another on a given kind of plot: light
-background, dark background, or output that will be read in greyscale.
-Optionally judges distinctness under simulated colour-vision deficiency.
+background, dark background, or output that will be read in grayscale.
+Optionally judges distinctness under simulated color-vision deficiency.
 Use it when a single character's palette does not have enough usable
-colours, or when you want a team's or a faction's colours but only the
+colors, or when you want a team's or a faction's colors but only the
 ones that hold up on a chart.
 
 ## Usage
@@ -14,7 +14,7 @@ ones that hold up on a chart.
 tf_pick(
   palettes,
   n = 5,
-  style = c("light", "dark", "greyscale"),
+  style = c("light", "dark", "grayscale"),
   colorblind = FALSE,
   medium = "toy",
   background = NULL,
@@ -33,16 +33,16 @@ tf_pick(
 
 - n:
 
-  Number of colours wanted.
+  Number of colors wanted.
 
 - style:
 
   One of `"light"` (white background), `"dark"` (near-black background)
-  or `"greyscale"` (white background, judged by lightness alone).
+  or `"grayscale"` (white background, judged by lightness alone).
 
 - colorblind:
 
-  Logical. Require the colours to stay distinct under simulated
+  Logical. Require the colors to stay distinct under simulated
   deuteranopia, protanopia and tritanopia?
 
 - medium:
@@ -52,18 +52,18 @@ tf_pick(
 
 - background:
 
-  Optional background colour overriding the one implied by `style`, as a
+  Optional background color overriding the one implied by `style`, as a
   hex string.
 
 - min_contrast:
 
-  Minimum WCAG 2 contrast ratio a colour must have against the
-  background to be considered. Set to 1 to disable the filter.
+  Minimum WCAG 2 contrast ratio a color must have against the background
+  to be considered. Set to 1 to disable the filter.
 
 ## Value
 
-A character vector of `n` hex colours with class `"tf_palette"`, named
-by the palette each colour came from, and with attributes `min_distance`
+A character vector of `n` hex colors with class `"tf_palette"`, named by
+the palette each color came from, and with attributes `min_distance`
 (smallest pairwise distance under the chosen criterion), `style`,
 `colorblind` and `background`.
 
@@ -71,38 +71,38 @@ by the palette each colour came from, and with attributes `min_distance`
 
 The selection runs in three steps.
 
-1.  **Pool.** The colours of every palette in `palettes` are combined,
+1.  **Pool.** The colors of every palette in `palettes` are combined,
     with duplicates removed. Names may be plain (`"optimus_prime"`) or
     carry a medium suffix (`"optimus_prime_cartoon"`); plain names use
     `medium`.
 
-2.  **Filter for the background.** Colours whose WCAG 2 contrast ratio
+2.  **Filter for the background.** Colors whose WCAG 2 contrast ratio
     against the background is below `min_contrast` are dropped, so a
     light-mode selection never contains a near-white and a dark-mode
     selection never contains a near-black. The background is white for
-    `"light"` and `"greyscale"` and near-black (`"#121212"`) for
+    `"light"` and `"grayscale"` and near-black (`"#121212"`) for
     `"dark"` unless `background` is given. The default of 3 is the WCAG
-    minimum for graphical objects; lower it to keep more colours, raise
+    minimum for graphical objects; lower it to keep more colors, raise
     it for text.
 
-3.  **Choose.** Every pair of remaining colours is scored by its
-    distance in CIE Lab (CIE76). With `colorblind = TRUE` the distance
-    is the smallest of the normal-vision distance and the distances
-    after simulating deuteranopia, protanopia and tritanopia (Machado,
-    Oliveira and Fernandes 2009), so two colours only count as distinct
-    if every viewer can tell them apart. With `style = "greyscale"` only
-    the lightness difference counts, so the colours survive conversion
-    to grey. The `n` colours whose closest pair is farthest apart are
-    chosen (a maximum-dispersion subset, found exhaustively when the
-    pool is small and by greedy seeding plus swap search otherwise),
-    then ordered so that each colour is as different as possible from
-    those before it.
+3.  **Choose.** Every pair of remaining colors is scored by its distance
+    in CIE Lab (CIE76). With `colorblind = TRUE` the distance is the
+    smallest of the normal-vision distance and the distances after
+    simulating deuteranopia, protanopia and tritanopia (Machado,
+    Oliveira and Fernandes 2009), so two colors only count as distinct
+    if every viewer can tell them apart. With `style = "grayscale"` only
+    the lightness difference counts, so the colors survive conversion to
+    gray. The `n` colors whose closest pair is farthest apart are chosen
+    (a maximum-dispersion subset, found exhaustively when the pool is
+    small and by greedy seeding plus swap search otherwise), then
+    ordered so that each color is as different as possible from those
+    before it.
 
 The result is a categorical palette: it does not try to build a
 gradient. The smallest pairwise distance in the selection is returned as
 the `min_distance` attribute; values above about 20 are comfortably
-distinct, and below about 12 two colours will be hard to tell apart. If
-the pool cannot supply `n` colours after filtering, the function errors
+distinct, and below about 12 two colors will be hard to tell apart. If
+the pool cannot supply `n` colors after filtering, the function errors
 and says how many it had, so add palettes or lower `min_contrast`.
 
 ## See also
@@ -115,9 +115,9 @@ for the underlying measures.
 ## Examples
 
 ``` r
-# five colours for a white-background plot, from the two leaders
+# five colors for a white-background plot, from the two leaders
 tf_pick(c("optimus_prime", "megatron"), n = 5)
-#> Transformers pick of 5 colours from optimus_prime + megatron
+#> Transformers pick of 5 colors from optimus_prime + megatron
 #> light background #FFFFFF, min distance 21.7
 #> optimus_prime = #D0202A
 #> optimus_prime = #1F3E8F
@@ -126,9 +126,9 @@ tf_pick(c("optimus_prime", "megatron"), n = 5)
 #> megatron = #6B3FA0
 
 
-# the same for a dark theme, and colour-blind safe
+# the same for a dark theme, and color-blind safe
 tf_pick(c("optimus_prime", "megatron"), n = 4, style = "dark", colorblind = TRUE)
-#> Transformers pick of 4 colours from optimus_prime + megatron
+#> Transformers pick of 4 colors from optimus_prime + megatron
 #> dark background #121212, colorblind-safe, min distance 22
 #> optimus_prime = #D0202A
 #> megatron = #C9CBCF
@@ -136,11 +136,11 @@ tf_pick(c("optimus_prime", "megatron"), n = 4, style = "dark", colorblind = TRUE
 #> megatron = #8C9095
 
 
-# a whole team, cartoon colours, printable in greyscale
+# a whole team, cartoon colors, printable in grayscale
 tf_pick(tf_palette_names(team = "Combaticons"), n = 4,
-        style = "greyscale", medium = "cartoon")
-#> Transformers pick of 4 colours from onslaught_cartoon + brawl_cartoon + swindle_cartoon + blast_off_cartoon + vortex_cartoon + bruticus_cartoon
-#> greyscale background #FFFFFF, min distance 4.5
+        style = "grayscale", medium = "cartoon")
+#> Transformers pick of 4 colors from onslaught_cartoon + brawl_cartoon + swindle_cartoon + blast_off_cartoon + vortex_cartoon + bruticus_cartoon
+#> grayscale background #FFFFFF, min distance 4.5
 #> onslaught_cartoon = #2B2B2B
 #> onslaught_cartoon = #4E6E3E
 #> swindle_cartoon = #5A3E8A

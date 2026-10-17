@@ -5,7 +5,7 @@ Background information for every palette in
 the character, which medium the palette records (toy, cartoon or comic),
 its faction, the combiner team and combined form it belongs to, its role
 in that team, its alternate mode, the year of the reference, a
-description of the colours, and links to the reference page and image on
+description of the colors, and links to the reference page and image on
 the Transformers Wiki.
 
 ## Usage
@@ -73,11 +73,11 @@ A data frame with one row per palette and the columns:
 
 - n_colours:
 
-  Number of colours in the palette.
+  Number of colors in the palette.
 
 - description:
 
-  Description of the colours in that medium.
+  Description of the colors in that medium.
 
 - source:
 
@@ -92,7 +92,7 @@ A data frame with one row per palette and the columns:
 
 ## Source
 
-Transformers Wiki, <https://tfwiki.net/>.
+Transformers Wiki, <https://tfwiki.net/wiki/Main_Page>.
 
 ## Examples
 
@@ -113,12 +113,12 @@ head(tf_characters)
 #> 5 superion combiner torso     Concorde supersonic airliner 1986         5
 #> 6 superion  combiner limb           F-15 Eagle fighter jet 1986         4
 #>                                                                                                                                             description
-#> 1                                  Red cab plastic, blue legs and forearms, silver die-cast chest and grey thighs, yellow detail stickers, black tyres.
-#> 2 Chromed silver body, grey plastic barrel and legs, red inner arms and legs on the Hasbro release, black grip and trigger, purple Decepticon insignia.
-#> 3                                              Purple plastic with light lavender-grey arms and barrel, yellow eye and hose, black grip, silver chrome.
-#> 4                                             Dark blue plastic with grey chest door and limbs, black detailing, yellow eyes and buttons, red stickers.
-#> 5                                                           White jet plastic, dark grey legs and arms, red and yellow chest stickers, black detailing.
-#> 6                                                                      Black jet plastic with red and white stripe stickers, grey chrome and detailing.
+#> 1                                  Red cab plastic, blue legs and forearms, silver die-cast chest and gray thighs, yellow detail stickers, black tires.
+#> 2 Chromed silver body, gray plastic barrel and legs, red inner arms and legs on the Hasbro release, black grip and trigger, purple Decepticon insignia.
+#> 3                                              Purple plastic with light lavender-gray arms and barrel, yellow eye and hose, black grip, silver chrome.
+#> 4                                             Dark blue plastic with gray chest door and limbs, black detailing, yellow eyes and buttons, red stickers.
+#> 5                                                           White jet plastic, dark gray legs and arms, red and yellow chest stickers, black detailing.
+#> 6                                                                      Black jet plastic with red and white stripe stickers, gray chrome and detailing.
 #>                                            source
 #> 1 https://tfwiki.net/wiki/Optimus_Prime_(G1)/toys
 #> 2      https://tfwiki.net/wiki/Megatron_(G1)/toys
@@ -159,7 +159,7 @@ subset(tf_characters, base == "megatron", c(palette, medium, description))
 #> 124 megatron_cartoon cartoon
 #> 239   megatron_comic   comic
 #>                                                                                                                                               description
-#> 2   Chromed silver body, grey plastic barrel and legs, red inner arms and legs on the Hasbro release, black grip and trigger, purple Decepticon insignia.
-#> 124                  Animation model: light grey body, darker grey arms and lower legs, black fusion cannon and chest details, red eyes, purple insignia.
-#> 239                   Marvel US #1 onwards: light grey body with darker grey limbs, black fusion cannon and chest, red eyes and details, purple insignia.
+#> 2   Chromed silver body, gray plastic barrel and legs, red inner arms and legs on the Hasbro release, black grip and trigger, purple Decepticon insignia.
+#> 124                  Animation model: light gray body, darker gray arms and lower legs, black fusion cannon and chest details, red eyes, purple insignia.
+#> 239                   Marvel US #1 onwards: light gray body with darker gray limbs, black fusion cannon and chest, red eyes and details, purple insignia.
 ```

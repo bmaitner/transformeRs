@@ -1,17 +1,17 @@
 # transformerpalettes: Color Palettes Inspired by Generation 1 Transformers
 
-Colour palettes based on the original Generation 1 Transformers toys,
-plus ggplot2 colour and fill scales.
+Color palettes based on the original Generation 1 Transformers toys,
+plus ggplot2 color and fill scales.
 
 ## Details
 
 Start with
 [`tf_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette.md)
-to pull colours from a character,
+to pull colors from a character,
 [`tf_palette_names()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_names.md)
 to list the available characters,
 [`tf_team_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_team_palette.md)
-for one colour per member of a combiner team, and
+for one color per member of a combiner team, and
 [`scale_colour_tf()`](https://bmaitner.github.io/transformerpalettes/reference/scale_tf.md)
 /
 [`scale_fill_tf()`](https://bmaitner.github.io/transformerpalettes/reference/scale_tf.md)

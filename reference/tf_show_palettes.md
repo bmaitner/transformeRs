@@ -1,8 +1,8 @@
 # Display Transformers palettes
 
 Draws a swatch strip for each palette on the current graphics device,
-labelled with the palette name and, by default, the hex code under each
-swatch. Useful for picking a character or for reporting a colour that
+labeled with the palette name and, by default, the hex code under each
+swatch. Useful for picking a character or for reporting a color that
 looks wrong. With no arguments every toy palette is drawn, which is a
 lot; filter by `faction`, `team`, `role` or `use` to narrow it down, or
 pass a character's palettes across media to compare them.

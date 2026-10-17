@@ -7,9 +7,9 @@
 - [`tf_characters`](https://bmaitner.github.io/transformerpalettes/reference/tf_characters.md)
   : Generation 1 Transformers character metadata
 - [`tf_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette.md)
-  : Get colours from a character's palette
+  : Get colors from a character's palette
 - [`tf_team_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_team_palette.md)
-  : One colour per member of a team
+  : One color per member of a team
 - [`tf_palette_names()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_names.md)
   : List the available palettes
 - [`tf_media()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md)
@@ -19,10 +19,10 @@
 - [`tf_show_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_show_palettes.md)
   : Display Transformers palettes
 
-## Choosing colours for a plot
+## Choosing colors for a plot
 
 - [`tf_pick()`](https://bmaitner.github.io/transformerpalettes/reference/tf_pick.md)
-  : Pick the most distinguishable colours from one or more palettes
+  : Pick the most distinguishable colors from one or more palettes
 - [`tf_find_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_find_palettes.md)
   : Find Transformers palettes that suit a plotting use case
 - [`tf_palette_stats()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_stats.md)
@@ -39,7 +39,7 @@
   [`scale_color_tf_d()`](https://bmaitner.github.io/transformerpalettes/reference/scale_tf.md)
   [`scale_color_tf_c()`](https://bmaitner.github.io/transformerpalettes/reference/scale_tf.md)
   [`scale_color_tf()`](https://bmaitner.github.io/transformerpalettes/reference/scale_tf.md)
-  : Transformers colour and fill scales for ggplot2
+  : Transformers color and fill scales for ggplot2
 
 ## Package
 

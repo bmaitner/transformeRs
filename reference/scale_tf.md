@@ -1,6 +1,6 @@
-# Transformers colour and fill scales for ggplot2
+# Transformers color and fill scales for ggplot2
 
-Colour and fill scales that use a character's palette. The `_d` variants
+Color and fill scales that use a character's palette. The `_d` variants
 are for discrete data, the `_c` variants for continuous data, and
 `scale_colour_tf()` / `scale_fill_tf()` choose between the two with the
 `discrete` argument. `scale_color_*` spellings are aliases.
@@ -90,7 +90,7 @@ scale_color_tf(
 
 - reverse:
 
-  Logical. Reverse the order of colours in the palette?
+  Logical. Reverse the order of colors in the palette?
 
 - medium:
 
@@ -127,13 +127,13 @@ A ggplot2 scale object.
 
 ## Details
 
-Discrete scales draw the first `n` colours of the palette, where `n` is
+Discrete scales draw the first `n` colors of the palette, where `n` is
 the number of levels in the data. If the data has more levels than the
-palette has colours, the palette is interpolated with
+palette has colors, the palette is interpolated with
 [`grDevices::colorRampPalette()`](https://rdrr.io/r/grDevices/colorRamp.html)
-so that every level still receives a distinct colour; expect the result
-to be less legible than the curated colours. For a palette with one
-colour per member of a combiner team, pass
+so that every level still receives a distinct color; expect the result
+to be less legible than the curated colors. For a palette with one color
+per member of a combiner team, pass
 [`tf_team_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_team_palette.md)
 to
 [`ggplot2::scale_colour_manual()`](https://ggplot2.tidyverse.org/reference/scale_manual.html).

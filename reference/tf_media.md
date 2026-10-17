@@ -23,7 +23,7 @@ tf_teams(faction = NULL)
 `tf_media()` returns the media a palette can record, in the order
 `"toy"` (the original Generation 1 release), `"cartoon"` (the animation
 model), `"comic"` (Marvel) and `"g2"` (the Generation 2 re-release of
-the toy in new colours, 1992-1994). `tf_factions()` returns a character
+the toy in new colors, 1992-1994). `tf_factions()` returns a character
 vector of faction names. `tf_teams()` returns a character vector of team
 and subgroup names, in package order (Autobot teams first). All can be
 passed to the matching argument of

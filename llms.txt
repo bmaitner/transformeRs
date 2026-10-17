@@ -1,25 +1,25 @@
 # transformerpalettes
 
-Colour palettes for R and ggplot2 based on Generation 1 Transformers:
+Color palettes for R and ggplot2 based on Generation 1 Transformers:
 Optimus Prime, Megatron, and every member and combined form of the core
 combiner teams, from the Aerialbots and Superion to the Seacons and
 Piranacon. Each character has a palette for the original toy and one for
 the cartoon animation model, and some have one for the Marvel comic,
-because the three often disagree about what colour a robot is. It works
+because the three often disagree about what color a robot is. It works
 the same way as packages like `wesanderson`: pick a character by name,
-get a vector of hex colours, or drop a scale straight into a ggplot.
+get a vector of hex colors, or drop a scale straight into a ggplot.
 Because the combiner teams are sets of five or six figures, each team
-also gives a ready-made categorical palette with one colour per member.
+also gives a ready-made categorical palette with one color per member.
 
 transformerpalettes is a fan project and is not affiliated with or
 endorsed by Hasbro or Takara Tomy. Hex values are approximations of the
-toys’ plastic, chrome and paint colours; see “How the palettes were
-made” below.
+toys’ plastic, chrome and paint colors; see “How the palettes were made”
+below.
 
 ## Browse online
 
-Every palette, with its colours, toy photo and Transformers Wiki link,
-is browsable and filterable at
+Every palette, with its colors, toy photo and Transformers Wiki link, is
+browsable and filterable at
 <https://bmaitner.github.io/transformerpalettes/articles/browse.html>.
 Each card has a **Suggest a change** link that opens a prefilled GitHub
 issue, and there is a form to [request a
@@ -53,13 +53,13 @@ tf_palette_names()
 tf_palette_names(team = "Constructicons")
 tf_palette_names(role = "combined form")
 
-# the colours of one character (prints the swatches and the hex codes)
+# the colors of one character (prints the swatches and the hex codes)
 tf_palette("optimus_prime")
-#> Transformers palette 'optimus_prime' (5 colours, toy)
+#> Transformers palette 'optimus_prime' (5 colors, toy)
 #> Autobot: Optimus Prime
 #> #D0202A #1F3E8F #B8BABF #F2D23C #2D2D2D
 
-# first three colours, a 12-step gradient, or the same gradient dark-to-light
+# first three colors, a 12-step gradient, or the same gradient dark-to-light
 tf_palette("Megatron", 3)
 tf_palette("devastator", 12, type = "continuous")
 tf_palette("hot_spot", 12, type = "continuous", sort = TRUE)
@@ -77,10 +77,10 @@ Leaders and combined forms
 ### Toy, cartoon or comic
 
 Every function takes a `medium` argument that defaults to `"toy"`, so
-the plain names always give the toy colours. Ask for `"cartoon"` to get
-the flat colours of the Sunbow animation model, `"comic"` for the Marvel
-colouring where one exists, or `"g2"` for the Generation 2 re-release of
-the three combiner teams Hasbro recoloured in 1992-94. The full names
+the plain names always give the toy colors. Ask for `"cartoon"` to get
+the flat colors of the Sunbow animation model, `"comic"` for the Marvel
+coloring where one exists, or `"g2"` for the Generation 2 re-release of
+the three combiner teams Hasbro recolored in 1992-94. The full names
 with a suffix work too.
 
 ``` r
@@ -93,7 +93,7 @@ tf_palette_names(medium = "cartoon")
 tf_palette_names(role = "leader", medium = "all")
 tf_show_palettes(c("optimus_prime", "optimus_prime_cartoon", "optimus_prime_comic"), ncol = 1)
 tf_team_palette("Constructicons", medium = "cartoon")   # lime green, not grass green
-tf_team_palette("Combaticons", medium = "g2")           # 1994 camouflage colours
+tf_team_palette("Combaticons", medium = "g2")           # 1994 camouflage colors
 ```
 
 ![Toy, cartoon and comic
@@ -105,8 +105,8 @@ Every character has a cartoon palette; the Seacons’ comes from the
 Japanese Super-God Masterforce series, since they never appeared in the
 Sunbow show. Comic palettes exist for the two leaders and all nine core
 combiner teams, each sampled from a named Marvel US or UK story that the
-browser links to. Marvel colouring changed from issue to issue (and
-Marvel UK recoloured the same art), so treat them as one issue’s reading
+browser links to. Marvel coloring changed from issue to issue (and
+Marvel UK recolored the same art), so treat them as one issue’s reading
 rather than a canon. The Pretender Monsters have no cartoon palette
 because they never appeared in one;
 [`WISHLIST.md`](https://bmaitner.github.io/transformerpalettes/WISHLIST.md)
@@ -116,16 +116,16 @@ yet gives an error that says so.
 ### Team palettes
 
 [`tf_team_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_team_palette.md)
-takes one colour from each member of a combiner team, in the team’s
-order (torso first, then limbs), and names each colour after the member
-it came from. The body colours are faithful but collapse for teams cast
-from shared plastics, so `distinct = TRUE` picks, for each member, the
-colour from its palette that is furthest from the colours chosen so far.
+takes one color from each member of a combiner team, in the team’s order
+(torso first, then limbs), and names each color after the member it came
+from. The body colors are faithful but collapse for teams cast from
+shared plastics, so `distinct = TRUE` picks, for each member, the color
+from its palette that is furthest from the colors chosen so far.
 
 ``` r
 
 tf_team_palette("Stunticons")
-#> Transformers team palette 'stunticons' (5 colours)
+#> Transformers team palette 'stunticons' (5 colors)
 #> motormaster = #1E1E1E
 #> dead_end = #7A1F2E
 #> breakdown = #F0F0EC
@@ -182,22 +182,22 @@ ggplot(mpg, aes(displ, hwy, colour = drv)) +
 Example ggplot2 scales
 
 Set `reverse = TRUE` to flip a palette. If a discrete variable has more
-levels than a palette has colours, the palette is interpolated so every
-level still gets a colour, at some cost to legibility.
+levels than a palette has colors, the palette is interpolated so every
+level still gets a color, at some cost to legibility.
 
 ### Finding a palette that works for a plot
 
-Toy colours were chosen to look good on a shelf, not on a chart.
+Toy colors were chosen to look good on a shelf, not on a chart.
 [`tf_find_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_find_palettes.md)
-shortlists the palettes whose colours hold up for a given job, judged
-from the colours themselves:
+shortlists the palettes whose colors hold up for a given job, judged
+from the colors themselves:
 
 ``` r
 
-tf_find_palettes("categorical")   # every pair of colours clearly distinct
+tf_find_palettes("categorical")   # every pair of colors clearly distinct
 tf_find_palettes("colorblind")    # still distinct under simulated CVD
 tf_find_palettes("sequential")    # one hue, wide lightness range
-tf_find_palettes("diverging")     # two hues with a light colour between
+tf_find_palettes("diverging")     # two hues with a light color between
 
 # restrict to a faction or team, or see the shortlist as swatches
 tf_find_palettes("colorblind", faction = "Autobot")
@@ -211,29 +211,29 @@ Colorblind-friendly shortlist
 
 The judgments come from
 [`tf_palette_stats()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_stats.md),
-which reports the smallest pairwise distance between colours in CIE Lab,
+which reports the smallest pairwise distance between colors in CIE Lab,
 the same after simulating deuteranopia, protanopia and tritanopia, the
 lightness range, and the hue spread. The thresholds are simple
 heuristics, so treat the result as a shortlist to look at rather than a
 guarantee.
 
-### Picking the best few colours from one or more palettes
+### Picking the best few colors from one or more palettes
 
 Whole palettes are faithful to the characters, not to the chart.
 [`tf_pick()`](https://bmaitner.github.io/transformerpalettes/reference/tf_pick.md)
-pools the colours of the palettes you name, drops any that would not
-read against the background (white for `"light"` and `"greyscale"`,
+pools the colors of the palettes you name, drops any that would not read
+against the background (white for `"light"` and `"greyscale"`,
 near-black for `"dark"`, judged by WCAG contrast), and then chooses the
-`n` colours whose closest pair is farthest apart in CIE Lab. With
+`n` colors whose closest pair is farthest apart in CIE Lab. With
 `colorblind = TRUE` the distance is the worst case across simulated
 deuteranopia, protanopia and tritanopia; with `style = "greyscale"` only
 lightness counts, so the result survives a black-and-white printer.
 
 ``` r
 
-# five colours for a white-background plot, from the two leaders
+# five colors for a white-background plot, from the two leaders
 tf_pick(c("optimus_prime", "megatron"), n = 5)
-#> Transformers pick of 5 colours from optimus_prime + megatron
+#> Transformers pick of 5 colors from optimus_prime + megatron
 #> light background #FFFFFF, min distance 21.7
 #> optimus_prime = #D0202A
 #> optimus_prime = #1F3E8F
@@ -241,11 +241,11 @@ tf_pick(c("optimus_prime", "megatron"), n = 5)
 #> megatron = #2A2A2A
 #> megatron = #6B3FA0
 
-# four colour-blind-safe colours for a dark theme, from a whole team
+# four color-blind-safe colors for a dark theme, from a whole team
 tf_pick(tf_palette_names(team = "Combaticons"), n = 4,
         style = "dark", colorblind = TRUE)
 
-# printable in greyscale, using the cartoon colours
+# printable in grayscale, using the cartoon colors
 tf_pick(tf_palette_names(team = "Stunticons"), n = 4,
         style = "greyscale", medium = "cartoon")
 
@@ -258,11 +258,11 @@ ggplot(mpg, aes(displ, hwy, colour = drv)) +
 
 tf_pick examples
 
-Each colour is named after the palette it came from, and the
+Each color is named after the palette it came from, and the
 `min_distance` attribute reports how separable the closest pair is
 (above 20 is comfortable, below about 12 is risky). The contrast filter
 is strict on purpose: saturated yellows fail it against white, so a
-light-mode pick from the Predacons has fewer colours to work with. Lower
+light-mode pick from the Predacons has fewer colors to work with. Lower
 `min_contrast` to keep them, or pass a different `background`.
 
 ### Character background
@@ -270,7 +270,7 @@ light-mode pick from the Predacons has fewer colours to work with. Lower
 `tf_characters` is a data frame with one row per palette: the character,
 which medium the palette records, faction, combiner team and combined
 form, its role in the team, alternate mode, the year of the toy or first
-appearance, a description of the colours, and links to the character’s
+appearance, a description of the colors, and links to the character’s
 page and the reference image (toy photo, episode still or comic panel)
 on the Transformers Wiki.
 
@@ -334,27 +334,27 @@ There is no published set of hex values for Transformers toys, so these
 are approximations built by hand:
 
 1.  Each character was matched to its original Hasbro release on the
-    [Transformers Wiki](https://tfwiki.net/), and to the wiki’s photo of
-    that toy in robot mode. The page and the photo are the `source` and
-    `image` columns of `tf_characters`.
-2.  The plastic, chrome, die-cast and paint colours of that toy were
+    [Transformers Wiki](https://tfwiki.net/wiki/Main_Page), and to the
+    wiki’s photo of that toy in robot mode. The page and the photo are
+    the `source` and `image` columns of `tf_characters`.
+2.  The plastic, chrome, die-cast and paint colors of that toy were
     listed from the photo and the wiki’s own description of the release,
-    and a hex value chosen for each by eye. Colours are ordered body
+    and a hex value chosen for each by eye. Colors are ordered body
     plastic first, then secondary plastic, then accents, so the first
-    few colours in each palette are the most distinct.
+    few colors in each palette are the most distinct.
 3.  Members of one combiner team share plastics, so their palettes share
-    hex values on purpose. The combined form’s palette takes one colour
+    hex values on purpose. The combined form’s palette takes one color
     from each contributing part.
 
 Cartoon palettes were read the same way from an episode still on the
-wiki, which the browser links to; they use the flat colours of the
+wiki, which the browser links to; they use the flat colors of the
 animation model, so a cartoon palette is typically brighter and simpler
 than its toy. Comic palettes name the Marvel issue they were taken from.
 
-Palettes range from four to six colours. Chrome and die-cast parts do
-not reduce to a single flat colour; a silver or grey stands in for them.
-Wiki photos vary in lighting, so expect some palettes to be rough, and
-the least certain ones are flagged in
+Palettes range from four to six colors. Chrome and die-cast parts do not
+reduce to a single flat color; a silver or gray stands in for them. Wiki
+photos vary in lighting, so expect some palettes to be rough, and the
+least certain ones are flagged in
 [`WISHLIST.md`](https://bmaitner.github.io/transformerpalettes/WISHLIST.md).
 Corrections are welcome, ideally with a photograph of the toy under
 neutral light. Use the [palette
@@ -369,7 +369,7 @@ prints the hex codes under each swatch to make reporting easy.
 
 Transformers, Autobot, Decepticon and the character names used here are
 trademarks of Hasbro and Takara Tomy. This package only records
-approximate colour values and uses the names to refer to them.
+approximate color values and uses the names to refer to them.
 
 # Package index
 
@@ -380,9 +380,9 @@ approximate colour values and uses the names to refer to them.
 - [`tf_characters`](https://bmaitner.github.io/transformerpalettes/reference/tf_characters.md)
   : Generation 1 Transformers character metadata
 - [`tf_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette.md)
-  : Get colours from a character's palette
+  : Get colors from a character's palette
 - [`tf_team_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_team_palette.md)
-  : One colour per member of a team
+  : One color per member of a team
 - [`tf_palette_names()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_names.md)
   : List the available palettes
 - [`tf_media()`](https://bmaitner.github.io/transformerpalettes/reference/tf_media.md)
@@ -392,10 +392,10 @@ approximate colour values and uses the names to refer to them.
 - [`tf_show_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_show_palettes.md)
   : Display Transformers palettes
 
-## Choosing colours for a plot
+## Choosing colors for a plot
 
 - [`tf_pick()`](https://bmaitner.github.io/transformerpalettes/reference/tf_pick.md)
-  : Pick the most distinguishable colours from one or more palettes
+  : Pick the most distinguishable colors from one or more palettes
 - [`tf_find_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_find_palettes.md)
   : Find Transformers palettes that suit a plotting use case
 - [`tf_palette_stats()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_stats.md)
@@ -412,7 +412,7 @@ approximate colour values and uses the names to refer to them.
   [`scale_color_tf_d()`](https://bmaitner.github.io/transformerpalettes/reference/scale_tf.md)
   [`scale_color_tf_c()`](https://bmaitner.github.io/transformerpalettes/reference/scale_tf.md)
   [`scale_color_tf()`](https://bmaitner.github.io/transformerpalettes/reference/scale_tf.md)
-  : Transformers colour and fill scales for ggplot2
+  : Transformers color and fill scales for ggplot2
 
 ## Package
 

@@ -1,8 +1,8 @@
-# One colour per member of a team
+# One color per member of a team
 
 Builds a categorical palette for a combiner team or subgroup by taking
-one colour from each member, in the team's order (torso first, then
-limbs, for a combiner team). Each colour is named after the member it
+one color from each member, in the team's order (torso first, then
+limbs, for a combiner team). Each color is named after the member it
 came from, so the palette doubles as a legend.
 
 ## Usage
@@ -27,19 +27,19 @@ tf_team_palette(
 
 - which:
 
-  Which colour to take from each member's palette when
-  `distinct = FALSE`. `1` (the default) is the body colour; `2` the
-  secondary colour, and so on. Members with fewer colours than `which`
-  fall back to their last colour.
+  Which color to take from each member's palette when
+  `distinct = FALSE`. `1` (the default) is the body color; `2` the
+  secondary color, and so on. Members with fewer colors than `which`
+  fall back to their last color.
 
 - distinct:
 
-  Logical. Choose each member's colour to be as different as possible
+  Logical. Choose each member's color to be as different as possible
   from those already chosen? See Details.
 
 - combined:
 
-  Logical. Include the team's combined form as the last colour?
+  Logical. Include the team's combined form as the last color?
 
 - medium:
 
@@ -48,27 +48,27 @@ tf_team_palette(
 
 ## Value
 
-A named character vector of hex colours with class `"tf_palette"`.
+A named character vector of hex colors with class `"tf_palette"`.
 
 ## Details
 
-By default the body colour of each member is used, which is faithful but
+By default the body color of each member is used, which is faithful but
 collapses for teams cast from shared plastics: every Constructicon is
 the same green, three Protectobots are white, and so on. With
-`distinct = TRUE` each member instead contributes the colour from its
-palette that is furthest (in CIE Lab) from the colours already chosen
-for the members before it, so the palette stays legible while every
-colour is still one the member actually wears. The Stunticons,
-Combaticons and Terrorcons are distinct either way; for the others
-`distinct = TRUE` is the useful setting. Check the result with
+`distinct = TRUE` each member instead contributes the color from its
+palette that is furthest (in CIE Lab) from the colors already chosen for
+the members before it, so the palette stays legible while every color is
+still one the member actually wears. The Stunticons, Combaticons and
+Terrorcons are distinct either way; for the others `distinct = TRUE` is
+the useful setting. Check the result with
 [`tf_palette_stats()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_stats.md)
-on the returned colours if legibility matters.
+on the returned colors if legibility matters.
 
 ## Examples
 
 ``` r
 tf_team_palette("Stunticons")
-#> Transformers team palette 'stunticons' (5 colours)
+#> Transformers team palette 'stunticons' (5 colors)
 #> motormaster = #1E1E1E
 #> dead_end = #7A1F2E
 #> breakdown = #F0F0EC
@@ -76,7 +76,7 @@ tf_team_palette("Stunticons")
 #> wildrider = #4E5257
 
 tf_team_palette("Seekers")
-#> Transformers team palette 'seekers' (6 colours)
+#> Transformers team palette 'seekers' (6 colors)
 #> starscream = #C9CCCF
 #> thundercracker = #2F5FA8
 #> skywarp = #1E1E1E
@@ -85,7 +85,7 @@ tf_team_palette("Seekers")
 #> thrust = #7A1F2E
 
 tf_team_palette("Aerialbots")
-#> Transformers team palette 'aerialbots' (5 colours)
+#> Transformers team palette 'aerialbots' (5 colors)
 #> silverbolt = #F0F0EC
 #> air_raid = #1F1F22
 #> fireflight = #D8262C
@@ -93,7 +93,7 @@ tf_team_palette("Aerialbots")
 #> slingshot = #F0F0EC
 
 tf_team_palette("Aerialbots", distinct = TRUE)
-#> Transformers team palette 'aerialbots' (5 colours)
+#> Transformers team palette 'aerialbots' (5 colors)
 #> silverbolt = #F0F0EC
 #> air_raid = #C8262E
 #> fireflight = #26262A
@@ -101,7 +101,7 @@ tf_team_palette("Aerialbots", distinct = TRUE)
 #> slingshot = #9A9DA1
 
 tf_team_palette("Predacons", which = 2)
-#> Transformers team palette 'predacons' (5 colours)
+#> Transformers team palette 'predacons' (5 colors)
 #> razorclaw = #C8262E
 #> rampage = #262626
 #> tantrum = #8C8F94
@@ -109,7 +109,7 @@ tf_team_palette("Predacons", which = 2)
 #> divebomb = #C8262E
 
 tf_team_palette("Combaticons", medium = "cartoon")
-#> Transformers team palette 'combaticons_cartoon' (5 colours)
+#> Transformers team palette 'combaticons_cartoon' (5 colors)
 #> onslaught_cartoon = #4E6E3E
 #> brawl_cartoon = #5B6B3A
 #> swindle_cartoon = #D9B04A

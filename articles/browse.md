@@ -1,12 +1,12 @@
 # Browse the palettes
 
-Every palette in transformerpalettes, with its colours, where it came
+Every palette in transformerpalettes, with its colors, where it came
 from, and the toy photo, episode still or comic panel it was checked
 against. Most characters have a toy palette and a cartoon palette; a few
 have a comic one too. Filter by medium, faction, combiner team, role or
 what kind of plot the palette suits, click a swatch to copy its hex
 code, and use **Suggest a change** on any card to open a prefilled
-GitHub issue where you can propose different colours or attach a better
+GitHub issue where you can propose different colors or attach a better
 photograph. Missing someone? [Request a
 character](https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml).
 
@@ -21,9 +21,9 @@ TeamAll teams
 RoleAny role leader combiner torso combiner limb standalone combined
 form subgroup member
 
-ColoursAny number 3 4 5 6
+ColorsAny number 3 4 5 6
 
-Sort byPackage order Name Team Year Most distinct colours Most
+Sort byPackage order Name Team Year Most distinct colors Most
 colorblind-safe Widest lightness range
 
 Suits:
@@ -46,7 +46,7 @@ Every palette here is an approximation read off toy photographs, so
 corrections are welcome. Each card links to a prefilled GitHub issue
 form:
 
-- **Suggest a change** if a colour is wrong, missing, or should be
+- **Suggest a change** if a color is wrong, missing, or should be
   removed, or if the description, alternate mode, year or reference
   image is off. Say which hex codes you would add, change or drop and
   why. For a toy palette a photo under neutral light is the best

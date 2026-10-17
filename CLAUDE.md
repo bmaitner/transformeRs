@@ -1,6 +1,6 @@
 # transformerpalettes
 
-R package of colour palettes based on Generation 1 Transformers toys,
+R package of color palettes based on Generation 1 Transformers toys,
 built on the same pattern as the sibling package `glyospalettes` (same
 author, Glyos colorways; formerly `rglyos`). Fan project; hex values are
 hand-curated approximations.
@@ -8,7 +8,7 @@ hand-curated approximations.
 ## Where things live
 
 - `R/aaa-registry.R`: the single source of truth. Every toy palette is a
-  `leader()` / `member()` / `combined()` call with colours and metadata;
+  `leader()` / `member()` / `combined()` call with colors and metadata;
   cartoon and comic versions are `cartoon()` / `comic()` calls further
   down that inherit the toy entry. `tf_palettes` and `tf_characters` are
   derived from it in `R/palettes.R`. Every function takes `medium`
@@ -39,19 +39,19 @@ When asked to add characters (or with no other instruction, when
     (`https://tfwiki.net/mediawiki/images2/<a>/<ab>/<File>.jpg`; strip
     the `thumb/` and size prefix). Direct `curl` to tfwiki.net gets a
     403; use the WebFetch tool. The wiki’s fast summaries are unreliable
-    about colours; rely on the toy photo, the wiki’s prose about the
-    toy, and knowledge of the toy. Leave `image` as `NA` rather than
-    guessing a URL.
+    about colors; rely on the toy photo, the wiki’s prose about the toy,
+    and knowledge of the toy. Leave `image` as `NA` rather than guessing
+    a URL.
 2.  Add entries to `R/aaa-registry.R` in a new or existing block,
     following the conventions in `WISHLIST.md` (order, naming, 4-6
-    colours, body colour first). New teams go in `.team_faction` and the
+    colors, body color first). New teams go in `.team_faction` and the
     `.registry_toys` vector. New roles or subgroups may need
     `tf_characters` docs and tests updated. Add a `cartoon()` entry for
     every new toy entry (tests require it), with an episode still as the
     image: list the episode-named image filenames on the wiki page with
     WebFetch, compute the MediaWiki hash path (see `data-raw/README.md`)
     and verify it with `curl -A "Mozilla/5.0 ..."`. Comic entries are
-    optional; when adding one, name the Marvel issue the colours were
+    optional; when adding one, name the Marvel issue the colors were
     sampled from in the description.
 3.  Run `Rscript -e "devtools::document()"`,
     `Rscript -e "devtools::test()"`, `Rscript data-raw/make_figures.R`.
@@ -67,6 +67,19 @@ When asked to add characters (or with no other instruction, when
 Do not commit or push unless asked. Keep the package free of non-ASCII
 characters in R code and Rd (CRAN check), including in descriptions.
 
+## Release checks
+
+`dev/release_checks.R` is the pre-CRAN checklist (not shipped; `dev` is
+in `.Rbuildignore`). Source it section by section: document, figures,
+site, tests,
+`devtools::check(cran = TRUE, incoming = TRUE, remote = TRUE)`,
+`urlchecker::url_check()`, `spelling::spell_check_package()` against
+`inst/WORDLIST`, tarball size, then win-builder. `cran-comments.md`
+holds the notes for the reviewer; update its check results before
+submitting. When a wishlist pass adds new names, run
+`spelling::update_wordlist()` after confirming the only new words are
+character, team or company names.
+
 ## Commands
 
 ``` bash
@@ -75,4 +88,6 @@ Rscript -e "devtools::test()"
 Rscript -e "devtools::check()"
 Rscript data-raw/make_figures.R
 Rscript -e "pkgdown::build_site()"
+Rscript -e "spelling::spell_check_package()"
+Rscript -e "urlchecker::url_check()"
 ```

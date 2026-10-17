@@ -17,7 +17,7 @@ so the queue and its priorities live in one place.
 
     - [ ] **Name or team** (faction; team/subgroup; year) - priority: high | normal | low
           TFWiki: https://tfwiki.net/wiki/Name_(G1)
-          Notes: members if a team, which colours matter, anything odd.
+          Notes: members if a team, which colors matter, anything odd.
 
 Only the bold name and a priority are required. When a line is done,
 move it to **Done** with the version it landed in. Keep the sections in
@@ -34,13 +34,13 @@ this order; scripts and people both read from the top.
 - Every character also gets a `cartoon` palette (the animation model,
   read from an episode still linked as the image; tests enforce this),
   and may get a `comic` palette. A comic palette must say in its
-  description which Marvel issue its colours were sampled from, because
-  Marvel colouring changed between issues and colourists. Cartoon and
+  description which Marvel issue its colors were sampled from, because
+  Marvel coloring changed between issues and colorists. Cartoon and
   comic entries are `cartoon()` / `comic()` calls below the toy blocks
   in the registry.
 - Palette name: character name in lowercase snake_case (`hun_gurrr`,
   `blast_off`). Combined forms use their own name with no team prefix.
-- Colours: 4 to 6 hex values from the original Hasbro release, body
+- Colors: 4 to 6 hex values from the original Hasbro release, body
   plastic first, then secondary plastic, then chrome/die-cast/paint
   accents, most distinct first. Members of one team share hex values for
   shared plastics.
@@ -93,10 +93,10 @@ lines go first when there is a choice.
 
 ### Comic palettes for the teams already in the package
 
-Marvel colouring is not consistent, so each of these needs a specific
+Marvel coloring is not consistent, so each of these needs a specific
 issue to sample from; the suggestions below are the teams’ first or most
 prominent US appearances. Marvel UK reprinted the US art with its own
-colouring, so say which edition was used.
+coloring, so say which edition was used.
 
 ### Remaining Generation 1 combiner teams
 
@@ -148,7 +148,7 @@ has no clearly named G1 toy image on their pages that could be found
 programmatically. Find the image (Special:ListFiles, or the `/toys`
 subpage in a browser) and set `image` in `R/aaa-registry.R`.
 
-**Onslaught and Brawl robot-mode colours.** Both were set from memory
+**Onslaught and Brawl robot-mode colors.** Both were set from memory
 because no toy photo was found; confirm Onslaught’s blue robot parts
 (`#2F4F8F`) and Brawl’s olive (`#5B6B3A`) against a photo.
 
@@ -177,8 +177,8 @@ energy effects).
 **Comic palettes for team members are read from a team panel.** The
 linked panels show the combined form (Aerialbots, Stunticons,
 Protectobots), a small group shot (Predacons) or vehicle modes
-(Combaticons), so individual members’ comic colours are inferred from
-the team’s palette and the toy. A pass that links each member to a
+(Combaticons), so individual members’ comic colors are inferred from the
+team’s palette and the toy. A pass that links each member to a
 robot-mode panel of its own would tighten them.
 
 **Seacon cartoon palettes have no reference image.** Their Masterforce

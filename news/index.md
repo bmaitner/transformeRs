@@ -47,7 +47,7 @@
   ([\#25](https://github.com/bmaitner/transformerpalettes/issues/25))
   and Combaticons
   ([\#32](https://github.com/bmaitner/transformerpalettes/issues/32)).
-  Marvel’s colouring often departs from the toys: Menasor is yellow and
+  Marvel’s coloring often departs from the toys: Menasor is yellow and
   magenta, Vortex is cyan, Rampage and Headstrong are red. 177 palettes
   in total.
 
@@ -80,14 +80,14 @@
   their toy photos.
 - New
   [`tf_pick()`](https://bmaitner.github.io/transformerpalettes/reference/tf_pick.md)
-  selects the `n` most distinguishable colours from one or more palettes
-  for a light, dark or greyscale plot, optionally requiring them to stay
-  distinct under simulated colour-vision deficiency. Colours that fail a
+  selects the `n` most distinguishable colors from one or more palettes
+  for a light, dark or grayscale plot, optionally requiring them to stay
+  distinct under simulated color-vision deficiency. Colors that fail a
   WCAG contrast check against the background are dropped first; the
-  subset is then chosen to maximise the smallest pairwise CIE Lab
+  subset is then chosen to maximize the smallest pairwise CIE Lab
   distance.
 - Comic palettes for the combiner teams are queued in `WISHLIST.md`
-  rather than guessed; Marvel colouring varies by issue, so each will
+  rather than guessed; Marvel coloring varies by issue, so each will
   cite the issue it was sampled from.
 
 ## transformerpalettes 0.1.0
@@ -103,7 +103,7 @@
   [`tf_show_palettes()`](https://bmaitner.github.io/transformerpalettes/reference/tf_show_palettes.md),
   and
   [`tf_team_palette()`](https://bmaitner.github.io/transformerpalettes/reference/tf_team_palette.md)
-  for one colour per member of a combiner team (with `distinct = TRUE`
+  for one color per member of a combiner team (with `distinct = TRUE`
   for teams cast from shared plastics).
 - ggplot2 scales:
   [`scale_colour_tf()`](https://bmaitner.github.io/transformerpalettes/reference/scale_tf.md),
@@ -113,7 +113,7 @@
   and
   [`tf_palette_stats()`](https://bmaitner.github.io/transformerpalettes/reference/tf_palette_stats.md)
   to shortlist palettes that work for categorical, colorblind-safe,
-  sequential or diverging use, judged from the colours themselves.
+  sequential or diverging use, judged from the colors themselves.
 - `tf_characters` metadata table with faction, team, role, alternate
   mode, year, descriptions and Transformers Wiki links and toy photos.
 - pkgdown site at <https://bmaitner.github.io/transformerpalettes/> with
