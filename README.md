@@ -233,6 +233,41 @@ purpose: saturated yellows fail it against white, so a light-mode pick from
 the Predacons has fewer colors to work with. Lower `min_contrast` to keep
 them, or pass a different `background`.
 
+### Crediting the sources
+
+The colors belong to the toys, cartoons and comics they came from, so give
+them a line. `tf_credit()` writes that line from the palette metadata,
+grouped by medium, and follows a `tf_pick()` or `tf_team_palette()` result
+back to every character that contributed. The caption form is one sentence;
+the acknowledgment form adds that the hex values are approximations that
+imply no endorsement, which is the wording journals tend to want. Cite the
+package itself with `citation("transformerpalettes")`.
+
+```r
+tf_credit("optimus_prime")
+#> [1] "Colors: Optimus Prime toy colorway by Hasbro and Takara Tomy, via the transformerpalettes R package."
+
+tf_credit(tf_team_palette("Stunticons"))
+#> [1] "Colors: Motormaster, Dead End, Breakdown, Drag Strip and Wildrider toy colorways by Hasbro and Takara Tomy, via the transformerpalettes R package."
+
+tf_credit(c("optimus_prime", "megatron_cartoon"))
+#> [1] "Colors: Optimus Prime toy colorway by Hasbro and Takara Tomy and Megatron cartoon colors from the Generation 1 animated series, via the transformerpalettes R package."
+
+tf_credit("optimus_prime", format = "acknowledgment")
+#> [1] "Figure colors are derived from the Optimus Prime toy colorway designed by Hasbro and Takara Tomy. Hex values are approximations from the transformerpalettes R package (Maitner 2026) and imply no endorsement by Hasbro or Takara Tomy."
+
+# straight into a figure caption
+cols <- tf_pick(c("optimus_prime", "megatron"), n = 3)
+ggplot(mpg, aes(displ, hwy, color = drv)) +
+  geom_point(size = 2.5) +
+  scale_color_manual(values = unname(cols)) +
+  labs(caption = tf_credit(cols))
+```
+
+`format = "markdown"` links each character to its Transformers Wiki page,
+for Quarto and R Markdown captions, and `package = FALSE` drops the package
+mention when it is cited elsewhere.
+
 ### Character background
 
 `tf_characters` is a data frame with one row per palette: the character,

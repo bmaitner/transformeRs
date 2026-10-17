@@ -40,6 +40,7 @@ reference:
       - tf_palette_names
       - tf_media
       - tf_show_palettes
+      - tf_credit
   - title: Choosing colors for a plot
     contents:
       - tf_pick

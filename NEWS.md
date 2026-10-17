@@ -1,5 +1,11 @@
 # transformerpalettes 0.4.0
 
+* New `tf_credit()` writes a figure-caption or acknowledgments sentence
+  naming the characters used and where their colors come from (the Hasbro and
+  Takara Tomy toys, the animated series or the Marvel comics), and follows
+  picks and team palettes back to their source palettes.
+  `citation("transformerpalettes")` now returns a reference for the package
+  itself.
 * Third pass through the wishlist, clearing the queue: Shockwave, Soundwave
   and the six cassettes, the Insecticons, the eleven 1984 Autobot cars, the
   six Mini Vehicles, the 1986 movie cast (Hot Rod, Rodimus Prime, Ultra
