@@ -29,7 +29,7 @@ Each card has a **Suggest a change** link that opens a prefilled GitHub
 issue, and there is a form to [request a
 character](https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml)
 who is not covered yet.
-[`WISHLIST.md`](https://bmaitner.github.io/transformerpalettes/WISHLIST.md)
+[`WISHLIST.md`](https://github.com/bmaitner/transformerpalettes/blob/main/WISHLIST.md)
 lists what is queued.
 
 ## Installation
@@ -113,7 +113,7 @@ browser links to. Marvel coloring changed from issue to issue (and
 Marvel UK recolored the same art), so treat them as one issue’s reading
 rather than a canon. The Pretender Monsters have no cartoon palette
 because they never appeared in one;
-[`WISHLIST.md`](https://bmaitner.github.io/transformerpalettes/WISHLIST.md)
+[`WISHLIST.md`](https://github.com/bmaitner/transformerpalettes/blob/main/WISHLIST.md)
 lists what is still open. Asking for a medium a character does not have
 yet gives an error that says so.
 
@@ -370,7 +370,7 @@ also accepts `"Hun-Gurrr"` and `"Blast Off"`. Every team is drawn in
 `man/figures/palettes-<team>.png` (spaces in a team name become
 hyphens). Characters and teams that are lined up to be added next are
 listed in
-[`WISHLIST.md`](https://bmaitner.github.io/transformerpalettes/WISHLIST.md);
+[`WISHLIST.md`](https://github.com/bmaitner/transformerpalettes/blob/main/WISHLIST.md);
 add a line there, or open a
 [request](https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml).
 
@@ -401,7 +401,7 @@ Palettes range from four to six colors. Chrome and die-cast parts do not
 reduce to a single flat color; a silver or gray stands in for them. Wiki
 photos vary in lighting, so expect some palettes to be rough, and the
 least certain ones are flagged in
-[`WISHLIST.md`](https://bmaitner.github.io/transformerpalettes/WISHLIST.md).
+[`WISHLIST.md`](https://github.com/bmaitner/transformerpalettes/blob/main/WISHLIST.md).
 Corrections are welcome, ideally with a photograph of the toy under
 neutral light. Use the [palette
 browser](https://bmaitner.github.io/transformerpalettes/articles/browse.html)
