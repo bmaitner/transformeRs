@@ -24,3 +24,5 @@
 * GitHub Actions: ubuntu-latest (R devel, release, oldrel-1), macos-latest
   (release), windows-latest (release)
 * win-builder (devel)
+* R-hub v2: linux (R devel), macos (R devel), windows (R devel), ubuntu-next
+  (R next), clang-asan (R devel with AddressSanitizer)

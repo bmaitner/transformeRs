@@ -52,7 +52,14 @@ stopifnot(file.size(tb) < 4 * 1024^2)
 
 # 4. Remote builders (results arrive by email / GitHub) ---------------------
 devtools::check_win_devel()            # CRAN's Windows R-devel builder
-# rhub::rhub_setup(); rhub::rhub_check()  # CRAN-like Linux/clang configurations
+
+# R-hub v2 runs in this repo's GitHub Actions (.github/workflows/rhub.yaml,
+# created once with rhub::rhub_setup()). The workflow file must be on the
+# default branch, so commit and push before checking. Results appear under
+# https://github.com/bmaitner/transformerpalettes/actions.
+rhub::rhub_doctor()
+rhub::rhub_check(platforms = c("linux", "macos", "windows", "ubuntu-next", "clang-asan"))
+# rhub::rhub_platforms()               # the full list of available builders
 
 # 5. Submit -----------------------------------------------------------------
 # devtools::release()                  # interactive checklist, then uploads
