@@ -30,7 +30,7 @@
 * Comic palettes for six combiner teams, each sampled from a named Marvel US
   issue and linked to the panel: Constructicons (#10), Aerialbots (#21),
   Stunticons (#22), Protectobots (#24), Predacons (#25) and Combaticons
-  (#32). Marvel's colouring often departs from the toys: Menasor is yellow
+  (#32). Marvel's coloring often departs from the toys: Menasor is yellow
   and magenta, Vortex is cyan, Rampage and Headstrong are red. 177 palettes
   in total.
 
@@ -53,14 +53,14 @@
   reference image; the palette browser gains a Medium filter and badge.
 * Corrected the toy palettes of Cutthroat, Drag Strip and Vortex against
   their toy photos.
-* New `tf_pick()` selects the `n` most distinguishable colours from one or
-  more palettes for a light, dark or greyscale plot, optionally requiring
-  them to stay distinct under simulated colour-vision deficiency. Colours
+* New `tf_pick()` selects the `n` most distinguishable colors from one or
+  more palettes for a light, dark or grayscale plot, optionally requiring
+  them to stay distinct under simulated color-vision deficiency. Colors
   that fail a WCAG contrast check against the background are dropped first;
-  the subset is then chosen to maximise the smallest pairwise CIE Lab
+  the subset is then chosen to maximize the smallest pairwise CIE Lab
   distance.
 * Comic palettes for the combiner teams are queued in `WISHLIST.md` rather
-  than guessed; Marvel colouring varies by issue, so each will cite the
+  than guessed; Marvel coloring varies by issue, so each will cite the
   issue it was sampled from.
 
 # transformerpalettes 0.1.0
@@ -70,13 +70,13 @@
   Protectobots, Technobots, Constructicons, Stunticons, Combaticons,
   Terrorcons, Predacons, Seacons).
 * `tf_palette()`, `tf_palette_names()`, `tf_factions()`, `tf_teams()`,
-  `tf_show_palettes()`, and `tf_team_palette()` for one colour per member of
+  `tf_show_palettes()`, and `tf_team_palette()` for one color per member of
   a combiner team (with `distinct = TRUE` for teams cast from shared plastics).
 * ggplot2 scales: `scale_colour_tf()`, `scale_fill_tf()` and their
   `_d` / `_c` variants, plus `scale_color_*` aliases.
 * `tf_find_palettes()` and `tf_palette_stats()` to shortlist palettes that
   work for categorical, colorblind-safe, sequential or diverging use, judged
-  from the colours themselves.
+  from the colors themselves.
 * `tf_characters` metadata table with faction, team, role, alternate mode,
   year, descriptions and Transformers Wiki links and toy photos.
 * pkgdown site at <https://bmaitner.github.io/transformerpalettes/> with a filterable

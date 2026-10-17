@@ -28,7 +28,7 @@ body:
     id: media
     attributes:
       label: Which versions?
-      description: transformerpalettes records the toy, the cartoon animation model and the Marvel comic colours separately. Toy is always added first.
+      description: transformerpalettes records the toy, the cartoon animation model and the Marvel comic colors separately. Toy is always added first.
       multiple: true
       options:
         - toy
@@ -48,10 +48,10 @@ body:
     validations:
       required: true
   - type: textarea
-    id: colours
+    id: colors
     attributes:
-      label: Colours
-      description: The toy's plastic, chrome and paint colours, as hex codes if you can, or as a description ("red cab, blue legs, silver chest, yellow stickers").
+      label: Colors
+      description: The toy's plastic, chrome and paint colors, as hex codes if you can, or as a description ("red cab, blue legs, silver chest, yellow stickers").
   - type: textarea
     id: photo
     attributes:

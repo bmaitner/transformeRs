@@ -11,7 +11,7 @@
 \alias{scale_color_tf_d}
 \alias{scale_color_tf_c}
 \alias{scale_color_tf}
-\title{Transformers colour and fill scales for ggplot2}
+\title{Transformers color and fill scales for ggplot2}
 \usage{
 scale_colour_tf_d(
   palette = "optimus_prime",
@@ -88,7 +88,7 @@ scale_color_tf(
 \arguments{
 \item{palette}{Name of a character's palette. See \code{\link[=tf_palette_names]{tf_palette_names()}}.}
 
-\item{reverse}{Logical. Reverse the order of colours in the palette?}
+\item{reverse}{Logical. Reverse the order of colors in the palette?}
 
 \item{medium}{Which version of the character to use: \code{"toy"} (default),
 \code{"cartoon"} or \code{"comic"}. See \code{\link[=tf_media]{tf_media()}}.}
@@ -109,17 +109,17 @@ otherwise a continuous gradient scale.}
 A ggplot2 scale object.
 }
 \description{
-Colour and fill scales that use a character's palette. The \verb{_d} variants
+Color and fill scales that use a character's palette. The \verb{_d} variants
 are for discrete data, the \verb{_c} variants for continuous data, and
 \code{scale_colour_tf()} / \code{scale_fill_tf()} choose between the two with the
 \code{discrete} argument. \verb{scale_color_*} spellings are aliases.
 }
 \details{
-Discrete scales draw the first \code{n} colours of the palette, where \code{n} is the
+Discrete scales draw the first \code{n} colors of the palette, where \code{n} is the
 number of levels in the data. If the data has more levels than the palette
-has colours, the palette is interpolated with \code{\link[grDevices:colorRamp]{grDevices::colorRampPalette()}}
-so that every level still receives a distinct colour; expect the result to
-be less legible than the curated colours. For a palette with one colour per
+has colors, the palette is interpolated with \code{\link[grDevices:colorRamp]{grDevices::colorRampPalette()}}
+so that every level still receives a distinct color; expect the result to
+be less legible than the curated colors. For a palette with one color per
 member of a combiner team, pass \code{\link[=tf_team_palette]{tf_team_palette()}} to
 \code{\link[ggplot2:scale_manual]{ggplot2::scale_colour_manual()}}.
 }

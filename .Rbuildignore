@@ -13,3 +13,5 @@
 ^CLAUDE\.md$
 ^WISHLIST\.md$
 ^.*\.Rproj$
+^cran-comments\.md$
+^dev$

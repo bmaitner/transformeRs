@@ -73,7 +73,7 @@ test_that("tf_palette resolves a name plus medium", {
   expect_error(tf_palette("nobody", medium = "cartoon"), "Unknown Transformers palette")
 })
 
-test_that("team and show helpers honour medium", {
+test_that("team and show helpers honor medium", {
   cart <- tf_team_palette("Aerialbots", medium = "cartoon")
   expect_equal(names(cart), tf_palette_names(team = "Aerialbots", medium = "cartoon")[1:5])
   expect_equal(unname(cart[[1]]), tf_palettes[["silverbolt_cartoon"]][1])

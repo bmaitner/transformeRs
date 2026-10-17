@@ -6,13 +6,13 @@
 \alias{transformerpalettes-package}
 \title{transformerpalettes: Color Palettes Inspired by Generation 1 Transformers}
 \description{
-Colour palettes based on the original Generation 1 Transformers toys, plus
-ggplot2 colour and fill scales.
+Color palettes based on the original Generation 1 Transformers toys, plus
+ggplot2 color and fill scales.
 }
 \details{
-Start with \code{\link[=tf_palette]{tf_palette()}} to pull colours from a character,
+Start with \code{\link[=tf_palette]{tf_palette()}} to pull colors from a character,
 \code{\link[=tf_palette_names]{tf_palette_names()}} to list the available characters,
-\code{\link[=tf_team_palette]{tf_team_palette()}} for one colour per member of a combiner team, and
+\code{\link[=tf_team_palette]{tf_team_palette()}} for one color per member of a combiner team, and
 \code{\link[=scale_colour_tf]{scale_colour_tf()}} / \code{\link[=scale_fill_tf]{scale_fill_tf()}} to use them in ggplot2. Run
 \code{\link[=tf_show_palettes]{tf_show_palettes()}} to see the palettes at once and \code{\link[=tf_find_palettes]{tf_find_palettes()}}
 to shortlist the ones that suit a kind of plot.

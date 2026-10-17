@@ -23,7 +23,7 @@ for (tm in tf_teams()) {
   dev.off()
 }
 
-# Team palettes: one colour per member, body colour and distinct variants
+# Team palettes: one color per member, body color and distinct variants
 teams <- tf_teams()
 draw_team <- function(cols, title) {
   k <- length(cols)
@@ -84,7 +84,7 @@ par(mfrow = c(2, 2), mar = c(0.2, 0.4, 1.4, 0.4))
 draw_pick(tf_pick(pool, n = 5), 'tf_pick(pool, 5)')
 draw_pick(tf_pick(pool, n = 5, style = "dark"), 'tf_pick(pool, 5, style = "dark")')
 draw_pick(tf_pick(pool, n = 5, colorblind = TRUE), 'tf_pick(pool, 5, colorblind = TRUE)')
-draw_pick(tf_pick(pool, n = 5, style = "greyscale"), 'tf_pick(pool, 5, style = "greyscale")')
+draw_pick(tf_pick(pool, n = 5, style = "grayscale"), 'tf_pick(pool, 5, style = "grayscale")')
 dev.off()
 
 # ggplot2 examples

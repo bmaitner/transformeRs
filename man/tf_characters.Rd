@@ -29,8 +29,8 @@ Autobot Cars, Minibots).}
 \item{year}{Year of the reference: the original Hasbro release for toy
 palettes, the character's first appearance for cartoon and comic
 palettes.}
-\item{n_colours}{Number of colours in the palette.}
-\item{description}{Description of the colours in that medium.}
+\item{n_colours}{Number of colors in the palette.}
+\item{description}{Description of the colors in that medium.}
 \item{source}{URL of the character's page on the Transformers Wiki, with
 an anchor to the relevant section for cartoon and comic palettes.}
 \item{image}{Direct URL of the reference image the palette was checked
@@ -39,7 +39,7 @@ the Transformers Wiki, or \code{NA} where none has been identified yet.}
 }
 }
 \source{
-Transformers Wiki, \url{https://tfwiki.net/}.
+Transformers Wiki, \url{https://tfwiki.net/wiki/Main_Page}.
 }
 \usage{
 tf_characters
@@ -48,7 +48,7 @@ tf_characters
 Background information for every palette in \link{tf_palettes}: the character,
 which medium the palette records (toy, cartoon or comic), its faction, the
 combiner team and combined form it belongs to, its role in that team, its
-alternate mode, the year of the reference, a description of the colours,
+alternate mode, the year of the reference, a description of the colors,
 and links to the reference page and image on the Transformers Wiki.
 }
 \examples{

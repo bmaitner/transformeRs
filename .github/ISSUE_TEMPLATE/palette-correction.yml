@@ -1,5 +1,5 @@
 name: Suggest a palette change
-description: Propose adding, changing, removing or reordering colours in an existing transformerpalettes palette, or fixing its metadata.
+description: Propose adding, changing, removing or reordering colors in an existing transformerpalettes palette, or fixing its metadata.
 title: "[palette] palette change"
 labels: [palette]
 body:
@@ -29,7 +29,7 @@ body:
   - type: input
     id: current_colours
     attributes:
-      label: Current colours
+      label: Current colors
       description: The hex codes the palette has now (prefilled when you come from the browser).
       placeholder: "#F2C21E #4B3A8A #262626 #B5B8BD #C8262E"
   - type: dropdown
@@ -38,10 +38,10 @@ body:
       label: What kind of change?
       multiple: true
       options:
-        - Change a colour that is wrong
-        - Add a colour that is missing
-        - Remove a colour that is not on the toy
-        - Reorder the colours
+        - Change a color that is wrong
+        - Add a color that is missing
+        - Remove a color that is not on the toy
+        - Reorder the colors
         - Fix the description, alternate mode, year or other metadata
         - Replace or add the reference image
         - Add a cartoon or comic version of this character
@@ -50,7 +50,7 @@ body:
   - type: textarea
     id: proposed
     attributes:
-      label: Proposed colours
+      label: Proposed colors
       description: The hex codes you think the palette should have, in order. Approximate is fine; say which is body plastic, which is secondary plastic, and which are chrome, die-cast or paint.
       placeholder: |
         #F2C21E  yellow car body

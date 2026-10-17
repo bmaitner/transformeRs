@@ -1,6 +1,6 @@
 library(ggplot2)
 
-test_that("discrete scales assign palette colours in order", {
+test_that("discrete scales assign palette colors in order", {
   p <- ggplot(mpg, aes(displ, hwy, colour = drv)) +
     geom_point() +
     scale_colour_tf_d("optimus_prime")
@@ -15,7 +15,7 @@ test_that("discrete scales assign palette colours in order", {
   expect_setequal(used_rev, rev(tf_palettes[["optimus_prime"]][1:3]))
 })
 
-test_that("discrete scales interpolate when data has more levels than colours", {
+test_that("discrete scales interpolate when data has more levels than colors", {
   p <- ggplot(mpg, aes(displ, hwy, colour = class)) +
     geom_point() +
     scale_colour_tf_d("blades")

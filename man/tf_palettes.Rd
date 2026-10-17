@@ -5,13 +5,13 @@
 \alias{tf_palettes}
 \title{Generation 1 Transformers palettes}
 \format{
-A named list of character vectors of hex colours.
+A named list of character vectors of hex colors.
 }
 \usage{
 tf_palettes
 }
 \description{
-A named list of colour palettes covering the Generation 1 Transformers
+A named list of color palettes covering the Generation 1 Transformers
 cast: the leaders, every member and combined form of the combiner teams,
 the Dinobots, Seekers, cassettes, Insecticons, the 1984 Autobot cars and
 Mini Vehicles, and the 1986 movie cast. Each character has a palette for
@@ -19,21 +19,21 @@ the original toy, most have one for the cartoon, many have one for the
 Marvel comic, and the three combiner teams Hasbro re-released in
 Generation 2 have one for that; see the \code{medium} column of
 \link{tf_characters}. Each element is a character vector of four to
-six hex colours ordered so that the first few are the most distinct from
-one another (body colour first, then secondary colour, then accents). Use
-\code{\link[=tf_palette]{tf_palette()}} to pull colours from a palette, \code{\link[=tf_team_palette]{tf_team_palette()}} to take
-one colour from each member of a combiner team, and \link{tf_characters} for
+six hex colors ordered so that the first few are the most distinct from
+one another (body color first, then secondary color, then accents). Use
+\code{\link[=tf_palette]{tf_palette()}} to pull colors from a palette, \code{\link[=tf_team_palette]{tf_team_palette()}} to take
+one color from each member of a combiner team, and \link{tf_characters} for
 background on each character.
 }
 \details{
 Toy palettes are named after the character (\code{optimus_prime}); cartoon and
 comic palettes carry a suffix (\code{optimus_prime_cartoon},
-\code{optimus_prime_comic}). Hex values are approximations: toy colours were
+\code{optimus_prime_comic}). Hex values are approximations: toy colors were
 curated by eye from product photography on the Transformers Wiki
-(\url{https://tfwiki.net/}) and the toys' published colour descriptions,
-cartoon colours from the animation models as they appear in episode
-stills, and comic colours from the character's early Marvel appearances.
-Chrome and die-cast parts do not reduce to a single flat colour; those
+(\url{https://tfwiki.net/wiki/Main_Page}) and the toys' published color descriptions,
+cartoon colors from the animation models as they appear in episode
+stills, and comic colors from the character's early Marvel appearances.
+Chrome and die-cast parts do not reduce to a single flat color; those
 entries reflect how the part photographs.
 }
 \examples{

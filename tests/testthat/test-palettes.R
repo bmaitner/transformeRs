@@ -1,4 +1,4 @@
-test_that("all palettes are valid hex colours", {
+test_that("all palettes are valid hex colors", {
   for (nm in names(tf_palettes)) {
     cols <- tf_palettes[[nm]]
     expect_true(is.character(cols), info = nm)
@@ -134,7 +134,7 @@ test_that("tf_palette matches names loosely and errors on unknown", {
   expect_error(tf_palette("not_a_robot"), "Unknown Transformers palette")
 })
 
-test_that("team palettes take one colour per member in team order", {
+test_that("team palettes take one color per member in team order", {
   aero <- tf_team_palette("Aerialbots")
   expect_s3_class(aero, "tf_palette")
   expect_equal(names(aero), tf_palette_names(team = "Aerialbots")[1:5])
@@ -149,7 +149,7 @@ test_that("team palettes take one colour per member in team order", {
   deep <- tf_team_palette("Aerialbots", which = 99)
   expect_equal(unname(deep[["air_raid"]]), tail(tf_palettes[["air_raid"]], 1))
 
-  # distinct = TRUE never repeats a colour that a member could avoid
+  # distinct = TRUE never repeats a color that a member could avoid
   plain <- tf_team_palette("Protectobots")
   expect_gt(anyDuplicated(unname(plain)), 0)
   dist <- tf_team_palette("Protectobots", distinct = TRUE)

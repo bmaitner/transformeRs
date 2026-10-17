@@ -7,13 +7,13 @@ knitr::opts_chunk$set(echo = FALSE)
 library(transformerpalettes)
 ```
 
-Every palette in transformerpalettes, with its colours, where it came from, and the
+Every palette in transformerpalettes, with its colors, where it came from, and the
 toy photo, episode still or comic panel it was checked against. Most
 characters have a toy palette and a cartoon palette; a few have a comic one
 too. Filter by medium, faction, combiner team, role or what kind of plot the
 palette suits, click a swatch to copy its hex code, and use
 **Suggest a change** on any card to open a prefilled GitHub issue where you can
-propose different colours or attach a better photograph. Missing someone?
+propose different colors or attach a better photograph. Missing someone?
 [Request a character](https://github.com/bmaitner/transformerpalettes/issues/new?template=new-character.yml).
 
 ```{r data, results = "asis"}
@@ -92,8 +92,8 @@ cat('<script id="tf-data" type="application/json">', json, '</script>', sep = "\
   <div><label for="tb-faction">Faction</label><select id="tb-faction"><option value="">Both factions</option></select></div>
   <div><label for="tb-team">Team</label><select id="tb-team"><option value="">All teams</option></select></div>
   <div><label for="tb-role">Role</label><select id="tb-role"><option value="">Any role</option><option value="leader">leader</option><option value="combiner torso">combiner torso</option><option value="combiner limb">combiner limb</option><option value="standalone">standalone</option><option value="combined form">combined form</option><option value="subgroup member">subgroup member</option></select></div>
-  <div><label for="tb-n">Colours</label><select id="tb-n"><option value="">Any number</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></div>
-  <div><label for="tb-sort">Sort by</label><select id="tb-sort"><option value="default">Package order</option><option value="palette">Name</option><option value="team">Team</option><option value="year">Year</option><option value="min_de">Most distinct colours</option><option value="cvd">Most colorblind-safe</option><option value="lum_range">Widest lightness range</option></select></div>
+  <div><label for="tb-n">Colors</label><select id="tb-n"><option value="">Any number</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></div>
+  <div><label for="tb-sort">Sort by</label><select id="tb-sort"><option value="default">Package order</option><option value="palette">Name</option><option value="team">Team</option><option value="year">Year</option><option value="min_de">Most distinct colors</option><option value="cvd">Most colorblind-safe</option><option value="lum_range">Widest lightness range</option></select></div>
 </div>
 <div class="tb-uses">
   <span>Suits:</span>
@@ -254,7 +254,7 @@ cat('<script id="tf-data" type="application/json">', json, '</script>', sep = "\
 Every palette here is an approximation read off toy photographs, so
 corrections are welcome. Each card links to a prefilled GitHub issue form:
 
-- **Suggest a change** if a colour is wrong, missing, or should be removed, or
+- **Suggest a change** if a color is wrong, missing, or should be removed, or
   if the description, alternate mode, year or reference image is off. Say
   which hex codes you would add, change or drop and why. For a toy palette a
   photo under neutral light is the best evidence; for a cartoon palette a

@@ -12,19 +12,19 @@ what is queued to be added or corrected.
    and, for characters with a large toy history, its `/toys` subpage. That
    page is the `source` column of `tf_characters`, and the wiki's photo of the
    original toy in robot mode is the `image` column.
-2. The plastic, chrome, die-cast and paint colours of that toy are listed by
+2. The plastic, chrome, die-cast and paint colors of that toy are listed by
    eye from the photograph and the wiki's own description of the toy (which
-   often names the plastic colours and notes regional variants, for example
-   the flat grey and blue Takara Megatron versus the chromed, red-accented
-   Hasbro one). Hasbro colours are used where the two differ.
-3. Hex values are chosen to represent each colour as it appears on the toy
+   often names the plastic colors and notes regional variants, for example
+   the flat gray and blue Takara Megatron versus the chromed, red-accented
+   Hasbro one). Hasbro colors are used where the two differ.
+3. Hex values are chosen to represent each color as it appears on the toy
    under neutral light, ordered body plastic first, then secondary plastic,
-   then chrome and paint accents, so the first few colours are the most
-   distinct. Palettes have four to six colours. Chrome and die-cast parts do
-   not reduce to a flat colour; a mid-grey or silver stands in for them.
+   then chrome and paint accents, so the first few colors are the most
+   distinct. Palettes have four to six colors. Chrome and die-cast parts do
+   not reduce to a flat color; a mid-gray or silver stands in for them.
 4. Members of one combiner team are cast from the same plastics, so their
    entries share hex values deliberately (every Constructicon is the same
-   green and purple). The combined form's palette draws one colour from each
+   green and purple). The combined form's palette draws one color from each
    contributing part.
 
 Photos on the wiki vary in lighting and white balance, and the summaries used
@@ -37,19 +37,19 @@ the least certain.
 Each character's toy palette is the base entry. A `cartoon()` or `comic()`
 call lower in `R/aaa-registry.R` adds a version for another medium; it
 inherits the character, faction, team, role and alternate mode from the toy
-entry and supplies only colours, the year of the character's first
+entry and supplies only colors, the year of the character's first
 appearance in that medium, a description, a reference image and (optionally)
 the anchor of the wiki section it links to.
 
-- Cartoon colours are the flat colours of the Sunbow animation model, read
+- Cartoon colors are the flat colors of the Sunbow animation model, read
   from an episode still on the Transformers Wiki (the `image` column links
   to it). Constructicons are a lime green rather than the toy's grass green,
   Drag Strip is yellow and purple rather than orange and plum, and so on.
   The Seacons never appeared in the Sunbow cartoon; their cartoon palettes
   are from the Japanese Super-God Masterforce series, where they have
   different names.
-- Comic colours come from the character's early Marvel appearances. Marvel
-  colouring varied by issue and colourist, so a comic palette should name
+- Comic colors come from the character's early Marvel appearances. Marvel
+  coloring varied by issue and colorist, so a comic palette should name
   the issue it was sampled from in its description. Only the two leaders
   have comic palettes so far; the teams are queued in `WISHLIST.md`.
 

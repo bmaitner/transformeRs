@@ -2,7 +2,7 @@
 % Please edit documentation in R/palettes.R
 \name{tf_palette}
 \alias{tf_palette}
-\title{Get colours from a character's palette}
+\title{Get colors from a character's palette}
 \usage{
 tf_palette(
   name,
@@ -19,17 +19,17 @@ stand in for underscores, so \code{"Optimus Prime"} and \code{"Hun-Gurrr"} work.
 See \code{\link[=tf_palette_names]{tf_palette_names()}}. A full name with a medium suffix
 (\code{"megatron_cartoon"}) also works and takes precedence over \code{medium}.}
 
-\item{n}{Number of colours wanted. Defaults to every colour in the palette.}
+\item{n}{Number of colors wanted. Defaults to every color in the palette.}
 
-\item{type}{Either \code{"discrete"} (default) to return the curated colours as
-they are, or \code{"continuous"} to interpolate \code{n} colours across the palette
+\item{type}{Either \code{"discrete"} (default) to return the curated colors as
+they are, or \code{"continuous"} to interpolate \code{n} colors across the palette
 with \code{\link[grDevices:colorRamp]{grDevices::colorRampPalette()}}.}
 
 \item{strict}{Logical. For discrete palettes, error when \code{n} exceeds the
-number of curated colours (default). If \code{FALSE}, interpolate to \code{n}
-colours instead.}
+number of curated colors (default). If \code{FALSE}, interpolate to \code{n}
+colors instead.}
 
-\item{sort}{Logical. If \code{TRUE}, order the colours from darkest to lightest
+\item{sort}{Logical. If \code{TRUE}, order the colors from darkest to lightest
 (by CIE lightness) before selecting or interpolating. Useful when a
 palette is used as a sequential gradient; see \code{\link[=tf_find_palettes]{tf_find_palettes()}}.}
 
@@ -38,12 +38,12 @@ palette is used as a sequential gradient; see \code{\link[=tf_find_palettes]{tf_
 pointer to the wishlist if the character has no palette in that medium.}
 }
 \value{
-A character vector of hex colours with class \code{"tf_palette"}, which
+A character vector of hex colors with class \code{"tf_palette"}, which
 has a print method that draws the swatches.
 }
 \description{
-Returns \code{n} colours from the named character's palette, either the first
-\code{n} curated colours (\code{type = "discrete"}) or \code{n} colours interpolated
+Returns \code{n} colors from the named character's palette, either the first
+\code{n} curated colors (\code{type = "discrete"}) or \code{n} colors interpolated
 across the whole palette (\code{type = "continuous"}).
 }
 \examples{

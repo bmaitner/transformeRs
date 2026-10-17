@@ -2,12 +2,12 @@
 % Please edit documentation in R/pick.R
 \name{tf_pick}
 \alias{tf_pick}
-\title{Pick the most distinguishable colours from one or more palettes}
+\title{Pick the most distinguishable colors from one or more palettes}
 \usage{
 tf_pick(
   palettes,
   n = 5,
-  style = c("light", "dark", "greyscale"),
+  style = c("light", "dark", "grayscale"),
   colorblind = FALSE,
   medium = "toy",
   background = NULL,
@@ -19,83 +19,83 @@ tf_pick(
 \code{\link[=tf_palette_names]{tf_palette_names()}}. Team names are not accepted; use
 \code{tf_palette_names(team = ...)} to expand a team.}
 
-\item{n}{Number of colours wanted.}
+\item{n}{Number of colors wanted.}
 
 \item{style}{One of \code{"light"} (white background), \code{"dark"} (near-black
-background) or \code{"greyscale"} (white background, judged by lightness
+background) or \code{"grayscale"} (white background, judged by lightness
 alone).}
 
-\item{colorblind}{Logical. Require the colours to stay distinct under
+\item{colorblind}{Logical. Require the colors to stay distinct under
 simulated deuteranopia, protanopia and tritanopia?}
 
 \item{medium}{Medium for plain palette names; see \code{\link[=tf_media]{tf_media()}}.}
 
-\item{background}{Optional background colour overriding the one implied
+\item{background}{Optional background color overriding the one implied
 by \code{style}, as a hex string.}
 
-\item{min_contrast}{Minimum WCAG 2 contrast ratio a colour must have
+\item{min_contrast}{Minimum WCAG 2 contrast ratio a color must have
 against the background to be considered. Set to 1 to disable the
 filter.}
 }
 \value{
-A character vector of \code{n} hex colours with class \code{"tf_palette"},
-named by the palette each colour came from, and with attributes
+A character vector of \code{n} hex colors with class \code{"tf_palette"},
+named by the palette each color came from, and with attributes
 \code{min_distance} (smallest pairwise distance under the chosen criterion),
 \code{style}, \code{colorblind} and \code{background}.
 }
 \description{
-Pools the colours of the named palettes and selects the \code{n} that are
+Pools the colors of the named palettes and selects the \code{n} that are
 hardest to confuse with one another on a given kind of plot: light
-background, dark background, or output that will be read in greyscale.
-Optionally judges distinctness under simulated colour-vision deficiency.
+background, dark background, or output that will be read in grayscale.
+Optionally judges distinctness under simulated color-vision deficiency.
 Use it when a single character's palette does not have enough usable
-colours, or when you want a team's or a faction's colours but only the
+colors, or when you want a team's or a faction's colors but only the
 ones that hold up on a chart.
 }
 \details{
 The selection runs in three steps.
 \enumerate{
-\item \strong{Pool.} The colours of every palette in \code{palettes} are combined,
+\item \strong{Pool.} The colors of every palette in \code{palettes} are combined,
 with duplicates removed. Names may be plain (\code{"optimus_prime"}) or
 carry a medium suffix (\code{"optimus_prime_cartoon"}); plain names use
 \code{medium}.
-\item \strong{Filter for the background.} Colours whose WCAG 2 contrast ratio
+\item \strong{Filter for the background.} Colors whose WCAG 2 contrast ratio
 against the background is below \code{min_contrast} are dropped, so a
 light-mode selection never contains a near-white and a dark-mode
 selection never contains a near-black. The background is white for
-\code{"light"} and \code{"greyscale"} and near-black (\code{"#121212"}) for \code{"dark"}
+\code{"light"} and \code{"grayscale"} and near-black (\code{"#121212"}) for \code{"dark"}
 unless \code{background} is given. The default of 3 is the WCAG minimum for
-graphical objects; lower it to keep more colours, raise it for text.
-\item \strong{Choose.} Every pair of remaining colours is scored by its distance
+graphical objects; lower it to keep more colors, raise it for text.
+\item \strong{Choose.} Every pair of remaining colors is scored by its distance
 in CIE Lab (CIE76). With \code{colorblind = TRUE} the distance is the
 smallest of the normal-vision distance and the distances after
 simulating deuteranopia, protanopia and tritanopia (Machado, Oliveira
-and Fernandes 2009), so two colours only count as distinct if every
-viewer can tell them apart. With \code{style = "greyscale"} only the
-lightness difference counts, so the colours survive conversion to
-grey. The \code{n} colours whose closest pair is farthest apart are chosen
+and Fernandes 2009), so two colors only count as distinct if every
+viewer can tell them apart. With \code{style = "grayscale"} only the
+lightness difference counts, so the colors survive conversion to
+gray. The \code{n} colors whose closest pair is farthest apart are chosen
 (a maximum-dispersion subset, found exhaustively when the pool is
 small and by greedy seeding plus swap search otherwise), then ordered
-so that each colour is as different as possible from those before it.
+so that each color is as different as possible from those before it.
 }
 
 The result is a categorical palette: it does not try to build a gradient.
 The smallest pairwise distance in the selection is returned as the
 \code{min_distance} attribute; values above about 20 are comfortably distinct,
-and below about 12 two colours will be hard to tell apart. If the pool
-cannot supply \code{n} colours after filtering, the function errors and says
+and below about 12 two colors will be hard to tell apart. If the pool
+cannot supply \code{n} colors after filtering, the function errors and says
 how many it had, so add palettes or lower \code{min_contrast}.
 }
 \examples{
-# five colours for a white-background plot, from the two leaders
+# five colors for a white-background plot, from the two leaders
 tf_pick(c("optimus_prime", "megatron"), n = 5)
 
-# the same for a dark theme, and colour-blind safe
+# the same for a dark theme, and color-blind safe
 tf_pick(c("optimus_prime", "megatron"), n = 4, style = "dark", colorblind = TRUE)
 
-# a whole team, cartoon colours, printable in greyscale
+# a whole team, cartoon colors, printable in grayscale
 tf_pick(tf_palette_names(team = "Combaticons"), n = 4,
-        style = "greyscale", medium = "cartoon")
+        style = "grayscale", medium = "cartoon")
 
 library(ggplot2)
 cols <- tf_pick(tf_palette_names(team = "Predacons"), n = 3, colorblind = TRUE)

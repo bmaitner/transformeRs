@@ -1,31 +1,31 @@
-# Selecting a subset of colours from one or more palettes ---------------------
+# Selecting a subset of colors from one or more palettes ---------------------
 #
 # The palettes are curated to look like the characters, not to plot well.
-# tf_pick() pools the colours of one or more palettes, removes the ones that
+# tf_pick() pools the colors of one or more palettes, removes the ones that
 # will not read against the intended background, and then chooses the n
-# colours that are hardest to confuse with one another: the subset whose
+# colors that are hardest to confuse with one another: the subset whose
 # closest pair is as far apart as possible in CIE Lab (a max-min dispersion
-# problem), optionally judged under simulated colour-vision deficiency, or by
-# lightness alone for output that will be printed in greyscale.
+# problem), optionally judged under simulated color-vision deficiency, or by
+# lightness alone for output that will be printed in grayscale.
 
-# WCAG 2 relative luminance of sRGB colours.
+# WCAG 2 relative luminance of sRGB colors.
 relative_luminance <- function(hex) {
   lin <- srgb_to_linear(hex_to_srgb(hex))
   as.numeric(lin %*% c(0.2126, 0.7152, 0.0722))
 }
 
-# WCAG 2 contrast ratio between each colour and a single background colour.
+# WCAG 2 contrast ratio between each color and a single background color.
 contrast_ratio <- function(hex, background) {
   l1 <- relative_luminance(hex)
   l2 <- relative_luminance(background)
   (pmax(l1, l2) + 0.05) / (pmin(l1, l2) + 0.05)
 }
 
-# Pairwise distance matrix used to judge how confusable two colours are.
-pick_distances <- function(hex, colorblind = FALSE, greyscale = FALSE) {
+# Pairwise distance matrix used to judge how confusable two colors are.
+pick_distances <- function(hex, colorblind = FALSE, grayscale = FALSE) {
   srgb <- hex_to_srgb(hex)
   lab <- srgb_to_lab(srgb)
-  if (greyscale) {
+  if (grayscale) {
     return(as.matrix(stats::dist(lab[, "L", drop = FALSE])))
   }
   d <- as.matrix(stats::dist(lab))
@@ -47,7 +47,7 @@ subset_score <- function(d, idx) {
   min(vals) + 0.01 * mean(vals)
 }
 
-# Choose n of the m colours maximising subset_score(). Exhaustive when the
+# Choose n of the m colors maximizing subset_score(). Exhaustive when the
 # number of subsets is small; otherwise greedy farthest-point seeding
 # followed by single-swap local search, which is deterministic and close to
 # optimal for the pool sizes the package produces.
@@ -60,8 +60,8 @@ choose_subset <- function(d, n, max_exhaustive = 50000) {
     scores <- apply(combos, 2, function(idx) subset_score(d, idx))
     return(combos[, which.max(scores)])
   }
-  # greedy: start from the most distant pair, then add the colour whose
-  # nearest chosen neighbour is farthest away
+  # greedy: start from the most distant pair, then add the color whose
+  # nearest chosen neighbor is farthest away
   start <- which(d == max(d), arr.ind = TRUE)[1, ]
   chosen <- as.integer(start)
   while (length(chosen) < n) {
@@ -69,7 +69,7 @@ choose_subset <- function(d, n, max_exhaustive = 50000) {
     nearest <- apply(d[rest, chosen, drop = FALSE], 1, min)
     chosen <- c(chosen, rest[which.max(nearest)])
   }
-  # local search: swap one chosen colour for one unchosen while it helps
+  # local search: swap one chosen color for one unchosen while it helps
   best <- subset_score(d, chosen)
   repeat {
     improved <- FALSE
@@ -90,7 +90,7 @@ choose_subset <- function(d, n, max_exhaustive = 50000) {
   sort(chosen)
 }
 
-# Order a chosen set so that each colour is as different as possible from
+# Order a chosen set so that each color is as different as possible from
 # the ones before it, so taking the first k of the result is still a good
 # choice.
 order_by_dispersion <- function(d, idx) {
@@ -106,81 +106,81 @@ order_by_dispersion <- function(d, idx) {
   idx[out]
 }
 
-#' Pick the most distinguishable colours from one or more palettes
+#' Pick the most distinguishable colors from one or more palettes
 #'
-#' Pools the colours of the named palettes and selects the `n` that are
+#' Pools the colors of the named palettes and selects the `n` that are
 #' hardest to confuse with one another on a given kind of plot: light
-#' background, dark background, or output that will be read in greyscale.
-#' Optionally judges distinctness under simulated colour-vision deficiency.
+#' background, dark background, or output that will be read in grayscale.
+#' Optionally judges distinctness under simulated color-vision deficiency.
 #' Use it when a single character's palette does not have enough usable
-#' colours, or when you want a team's or a faction's colours but only the
+#' colors, or when you want a team's or a faction's colors but only the
 #' ones that hold up on a chart.
 #'
 #' @details
 #' The selection runs in three steps.
 #'
-#' 1. **Pool.** The colours of every palette in `palettes` are combined,
+#' 1. **Pool.** The colors of every palette in `palettes` are combined,
 #'    with duplicates removed. Names may be plain (`"optimus_prime"`) or
 #'    carry a medium suffix (`"optimus_prime_cartoon"`); plain names use
 #'    `medium`.
-#' 2. **Filter for the background.** Colours whose WCAG 2 contrast ratio
+#' 2. **Filter for the background.** Colors whose WCAG 2 contrast ratio
 #'    against the background is below `min_contrast` are dropped, so a
 #'    light-mode selection never contains a near-white and a dark-mode
 #'    selection never contains a near-black. The background is white for
-#'    `"light"` and `"greyscale"` and near-black (`"#121212"`) for `"dark"`
+#'    `"light"` and `"grayscale"` and near-black (`"#121212"`) for `"dark"`
 #'    unless `background` is given. The default of 3 is the WCAG minimum for
-#'    graphical objects; lower it to keep more colours, raise it for text.
-#' 3. **Choose.** Every pair of remaining colours is scored by its distance
+#'    graphical objects; lower it to keep more colors, raise it for text.
+#' 3. **Choose.** Every pair of remaining colors is scored by its distance
 #'    in CIE Lab (CIE76). With `colorblind = TRUE` the distance is the
 #'    smallest of the normal-vision distance and the distances after
 #'    simulating deuteranopia, protanopia and tritanopia (Machado, Oliveira
-#'    and Fernandes 2009), so two colours only count as distinct if every
-#'    viewer can tell them apart. With `style = "greyscale"` only the
-#'    lightness difference counts, so the colours survive conversion to
-#'    grey. The `n` colours whose closest pair is farthest apart are chosen
+#'    and Fernandes 2009), so two colors only count as distinct if every
+#'    viewer can tell them apart. With `style = "grayscale"` only the
+#'    lightness difference counts, so the colors survive conversion to
+#'    gray. The `n` colors whose closest pair is farthest apart are chosen
 #'    (a maximum-dispersion subset, found exhaustively when the pool is
 #'    small and by greedy seeding plus swap search otherwise), then ordered
-#'    so that each colour is as different as possible from those before it.
+#'    so that each color is as different as possible from those before it.
 #'
 #' The result is a categorical palette: it does not try to build a gradient.
 #' The smallest pairwise distance in the selection is returned as the
 #' `min_distance` attribute; values above about 20 are comfortably distinct,
-#' and below about 12 two colours will be hard to tell apart. If the pool
-#' cannot supply `n` colours after filtering, the function errors and says
+#' and below about 12 two colors will be hard to tell apart. If the pool
+#' cannot supply `n` colors after filtering, the function errors and says
 #' how many it had, so add palettes or lower `min_contrast`.
 #'
 #' @param palettes Character vector of one or more palette names; see
 #'   [tf_palette_names()]. Team names are not accepted; use
 #'   `tf_palette_names(team = ...)` to expand a team.
-#' @param n Number of colours wanted.
+#' @param n Number of colors wanted.
 #' @param style One of `"light"` (white background), `"dark"` (near-black
-#'   background) or `"greyscale"` (white background, judged by lightness
+#'   background) or `"grayscale"` (white background, judged by lightness
 #'   alone).
-#' @param colorblind Logical. Require the colours to stay distinct under
+#' @param colorblind Logical. Require the colors to stay distinct under
 #'   simulated deuteranopia, protanopia and tritanopia?
 #' @param medium Medium for plain palette names; see [tf_media()].
-#' @param background Optional background colour overriding the one implied
+#' @param background Optional background color overriding the one implied
 #'   by `style`, as a hex string.
-#' @param min_contrast Minimum WCAG 2 contrast ratio a colour must have
+#' @param min_contrast Minimum WCAG 2 contrast ratio a color must have
 #'   against the background to be considered. Set to 1 to disable the
 #'   filter.
 #'
-#' @return A character vector of `n` hex colours with class `"tf_palette"`,
-#'   named by the palette each colour came from, and with attributes
+#' @return A character vector of `n` hex colors with class `"tf_palette"`,
+#'   named by the palette each color came from, and with attributes
 #'   `min_distance` (smallest pairwise distance under the chosen criterion),
 #'   `style`, `colorblind` and `background`.
 #' @seealso [tf_find_palettes()] to shortlist whole palettes instead;
 #'   [tf_palette_stats()] for the underlying measures.
 #' @examples
-#' # five colours for a white-background plot, from the two leaders
+#' # five colors for a white-background plot, from the two leaders
 #' tf_pick(c("optimus_prime", "megatron"), n = 5)
 #'
-#' # the same for a dark theme, and colour-blind safe
+#' # the same for a dark theme, and color-blind safe
 #' tf_pick(c("optimus_prime", "megatron"), n = 4, style = "dark", colorblind = TRUE)
 #'
-#' # a whole team, cartoon colours, printable in greyscale
+#' # a whole team, cartoon colors, printable in grayscale
 #' tf_pick(tf_palette_names(team = "Combaticons"), n = 4,
-#'         style = "greyscale", medium = "cartoon")
+#'         style = "grayscale", medium = "cartoon")
 #'
 #' library(ggplot2)
 #' cols <- tf_pick(tf_palette_names(team = "Predacons"), n = 3, colorblind = TRUE)
@@ -189,7 +189,7 @@ order_by_dispersion <- function(d, idx) {
 #'   scale_colour_manual(values = unname(cols)) +
 #'   theme_minimal()
 #' @export
-tf_pick <- function(palettes, n = 5, style = c("light", "dark", "greyscale"),
+tf_pick <- function(palettes, n = 5, style = c("light", "dark", "grayscale"),
                     colorblind = FALSE, medium = "toy", background = NULL,
                     min_contrast = 3) {
   style <- match.arg(style)
@@ -205,7 +205,7 @@ tf_pick <- function(palettes, n = 5, style = c("light", "dark", "greyscale"),
   }
   if (!is.character(background) || length(background) != 1L ||
       !grepl("^#[0-9A-Fa-f]{6}$", background)) {
-    stop("`background` must be a single hex colour such as \"#FFFFFF\".", call. = FALSE)
+    stop("`background` must be a single hex color such as \"#FFFFFF\".", call. = FALSE)
   }
 
   keys <- vapply(palettes, palette_key, character(1), medium = medium)
@@ -218,7 +218,7 @@ tf_pick <- function(palettes, n = 5, style = c("light", "dark", "greyscale"),
   keep <- contrast >= min_contrast
   if (sum(keep) < n) {
     stop(
-      "Only ", sum(keep), " of the ", nrow(pool), " pooled colours have a ",
+      "Only ", sum(keep), " of the ", nrow(pool), " pooled colors have a ",
       "contrast ratio of at least ", min_contrast, " against ", background,
       ", but ", n, " were requested. Add palettes or lower `min_contrast`.",
       call. = FALSE
@@ -227,7 +227,7 @@ tf_pick <- function(palettes, n = 5, style = c("light", "dark", "greyscale"),
   pool <- pool[keep, , drop = FALSE]
 
   d <- pick_distances(pool$hex, colorblind = colorblind,
-                      greyscale = style == "greyscale")
+                      grayscale = style == "grayscale")
   idx <- choose_subset(d, n)
   idx <- order_by_dispersion(d, idx)
   sub <- d[idx, idx, drop = FALSE]

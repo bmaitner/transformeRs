@@ -39,8 +39,8 @@ Invisibly, the character vector of palette names that were drawn.
 }
 \description{
 Draws a swatch strip for each palette on the current graphics device,
-labelled with the palette name and, by default, the hex code under each
-swatch. Useful for picking a character or for reporting a colour that looks
+labeled with the palette name and, by default, the hex code under each
+swatch. Useful for picking a character or for reporting a color that looks
 wrong. With no arguments every toy palette is drawn, which is a lot; filter
 by \code{faction}, \code{team}, \code{role} or \code{use} to narrow it down, or pass a
 character's palettes across media to compare them.

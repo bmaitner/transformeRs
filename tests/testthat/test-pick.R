@@ -3,7 +3,7 @@ min_pair <- function(hex, ...) {
   min(d[upper.tri(d)])
 }
 
-test_that("tf_pick returns n distinct colours drawn from the pool", {
+test_that("tf_pick returns n distinct colors drawn from the pool", {
   p <- tf_pick(c("optimus_prime", "megatron"), n = 5)
   expect_s3_class(p, "tf_palette")
   expect_length(p, 5)
@@ -17,7 +17,7 @@ test_that("tf_pick returns n distinct colours drawn from the pool", {
   expect_equal(attr(p, "background"), "#FFFFFF")
 })
 
-test_that("light and dark styles drop colours that vanish into the background", {
+test_that("light and dark styles drop colors that vanish into the background", {
   light <- tf_pick("silverbolt", n = 3)
   expect_false("#F0F0EC" %in% unname(light))
   expect_true(all(contrast_ratio(unname(light), "#FFFFFF") >= 3))
@@ -53,7 +53,7 @@ test_that("greedy search matches exhaustive on a moderate pool", {
   expect_equal(subset_score(d, gr), subset_score(d, ex), tolerance = 1e-6)
 })
 
-test_that("colorblind and greyscale change the criterion", {
+test_that("colorblind and grayscale change the criterion", {
   pals <- tf_palette_names(team = "Predacons")
   normal <- tf_pick(pals, n = 4, min_contrast = 1)
   cb <- tf_pick(pals, n = 4, colorblind = TRUE, min_contrast = 1)
@@ -61,10 +61,10 @@ test_that("colorblind and greyscale change the criterion", {
   expect_gte(min_pair(unname(cb), colorblind = TRUE), min_pair(unname(normal), colorblind = TRUE) - 1e-9)
   expect_equal(attr(cb, "min_distance"), min_pair(unname(cb), colorblind = TRUE))
 
-  grey <- tf_pick(pals, n = 4, style = "greyscale", min_contrast = 1)
+  grey <- tf_pick(pals, n = 4, style = "grayscale", min_contrast = 1)
   L <- srgb_to_lab(hex_to_srgb(unname(grey)))[, "L"]
   expect_equal(attr(grey, "min_distance"), min(diff(sort(L))))
-  # greyscale picks are at least as separated in lightness as the default pick
+  # grayscale picks are at least as separated in lightness as the default pick
   L0 <- srgb_to_lab(hex_to_srgb(unname(normal)))[, "L"]
   expect_gte(min(diff(sort(L))), min(diff(sort(L0))) - 1e-9)
 })
@@ -72,11 +72,11 @@ test_that("colorblind and greyscale change the criterion", {
 test_that("results are ordered so leading subsets stay dispersed", {
   p <- tf_pick(tf_palette_names(team = "Stunticons"), n = 5, min_contrast = 1)
   d <- pick_distances(unname(p))
-  # the second colour is the one farthest from the first
+  # the second color is the one farthest from the first
   expect_equal(unname(which.max(d[1, ])), 2L)
 })
 
-test_that("media and suffixed names are honoured", {
+test_that("media and suffixed names are honored", {
   cart <- tf_pick("drag_strip", n = 3, medium = "cartoon", min_contrast = 1)
   expect_true(all(unname(cart) %in% tf_palettes$drag_strip_cartoon))
   expect_equal(unique(names(cart)), "drag_strip_cartoon")
@@ -86,10 +86,10 @@ test_that("media and suffixed names are honoured", {
 
 test_that("tf_pick validates its inputs and reports an empty pool", {
   # white and yellow both fail the 3:1 contrast check against white
-  expect_error(tf_pick("silverbolt", n = 5), "Only 3 of the 5 pooled colours")
+  expect_error(tf_pick("silverbolt", n = 5), "Only 3 of the 5 pooled colors")
   expect_error(tf_pick(character(0)), "character vector")
   expect_error(tf_pick("silverbolt", n = 0), "positive integer")
-  expect_error(tf_pick("silverbolt", n = 2, background = "white"), "hex colour")
+  expect_error(tf_pick("silverbolt", n = 2, background = "white"), "hex color")
   expect_error(tf_pick("nobody", n = 2), "Unknown Transformers palette")
   expect_error(tf_pick("silverbolt", n = 2, style = "sepia"))
   one <- tf_pick("optimus_prime", n = 1)
@@ -102,6 +102,6 @@ test_that("print method describes a pick", {
   on.exit(grDevices::dev.off(), add = TRUE)
   expect_output(print(tf_pick(c("optimus_prime", "megatron"), n = 3, style = "dark",
                               colorblind = TRUE)),
-                "pick of 3 colours from optimus_prime \\+ megatron")
+                "pick of 3 colors from optimus_prime \\+ megatron")
   expect_output(print(tf_pick("megatron", n = 3)), "min distance")
 })

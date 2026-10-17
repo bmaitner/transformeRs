@@ -2,7 +2,7 @@ blank_issues_enabled: true
 contact_links:
   - name: Browse the palettes
     url: https://bmaitner.github.io/transformerpalettes/articles/browse.html
-    about: See every palette with its colours, toy photo and a prefilled "Suggest a change" link.
+    about: See every palette with its colors, toy photo and a prefilled "Suggest a change" link.
   - name: See what is queued
     url: https://github.com/bmaitner/transformerpalettes/blob/main/WISHLIST.md
     about: The wishlist of characters and corrections already lined up, so you can check before requesting.

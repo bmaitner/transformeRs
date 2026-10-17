@@ -1,6 +1,6 @@
 #' Generation 1 Transformers palettes
 #'
-#' A named list of colour palettes covering the Generation 1 Transformers
+#' A named list of color palettes covering the Generation 1 Transformers
 #' cast: the leaders, every member and combined form of the combiner teams,
 #' the Dinobots, Seekers, cassettes, Insecticons, the 1984 Autobot cars and
 #' Mini Vehicles, and the 1986 movie cast. Each character has a palette for
@@ -8,24 +8,24 @@
 #' Marvel comic, and the three combiner teams Hasbro re-released in
 #' Generation 2 have one for that; see the `medium` column of
 #' [tf_characters]. Each element is a character vector of four to
-#' six hex colours ordered so that the first few are the most distinct from
-#' one another (body colour first, then secondary colour, then accents). Use
-#' [tf_palette()] to pull colours from a palette, [tf_team_palette()] to take
-#' one colour from each member of a combiner team, and [tf_characters] for
+#' six hex colors ordered so that the first few are the most distinct from
+#' one another (body color first, then secondary color, then accents). Use
+#' [tf_palette()] to pull colors from a palette, [tf_team_palette()] to take
+#' one color from each member of a combiner team, and [tf_characters] for
 #' background on each character.
 #'
 #' @details
 #' Toy palettes are named after the character (`optimus_prime`); cartoon and
 #' comic palettes carry a suffix (`optimus_prime_cartoon`,
-#' `optimus_prime_comic`). Hex values are approximations: toy colours were
+#' `optimus_prime_comic`). Hex values are approximations: toy colors were
 #' curated by eye from product photography on the Transformers Wiki
-#' (<https://tfwiki.net/>) and the toys' published colour descriptions,
-#' cartoon colours from the animation models as they appear in episode
-#' stills, and comic colours from the character's early Marvel appearances.
-#' Chrome and die-cast parts do not reduce to a single flat colour; those
+#' (<https://tfwiki.net/wiki/Main_Page>) and the toys' published color descriptions,
+#' cartoon colors from the animation models as they appear in episode
+#' stills, and comic colors from the character's early Marvel appearances.
+#' Chrome and die-cast parts do not reduce to a single flat color; those
 #' entries reflect how the part photographs.
 #'
-#' @format A named list of character vectors of hex colours.
+#' @format A named list of character vectors of hex colors.
 #' @seealso [tf_palette()], [tf_palette_names()], [tf_media()], [tf_teams()],
 #'   [tf_characters], [tf_show_palettes()]
 #' @examples
@@ -44,7 +44,7 @@ tf_palettes <- stats::setNames(
 #' Background information for every palette in [tf_palettes]: the character,
 #' which medium the palette records (toy, cartoon or comic), its faction, the
 #' combiner team and combined form it belongs to, its role in that team, its
-#' alternate mode, the year of the reference, a description of the colours,
+#' alternate mode, the year of the reference, a description of the colors,
 #' and links to the reference page and image on the Transformers Wiki.
 #'
 #' @format A data frame with one row per palette and the columns:
@@ -71,15 +71,15 @@ tf_palettes <- stats::setNames(
 #'   \item{year}{Year of the reference: the original Hasbro release for toy
 #'     palettes, the character's first appearance for cartoon and comic
 #'     palettes.}
-#'   \item{n_colours}{Number of colours in the palette.}
-#'   \item{description}{Description of the colours in that medium.}
+#'   \item{n_colours}{Number of colors in the palette.}
+#'   \item{description}{Description of the colors in that medium.}
 #'   \item{source}{URL of the character's page on the Transformers Wiki, with
 #'     an anchor to the relevant section for cartoon and comic palettes.}
 #'   \item{image}{Direct URL of the reference image the palette was checked
 #'     against (a toy photo, an episode still, or a comic panel), hosted by
 #'     the Transformers Wiki, or `NA` where none has been identified yet.}
 #' }
-#' @source Transformers Wiki, <https://tfwiki.net/>.
+#' @source Transformers Wiki, <https://tfwiki.net/wiki/Main_Page>.
 #' @examples
 #' head(tf_characters)
 #' table(tf_characters$team, tf_characters$medium)
@@ -118,7 +118,7 @@ tf_characters <- local({
 #' @return `tf_media()` returns the media a palette can record, in the order
 #'   `"toy"` (the original Generation 1 release), `"cartoon"` (the animation
 #'   model), `"comic"` (Marvel) and `"g2"` (the Generation 2 re-release of
-#'   the toy in new colours, 1992-1994). `tf_factions()` returns a character
+#'   the toy in new colors, 1992-1994). `tf_factions()` returns a character
 #'   vector of faction names. `tf_teams()` returns a character vector of
 #'   team and subgroup names, in package order (Autobot teams first). All can be
 #'   passed to the matching argument of [tf_palette_names()],
@@ -250,31 +250,31 @@ palette_key <- function(name, medium = "toy") {
   key
 }
 
-#' Get colours from a character's palette
+#' Get colors from a character's palette
 #'
-#' Returns `n` colours from the named character's palette, either the first
-#' `n` curated colours (`type = "discrete"`) or `n` colours interpolated
+#' Returns `n` colors from the named character's palette, either the first
+#' `n` curated colors (`type = "discrete"`) or `n` colors interpolated
 #' across the whole palette (`type = "continuous"`).
 #'
 #' @param name Palette name. Case-insensitive, and spaces or hyphens may
 #'   stand in for underscores, so `"Optimus Prime"` and `"Hun-Gurrr"` work.
 #'   See [tf_palette_names()]. A full name with a medium suffix
 #'   (`"megatron_cartoon"`) also works and takes precedence over `medium`.
-#' @param n Number of colours wanted. Defaults to every colour in the palette.
-#' @param type Either `"discrete"` (default) to return the curated colours as
-#'   they are, or `"continuous"` to interpolate `n` colours across the palette
+#' @param n Number of colors wanted. Defaults to every color in the palette.
+#' @param type Either `"discrete"` (default) to return the curated colors as
+#'   they are, or `"continuous"` to interpolate `n` colors across the palette
 #'   with [grDevices::colorRampPalette()].
 #' @param strict Logical. For discrete palettes, error when `n` exceeds the
-#'   number of curated colours (default). If `FALSE`, interpolate to `n`
-#'   colours instead.
-#' @param sort Logical. If `TRUE`, order the colours from darkest to lightest
+#'   number of curated colors (default). If `FALSE`, interpolate to `n`
+#'   colors instead.
+#' @param sort Logical. If `TRUE`, order the colors from darkest to lightest
 #'   (by CIE lightness) before selecting or interpolating. Useful when a
 #'   palette is used as a sequential gradient; see [tf_find_palettes()].
 #' @param medium Which version of the character to use: `"toy"` (default),
 #'   `"cartoon"`, `"comic"` or `"g2"`. See [tf_media()]. Errors with a
 #'   pointer to the wishlist if the character has no palette in that medium.
 #'
-#' @return A character vector of hex colours with class `"tf_palette"`, which
+#' @return A character vector of hex colors with class `"tf_palette"`, which
 #'   has a print method that draws the swatches.
 #' @examples
 #' tf_palette("optimus_prime")
@@ -314,7 +314,7 @@ subset_palette <- function(pal, key, n, type, strict, sort) {
       if (n > length(pal)) {
         if (strict) {
           stop(
-            "Palette '", key, "' only has ", length(pal), " colours; ",
+            "Palette '", key, "' only has ", length(pal), " colors; ",
             n, " were requested. Use type = \"continuous\" or ",
             "strict = FALSE to interpolate.",
             call. = FALSE
@@ -329,40 +329,40 @@ subset_palette <- function(pal, key, n, type, strict, sort) {
   structure(out, class = "tf_palette", name = key)
 }
 
-#' One colour per member of a team
+#' One color per member of a team
 #'
 #' Builds a categorical palette for a combiner team or subgroup by taking one
-#' colour from each member, in the team's order (torso first, then limbs, for
-#' a combiner team). Each colour is named after the member it came from, so
+#' color from each member, in the team's order (torso first, then limbs, for
+#' a combiner team). Each color is named after the member it came from, so
 #' the palette doubles as a legend.
 #'
 #' @details
-#' By default the body colour of each member is used, which is faithful but
+#' By default the body color of each member is used, which is faithful but
 #' collapses for teams cast from shared plastics: every Constructicon is the
 #' same green, three Protectobots are white, and so on. With
-#' `distinct = TRUE` each member instead contributes the colour from its
-#' palette that is furthest (in CIE Lab) from the colours already chosen for
-#' the members before it, so the palette stays legible while every colour is
+#' `distinct = TRUE` each member instead contributes the color from its
+#' palette that is furthest (in CIE Lab) from the colors already chosen for
+#' the members before it, so the palette stays legible while every color is
 #' still one the member actually wears. The Stunticons, Combaticons and
 #' Terrorcons are distinct either way; for the others `distinct = TRUE` is
 #' the useful setting. Check the result with [tf_palette_stats()] on the
-#' returned colours if legibility matters.
+#' returned colors if legibility matters.
 #'
 #' @param team Combiner team name; see [tf_teams()]. Matched
 #'   case-insensitively and by unique prefix.
-#' @param which Which colour to take from each member's palette when
-#'   `distinct = FALSE`. `1` (the default) is the body colour; `2` the
-#'   secondary colour, and so on. Members with fewer colours than `which`
-#'   fall back to their last colour.
-#' @param distinct Logical. Choose each member's colour to be as different as
+#' @param which Which color to take from each member's palette when
+#'   `distinct = FALSE`. `1` (the default) is the body color; `2` the
+#'   secondary color, and so on. Members with fewer colors than `which`
+#'   fall back to their last color.
+#' @param distinct Logical. Choose each member's color to be as different as
 #'   possible from those already chosen? See Details.
 #' @param combined Logical. Include the team's combined form as the last
-#'   colour?
+#'   color?
 #' @param medium Which version of the team to use: `"toy"` (default),
 #'   `"cartoon"` or `"comic"`. Errors if any member lacks a palette in that
 #'   medium.
 #'
-#' @return A named character vector of hex colours with class `"tf_palette"`.
+#' @return A named character vector of hex colors with class `"tf_palette"`.
 #' @examples
 #' tf_team_palette("Stunticons")
 #' tf_team_palette("Seekers")
@@ -430,16 +430,16 @@ print.tf_palette <- function(x, ...) {
   key <- attr(x, "name")
   meta <- tf_characters[tf_characters$palette == key, ]
   if (isTRUE(attr(x, "picked"))) {
-    cat("Transformers pick of ", n, " colours from ", key, "\n", sep = "")
+    cat("Transformers pick of ", n, " colors from ", key, "\n", sep = "")
     cat(attr(x, "style"), " background ", attr(x, "background"),
         if (isTRUE(attr(x, "colorblind"))) ", colorblind-safe" else "",
         ", min distance ", round(attr(x, "min_distance"), 1), "\n", sep = "")
   } else if (nrow(meta) == 1L) {
-    cat("Transformers palette '", key, "' (", n, " colours, ", meta$medium, ")\n", sep = "")
+    cat("Transformers palette '", key, "' (", n, " colors, ", meta$medium, ")\n", sep = "")
     team <- if (is.na(meta$team)) "" else paste0(" / ", meta$team)
     cat(meta$faction, team, ": ", meta$character, "\n", sep = "")
   } else {
-    cat("Transformers team palette '", key, "' (", n, " colours)\n", sep = "")
+    cat("Transformers team palette '", key, "' (", n, " colors)\n", sep = "")
   }
   if (!is.null(names(x))) {
     cat(paste0(names(x), " = ", cols), sep = "\n")
